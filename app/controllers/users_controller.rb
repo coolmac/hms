@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
 
+  def after_sign_out_path_for(resource_or_scope)
+    root_path
+  end
+
   # GET /users
   # GET /users.json
   def index
@@ -82,4 +86,5 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end
