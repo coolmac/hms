@@ -1,6 +1,5 @@
 Emr::Application.routes.draw do
-  devise_for :users
-  # devise_for :users, :controllers =>{:sessions => 'sessions', :registrations => 'registrations'},:path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock'}
+  devise_for :users, :controllers => { :registrations => 'registrations'}, :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock'}
   resources :users
 
 
