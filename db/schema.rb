@@ -11,12 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140316144304) do
+ActiveRecord::Schema.define(:version => 20140316175508) do
 
   create_table "departments", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "hospital_department_users", :force => true do |t|
+    t.integer "hospital_department_id"
+    t.integer "user_id"
   end
 
   create_table "hospital_departments", :force => true do |t|
@@ -36,6 +41,11 @@ ActiveRecord::Schema.define(:version => 20140316144304) do
     t.integer  "mobile"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_patients", :force => true do |t|
+    t.integer "user_id"
+    t.integer "patient_id"
   end
 
   create_table "users", :force => true do |t|
