@@ -11,5 +11,68 @@
 </p>
 
 
+<div>
+<h2> Related Departments </h2>
+<table class="table-bordered table-hovered">
+<tr>
+<th> Department ID</th>
+<th> Department Name</th>
+</tr>
+<% @hospital.hospital_departments.each do |x| %>
+   <tr>
+   <td> <%=x.id%>  </td>
+   <td> <%=x.hospital_id%> and  <%=x.department_id%> </td>
+   </tr>
+<% end %>
+</table>
+
+
+<div>
+<h2> Related Departments </h2>
+<table class="table-bordered table-hovered">
+<tr>
+<th> Department ID</th>
+<th> Department Name</th>
+</tr>
+<% @hospital.departments.each do |x| %>
+   <tr>
+   <td> <%=x.id%>  </td>
+   <td> <%=x.name%>  </td>
+   </tr>
+<% end %>
+</table>
+
+<h2> Related Doctors</h2>
+<table class="table-bordered table-hovered">
+<tr>
+<th> Department ID</th>
+<th> Doctor ID</th>
+<th> Doctor Name</th>
+</tr>
+<% @hospital.hospital_departments.each do |x| %>
+   <tr>
+   <td> <%=x.id%>  </td>
+   <% if x.users.size == 0 %>
+   		<td>None </td>
+   		<td>None </td>
+   <% else %>
+   	   <% x.users.each do |d| %>
+   		<td><%= d.id%></td>
+   		<td><%= d.name%></td>
+	   <% end %>
+   <% end %>
+
+   </tr>
+<% end %>
+</table>
+
+
+
+
+
+
+</div>
+
+
 <%= link_to 'Edit', edit_hospital_path(@hospital) %> |
 <%= link_to 'Back', hospitals_path %>
