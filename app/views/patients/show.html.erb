@@ -1,15 +1,41 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <b>Patient Name:</b>
   <%= @patient.name %>
 </p>
 
 <p>
-  <b>Mobile:</b>
-  <%= @patient.mobile %>
+  <b>UHID:</b>
+  <%= "UHID#{@patient.id}" %>
 </p>
 
+<div class="row">
+<%= link_to 'Registration', edit_patient_path(@patient), class: "btn btn-primary" %>
+<%= link_to 'Admit', edit_patient_path(@patient), class: "btn btn-primary" %>
+</div>
 
-<%= link_to 'Edit', edit_patient_path(@patient) %> |
+<br />
+<div class="row">
+<%= link_to 'History', edit_patient_path(@patient), class: "btn btn-primary" %>
+<%= link_to 'Treatment', edit_patient_path(@patient), class: "btn btn-primary" %>
+</div>
+
+<br />
+
+<div class="row">
+<%= link_to 'Examination', edit_patient_path(@patient), class: "btn btn-primary" %>
+<%= link_to 'Follow Up', edit_patient_path(@patient), class: "btn btn-primary" %>
+</div>
+
+<br />
+
+<div class="row">
+<%= link_to 'Investigations', edit_patient_path(@patient), class: "btn btn-primary" %>
+<%= link_to 'Discharge Summary', edit_patient_path(@patient), class: "btn btn-primary" %>
+</div>
+
+
+
+<%= link_to 'Edit', edit_patient_path(@patient) %>
 <%= link_to 'Back', patients_path %>

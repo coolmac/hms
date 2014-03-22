@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :logo, :name
 
-
+  has_many :user_patients
   has_many :patients, :through => :user_patients
 
 

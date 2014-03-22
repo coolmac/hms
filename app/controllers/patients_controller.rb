@@ -1,8 +1,7 @@
 class PatientsController < ApplicationController
-  # GET /patients
-  # GET /patients.json
+
   def index
-    @patients = Patient.all
+    @patients = @user.patients
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,8 +9,6 @@ class PatientsController < ApplicationController
     end
   end
 
-  # GET /patients/1
-  # GET /patients/1.json
   def show
     @patient = Patient.find(params[:id])
 
@@ -41,9 +38,9 @@ class PatientsController < ApplicationController
   # POST /patients.json
   def create
     @patient = Patient.new(params[:patient])
-
     respond_to do |format|
       if @patient.save
+        @user.patients << @patient
         format.html { redirect_to @patient, notice: 'Patient was successfully created.' }
         format.json { render json: @patient, status: :created, location: @patient }
       else
@@ -66,6 +63,50 @@ class PatientsController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @patient.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def search
+    @patient = Patient.new
+  end
+
+  def search_by_uhid
+    uhid = params[:id]
+    @patient = Patient.find(uhid)
+
+    if (!@patient)
+      @exact_result_found = false
+      @notice = "No Results found for UHID: #{uhid}"
+    else
+      @exact_result_found = true
+    end
+  end
+
+  def search_by_email
+    email = params[:email]
+
+
+  end
+
+
+  def search_results
+    name = params[:patient][:name]
+    mobile = params[:patient][:mobile]
+    @patient = Patient.where(:name => name, :mobile => mobile)
+    if (@patient.size > 0)
+      @exact_result_found = true
+      user_session[:patient_id] = @patient.id
+    else
+      #Provide fuzzy results 
+      @exact_result_found = false
+      if (!name.nil?)
+        @fuzzy_results_by_name = Patient.find_by_fuzzy_name(name)
+        binding.pry
+      end
+      if (!mobile.nil?)
+        @fuzzy_results_by_mobile = Patient.find_by_fuzzy_mobile(mobile)
+      end
+
     end
   end
 

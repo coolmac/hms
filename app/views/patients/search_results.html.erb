@@ -1,0 +1,33 @@
+<div class="container" width="80%">
+
+
+<% if @exact_result_found %>
+	Patient Info found exactly: @patient.id 
+
+<% else %>
+	Exact Patient data could not be found in database. 
+
+	<% if @fuzzy_results_by_name %>
+		Similar Results based on name:
+		<%@fuzzy_results_by_name.each do |patient|%>
+			<%=patient.id%> <br />
+		<%end%>
+	<% end %>
+
+	<% if @fuzzy_results_by_mobile %>
+		Similar Results based on mobile:
+		<%@fuzzy_results_by_mobile.each do |patient|%>
+			<%=patient.id%> <br />
+		<%end%>
+	<% end %>
+
+<% end %>
+
+
+
+
+
+
+</div>
+
+

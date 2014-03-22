@@ -1,4 +1,6 @@
-<%= form_for(@patient) do |f| %>
+<div class="container" style="width:80%">
+
+<%= form_for(@patient, html: { class: "form-horizontal", role:"form" } ) do |f| %>
   <% if @patient.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
@@ -11,15 +13,57 @@
     </div>
   <% end %>
 
-  <div class="field">
+<div class="form-group">
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
+    <%= f.text_field :name, :autofocus => true, class: "form-control", placeholder: "Name" %>
+</div>
+
+<div class="form-group">
     <%= f.label :mobile %><br />
-    <%= f.number_field :mobile %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.text_field :mobile, :autofocus => true, class: "form-control", placeholder: "Mobile No." %>
+</div>
+
+<div class="form-group">
+    <%= f.label :email %><br />
+    <%= f.text_field :email, :autofocus => true, class: "form-control", placeholder: "Email" %>
+</div>
+
+<div class="form-group">
+    <%= f.label 'Husband Name' %><br />
+    <%= f.text_field :husband_name, :autofocus => true, class: "form-control", placeholder: "Husband Name" %>
+</div>
+
+<div class="form-group">
+    <%= f.label 'Father Name' %><br />
+    <%= f.text_field :father_name, :autofocus => true, class: "form-control", placeholder: "Father Name" %>
+</div>
+
+<div class="form-group">
+    <%= f.label :age %><br />
+    <%= f.number_field :age, :autofocus => true, class: "form-control", placeholder: "Age" %>
+</div>
+
+<div class="form-group">
+    <%= f.label :gender %><br />
+    <%= f.text_field :gender, :autofocus => true, class: "form-control", placeholder: "Male/Female" %>
+</div>
+
+<div>
+    <%= f.submit "Create Entry", class: "btn btn-primary" %>
+</div>
 <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

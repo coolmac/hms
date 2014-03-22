@@ -1,17 +1,19 @@
 Emr::Application.routes.draw do
 
-  resources :patients
-
-
   resources :departments
-
-
   resources :hospitals
+
+  match 'patients/search' => 'patients#search'
+  match 'patients/search_by_uhid' => 'patients#search_by_uhid'
+  match 'patients/search_by_email' => 'patients#search_by_email'
+  match 'patients/search_results' => 'patients#search_results'
+  resources :patients
+  # resources :users
+
 
 
   root to: "users#index"
   devise_for :users, :controllers => { :registrations => 'registrations'}, :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock'}
-  resources :users
 
 
   # The priority is based upon order of creation:

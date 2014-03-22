@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140322095054) do
+ActiveRecord::Schema.define(:version => 20140322132939) do
 
   create_table "departments", :force => true do |t|
     t.string   "name"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20140322095054) do
 
   create_table "patients", :force => true do |t|
     t.string   "name"
-    t.integer  "mobile"
+    t.string   "mobile"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.string   "husband_name"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20140322095054) do
     t.string   "gender"
     t.string   "aadhaar_card_number"
     t.datetime "date_of_visit"
+    t.string   "email"
   end
 
   create_table "trigrams", :force => true do |t|

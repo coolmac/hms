@@ -1,4 +1,4 @@
-class UserPatients < ActiveRecord::Base
+class UserPatient < ActiveRecord::Base
   attr_accessible :patient_id, :user_id
 
   belongs_to :user
