@@ -10,6 +10,7 @@ gem 'mysql2'
 gem 'strip_attributes'
 gem "dynamic_form"
 gem 'devise'
+gem 'fuzzily'
 # gem 'recaptcha', :require => "recaptcha/rails"
 # gem 'client_side_validations'
 

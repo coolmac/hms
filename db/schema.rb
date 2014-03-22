@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140316175508) do
+ActiveRecord::Schema.define(:version => 20140322095054) do
 
   create_table "departments", :force => true do |t|
     t.string   "name"
@@ -39,9 +39,26 @@ ActiveRecord::Schema.define(:version => 20140316175508) do
   create_table "patients", :force => true do |t|
     t.string   "name"
     t.integer  "mobile"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "husband_name"
+    t.string   "father_name"
+    t.integer  "age"
+    t.string   "gender"
+    t.string   "aadhaar_card_number"
+    t.datetime "date_of_visit"
   end
+
+  create_table "trigrams", :force => true do |t|
+    t.string  "trigram",     :limit => 3
+    t.integer "score",       :limit => 2
+    t.integer "owner_id"
+    t.string  "owner_type"
+    t.string  "fuzzy_field"
+  end
+
+  add_index "trigrams", ["owner_id", "owner_type", "fuzzy_field", "trigram", "score"], :name => "index_for_match"
+  add_index "trigrams", ["owner_id", "owner_type"], :name => "index_by_owner"
 
   create_table "user_patients", :force => true do |t|
     t.integer "user_id"
