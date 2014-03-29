@@ -17,8 +17,8 @@ gem 'fuzzily'
 
 # NOT Using it for now
 # Use SCSS for stylesheets
-# gem 'sass-rails', '~> 4.0.0'
-
+gem 'sass-rails'
+gem 'font-awesome-sass'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
