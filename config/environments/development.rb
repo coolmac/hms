@@ -36,7 +36,7 @@ Emr::Application.configure do
   config.assets.compress = false
 
   # Expands the lines which load the assets
-  config.assets.debug = false
+  config.assets.debug = true
   
   # Options for action mailer
   config.action_mailer.perform_deliveries = true

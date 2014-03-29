@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  patient_id: 1
+  history_id: 1
+  examination_id: 1
+  investigation_id: 1
+  admission_id: 1
+  treatment_id: 1
+  follow_up_id: 1
+
+two:
+  patient_id: 1
+  history_id: 1
+  examination_id: 1
+  investigation_id: 1
+  admission_id: 1
+  treatment_id: 1
+  follow_up_id: 1

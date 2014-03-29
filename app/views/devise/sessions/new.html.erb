@@ -1,28 +1,32 @@
-
 <div class="text-center" >
-
 	<h2>Welcome to DocOnline Patient Health Management System</h2>
-
 </div>
 
-<div class="container" style="width:30%">
+<div class="container well" style="width:70%">
 <h2>Please Sign in</h2>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: "form-horizontal", role:"form" }) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: "smart-form", role:"form" }) do |f| %>
 
-<div >
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true, class: "form-control", placeholder: "Enter email"%></div>
-</div>
-
-<div >
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password, class: "form-control", placeholder: "Your Password" %></div>
-</div>
+  <fieldset>
+    <div class="row">
+      <section class="col col-6">
+        <label for="user_email" class="input"> <i class="icon-prepend fa fa-envelope"></i>
+          <input type="text" name="user[email]" id="user_email" placeholder="E-mail">
+        </label>
+      </section>
+    </div>
+    <div class="row">
+      <section class="col col-6">
+        <label for="user_password" class="input"> <i class="icon-prepend fa fa-lock"></i>
+          <input type="password" name="user[password]" id="user_password" placeholder="Password">
+        </label>
+      </section>
+    </div>
 
   <% if devise_mapping.rememberable? -%>
     <div><%= f.check_box :remember_me%> <%= f.label :remember_me %></div>
   <% end -%>
+  </fieldset>
 
 <br />
   <div><%= f.submit "Sign in", class: "btn btn-primary" %></div>
