@@ -1,15 +1,56 @@
-<header id="header">
-  <div id="logo-group">
-    <span id="logo"> <h3>DocOnline</h3> </span>
+<body id="login">
+  <header id="header">
+    <div id="logo-group">
+      <span id="logo"> <h3>DocOnline</h3> </span>
+    </div>
+      <span id="login-header-space"> <span class="hidden-mobile">Already registered?</span> <a href="login.html" class="btn btn-primary">Sign In</a> </span>
+  </header>
+
+<div id="main" role="main">
+  <div class="text-center" >
+  	<h2>Welcome to DocOnline Patient Health Management System</h2>
   </div>
-    <span id="login-header-space"> <span class="hidden-mobile">Already registered?</span> <a href="login.html" class="btn btn-primary">Sign In</a> </span>
-</header>
 
-<div class="text-center" >
-	<h2>Welcome to DocOnline Patient Health Management System</h2>
-</div>
+<div id="content" class="container">
 
-<div class="container well" style="width:70%">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 hidden-xs hidden-sm">
+            <h1 class="txt-color-red login-header-big">DocOnline</h1>
+            <div class="hero">
+
+              <div class="pull-left login-desc-box-l">
+                <h4 class="paragraph-header">Let's change the world and see what happens. Basically you can put any texts here.</h4>
+                <div class="login-app-icons">
+                  <a href="javascript:void(0);" class="btn btn-danger btn-sm">Some button</a>
+                  <a href="javascript:void(0);" class="btn btn-danger btn-sm">Find out more</a>
+                </div>
+              </div>
+
+              <img src="img/demo/iphoneview.png" alt="" class="pull-right display-image" style="width:210px">
+
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <h5 class="about-heading">We can put something here too.</h5>
+                <p>
+                  bra bra bra bra bra.....
+                </p>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <h5 class="about-heading">Something here as well.</h5>
+                <p>
+                  bra bra bra bra bra bra bra bra....
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+            <div class="well no-padding">
+
+              <form action="php/demo-register.php" id="smart-form-register" class="smart-form client-form">
+
 <h2>Please Sign in</h2>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: "smart-form", role:"form" }) do |f| %>
