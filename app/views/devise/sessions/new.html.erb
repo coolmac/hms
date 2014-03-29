@@ -63,14 +63,14 @@
     </section>
 
     <div class="row">
-      <section class="col col-6">
+      <section class="col col-sm-12">
         <label for="user_email" class="input"> <i class="icon-prepend fa fa-envelope"></i>
           <input type="text" name="user[email]" id="user_email" placeholder="E-mail">
         </label>
       </section>
     </div>
     <div class="row">
-      <section class="col col-6">
+      <section class="col col-sm-12">
         <label for="user_password" class="input"> <i class="icon-prepend fa fa-lock"></i>
           <input type="password" name="user[password]" id="user_password" placeholder="Password">
         </label>
@@ -81,7 +81,7 @@
   <fieldset>
     <section>
         <% if devise_mapping.rememberable? -%>
-        <div><%= f.check_box :remember_me%> <%= f.label :remember_me %></div>
+        <div><%= f.check_box :remember_me%><%= f.label :remember_me %></div>
         <% end -%>
     </section>
   </fieldset>
