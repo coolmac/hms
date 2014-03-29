@@ -56,12 +56,6 @@
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: "smart-form", role:"form" }) do |f| %>
 
   <fieldset>
-    <section>
-      <label class="input"> <i class="icon-append fa fa-user"></i>
-        <input type="text" name="username" placeholder="Username">
-        <b class="tooltip tooltip-bottom-right">Needed to enter the website</b> </label>
-    </section>
-
     <div class="row">
       <section class="col col-sm-12">
         <label for="user_email" class="input"> <i class="icon-prepend fa fa-envelope"></i>
@@ -80,10 +74,10 @@
 
   <fieldset>
     <section>
-        <% if devise_mapping.rememberable? -%>
-        <div><%= f.check_box :remember_me%><%= f.label :remember_me %></div>
-        <% end -%>
-    </section>
+      <label for="user_remember_me" class="checkbox">
+        <input type="checkbox" name="user[remember_me]" id="user_remember_me">
+        <i></i>Remember me</label>
+      </section>
   </fieldset>
 
 <footer>
