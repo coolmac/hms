@@ -101,7 +101,6 @@ class PatientsController < ApplicationController
       @exact_result_found = false
       if (!name.nil?)
         @fuzzy_results_by_name = Patient.find_by_fuzzy_name(name)
-        binding.pry
       end
       if (!mobile.nil?)
         @fuzzy_results_by_mobile = Patient.find_by_fuzzy_mobile(mobile)

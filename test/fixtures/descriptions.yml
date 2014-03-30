@@ -2,8 +2,10 @@
 
 one:
   title: MyText
-  type_id: 1
+  category_id: 1
+  visit_id: 1
 
 two:
   title: MyText
-  type_id: 1
+  category_id: 1
+  visit_id: 1

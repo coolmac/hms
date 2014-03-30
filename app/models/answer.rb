@@ -1,3 +1,3 @@
 class Answer < ActiveRecord::Base
-  attr_accessible :value
+  attr_accessible :title
 end

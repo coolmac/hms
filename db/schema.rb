@@ -11,12 +11,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140322132939) do
+ActiveRecord::Schema.define(:version => 20140330120612) do
+
+  create_table "answers", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "title"
+    t.string   "master_category"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "departments", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "descriptions", :force => true do |t|
+    t.text     "title"
+    t.integer  "category_id"
+    t.integer  "visit_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "hospital_department_users", :force => true do |t|
@@ -48,6 +69,13 @@ ActiveRecord::Schema.define(:version => 20140322132939) do
     t.string   "aadhaar_card_number"
     t.datetime "date_of_visit"
     t.string   "email"
+  end
+
+  create_table "questions", :force => true do |t|
+    t.string   "title"
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "trigrams", :force => true do |t|
@@ -89,5 +117,25 @@ ActiveRecord::Schema.define(:version => 20140322132939) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "visit_questions", :force => true do |t|
+    t.integer  "visit_id"
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "visits", :force => true do |t|
+    t.integer  "patient_id"
+    t.integer  "history_id"
+    t.integer  "examination_id"
+    t.integer  "investigation_id"
+    t.integer  "admission_id"
+    t.integer  "treatment_id"
+    t.integer  "follow_up_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
 end

@@ -10,14 +10,14 @@
 	<% if @fuzzy_results_by_name %>
 		Similar Results based on name:
 		<%@fuzzy_results_by_name.each do |patient|%>
-			<%=patient.id%> <br />
+			<%= link_to patient.id, new_visit_path(:patient_id => patient.id) %> <br />
 		<%end%>
 	<% end %>
 
 	<% if @fuzzy_results_by_mobile %>
 		Similar Results based on mobile:
 		<%@fuzzy_results_by_mobile.each do |patient|%>
-			<%=patient.id%> <br />
+			<%= link_to patient.id, new_visit_path(:patient_id => patient.id) %> <br />
 		<%end%>
 	<% end %>
 
