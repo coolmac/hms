@@ -1,4 +1,18 @@
-<div class="container" style="width:30%">
+<body id="login">
+  <header id="header">
+    <div id="logo-group">
+      <span id="logo"><h3>DocOnline</h3></span>
+    </div>
+      <span id="login-header-space"> <span class="hidden-mobile">Already registered?</span> <a href="login.html" class="btn btn-primary">Sign In</a> </span>
+  </header>
+
+<div id="main" role="main">
+  <div class="text-center" >
+    <h3><font color="#0060FF">Welcome to Patient Health Management System</font></h3>
+  </div>
+
+<div id="content" class="container">
+
 <h2>Sign up</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { class: "form-horizontal", role:"form" } ) do |f| %>
