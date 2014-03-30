@@ -53,24 +53,21 @@
 
 <header>Please Sign in</header>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: "smart-form", role:"form" }) do |f| %>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: "smart-form", role:"form" }) do |f| %>
 
-  <fieldset>
-    <div class="row">
-      <section class="col col-sm-12">
-        <label for="user_email" class="input"> <i class="icon-prepend fa fa-envelope"></i>
-          <input type="text" name="user[email]" id="user_email" placeholder="E-mail">
-        </label>
+    <fieldset>
+      <section>
+        <label for="user_email" class="input"> <i class="icon-append fa fa-envelope"></i>
+          <input type="text" name="user[email]" id="user_email" placeholder="Email address">
+          <b class="tooltip tooltip-bottom-right">Your e-mail address</b> </label>
       </section>
-    </div>
-    <div class="row">
-      <section class="col col-sm-12">
-        <label for="user_password" class="input"> <i class="icon-prepend fa fa-lock"></i>
+
+      <section>
+        <label for="user_password" class="input"> <i class="icon-append fa fa-lock"></i>
           <input type="password" name="user[password]" id="user_password" placeholder="Password">
-        </label>
+          <b class="tooltip tooltip-bottom-right">Forgot password? Go down</b> </label>
       </section>
-    </div>
-  </fieldset>
+    </fieldset>
 
   <fieldset>
     <section>
