@@ -6,15 +6,16 @@ gem 'rails', '3.2.12'
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
 
-# some useful gems 
+# some useful gems
 gem 'strip_attributes'
 gem "dynamic_form"
 gem 'devise'
 gem 'fuzzily'
 # gem 'recaptcha', :require => "recaptcha/rails"
 # gem 'client_side_validations'
-
-
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
 # NOT Using it for now
 # Use SCSS for stylesheets
 gem 'sass-rails'
