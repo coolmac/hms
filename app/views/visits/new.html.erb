@@ -1,0 +1,23 @@
+<h1>Please fill in all the details for patient's visit </h1>
+
+<h2>Patient Name: <%= @patient.name%></h2>
+<h2>Patient Last Updated: <%= @patient.updated_at%></h2>
+
+
+<%= link_to 'History', new_history_path() , :class => "btn btn-primary" %>
+<%= link_to 'Treatment', '/' , :class => "btn btn-primary" %>
+<br>
+<br>
+<br>
+<%= link_to 'Examination', '/' , :class => "btn btn-primary" %>
+<%= link_to 'Follow Up', '/' , :class => "btn btn-primary" %>
+<br>
+<br>
+<br>
+<%= link_to 'Investigations', '/' , :class => "btn btn-primary" %>
+<%= link_to 'Admit', '/' , :class => "btn btn-primary" %>
+<br>
+<br>
+<br>
+
+
