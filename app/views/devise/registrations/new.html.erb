@@ -13,34 +13,76 @@
 
 <div id="content" class="container">
 
-<h2>Sign up</h2>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 hidden-xs hidden-sm">
+            <h1 class="txt-color-red login-header-big">DocOnline</h1>
+            <div class="hero">
+
+              <div class="pull-left login-desc-box-l">
+                <h4 class="paragraph-header">We might have to put something different here. (Different from sign in page)</h4>
+                <div class="login-app-icons">
+                  <a href="javascript:void(0);" class="btn btn-danger btn-sm">Some button</a>
+                  <a href="javascript:void(0);" class="btn btn-danger btn-sm">Find out more</a>
+                </div>
+              </div>
+
+              <img src="img/demo/iphoneview.png" alt="" class="pull-right display-image" style="width:210px">
+
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <h5 class="about-heading">We can put something here too.</h5>
+                <p>
+                  bra bra bra bra bra.....
+                </p>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <h5 class="about-heading">Something here as well.</h5>
+                <p>
+                  bra bra bra bra bra bra bra bra....
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+            <div class="well no-padding">
+
+              <form action="php/demo-register.php" id="smart-form-register" class="smart-form client-form">
+
+<header>Sign Up</header>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { class: "form-horizontal", role:"form" } ) do |f| %>
   <%= devise_error_messages! %>
 
-<div class="form-group">
-  <div><%= f.label "Doctor's Name" %><br />
-  <%= f.text_field :name, :autofocus => true, class: "form-control", placeholder: "Name"%></div>
-</div>
+    <fieldset>
+      <section>
+        <label for="user_name" class="input"> <i class="icon-append fa fa-envelope"></i>
+          <input type="text" name="user[name]" id="user_name" placeholder="Doctor's Name">
+          <b class="tooltip tooltip-bottom-right">Your name please</b> </label>
+      </section>
 
-<div class="form-group">
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true, class: "form-control", placeholder: "Email"%></div>
-</div>
+      <section>
+        <label for="user_email" class="input"> <i class="icon-append fa fa-envelope"></i>
+          <input type="text" name="user[email]" id="user_email" placeholder="Email address">
+          <b class="tooltip tooltip-bottom-right">Your e-mail address</b> </label>
+      </section>
 
-<div class="form-group">
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password, class: "form-control", placeholder: "Password" %></div>
-</div>
+      <section>
+        <label for="user_password" class="input"> <i class="icon-append fa fa-lock"></i>
+          <input type="password" name="user[password]" id="user_password" placeholder="Password">
+          <b class="tooltip tooltip-bottom-right">Enter your password</b> </label>
+      </section>
 
-<div class="form-group">
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation, class: "form-control", placeholder: "ReEnter Password" %></div>
-</div>
+            <section>
+        <label for="user_password_confirmation" class="input"> <i class="icon-append fa fa-lock"></i>
+          <input type="password" name="user[password_confirmation]" id="user_password_confirmation" placeholder="ReEnter Your Password">
+          <b class="tooltip tooltip-bottom-right">Please re-enter your password</b> </label>
+      </section>
+    </fieldset>
 
+<footer>
   <div><%= f.submit "Sign up", class: "btn btn-primary" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
-</div>
+       <% end %>
+</footer>
