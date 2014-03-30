@@ -14,7 +14,7 @@ Emr::Application.configure do
   config.action_controller.perform_caching = false
 
   # Done as per devise instructions
-  config.action_mailer.default_url_options = { host: 'localhost:3001' }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
