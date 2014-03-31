@@ -11,5 +11,11 @@ class User < ActiveRecord::Base
   has_many :user_patients
   has_many :patients, :through => :user_patients
 
+  ROLES = %w[nurse doctor hospital university superadmin]
+  
+  def role?(base_role)
+    ROLES.index(base_role.to_s) <= ROLES.index(role)
+  end
+
 
 end

@@ -8,10 +8,9 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-
+    @patient = Patient.new
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @users }
     end
   end
 

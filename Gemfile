@@ -13,13 +13,18 @@ gem 'devise'
 gem 'fuzzily'
 # gem 'recaptcha', :require => "recaptcha/rails"
 # gem 'client_side_validations'
-gem "therubyracer"
-gem "less-rails"
-gem "twitter-bootstrap-rails"
-# NOT Using it for now
+
+#TODO check these gems
+# gem "therubyracer"
+# gem "less-rails"
+# gem "twitter-bootstrap-rails"
+
 # Use SCSS for stylesheets
 gem 'sass-rails'
 gem 'font-awesome-sass'
+
+gem 'cancan'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
