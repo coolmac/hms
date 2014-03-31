@@ -6,10 +6,10 @@
 <br />
 <br />
 
-<% if can? :create, @patient %> 
-  <%= link_to 'New Patient', new_patient_path, :class => "btn btn-primary" %>
+<% if can? :create, @patient %>
+  <%= link_to 'New Patient', new_patient_path, :class => "btn btn-primary btn-lg" %>
 <% end %>
-<%= link_to 'Existing Patient', 'patients/search', :class => "btn btn-info" %>
+<%= link_to 'Existing Patient', 'patients/search', :class => "btn btn-info btn-lg" %>
 
 
 <br />
