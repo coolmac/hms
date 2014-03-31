@@ -6,11 +6,12 @@
 <br />
 <br />
 
+<div class="container">
 <% if can? :create, @patient %>
   <%= link_to 'New Patient', new_patient_path, :class => "btn btn-primary btn-lg" %>
 <% end %>
 <%= link_to 'Existing Patient', 'patients/search', :class => "btn btn-info btn-lg" %>
-
+</div>
 
 <br />
 <br />
@@ -18,9 +19,9 @@
 <br />
 
 
-
-<%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => "btn btn-success" %>
-
+<div class="container">
+<%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => "btn btn-success btn-lg" %>
+</div>
 
 
 
