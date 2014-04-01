@@ -10,14 +10,51 @@
 				<span id="logo"> <img src="img/logo.png" alt="SmartAdmin"> </span>
 			</div>
 
-			<span id="login-header-space"> <span class="hidden-mobile">Need an account?</span> <a href="register.html" class="btn btn-danger">Creat account</a> </span>
+			<span id="login-header-space"> <span class="hidden-mobile">Need an account?</span> <a href="/users/sign_up" class="btn btn-danger">Creat account</a> </span>
 
 		</header>
-<div class="container" style="width:30%">
-<h2>Forgot your password?</h2>
+
+		<div id="main" role="main">
+			<div id="content" class="container">
+				<div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 hidden-xs hidden-sm">
+            <h1 class="txt-color-red login-header-big">DocOnline</h1>
+            <div class="hero">
+
+              <div class="pull-left login-desc-box-l">
+                <h4 class="paragraph-header">We might have to put something different here. (Different from sign in page)</h4>
+                <div class="login-app-icons">
+                  <a href="javascript:void(0);" class="btn btn-danger btn-sm">Some button</a>
+                  <a href="javascript:void(0);" class="btn btn-danger btn-sm">Find out more</a>
+                </div>
+              </div>
+
+              <img src="img/demo/iphoneview.png" alt="" class="pull-right display-image" style="width:210px">
+
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <h5 class="about-heading">We can put something here too.</h5>
+                <p>
+                  bra bra bra bra bra.....
+                </p>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <h5 class="about-heading">Something here as well.</h5>
+                <p>
+                  bra bra bra bra bra bra bra bra....
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+            <div class="well no-padding">
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => "form-horizontal" }) do |f| %>
   <%= devise_error_messages! %>
+<header>Forgot password?</header>
 
   <div class="">
   <div><%= f.label :email %><br />
