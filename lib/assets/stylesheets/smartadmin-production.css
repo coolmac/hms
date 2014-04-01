@@ -13771,7 +13771,7 @@ label:hover input[type="checkbox"][disabled].checkbox:checked + span:before {
   color: #565656;
   font-size: 15px;
   font-weight: normal;
-  line-height: 22px;
+  line-height: 24px;
   margin-top: 15px;
   width: 270px;
 }
