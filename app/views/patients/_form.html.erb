@@ -7,6 +7,7 @@
       </span>
   </header>
 
+<div style="height:560px; overflow:scroll">
 <div id="content" class="container">
 
   <div class="row">
@@ -31,6 +32,20 @@
     <div class="form-group">
         <%= f.label :first_name %><br />
         <%= f.text_field :first_name, :autofocus => true, class: "form-control", placeholder: "First Name" %>
+    </div>
+  </section>
+
+  <section>
+    <div class="form-group">
+        <%= f.label :middle_name %><br />
+        <%= f.text_field :middle_name, :autofocus => true, class: "form-control", placeholder: "Middle Name" %>
+    </div>
+  </section>
+
+  <section>
+    <div class="form-group">
+        <%= f.label :last_name %><br />
+        <%= f.text_field :last_name, :autofocus => true, class: "form-control", placeholder: "Lasy Name" %>
     </div>
   </section>
 
@@ -86,23 +101,30 @@
 
   <section>
     <div class="form-group">
+        <%= f.label 'Reference Name' %><br />
+        <%= f.text_field :reference_name, :autofocus => true, class: "form-control", placeholder: "Reference Name" %>
+    </div>
+  </section>
+
+  <section>
+    <div class="form-group">
         <%= f.label 'Reference Mobile Number' %><br />
         <%= f.text_field :reference_mobile, :autofocus => true, class: "form-control", placeholder: "Number" %>
     </div>
   </section>
 </fieldset>
 
+<footer>
     <div>
         <%= f.submit "Create Entry", class: "btn btn-primary" %>
     </div>
 <% end %>
+</footer>
 </div>
 </div>
 </div>
 </div>
-
-
-
+</div>
 
 
 
