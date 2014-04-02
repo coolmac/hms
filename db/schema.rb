@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140331085902) do
+ActiveRecord::Schema.define(:version => 20140401182829) do
+
+  create_table "addresses", :force => true do |t|
+    t.string   "building"
+    t.string   "street"
+    t.string   "nearest_milestone"
+    t.string   "city"
+    t.string   "district"
+    t.string   "state"
+    t.integer  "pin_code"
+    t.string   "country"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
   create_table "answers", :force => true do |t|
     t.string   "title"
@@ -58,17 +71,34 @@ ActiveRecord::Schema.define(:version => 20140331085902) do
   end
 
   create_table "patients", :force => true do |t|
-    t.string   "name"
+    t.string   "first_name"
     t.string   "mobile"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
     t.string   "husband_name"
     t.string   "father_name"
     t.integer  "age"
     t.string   "gender"
     t.string   "aadhaar_card_number"
-    t.datetime "date_of_visit"
+    t.datetime "date_of_registration"
     t.string   "email"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.datetime "date_of_birth"
+    t.string   "reference_mobile"
+    t.string   "reference_name"
+    t.string   "emergency_mobile"
+    t.string   "emergency_name"
+    t.string   "nationality"
+    t.string   "occupation"
+    t.string   "patient_type"
+    t.string   "id_type"
+    t.string   "id_number"
+    t.string   "referred_by"
+    t.string   "insurance_provider"
+    t.string   "insurance_policy_number"
+    t.integer  "address_id"
+    t.string   "religion"
   end
 
   create_table "questions", :force => true do |t|
