@@ -1,3 +1,12 @@
+<header id="header">
+    <div id="logo-group">
+      <span id="logo"><h3>New Patient</h3></span>
+    </div>
+      <span id="login-header-space">
+        <%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => "btn btn-primary" %>
+      </span>
+  </header>
+
 <div class="container" style="width:80%">
 
 <%= form_for(@patient, html: { class: "form-horizontal", role:"form" } ) do |f| %>
