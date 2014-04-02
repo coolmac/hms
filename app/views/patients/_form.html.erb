@@ -7,12 +7,16 @@
       </span>
   </header>
 
-<div class="container" style="width:80%">
+<div id="content" class="container">
 
-<%= form_for(@patient, html: { class: "form-horizontal", role:"form" } ) do |f| %>
-  <% if @patient.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+      <div class="well no-padding">
+
+      <%= form_for(@patient, html: { class: "smart-form client-form", role:"form" } ) do |f| %>
+        <% if @patient.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
 
       <ul>
       <% @patient.errors.full_messages.each do |msg| %>
@@ -22,52 +26,80 @@
     </div>
   <% end %>
 
-<div class="form-group">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, :autofocus => true, class: "form-control", placeholder: "First Name" %>
-</div>
+<fieldset>
+  <section>
+    <div class="form-group">
+        <%= f.label :first_name %><br />
+        <%= f.text_field :first_name, :autofocus => true, class: "form-control", placeholder: "First Name" %>
+    </div>
+  </section>
 
-<div class="form-group">
-    <%= f.label :mobile %><br />
-    <%= f.text_field :mobile, :autofocus => true, class: "form-control", placeholder: "Mobile No." %>
-</div>
+  <section>
+    <div class="form-group">
+        <%= f.label :mobile %><br />
+        <%= f.text_field :mobile, :autofocus => true, class: "form-control", placeholder: "Mobile No." %>
+    </div>
+  </section>
 
-<div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.text_field :email, :autofocus => true, class: "form-control", placeholder: "Email" %>
+  <section>
+    <div class="form-group">
+        <%= f.label :email %><br />
+        <%= f.text_field :email, :autofocus => true, class: "form-control", placeholder: "Email" %>
+    </div>
+  </section>
 </div>
+</div>
+</fieldset>
 
-<div class="form-group">
-    <%= f.label 'Husband Name' %><br />
-    <%= f.text_field :husband_name, :autofocus => true, class: "form-control", placeholder: "Husband Name" %>
-</div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+      <div class="well no-padding">
+        <div class="smart-form client-form">
 
-<div class="form-group">
-    <%= f.label 'Father Name' %><br />
-    <%= f.text_field :father_name, :autofocus => true, class: "form-control", placeholder: "Father Name" %>
-</div>
+<fieldset>
+  <section>
+    <div class="form-group">
+        <%= f.label 'Husband Name' %><br />
+        <%= f.text_field :husband_name, :autofocus => true, class: "form-control", placeholder: "Husband Name" %>
+    </div>
+  </section>
 
-<div class="form-group">
-    <%= f.label :age %><br />
-    <%= f.number_field :age, :autofocus => true, class: "form-control", placeholder: "Age" %>
-</div>
+  <section>
+    <div class="form-group">
+        <%= f.label 'Father Name' %><br />
+        <%= f.text_field :father_name, :autofocus => true, class: "form-control", placeholder: "Father Name" %>
+    </div>
+  </section>
 
-<div class="form-group">
-    <%= f.label :gender %><br />
-    <%= f.text_field :gender, :autofocus => true, class: "form-control", placeholder: "Male/Female" %>
-</div>
+  <section>
+    <div class="form-group">
+        <%= f.label :age %><br />
+        <%= f.number_field :age, :autofocus => true, class: "form-control", placeholder: "Age" %>
+    </div>
+  </section>
 
-<div class="form-group">
-    <%= f.label 'Reference Mobile Number' %><br />
-    <%= f.text_field :reference_mobile, :autofocus => true, class: "form-control", placeholder: "Number" %>
-</div>
+  <section>
+    <div class="form-group">
+        <%= f.label :gender %><br />
+        <%= f.text_field :gender, :autofocus => true, class: "form-control", placeholder: "Male/Female" %>
+    </div>
+  </section>
 
-<div>
-    <%= f.submit "Create Entry", class: "btn btn-primary" %>
-</div>
+  <section>
+    <div class="form-group">
+        <%= f.label 'Reference Mobile Number' %><br />
+        <%= f.text_field :reference_mobile, :autofocus => true, class: "form-control", placeholder: "Number" %>
+    </div>
+  </section>
+</fieldset>
+
+    <div>
+        <%= f.submit "Create Entry", class: "btn btn-primary" %>
+    </div>
 <% end %>
 </div>
-
+</div>
+</div>
+</div>
 
 
 
