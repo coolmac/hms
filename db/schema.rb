@@ -14,16 +14,17 @@
 ActiveRecord::Schema.define(:version => 20140401182829) do
 
   create_table "addresses", :force => true do |t|
-    t.string   "building"
-    t.string   "street"
-    t.string   "nearest_milestone"
+    t.string   "address_line1"
+    t.string   "address_line2"
+    t.string   "address_line3"
     t.string   "city"
     t.string   "district"
     t.string   "state"
     t.integer  "pin_code"
     t.string   "country"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.integer  "patient_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "answers", :force => true do |t|
@@ -73,15 +74,12 @@ ActiveRecord::Schema.define(:version => 20140401182829) do
   create_table "patients", :force => true do |t|
     t.string   "first_name"
     t.string   "mobile"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
     t.string   "husband_name"
     t.string   "father_name"
     t.integer  "age"
+    t.integer  "integer"
     t.string   "gender"
-    t.string   "aadhaar_card_number"
     t.datetime "date_of_registration"
-    t.string   "email"
     t.string   "middle_name"
     t.string   "last_name"
     t.datetime "date_of_birth"
@@ -97,8 +95,10 @@ ActiveRecord::Schema.define(:version => 20140401182829) do
     t.string   "referred_by"
     t.string   "insurance_provider"
     t.string   "insurance_policy_number"
-    t.integer  "address_id"
     t.string   "religion"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "email"
   end
 
   create_table "questions", :force => true do |t|
@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(:version => 20140401182829) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "logo"
+    t.string   "role"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "email",                  :default => "", :null => false
@@ -143,7 +144,6 @@ ActiveRecord::Schema.define(:version => 20140401182829) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.string   "role"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

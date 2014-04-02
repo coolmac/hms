@@ -22,7 +22,7 @@ class PatientsController < ApplicationController
   # GET /patients/new.json
   def new
     @patient = Patient.new
-
+    @patient.address = Address.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @patient }
@@ -37,7 +37,9 @@ class PatientsController < ApplicationController
   # POST /patients
   # POST /patients.json
   def create
+    binding.pry
     @patient = Patient.new(params[:patient])
+    binding.pry
     respond_to do |format|
       if @patient.save
         @user.patients << @patient
