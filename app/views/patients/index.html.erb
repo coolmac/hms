@@ -11,7 +11,7 @@
 
 <% @patients.each do |patient| %>
   <tr>
-    <td><%= patient.name %></td>
+    <td><%= patient.first_name %></td>
     <td><%= patient.mobile %></td>
     <td><%= link_to 'Show', patient %></td>
     <td><%= link_to 'Edit', edit_patient_path(patient) %></td>

@@ -1,208 +1,181 @@
-<header id="header">
-    <div id="logo-group">
-      <span id="logo"><h3>New Patient</h3></span>
-    </div>
-      <span id="login-header-space">
-        <%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => "btn btn-primary" %>
-      </span>
-  </header>
-
-<div style="height:800px; overflow:scroll">
-<div id="content" class="container">
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-      <div class="well no-padding">
-
-      <%= form_for(@patient, html: { class: "smart-form client-form", role:"form" } ) do |f| %>
-        <% if @patient.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
-
-      <ul>
-      <% @patient.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<div id="content" class="container ">
+    <%= form_for(@patient, html: { class: "smart-form client-form", role:"form" } ) do |f| %>
+      <% if @patient.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+          <ul>
+          <% @patient.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+      <div class="well no-padding">
 
-<header>Necessary Information</header>
+      <header>Necessary Information</header>
 
-<fieldset>
-  <section>
-    <div class="form-group">
-        <%= f.label :first_name %><br />
-        <%= f.text_field :first_name, :autofocus => true, class: "form-control", placeholder: "First Name" %>
-    </div>
-  </section>
+        <fieldset>
+          <section>
+            <div class="form-group">
+                <%= f.label :first_name %><br />
+                <%= f.text_field :first_name, :autofocus => true, class: "form-control", placeholder: "First Name" %>
+            </div>
+          </section>
 
-  <section>
-    <div class="form-group">
-        <%= f.label :middle_name %><br />
-        <%= f.text_field :middle_name, :autofocus => true, class: "form-control", placeholder: "Middle Name (optional)" %>
-    </div>
-  </section>
+          <section>
+            <div class="form-group">
+                <%= f.label :middle_name %><br />
+                <%= f.text_field :middle_name, :autofocus => true, class: "form-control", placeholder: "Middle Name (optional)" %>
+            </div>
+          </section>
 
-  <section>
-    <div class="form-group">
-        <%= f.label :last_name %><br />
-        <%= f.text_field :last_name, :autofocus => true, class: "form-control", placeholder: "Lasy Name" %>
-    </div>
-  </section>
+          <section>
+            <div class="form-group">
+                <%= f.label :last_name %><br />
+                <%= f.text_field :last_name, :autofocus => true, class: "form-control", placeholder: "Lasy Name" %>
+            </div>
+          </section>
 
-  <section>
-    <div class="form-group">
-        <%= f.label :date_of_birth %><br />
-        <%= f.date_select :date_of_birth, {:order => [:month, :day, :year],:prompt => true, :use_two_digit_numbers => true, :start_year => 1900, :end_year => 2014} %>
-    </div>
-  </section>
+          <section>
+            <div class="form-group">
+                <%= f.label :date_of_birth %><br />
+                <%= f.date_select :date_of_birth, {:order => [:month, :day, :year],:prompt => true, :use_two_digit_numbers => true, :start_year => 1900, :end_year => 2014} %>
+            </div>
+          </section>
 
-  <section>
-    <div class="form-group">
-        <%= f.label :age %><br />
-        <%= f.number_field :age, :autofocus => true, class: "form-control", placeholder: "Age" %>
-    </div>
-  </section>
+          <section>
+            <div class="form-group">
+                <%= f.label :age %><br />
+                <%= f.number_field :age, :autofocus => true, class: "form-control", placeholder: "Age" %>
+            </div>
+          </section>
 
-  <section>
-    <div class="form-group">
-        <%= f.label :gender %><br />
-        <%= f.text_field :gender, :autofocus => true, class: "form-control", placeholder: "Male/Female" %>
-    </div>
-  </section>
+          <section>
+            <div class="form-group">
+                <%= f.label :gender %><br />
+                <%= f.text_field :gender, :autofocus => true, class: "form-control", placeholder: "Male/Female" %>
+            </div>
+          </section>
 
-  <section>
-    <div class="form-group">
-        <%= f.label :mobile %><br />
-        <%= f.text_field :mobile, :autofocus => true, class: "form-control", placeholder: "Mobile No." %>
-    </div>
-  </section>
+          <section>
+            <div class="form-group">
+                <%= f.label :mobile %><br />
+                <%= f.text_field :mobile, :autofocus => true, class: "form-control", placeholder: "Mobile No." %>
+            </div>
+          </section>
 
-  <section>
-    <div class="form-group">
-        <%= f.label :email %><br />
-        <%= f.text_field :email, :autofocus => true, class: "form-control", placeholder: "Email" %>
-    </div>
-  </section>
+          <section>
+            <div class="form-group">
+                <%= f.label :email %><br />
+                <%= f.text_field :email, :autofocus => true, class: "form-control", placeholder: "Email" %>
+            </div>
+          </section>
 
-  <section>
-    <div class="form-group">
-      <h4>Don't know how to give address form</h4>
-    </div>
-  </section>
+          <section>
+            <div class="form-group">
+              <h4>Don't know how to give address form</h4>
+            </div>
+          </section>
 
-  <section>
-    <div class="form-group">
-        <%= f.label :nationality %><br />
-        <%= f.text_field :nationality, :autofocus => true, class: "form-control", placeholder: "Nationaliry" %>
-    </div>
-  </section>
+          <section>
+            <div class="form-group">
+                <%= f.label :nationality %><br />
+                <%= f.text_field :nationality, :autofocus => true, class: "form-control", placeholder: "Nationaliry" %>
+            </div>
+          </section>
 
-  <section>
-    <div class="form-group">
-        <%= f.label :occupation %><br />
-        <%= f.text_field :occupation, :autofocus => true, class: "form-control", placeholder: "Occupation" %>
-    </div>
-  </section>
-</div>
-</div>
-</fieldset>
+          <section>
+            <div class="form-group">
+                <%= f.label :occupation %><br />
+                <%= f.text_field :occupation, :autofocus => true, class: "form-control", placeholder: "Occupation" %>
+            </div>
+          </section>
+        </fieldset>
+        </div>
+      </div>
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
       <div class="well no-padding">
-        <div class="smart-form client-form">
 
-<fieldset>
-  <section>
-    <div class="form-group">
-        <%= f.label 'Patient Type' %><br />
-        <%= f.text_field :patient_type, :autofocus => true, class: "form-control", placeholder: "Patient Type" %>
+          <fieldset>
+            <section>
+              <div class="form-group">
+                  <%= f.label 'Patient Type' %><br />
+                  <%= f.text_field :patient_type, :autofocus => true, class: "form-control", placeholder: "Patient Type" %>
+              </div>
+            </section>
+
+            <section>
+              <div class="form-group">
+                  <%= f.label 'Patient ID Type' %><br />
+                  <%= f.text_field :id_type, :autofocus => true, class: "form-control", placeholder: "ID Type" %>
+              </div>
+            </section>
+
+            <section>
+              <div class="form-group">
+                  <%= f.label 'Patient ID Number' %><br />
+                  <%= f.text_field :id_number, :autofocus => true, class: "form-control", placeholder: "ID Number" %>
+              </div>
+            </section>
+
+            <section>
+              <div class="form-group">
+                  <%= f.label 'Emergency Name' %><br />
+                  <%= f.text_field :emergency_name, :autofocus => true, class: "form-control", placeholder: "Emergency Name" %>
+              </div>
+            </section>
+
+            <section>
+              <div class="form-group">
+                  <%= f.label 'Emergency Mobile Number' %><br />
+                  <%= f.text_field :emergency_mobile, :autofocus => true, class: "form-control", placeholder: "Number" %>
+              </div>
+            </section>
+
+            <section>
+              <div class="form-group">
+                  <%= f.label 'Reference Name' %><br />
+                  <%= f.text_field :reference_name, :autofocus => true, class: "form-control", placeholder: "Reference Name" %>
+              </div>
+            </section>
+
+            <section>
+              <div class="form-group">
+                  <%= f.label 'Reference Mobile Number' %><br />
+                  <%= f.text_field :reference_mobile, :autofocus => true, class: "form-control", placeholder: "Number" %>
+              </div>
+            </section>
+
+            <section>
+              <div class="form-group">
+                  <%= f.label 'Insurance Provider' %><br />
+                  <%= f.text_field :insurance_provider, :autofocus => true, class: "form-control", placeholder: "Insurance provider" %>
+              </div>
+            </section>
+
+            <section>
+              <div class="form-group">
+                  <%= f.label 'Insurance Policy Number' %><br />
+                  <%= f.text_field :insurance_policy_number, :autofocus => true, class: "form-control", placeholder: "Insurance policy Number" %>
+              </div>
+            </section>
+
+            <section>
+              <div class="form-group">
+                  <%= f.label 'Religion' %><br />
+                  <%= f.text_field :religion, :autofocus => true, class: "form-control", placeholder: "Religion" %>
+              </div>
+            </section>
+          </fieldset>
+
+        <footer>
+            <div>
+                <%= f.submit "Create Entry", class: "btn btn-primary" %>
+            </div>
+        <% end %>
+        </footer>
+      </div>
     </div>
-  </section>
-
-  <section>
-    <div class="form-group">
-        <%= f.label 'Patient ID Type' %><br />
-        <%= f.text_field :id_type, :autofocus => true, class: "form-control", placeholder: "ID Type" %>
-    </div>
-  </section>
-
-  <section>
-    <div class="form-group">
-        <%= f.label 'Patient ID Number' %><br />
-        <%= f.text_field :id_number, :autofocus => true, class: "form-control", placeholder: "ID Number" %>
-    </div>
-  </section>
-
-  <section>
-    <div class="form-group">
-        <%= f.label 'Emergency Name' %><br />
-        <%= f.text_field :emergency_name, :autofocus => true, class: "form-control", placeholder: "Emergency Name" %>
-    </div>
-  </section>
-
-  <section>
-    <div class="form-group">
-        <%= f.label 'Emergency Mobile Number' %><br />
-        <%= f.text_field :emergency_mobile, :autofocus => true, class: "form-control", placeholder: "Number" %>
-    </div>
-  </section>
-
-  <section>
-    <div class="form-group">
-        <%= f.label 'Reference Name' %><br />
-        <%= f.text_field :reference_name, :autofocus => true, class: "form-control", placeholder: "Reference Name" %>
-    </div>
-  </section>
-
-  <section>
-    <div class="form-group">
-        <%= f.label 'Reference Mobile Number' %><br />
-        <%= f.text_field :reference_mobile, :autofocus => true, class: "form-control", placeholder: "Number" %>
-    </div>
-  </section>
-
-  <section>
-    <div class="form-group">
-        <%= f.label 'Insurance Provider' %><br />
-        <%= f.text_field :insurance_provider, :autofocus => true, class: "form-control", placeholder: "Insurance provider" %>
-    </div>
-  </section>
-
-  <section>
-    <div class="form-group">
-        <%= f.label 'Insurance Policy Number' %><br />
-        <%= f.text_field :insurance_policy_number, :autofocus => true, class: "form-control", placeholder: "Insurance policy Number" %>
-    </div>
-  </section>
-
-  <section>
-    <div class="form-group">
-        <%= f.label 'Religion' %><br />
-        <%= f.text_field :religion, :autofocus => true, class: "form-control", placeholder: "Religion" %>
-    </div>
-  </section>
-</fieldset>
-
-<footer>
-    <div>
-        <%= f.submit "Create Entry", class: "btn btn-primary" %>
-    </div>
-<% end %>
-</footer>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
+  </div>
