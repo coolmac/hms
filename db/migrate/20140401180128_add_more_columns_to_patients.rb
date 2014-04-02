@@ -18,5 +18,6 @@ class AddMoreColumnsToPatients < ActiveRecord::Migration
   	add_column :patients, :insurance_provider, :string
   	add_column :patients, :insurance_policy_number, :string
   	add_column :patients, :address_id, :integer
+    add_column :patients, :religion, :string
   end
 end
