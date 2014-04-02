@@ -87,7 +87,7 @@ img {
   border: 0;
 }
 svg:not(:root) {
-  overflow: hidden;
+  overflow: scroll;
 }
 figure {
   margin: 1em 40px;
@@ -346,7 +346,7 @@ hr {
   height: 1px;
   padding: 0;
   margin: -1px;
-  overflow: hidden;
+  overflow: scroll;
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
@@ -610,7 +610,7 @@ dd {
   .dl-horizontal dt {
     float: left;
     width: 160px;
-    overflow: hidden;
+    overflow: scroll;
     clear: left;
     text-align: right;
     text-overflow: ellipsis;
@@ -2369,7 +2369,7 @@ input[type="button"].btn-block {
 .collapsing {
   position: relative;
   height: 0;
-  overflow: hidden;
+  overflow: scroll;
   -webkit-transition: height .35s ease;
           transition: height .35s ease;
 }
@@ -3034,7 +3034,7 @@ input[type="button"].btn-block {
 .dropdown-menu .divider {
   height: 1px;
   margin: 9px 0;
-  overflow: hidden;
+  overflow: scroll;
   background-color: #e5e5e5;
 }
 .dropdown-menu > li > a {
@@ -3485,7 +3485,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .nav-divider {
   height: 1px;
   margin: 9px 0;
-  overflow: hidden;
+  overflow: scroll;
   background-color: #e5e5e5;
 }
 .nav > li > a > img {
@@ -4516,7 +4516,7 @@ a.thumbnail.active {
 .progress {
   height: 20px;
   margin-bottom: 20px;
-  overflow: hidden;
+  overflow: scroll;
   background-color: #f5f5f5;
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
@@ -4575,7 +4575,7 @@ a.thumbnail.active {
 }
 .media,
 .media-body {
-  overflow: hidden;
+  overflow: scroll;
   zoom: 1;
 }
 .media,
@@ -4932,7 +4932,7 @@ a.list-group-item-danger.active:focus {
 }
 .panel-group .panel {
   margin-bottom: 0;
-  overflow: hidden;
+  overflow: scroll;
   border-radius: 4px;
 }
 .panel-group .panel + .panel {
@@ -5082,7 +5082,7 @@ button.close {
   border: 0;
 }
 .modal-open {
-  overflow: hidden;
+  overflow: scroll;
 }
 .modal {
   position: fixed;
@@ -5417,7 +5417,7 @@ button.close {
 .carousel-inner {
   position: relative;
   width: 100%;
-  overflow: hidden;
+  overflow: scroll;
 }
 .carousel-inner > .item {
   position: relative;

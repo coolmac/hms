@@ -147,8 +147,9 @@ article.sortable-grid {
   position: relative;
   padding-bottom: 13px;
 }
+/* Made a fix*/
 .jarviswidget .widget-body.widget-hide-overflow {
-  overflow: hidden;
+  overflow: scroll;
 }
 .widget-toolbar.no-border {
   border-left: none;
@@ -293,7 +294,7 @@ article.sortable-grid {
 	 * FULL SCREEN
 	 */
 body.nooverflow {
-  overflow: hidden;
+  overflow: scroll;
   position: fixed;
   width: 100%;
 }
@@ -793,7 +794,7 @@ body.nooverflow {
   content: "\0020";
   display: block;
   height: 0;
-  overflow: hidden;
+  overflow: scroll;
   font-size: 0;
   line-height: 0;
   visibility: hidden;
@@ -1355,7 +1356,7 @@ body.nooverflow {
 .smart-form .button {
   float: right;
   height: 31px;
-  overflow: hidden;
+  overflow: scroll;
   margin: 10px 0 0 5px;
   padding: 0 25px;
   outline: none;
@@ -2412,7 +2413,7 @@ html .fc,
 .fc-view {
   width: 100%;
   /* needed for view switching (when view is absolute) */
-  overflow: hidden;
+  overflow: scroll;
 }
 /* Cell Styles
 ------------------------------------------------------------------------*/
@@ -2448,7 +2449,7 @@ html .fc,
 .fc-button-inner {
   position: relative;
   float: left;
-  overflow: hidden;
+  overflow: scroll;
 }
 .fc-state-default .fc-button-inner {
   /* non-theme */
@@ -2558,7 +2559,7 @@ a.fc-event {
   height: 100%;
   border-style: solid;
   border-width: 0;
-  overflow: hidden;
+  overflow: scroll;
 }
 .fc-event-time,
 .fc-event-title {
@@ -2569,7 +2570,7 @@ a.fc-event {
   display: block;
   position: absolute;
   z-index: 99999;
-  overflow: hidden;
+  overflow: scroll;
   /* hacky spaces (IE6/7) */
   font-size: 300%;
   /* */
@@ -2746,7 +2747,7 @@ table.fc-border-separate {
 /* divider (between all-day and slots) */
 .fc-agenda-divider-inner {
   height: 2px;
-  overflow: hidden;
+  overflow: scroll;
 }
 .fc-widget-header .fc-agenda-divider-inner {
   background: #eee;
@@ -2784,7 +2785,7 @@ table.fc-border-separate {
   position: relative;
   z-index: 2;
   width: 100%;
-  overflow: hidden;
+  overflow: scroll;
 }
 .fc-event-vert .fc-event-time {
   white-space: nowrap;
@@ -2813,7 +2814,7 @@ table.fc-border-separate {
   /* importants override pre jquery ui 1.7 styles */
   width: 100%      !important;
   height: 8px      !important;
-  overflow: hidden !important;
+  overflow: scroll !important;
   line-height: 8px !important;
   font-size: 11px  !important;
   font-family: monospace;
@@ -2822,7 +2823,7 @@ table.fc-border-separate {
 }
 .fc-agenda .ui-resizable-resizing {
   /* TODO: better selector */
-  _overflow: hidden;
+  _overflow: scroll;
 }
 /*!
  * Colorpicker for Bootstrap
@@ -6783,7 +6784,7 @@ table.fc-border-separate {
 .note-editor .note-popover .popover .popover-content a {
   display: inline-block;
   max-width: 200px;
-  overflow: hidden;
+  overflow: scroll;
   text-overflow: ellipsis;
   white-space: nowrap;
   vertical-align: middle;
@@ -7133,7 +7134,7 @@ table.fc-border-separate {
 }
 .dropzone .dz-preview .dz-details .dz-filename,
 .dropzone-previews .dz-preview .dz-details .dz-filename {
-  overflow: hidden;
+  overflow: scroll;
   height: 100%;
 }
 .dropzone .dz-preview .dz-details img,
@@ -7294,7 +7295,7 @@ table.fc-border-separate {
 }
 .dropzone .dz-preview .dz-details .dz-filename,
 .dropzone-previews .dz-preview .dz-details .dz-filename {
-  overflow: hidden;
+  overflow: scroll;
   height: 100%;
 }
 .dropzone .dz-preview .dz-details img,
@@ -7904,7 +7905,7 @@ div.dt-top-row {
 div.dt-bottom-row {
   background: #fafafa;
   font-size: 11px;
-  overflow: hidden;
+  overflow: scroll;
   padding: 5px 10px;
   border-top: 1px solid #ccc;
   -webkit-box-shadow: inset 0 1px #fff;
@@ -7951,7 +7952,7 @@ div.dataTables_paginate .pagination {
   position: relative;
 }
 .dt-wrapper {
-  overflow: hidden;
+  overflow: scroll;
 }
 .dataTables_wrapper table.table {
   clear: both;
@@ -8469,7 +8470,7 @@ div.DTTT_collection {
   border: 1px solid rgba(0, 0, 0, 0.4);
   background-color: #f3f3f3;
   background-color: rgba(255, 255, 255, 0.3);
-  overflow: hidden;
+  overflow: scroll;
   z-index: 2002;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -8606,7 +8607,7 @@ div.DTTT_collection a.DTTT_button {
   border-right: 1px solid #fff;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: scroll;
   line-height: 4px;
   top: 8px;
   -moz-border-radius: 4px;
@@ -8625,7 +8626,7 @@ div.DTTT_collection a.DTTT_button {
   height: 6px;
   margin: 0;
   padding: 0 2px 0 0;
-  overflow: hidden;
+  overflow: scroll;
   top: 9px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
@@ -8774,7 +8775,7 @@ body.fd-slider-drag-horizontal * {
   z-index: 2;
   width: 10px;
   height: 10px;
-  overflow: hidden;
+  overflow: scroll;
   /* Rotate element by 45 degress to get the "\/" pointer effect */
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -8979,7 +8980,7 @@ body.fd-slider-drag-horizontal * {
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
-  overflow: hidden;
+  overflow: scroll;
   padding: 0;
   position: absolute;
   width: 1px;
@@ -9041,7 +9042,7 @@ body.fd-slider-drag-horizontal * {
 .ui-icon {
   display: block;
   text-indent: -99999px;
-  overflow: hidden;
+  overflow: scroll;
   background-repeat: no-repeat;
 }
 /* Misc visuals
@@ -10375,7 +10376,7 @@ button.ui-button::-moz-focus-inner {
 .ui-spinner {
   position: relative;
   display: inline-block;
-  overflow: hidden;
+  overflow: scroll;
   padding: 0;
   vertical-align: middle;
 }
@@ -10398,7 +10399,7 @@ button.ui-button::-moz-focus-inner {
   position: absolute;
   cursor: default;
   display: block;
-  overflow: hidden;
+  overflow: scroll;
   right: 0;
 }
 /* more specificity required here to overide default borders */
@@ -10440,7 +10441,7 @@ button.ui-button::-moz-focus-inner {
   left: 0;
   padding: 0;
   width: 300px;
-  overflow: hidden;
+  overflow: scroll;
   outline: 0;
   background-clip: padding-box;
   background-color: #ffffff;
@@ -10486,7 +10487,7 @@ button.ui-button::-moz-focus-inner {
   margin-bottom: 5px;
   padding: 5px;
   text-overflow: ellipsis;
-  overflow: hidden;
+  overflow: scroll;
 }
 .ui-dialog .ui-dialog-titlebar-close {
   position: absolute;
@@ -10901,7 +10902,7 @@ body .ui-tooltip {
 }
 /*
  .arrow {
- overflow: hidden;
+ overflow: scroll;
  position: absolute;
  margin-left: 0;
  height: 20px;
@@ -11257,7 +11258,7 @@ body .ui-tooltip {
   height: 2em;
   margin-bottom: 20px;
   border: 0px;
-  overflow: hidden;
+  overflow: scroll;
   background-color: #f7f7f7;
   background-image: -moz-linear-gradient(top, #f5f5f5, #f9f9f9);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#f9f9f9));
@@ -11678,7 +11679,7 @@ div.wijmo-wijmenu .wijmo-wijmenu-child .wijmo-wijmenu-text {
   letter-spacing: -1px;
 }
 #chat-container .chat-list-footer {
-  overflow: hidden;
+  overflow: scroll;
   border-top: 1px solid #CCC;
   padding: 10px;
   box-sizing: border-box;
@@ -11785,7 +11786,7 @@ div.wijmo-wijmenu .wijmo-wijmenu-child .wijmo-wijmenu-text {
   font-style: italic;
   white-space: nowrap;
   width: 250px;
-  overflow: hidden;
+  overflow: scroll;
   text-overflow: ellipsis;
   text-align: left;
 }
@@ -11806,7 +11807,7 @@ div.wijmo-wijmenu .wijmo-wijmenu-child .wijmo-wijmenu-text {
   box-shadow: none !important;
   -moz-box-shadow: none !important;
   -webkit-box-shadow: none !important;
-  overflow: hidden;
+  overflow: scroll;
 }
 .profile-message li.message.message-reply {
   margin-left: 85px !important;
@@ -11857,7 +11858,7 @@ div.wijmo-wijmenu .wijmo-wijmenu-child .wijmo-wijmenu-text {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -webkit-box-shadow: none;
-  overflow: hidden;
+  overflow: scroll;
   padding: 0;
   margin: 0;
   -webkit-transition: height 0.2s;
@@ -11882,7 +11883,7 @@ textarea.clone {
   border-top: none;
   height: 43px;
   line-height: 33px;
-  overflow: hidden;
+  overflow: scroll;
 }
 .textarea-controls > label {
   margin: 3px 10px 0 10px;
@@ -12003,7 +12004,7 @@ textarea.clone {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   border-left: 5px solid rgba(0, 0, 0, 0.15);
-  overflow: hidden;
+  overflow: scroll;
 }
 .bigBox span {
   font-size: 17px;
@@ -12090,7 +12091,7 @@ textarea.clone {
   width: 420px;
   color: white;
   z-index: 9999;
-  overflow: hidden;
+  overflow: scroll;
   border: 1px solid transparent;
 }
 .SmallBox:hover {
@@ -12642,7 +12643,7 @@ textarea.clone {
 .irs-line {
   position: relative;
   display: block;
-  overflow: hidden;
+  overflow: scroll;
 }
 .irs-line-left,
 .irs-line-mid,
@@ -13720,7 +13721,7 @@ label:hover input[type="checkbox"][disabled].checkbox:checked + span:before {
   margin: 0;
   height: 71px;
   border-bottom: 1px solid #eeeeee !important;
-  overflow: hidden;
+  overflow: scroll;
   padding: 0 30px;
   background-clip: padding-box;
   border-width: 0;
@@ -13872,7 +13873,7 @@ label:hover input[type="checkbox"][disabled].checkbox:checked + span:before {
   padding: 0;
   text-indent: 100%;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: scroll;
   border: 0;
   background: rgba(0, 0, 0, 0);
   text-align: center;
@@ -13997,7 +13998,7 @@ label:hover input[type="checkbox"][disabled].checkbox:checked + span:before {
   width: 30px;
   text-indent: 100%;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: scroll;
   border: 1px solid #aaa;
   background: #bfbfbf;
   background: -webkit-linear-gradient(top, #dddddd 0%, #bbbbbb 100%);
@@ -14219,7 +14220,7 @@ td.fc-other-month,
   padding-left: 15px !important;
 }
 #inbox-table tbody tr th {
-  overflow: hidden;
+  overflow: scroll;
 }
 #inbox-table.table tbody > tr > td {
   border-color: #fff !important;
@@ -14242,7 +14243,7 @@ td.fc-other-month,
 .inbox-data-from > :first-child {
   width: 200px;
   display: block;
-  overflow: hidden;
+  overflow: scroll;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -14253,7 +14254,7 @@ td.fc-other-month,
 }
 .inbox-data-message > :first-child {
   width: 100%;
-  overflow: hidden;
+  overflow: scroll;
   text-overflow: ellipsis;
   white-space: nowrap;
   height: 27px;
@@ -14432,7 +14433,7 @@ tr.unread.highlight td {
 .inbox-download-list li > :first-child {
   margin-bottom: 0;
   width: 150px;
-  overflow: hidden;
+  overflow: scroll;
 }
 .inbox-download-list li > :first-child:hover {
   background: #ffffff;
@@ -14583,7 +14584,7 @@ time.icon {
   margin: 3px auto;
   border-radius: 7px;
   box-shadow: 0 1px 0 #bdbdbd,0 2px 0 #fff,0 3px 0 #EEE9E9,0 4px 0 #fff,0 5px 0 #FFFFFF,0 0 0 1px #D3D3D3;
-  overflow: hidden;
+  overflow: scroll;
 }
 time.icon * {
   display: block;
@@ -14623,7 +14624,7 @@ time.icon span {
   float: left;
   width: 170px;
   margin: 0 15px 15px 0;
-  overflow: hidden;
+  overflow: scroll;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -14635,7 +14636,7 @@ time.icon span {
 }
 .user .email {
   color: #999;
-  overflow: hidden;
+  overflow: scroll;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -14714,7 +14715,7 @@ Version: 3.4.5 Timestamp: Mon Nov  4 08:22:42 PST 2013
   display: block;
   height: 32px;
   padding: 0 0 0 8px;
-  overflow: hidden;
+  overflow: scroll;
   position: relative;
   border: 1px solid #ccc;
   white-space: nowrap;
@@ -14738,7 +14739,7 @@ Version: 3.4.5 Timestamp: Mon Nov  4 08:22:42 PST 2013
 .select2-container .select2-choice > .select2-chosen {
   margin-right: 26px;
   display: block;
-  overflow: hidden;
+  overflow: scroll;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -15068,7 +15069,7 @@ disabled look for disabled choices in the results dropdown
   position: relative;
   border: 1px solid #ccc;
   cursor: text;
-  overflow: hidden;
+  overflow: scroll;
   background-color: #fff;
 }
 .select2-locked {
@@ -15202,7 +15203,7 @@ disabled look for disabled choices in the results dropdown
   border: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
-  overflow: hidden !important;
+  overflow: scroll !important;
   position: absolute !important;
   outline: 0 !important;
   left: 0px !important;
@@ -15240,7 +15241,7 @@ disabled look for disabled choices in the results dropdown
 .todo > li {
   display: block;
   position: relative;
-  overflow: hidden;
+  overflow: scroll;
   border-bottom: 1px solid #e7e7e7;
   margin: 0 5px;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAQCAYAAADagWXwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0RkQ1OEY4NTM4NUIxMUUzQjdCMUMxQzJCQUE3MTMxOCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0RkQ1OEY4NjM4NUIxMUUzQjdCMUMxQzJCQUE3MTMxOCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjRGRDU4RjgzMzg1QjExRTNCN0IxQzFDMkJBQTcxMzE4IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRGRDU4Rjg0Mzg1QjExRTNCN0IxQzFDMkJBQTcxMzE4Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+pTD+wgAAACtJREFUeNpimDBhwn8gYABhdDYjiIELMDHgAUwTJ06Ea0VnjxpLO2MBAgwAGYZLegQbQ3UAAAAASUVORK5CYII=) 1px 11px no-repeat;
@@ -15431,7 +15432,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
+  overflow: scroll;
   /*- disabled for widget chrome bug */
   background: url('../img/mybg.png') #ffffff;
   direction: ltr;
@@ -15775,7 +15776,7 @@ h6 {
  */
 aside {
   display: block;
-  overflow: hidden;
+  overflow: scroll;
   background: #3a3633;
   background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSI5NyUiIHN0b3AtY29sb3I9IiMzYTM2MzMiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMmEyNzI1IiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==");
   background: -moz-linear-gradient(left, #3a3633 93%, #2a2725 100%);
@@ -16115,7 +16116,7 @@ nav > ul > li:last-child.open {
 }
 /* All levels */
 nav ul li {
-  overflow: hidden;
+  overflow: scroll;
 }
 /* All levels */
 nav ul li a {
@@ -16407,7 +16408,7 @@ nav ul ul > li:hover b {
 }
 .onoffswitch-label {
   display: block;
-  overflow: hidden;
+  overflow: scroll;
   cursor: pointer;
   border: 1px solid #626262;
   border-radius: 50px;
@@ -16921,7 +16922,7 @@ hr.simple {
 }
 .progress .progress-bar {
   position: absolute;
-  overflow: hidden;
+  overflow: scroll;
   line-height: 20px;
 }
 .progress .progressbar-back-text {
@@ -17009,7 +17010,7 @@ hr.simple {
 .progress {
   position: relative;
   margin-bottom: 20px;
-  overflow: hidden;
+  overflow: scroll;
   height: 22px;
   background: #eeeeee;
   box-shadow: 0 1px 0 transparent, 0 0 0 1px #e3e3e3 inset;
@@ -17495,7 +17496,7 @@ button {
   border-top: 1px solid #DADADA !important;
   margin-top: 10px !important;
   height: 65px;
-  overflow: hidden;
+  overflow: scroll;
   padding: 7px 9px;
 }
 .show-stat-microcharts > :last-child {
@@ -17561,7 +17562,7 @@ button {
   text-decoration: none;
   max-width: 150px;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: scroll;
   text-overflow: ellipsis;
   vertical-align: middle;
 }
@@ -17800,7 +17801,7 @@ img.away {
 }
 .slimScrollDiv,
 .slimScrollDiv > :first-child {
-  overflow: hidden;
+  overflow: scroll;
 }
 .minified .slimScrollDiv,
 .minified .slimScrollDiv > :first-child {
@@ -18260,7 +18261,7 @@ img.away {
   height: 19px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: scroll;
 }
 .easy-pie-title .icon-color-good,
 .easy-pie-title .icon-color-bad {
@@ -18577,7 +18578,7 @@ img.away {
   background: #ffffff;
   display: block;
   min-height: 25px;
-  overflow: hidden;
+  overflow: scroll;
   padding: 8px 10px 13px;
   white-space: normal;
 }
@@ -18596,7 +18597,7 @@ img.away {
 .notification-body > li a span {
   display: block;
   position: relative;
-  overflow: hidden;
+  overflow: scroll;
 }
 .notification-body > li a,
 .notification-body > li a:hover {
@@ -18621,7 +18622,7 @@ img.away {
   height: 20px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: scroll;
 }
 .notification-body .unread .from {
   font-weight: bold;
@@ -18645,7 +18646,7 @@ img.away {
   width: 100%;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: scroll;
 }
 .notification-body .subject {
   font-size: 13px;
@@ -18679,7 +18680,7 @@ img.away {
   content: "";
   display: block;
   font-size: 0;
-  overflow: hidden;
+  overflow: scroll;
   position: relative;
   top: 11px;
   right: 1px;
@@ -18766,7 +18767,7 @@ img.away {
  */
 .fuelux .wizard {
   position: relative;
-  overflow: hidden;
+  overflow: scroll;
   background-color: #f9f9f9;
   border: 1px solid #d4d4d4;
   -webkit-border-radius: 4px;
@@ -19121,7 +19122,7 @@ img.away {
 #sparks li {
   display: inline-block;
   max-height: 47px;
-  overflow: hidden;
+  overflow: scroll;
   text-align: left;
   box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -19479,7 +19480,7 @@ img.away {
 .fill-b {
   width: 20px;
   text-align: right;
-  overflow: hidden;
+  overflow: scroll;
   text-overflow: ellipsis;
   display: block;
   background: #ffffff;
@@ -19764,7 +19765,7 @@ img.away {
   }
   .inbox-data-message > :first-child {
     height: 50px;
-    overflow: hidden;
+    overflow: scroll;
   }
   .show-stats .show-stat-buttons > :first-child {
     padding-right: 13px;
@@ -20484,7 +20485,7 @@ img.away {
     width: 135px;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: scroll;
   }
 }
 /*
