@@ -37,9 +37,7 @@ class PatientsController < ApplicationController
   # POST /patients
   # POST /patients.json
   def create
-    binding.pry
     @patient = Patient.new(params[:patient])
-    binding.pry
     respond_to do |format|
       if @patient.save
         @user.patients << @patient
@@ -99,7 +97,7 @@ class PatientsController < ApplicationController
       @exact_result_found = true
       user_session[:patient_id] = @patient.id
     else
-      #Provide fuzzy results 
+      #Provide fuzzy results
       @exact_result_found = false
       if (!name.nil?)
         @fuzzy_results_by_name = Patient.find_by_fuzzy_name(name)
