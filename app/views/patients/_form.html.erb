@@ -17,26 +17,24 @@
 
         <fieldset>
           <section>
-            <div class="form-group">
+            <div class="form-group col-md-3 col-lg-3">
                 <%= f.label :first_name %><br />
                 <%= f.text_field :first_name, :autofocus => true, class: "form-control", placeholder: "First Name" %>
             </div>
-          </section>
-
-          <section>
-            <div class="form-group">
+            <div style="margin-bottom:15px"></div>
+            <div class="col-md-1 col-lg-1"></div>
+            <div class="form-group col-md-4 col-lg-4">
                 <%= f.label :middle_name %><br />
-                <%= f.text_field :middle_name, :autofocus => true, class: "form-control", placeholder: "Middle Name (optional)" %>
+                <%= f.text_field :middle_name, :autofocus => true, class: "form-control", placeholder: "(optional)" %>
             </div>
-          </section>
-
-          <section>
-            <div class="form-group">
+            <div style="margin-bottom:15px"></div>
+            <div class="col-md-1 col-lg-1"></div>
+            <div class="form-group col-md-3 col-lg-3">
                 <%= f.label :last_name %><br />
-                <%= f.text_field :last_name, :autofocus => true, class: "form-control", placeholder: "Lasy Name" %>
+                <%= f.text_field :last_name, :autofocus => true, class: "form-control", placeholder: "Last Name" %>
             </div>
           </section>
-
+          &nbsp;
           <section>
             <div class="form-group">
                 <%= f.label :date_of_birth %><br />
@@ -75,25 +73,25 @@
             <%=f.fields_for :address do |address_form| %>
               <%= address_form.label :building %>
               <%= address_form.text_field :address_line1, :autofocus => true, class: "form-control", placeholder: "Building"%>
-
+              <div style="margin-bottom:15px"></div>
               <%= address_form.label :street %>
               <%= address_form.text_field :address_line2, :autofocus => true, class: "form-control", placeholder: "Street"%>
-              
+              <div style="margin-bottom:15px"></div>
               <%= address_form.label :nearest_milestone %>
               <%= address_form.text_field :address_line3, :autofocus => true, class: "form-control", placeholder: "Nearest Milestone"%>
-              
+              <div style="margin-bottom:15px"></div>
               <%= address_form.label :city %>
               <%= address_form.text_field :city, :autofocus => true, class: "form-control", placeholder: "City" %>
-
+              <div style="margin-bottom:15px"></div>
               <%= address_form.label :district %>
               <%= address_form.text_field :district, :autofocus => true, class: "form-control", placeholder: "District" %>
-
+              <div style="margin-bottom:15px"></div>
               <%= address_form.label :state %>
               <%= address_form.text_field :state, :autofocus => true, class: "form-control", placeholder: "State" %>
-
+              <div style="margin-bottom:15px"></div>
               <%= address_form.label :pin_code %>
               <%= address_form.text_field :pin_code, :autofocus => true, class: "form-control", placeholder: "Pin Code" %>
-
+              <div style="margin-bottom:15px"></div>
               <%= address_form.label :country %>
               <%= address_form.text_field :country, :autofocus => true, class: "form-control", placeholder: "Country" %>
             <% end %>
