@@ -90,21 +90,22 @@ class PatientsController < ApplicationController
 
 
   def search_results
-    name = params[:patient][:name]
+    name = params[:patient][:first_name]
     mobile = params[:patient][:mobile]
-    @patient = Patient.where(:name => name, :mobile => mobile)
+    @patient = Patient.where(:first_name => name, :mobile => mobile)
     if (@patient.size > 0)
       @exact_result_found = true
       user_session[:patient_id] = @patient.id
     else
       #Provide fuzzy results
-      @exact_result_found = false
+      %# @exact_result_found = false
       if (!name.nil?)
         @fuzzy_results_by_name = Patient.find_by_fuzzy_name(name)
       end
       if (!mobile.nil?)
         @fuzzy_results_by_mobile = Patient.find_by_fuzzy_mobile(mobile)
       end
+      %#
 
     end
   end
