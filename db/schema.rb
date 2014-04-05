@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140405163731) do
+ActiveRecord::Schema.define(:version => 20140405211051) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line1"
@@ -67,6 +67,15 @@ ActiveRecord::Schema.define(:version => 20140405163731) do
     t.integer  "visit_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "descriptive_questions", :force => true do |t|
+    t.string   "title"
+    t.string   "sub_category"
+    t.string   "category"
+    t.string   "super_category"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "fm_histories", :force => true do |t|
@@ -198,6 +207,14 @@ ActiveRecord::Schema.define(:version => 20140405163731) do
   create_table "visit_descriptions", :force => true do |t|
     t.integer "visit_id"
     t.integer "description_id"
+  end
+
+  create_table "visit_descriptive_questions", :force => true do |t|
+    t.integer  "visit_id"
+    t.integer  "descriptive_question_id"
+    t.text     "answer"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
 
   create_table "visit_questions", :force => true do |t|

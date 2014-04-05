@@ -8,7 +8,7 @@
 
 
 def populate_chief_complaint_questions
-  chief_complaint_questions = Question.create_or_update([
+  chief_complaint_questions = DescriptiveQuestion.create_or_update([
   	{title: 'Symptom', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history'},
   	{title: 'Onset', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history'},
   	{title: 'Duration', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history'},
@@ -37,7 +37,33 @@ def populate_answers
 		])
 end
 
+def create_test_users
+  if (test_user = User.find_by_email("akhilsikri@gmail.com")).nil?
+    test_user = User.create!(
+      :name => "Akhil Sikri",
+      :email => "akhilsikri@gmail.com",
+      :password => 'password123',
+      :role => 'doctor'
+    )
+    test_user.confirmed_at = Time.now
+    test_user.save!
+  end
 
+  if (test_user = User.find_by_email("beartran3@gmail.com")).nil?
+    test_user = User.create!(
+      :name => "Sho Nakagome",
+      :email => "beartran3@gmail.com",
+      :password => 'password123',
+      :role => 'doctor'
+    )
+    test_user.confirmed_at = Time.now
+    test_user.save!
+  end
+
+end
+
+
+create_test_users()
 populate_questions()
 populate_answers()
 

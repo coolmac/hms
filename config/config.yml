@@ -5,6 +5,7 @@ defaults: &DEFAULTS
   api_key: 12345
   description: "description"
   question_prefix: "question_id_"
+  descriptive_question_prefix: "descriptive_question_id_"
 development:
   <<: *DEFAULTS
 test:
