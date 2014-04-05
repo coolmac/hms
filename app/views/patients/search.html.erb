@@ -1,65 +1,81 @@
-<div class="container" style="width:80%">
+<body id="login" class="animated fadeInDown">
+    <header id="header">
+        <div id="logo-group">
+            <span id="logo"> <img src="img/logo.png" alt="SmartAdmin"> </span>
+        </div>
+    </header>
 
-<%= form_for(@patient, :url => {:controller => "patients", :action => "search_by_uhid"}, html: { class: "form-horizontal", role:"form" } ) do |f| %>
+<div id="main" role="main">
+    <div id="content" class="container smart-form client-form">
 
-<div class="form-group">
-    <%= f.label :id %><br />
-    <%= f.number_field :id, :autofocus => true, class: "form-control", placeholder: "UHID" %>
+<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-4 col-lg-8 col-lg-offset-4">
+    <div class="well no-padding">
+        <header>
+            Search Patients?
+        </header>
+
+        <fieldset>
+            <section>
+                <%= form_for(@patient, :url => {:controller => "patients", :action => "search_by_uhid"}, html: { class: "smart-form client-form", role:"form" } ) do |f| %>
+                <div class="form-group">
+                    <%= f.label :id %><br />
+                    <%= f.number_field :id, :autofocus => true, class: "form-control", placeholder: "UHID" %>
+                </div>
+                <footer>
+                    <%= f.submit "Search Patient by UHID", class: "btn btn-primary" %>
+                </footer>
+                <%end%>
+            </section>
+
+            <section>
+                <span class="timeline-seperator text-center text-primary"> <span class="font-sm">OR</span>
+            </section>
+
+            <section>
+                <%= form_for(@patient, :url => {:controller => "patients", :action => "search_results"}, html: { class: "smart-form client-form", role:"form" } ) do |f| %>
+                <div class="form-group">
+                    <%= f.label :first_name %><br />
+                    <%= f.text_field :first_name, :autofocus => true, class: "form-control", placeholder: "Name" %>
+                </div>
+                <footer>
+                    <%= f.submit "Search Patient by First name", class: "btn btn-primary" %>
+                </footer>
+                <%end%>
+            </section>
+
+            <section>
+                <span class="timeline-seperator text-center text-primary"> <span class="font-sm">OR</span>
+            </section>
+
+            <section>
+                <%= form_for(@patient, :url => {:controller => "patients", :action => "search_results"}, html: { class: "smart-form client-form", role:"form" } ) do |f| %>
+                <div class="form-group">
+                    <%= f.label :mobile %><br />
+                    <%= f.text_field :mobile, :autofocus => true, class: "form-control", placeholder: "Mobile No." %>
+                </div>
+                <footer>
+                    <%= f.submit "Search Patient By Mobile", class: "btn btn-primary" %>
+                </footer>
+                <%end%>
+            </section>
+
+            <section>
+                <span class="timeline-seperator text-center text-primary"> <span class="font-sm">OR</span>
+            </section>
+
+            <section>
+                <%= form_for(@patient, :url => {:controller => "patients", :action => "search_by_uhid"}, html: { class: "smart-form client-form", role:"form" } ) do |f| %>
+                <div class="form-group">
+                    <%= f.label :email %><br />
+                    <%= f.email_field :id, :autofocus => true, class: "form-control", placeholder: "Email" %>
+                </div>
+                <footer>
+                    <%= f.submit "Search Patient by Email", class: "btn btn-primary" %>
+                </footer>
+                <%end%>
+            </section>
+
+        </fieldset>
+
+    </div>
 </div>
-
-<div>
-    <%= f.submit "Search Patient by UHID", class: "btn btn-primary" %>
-</div>
-<% end %>
-
-<%= form_for(@patient, :url => {:controller => "patients", :action => "search_results"}, html: { class: "form-horizontal", role:"form" } ) do |f| %>
-
-<div class="form-group">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, :autofocus => true, class: "form-control", placeholder: "Name" %>
-</div>
-
-<div class="form-group">
-    <%= f.label :mobile %><br />
-    <%= f.text_field :mobile, :autofocus => true, class: "form-control", placeholder: "Mobile No." %>
-</div>
-
-<div>
-    <%= f.submit "Search Patient By Name and Mobile", class: "btn btn-primary" %>
-</div>
-<% end %>
-
-
-<%= form_for(@patient, :url => {:controller => "patients", :action => "search_by_email"}, html: { class: "form-horizontal", role:"form" } ) do |f| %>
-
-<div class="form-group">
-    <%= f.label :id %><br />
-    <%= f.email_field :id, :autofocus => true, class: "form-control", placeholder: "Email" %>
-</div>
-
-<div>
-    <%= f.submit "Search Patient by Email", class: "btn btn-primary" %>
-</div>
-<% end %>
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
