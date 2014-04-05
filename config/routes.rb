@@ -1,5 +1,8 @@
 Emr::Application.routes.draw do
 
+  resources :visits
+
+
   resources :descriptions
   resources :answers
   resources :questions
@@ -10,8 +13,7 @@ Emr::Application.routes.draw do
 
 
   #TODO Allow visits/new only for put method
-  match 'visits/new' => 'visits#new', as: :new_visit
-  match 'history/new' => 'histories#new', as: :new_history
+  match '/history/new' => 'histories#new', as: :new_history
 
   match 'patients/search' => 'patients#search'
   match 'patients/search_by_uhid' => 'patients#search_by_uhid'

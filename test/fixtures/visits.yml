@@ -2,18 +2,20 @@
 
 one:
   patient_id: 1
-  history_id: 1
-  examination_id: 1
-  investigation_id: 1
-  admission_id: 1
-  treatment_id: 1
-  follow_up_id: 1
+  description: MyText
+  chief_complaint: MyText
+  pms_history: MyText
+  fm_history: MyText
+  ps_history: MyText
+  treatment_history: MyText
+  other_systems: MyText
 
 two:
   patient_id: 1
-  history_id: 1
-  examination_id: 1
-  investigation_id: 1
-  admission_id: 1
-  treatment_id: 1
-  follow_up_id: 1
+  description: MyText
+  chief_complaint: MyText
+  pms_history: MyText
+  fm_history: MyText
+  ps_history: MyText
+  treatment_history: MyText
+  other_systems: MyText

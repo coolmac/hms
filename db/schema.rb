@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140401182829) do
+ActiveRecord::Schema.define(:version => 20140405121743) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line1"
@@ -40,6 +40,22 @@ ActiveRecord::Schema.define(:version => 20140401182829) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "chief_complaints", :force => true do |t|
+    t.text     "symptom"
+    t.text     "onset"
+    t.text     "duration"
+    t.text     "course"
+    t.text     "severity"
+    t.text     "precipitating_factors"
+    t.text     "relieving_factors"
+    t.text     "associated_features"
+    t.text     "previous_episodes"
+    t.text     "free_text"
+    t.integer  "visit_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
   create_table "departments", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -52,6 +68,20 @@ ActiveRecord::Schema.define(:version => 20140401182829) do
     t.integer  "visit_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "fm_histories", :force => true do |t|
+    t.integer  "visit_id"
+    t.integer  "diabetes"
+    t.integer  "hypertension"
+    t.integer  "hyperlipidemia"
+    t.integer  "tuberculosis"
+    t.integer  "stroke"
+    t.integer  "asthma"
+    t.integer  "surgery"
+    t.text     "free_text"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "hospital_department_users", :force => true do |t|
@@ -101,11 +131,28 @@ ActiveRecord::Schema.define(:version => 20140401182829) do
     t.string   "email"
   end
 
+  create_table "pms_histories", :force => true do |t|
+    t.integer  "visit_id"
+    t.integer  "diabetes"
+    t.integer  "hypertension"
+    t.integer  "hyperlipidemia"
+    t.integer  "tuberculosis"
+    t.integer  "stroke"
+    t.integer  "asthma"
+    t.integer  "surgery"
+    t.text     "free_text"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "questions", :force => true do |t|
     t.string   "title"
-    t.integer  "category_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "sub_category"
+    t.string   "category"
+    t.string   "super_category"
+    t.integer  "answer_type"
   end
 
   create_table "trigrams", :force => true do |t|
@@ -159,14 +206,15 @@ ActiveRecord::Schema.define(:version => 20140401182829) do
 
   create_table "visits", :force => true do |t|
     t.integer  "patient_id"
-    t.integer  "history_id"
-    t.integer  "examination_id"
-    t.integer  "investigation_id"
-    t.integer  "admission_id"
-    t.integer  "treatment_id"
-    t.integer  "follow_up_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.text     "description"
+    t.text     "chief_complaint"
+    t.text     "pms_history"
+    t.text     "fm_history"
+    t.text     "ps_history"
+    t.text     "treatment_history"
+    t.text     "other_systems"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
 end
