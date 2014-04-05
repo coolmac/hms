@@ -85,6 +85,7 @@ class PatientsController < ApplicationController
   def search_by_first_name
     name = params[:patient][:first_name]
     @patient = Patient.where(:first_name => name)
+    render "search_results"
     if (@patient.size > 0)
       @exact_result_found = true
       user_session[:patient_id] = @patient.id
@@ -104,6 +105,7 @@ class PatientsController < ApplicationController
   def search_by_mobile
     mobile = params[:patient][:mobile]
     @patient = Patient.where(:mobile => mobile)
+    render "search_results"
     if (@patient.size > 0)
       @exact_result_found = true
       user_session[:patient_id] = @patient.id
@@ -123,6 +125,7 @@ class PatientsController < ApplicationController
   def search_by_email
     email = params[:patient][:email]
     @patient = Patient.where(:email => email)
+    render "search_results"
     if (@patient.size > 0)
       @exact_result_found = true
       user_session[:patient_id] = @patient.id
