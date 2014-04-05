@@ -5,7 +5,6 @@ class AddDetailsToQuestions < ActiveRecord::Migration
   	add_column :questions, :sub_category, :string
   	add_column :questions, :category, :string
   	add_column :questions, :super_category, :string
-  	add_column :questions, :answer_type, :string
   end
 
 end

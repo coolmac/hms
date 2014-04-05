@@ -9,15 +9,15 @@
 
 def populate_chief_complaint_questions
   chief_complaint_questions = Question.create_or_update([
-  	{title: 'Symptom', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history', answer_type: 'description'},
-  	{title: 'Onset', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history', answer_type: 'description'},
-  	{title: 'Duration', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history', answer_type: 'description'},
-  	{title: 'Course', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history', answer_type: 'description'},
-  	{title: 'Severity', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history', answer_type: 'description'},
-  	{title: 'Precipitating Factors', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history', answer_type: 'description'},
-  	{title: 'Relieving Factors', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history', answer_type: 'description'},
-  	{title: 'Associated Features', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history', answer_type: 'description'},
-  	{title: 'Previous Episodes', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history', answer_type: 'description'}
+  	{title: 'Symptom', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history'},
+  	{title: 'Onset', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history'},
+  	{title: 'Duration', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history'},
+  	{title: 'Course', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history'},
+  	{title: 'Severity', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history'},
+  	{title: 'Precipitating Factors', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history'},
+  	{title: 'Relieving Factors', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history'},
+  	{title: 'Associated Features', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history'},
+  	{title: 'Previous Episodes', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history'}
   	])
 	puts "completed with populating questions for chief complaint"
 end
@@ -31,7 +31,7 @@ def populate_questions
 end
 
 def populate_answers
-	static_answers = Answer.create([
+	static_answers = Answer.create_or_update([
 		{title: 'Yes'},
 		{title: 'No'}
 		])

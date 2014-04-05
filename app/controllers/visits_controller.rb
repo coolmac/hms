@@ -81,16 +81,51 @@ class VisitsController < ApplicationController
     end
   end
 
+  def show_updated_details
+
+    # this is for static answers
+    visit_id = user_session[:current_visit_id]
+    existing_answered_question_ids = VisitQuestion.where(:visit_id => visit_id).collect{|vq| vq.question_id}
+    params.each do |key, value| 
+      if (key.start_with? APP_CONFIG["question_prefix"])
+        question_id = key.split(APP_CONFIG["question_prefix"])[1].to_i
+        if (value != "")
+          # VisitQuestion.create_or_update({question_id: question_id, visit_id: visit_id, answer_id: value.to_i})
+          if existing_answered_question_ids.include?question_id
+            visit_question = VisitQuestion.find_by_question_id_and_visit_id(question_id, visit_id)
+            visit_question.answer_id = value.to_i
+            visit_question.save
+            existing_answered_question_ids.delete(question_id)
+          else
+            VisitQuestion.create({question_id: question_id, visit_id: visit_id, answer_id: value.to_i})
+          end
+        end
+      end
+    end # end of params check
+
+    if (existing_answered_question_ids.size > 0)
+      # remove entries which were answered earlier but deselected on edit
+      VisitQuestion.where("visit_id = #{visit_id} and question_id in (#{existing_answered_question_ids.join(', ')})").delete_all
+    end
+
+  end
+
+
   def update_details
     @super_category = params[:super_category]
     @category = params[:category]
-
+    visit_id = user_session[:current_visit_id]
     @questions = Question.where(:category => @category, :super_category => @super_category)
+    @answers = Answer.all
 
     if @questions.size > 0
       csv_question_ids = @questions.collect{|q| q.id}.join(', ')    
-      @visit_questions = VisitQuestion.where("question_id in (#{csv_question_ids})")
-      if @visit_questions.size > 0      
+      @visit_questions = VisitQuestion.where("question_id in (#{csv_question_ids}) and visit_id = #{visit_id}")
+      @question_answer_ids_hash = {}
+      if @visit_questions.size > 0
+        @visit_questions.each do |vq|
+          @question_answer_ids_hash[vq.question_id] = vq.answer_id
+        end
       end
 
     end

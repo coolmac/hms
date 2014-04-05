@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140405150755) do
+ActiveRecord::Schema.define(:version => 20140405163731) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line1"
@@ -194,6 +194,11 @@ ActiveRecord::Schema.define(:version => 20140405150755) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "visit_descriptions", :force => true do |t|
+    t.integer "visit_id"
+    t.integer "description_id"
+  end
 
   create_table "visit_questions", :force => true do |t|
     t.integer  "visit_id"
