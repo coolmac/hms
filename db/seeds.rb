@@ -8,7 +8,7 @@
 
 
 def populate_chief_complaint_questions
-  chief_complaint_questions = Question.create([
+  chief_complaint_questions = Question.create_or_update([
   	{title: 'Symptom', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history', answer_type: 'description'},
   	{title: 'Onset', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history', answer_type: 'description'},
   	{title: 'Duration', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history', answer_type: 'description'},
@@ -19,7 +19,6 @@ def populate_chief_complaint_questions
   	{title: 'Associated Features', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history', answer_type: 'description'},
   	{title: 'Previous Episodes', sub_category: 'chief_complaint', category: 'chief_complaint', super_category: 'history', answer_type: 'description'}
   	])
-
 	puts "completed with populating questions for chief complaint"
 end
 
@@ -31,7 +30,14 @@ def populate_questions
 
 end
 
+def populate_answers
+	static_answers = Answer.create([
+		{title: 'Yes'},
+		{title: 'No'}
+		])
+end
+
 
 populate_questions()
-
+populate_answers()
 
