@@ -1,0 +1,53 @@
+<div id="content" class="container" overflow="scroll">
+ <%= form_for @visit, html: {class: "smart-form client-form", role:"form" } do |f| %>
+  <% if @visit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@visit.errors.count, "error") %> prohibited this visit from being saved:</h2>
+
+      <ul>
+      <% @visit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :patient_id %><br />
+    <%= f.number_field :patient_id, :autofocus => true, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :autofocus => true, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :chief_complaint %><br />
+    <%= f.text_area :chief_complaint, :autofocus => true, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :pms_history %><br />
+    <%= f.text_area :pms_history, :autofocus => true, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :fm_history %><br />
+    <%= f.text_area :fm_history, :autofocus => true, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :ps_history %><br />
+    <%= f.text_area :ps_history, :autofocus => true, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :treatment_history %><br />
+    <%= f.text_area :treatment_history, :autofocus => true, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :other_systems %><br />
+    <%= f.text_area :other_systems, :autofocus => true, class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+ <% end %>
+</div>
+
+

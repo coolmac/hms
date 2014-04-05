@@ -1,0 +1,37 @@
+<h1>Listing visits</h1>
+
+<table>
+  <tr>
+    <th>Patient</th>
+    <th>Description</th>
+    <th>Chief complaint</th>
+    <th>Pms history</th>
+    <th>Fm history</th>
+    <th>Ps history</th>
+    <th>Treatment history</th>
+    <th>Other systems</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @visits.each do |visit| %>
+  <tr>
+    <td><%= visit.patient_id %></td>
+    <td><%= visit.description %></td>
+    <td><%= visit.chief_complaint %></td>
+    <td><%= visit.pms_history %></td>
+    <td><%= visit.fm_history %></td>
+    <td><%= visit.ps_history %></td>
+    <td><%= visit.treatment_history %></td>
+    <td><%= visit.other_systems %></td>
+    <td><%= link_to 'Show', visit %></td>
+    <td><%= link_to 'Edit', edit_visit_path(visit) %></td>
+    <td><%= link_to 'Destroy', visit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Visit', new_visit_path %>

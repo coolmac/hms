@@ -81,8 +81,24 @@ class VisitsController < ApplicationController
     end
   end
 
-  # DELETE /visits/1
-  # DELETE /visits/1.json
+  def update_details
+    @super_category = params[:super_category]
+    @category = params[:category]
+
+    @questions = Question.where(:category => @category, :super_category => @super_category)
+
+    if @questions.size > 0
+      csv_question_ids = @questions.collect{|q| q.id}.join(', ')    
+      @visit_questions = VisitQuestion.where("question_id in (#{csv_question_ids})")
+      if @visit_questions.size > 0      
+      end
+
+    end
+
+  end
+
+
+  #TODO remove any destroy option from UI
   def destroy
     @visit = Visit.find(params[:id])
     @visit.destroy

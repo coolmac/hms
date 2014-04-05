@@ -1,6 +1,7 @@
 Emr::Application.routes.draw do
 
   resources :visits
+  match 'visits/:id/update_details', to: 'visits#update_details', :as => :visit_update_details
 
 
   resources :descriptions
@@ -20,7 +21,6 @@ Emr::Application.routes.draw do
   match 'patients/search_by_email' => 'patients#search_by_email'
   match 'patients/search_results' => 'patients#search_results'
   resources :patients
-  # resources :users
 
 
 
