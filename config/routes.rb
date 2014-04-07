@@ -14,6 +14,7 @@ Emr::Application.routes.draw do
   match 'history/new' => 'histories#new', as: :new_history
 
   match 'patients/search' => 'patients#search'
+  match 'patients/generic_search' => 'patients#generic_search'
   match 'patients/search_by_uhid' => 'patients#search_by_uhid'
   match 'patients/search_by_email' => 'patients#search_by_email'
   match 'patients/search_by_first_name' => 'patients#search_by_first_name'

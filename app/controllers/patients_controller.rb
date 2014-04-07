@@ -70,6 +70,10 @@ class PatientsController < ApplicationController
     @patient = Patient.new
   end
 
+  def generic_search
+    @selection = params[:'radio-inline']
+  end
+
   def search_by_uhid
     uhid = params[:id]
     @patient = Patient.find(uhid)
@@ -88,7 +92,7 @@ class PatientsController < ApplicationController
     render "search_results"
     if (@patient.size > 0)
       @exact_result_found = true
-      user_session[:patient_id] = @patient.id
+      #user_session[:patient_id] = @patient.id
     else
       #Provide fuzzy results
       %# @exact_result_found = false

@@ -1,3 +1,4 @@
+
 <body id="login" class="animated fadeInDown">
     <header id="header">
         <div id="logo-group">
@@ -17,10 +18,32 @@
 
         <fieldset>
             <section>
+                <br>
+                    <%= form_tag("/generic_search", method: "get") do %>
+                        <div class="inline-group">
+                            <label class="radio">
+                                <input type="radio" name="radio-inline" checked="checked" value="uhid">
+                                <i></i>UHID</label>
+                            <label class="radio">
+                                <input type="radio" name="radio-inline" value="firstname">
+                                <i></i>First Name</label>
+                            <label class="radio">
+                                <input type="radio" name="radio-inline" value="mobile">
+                                <i></i>Mobile Number</label>
+                            <label class="radio">
+                                <input type="radio" name="radio-inline" value="email">
+                                <i></i>Email address</label>
+                        </div>
+                    <%= submit_tag "Search Patient", class: "btn btn-success"%>
+                    <% end %>
+                    <p>Selection: <%= puts @selection %></p>
+            </section>
+
+            <section>
                 <%= form_for(@patient, :url => {:controller => "patients", :action => "search_by_uhid"}, html: { class: "smart-form client-form", role:"form" } ) do |f| %>
                 <div class="form-group">
                     <%= f.label :id %><br />
-                    <%= f.number_field :id, :autofocus => true, class: "form-control", placeholder: "UHID" %>
+                    <%= f.text_field :id, :autofocus => true, class: "form-control", placeholder: "UHID" %>
                 </div>
                 <footer>
                     <%= f.submit "Search Patient by UHID", class: "btn btn-primary" %>
