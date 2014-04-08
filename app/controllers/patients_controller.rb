@@ -71,80 +71,82 @@ class PatientsController < ApplicationController
   end
 
   def generic_search
-    @selection = params[:'radio-inline']
+    @selection = params["radio-inline"]
+    @patient = Patient.where("#{@selection} = search")
+
   end
 
-  def search_by_uhid
-    uhid = params[:id]
-    @patient = Patient.find(uhid)
+  # def search_by_uhid
+  #   uhid = params[:id]
+  #   @patient = Patient.find(uhid)
 
-    if (!@patient)
-      @exact_result_found = false
-      @notice = "No Results found for UHID: #{uhid}"
-    else
-      @exact_result_found = true
-    end
-  end
+  #   if (!@patient)
+  #     @exact_result_found = false
+  #     @notice = "No Results found for UHID: #{uhid}"
+  #   else
+  #     @exact_result_found = true
+  #   end
+  # end
 
-  def search_by_first_name
-    name = params[:patient][:first_name]
-    @patient = Patient.where(:first_name => name)
-    render "search_results"
-    if (@patient.size > 0)
-      @exact_result_found = true
-      #user_session[:patient_id] = @patient.id
-    else
-      #Provide fuzzy results
-      %# @exact_result_found = false
-      if (!name.nil?)
-        @fuzzy_results_by_name = Patient.find_by_fuzzy_name(name)
-      end
-      if (!mobile.nil?)
-        @fuzzy_results_by_mobile = Patient.find_by_fuzzy_mobile(mobile)
-      end
-      %#
-    end
-  end
+  # def search_by_first_name
+  #   name = params[:patient][:first_name]
+  #   @patient = Patient.where(:first_name => name)
+  #   render "search_results"
+  #   if (@patient.size > 0)
+  #     @exact_result_found = true
+  #     #user_session[:patient_id] = @patient.id
+  #   else
+  #     #Provide fuzzy results
+  #     %# @exact_result_found = false
+  #     if (!name.nil?)
+  #       @fuzzy_results_by_name = Patient.find_by_fuzzy_name(name)
+  #     end
+  #     if (!mobile.nil?)
+  #       @fuzzy_results_by_mobile = Patient.find_by_fuzzy_mobile(mobile)
+  #     end
+  #     %#
+  #   end
+  # end
 
-  def search_by_mobile
-    mobile = params[:patient][:mobile]
-    @patient = Patient.where(:mobile => mobile)
-    render "search_results"
-    if (@patient.size > 0)
-      @exact_result_found = true
-      user_session[:patient_id] = @patient.id
-    else
-      #Provide fuzzy results
-      %# @exact_result_found = false
-      if (!name.nil?)
-        @fuzzy_results_by_name = Patient.find_by_fuzzy_name(name)
-      end
-      if (!mobile.nil?)
-        @fuzzy_results_by_mobile = Patient.find_by_fuzzy_mobile(mobile)
-      end
-      %#
-    end
-  end
+  # def search_by_mobile
+  #   mobile = params[:patient][:mobile]
+  #   @patient = Patient.where(:mobile => mobile)
+  #   render "search_results"
+  #   if (@patient.size > 0)
+  #     @exact_result_found = true
+  #     user_session[:patient_id] = @patient.id
+  #   else
+  #     #Provide fuzzy results
+  #     %# @exact_result_found = false
+  #     if (!name.nil?)
+  #       @fuzzy_results_by_name = Patient.find_by_fuzzy_name(name)
+  #     end
+  #     if (!mobile.nil?)
+  #       @fuzzy_results_by_mobile = Patient.find_by_fuzzy_mobile(mobile)
+  #     end
+  #     %#
+  #   end
+  # end
 
-  def search_by_email
-    email = params[:patient][:email]
-    @patient = Patient.where(:email => email)
-    render "search_results"
-    if (@patient.size > 0)
-      @exact_result_found = true
-      user_session[:patient_id] = @patient.id
-    else
-      #Provide fuzzy results
-      %# @exact_result_found = false
-      if (!name.nil?)
-        @fuzzy_results_by_name = Patient.find_by_fuzzy_name(name)
-      end
-      if (!mobile.nil?)
-        @fuzzy_results_by_mobile = Patient.find_by_fuzzy_mobile(mobile)
-      end
-      %#
-    end
-  end
+  # def search_by_email
+  #   email = params[:patient][:email]
+  #   @patient = Patient.where(:email => email)
+  #   render "search_results"
+  #   if (@patient.size > 0)
+  #     @exact_result_found = true
+  #     user_session[:patient_id] = @patient.id
+  #   else
+  #     #Provide fuzzy results
+  #     %# @exact_result_found = false
+  #     if (!name.nil?)
+  #       @fuzzy_results_by_name = Patient.find_by_fuzzy_name(name)
+  #     end
+  #     if (!mobile.nil?)
+  #       @fuzzy_results_by_mobile = Patient.find_by_fuzzy_mobile(mobile)
+  #     end
+  #     %#
+  #   end
+  # end
 
   # DELETE /patients/1
   # DELETE /patients/1.json
