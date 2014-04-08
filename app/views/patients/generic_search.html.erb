@@ -1,1 +1,30 @@
 <h1>Generic Search</h1>
+
+
+<h2> Search Result based on exact input: </h2>
+
+<% if @exact_result_found %>
+	<h3>Result found: </h3>
+	<table>		
+	<%@exact_results.each do |er|%>
+	<tr>
+		<p> <%=er.id%></p>
+	</tr>
+	<% end %>
+	</table>
+<% else %>
+	<%=@comments%>
+	<table>		
+	<%@fuzzy_results.each do |fr|%>
+	<tr>
+		<td> <%=fr.id%></td>
+		<td> <%=fr.first_name%></td>
+	</tr>
+	<% end %>
+	</table>
+
+<% end %>
+
+
+
+

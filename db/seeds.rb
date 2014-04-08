@@ -38,6 +38,7 @@ def populate_answers
 end
 
 def create_test_users
+  puts "Creating test users ++++++++++++++++++++++++++++"
   if (test_user = User.find_by_email("akhilsikri@gmail.com")).nil?
     test_user = User.create!(
       :name => "Akhil Sikri",
@@ -48,6 +49,7 @@ def create_test_users
     test_user.confirmed_at = Time.now
     test_user.save!
   end
+  puts "Created test user for akhilsikri@gmail.com"
 
   if (test_user = User.find_by_email("beartran3@gmail.com")).nil?
     test_user = User.create!(
@@ -59,6 +61,7 @@ def create_test_users
     test_user.confirmed_at = Time.now
     test_user.save!
   end
+  puts "Created test user for beartran3@gmail.com"
 
 end
 
