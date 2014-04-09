@@ -124,6 +124,30 @@ def populate_visit_questions
     ])
 end
 
+def populate_gpe_questions
+  descriptive_gpe_questions = DescriptiveQuestion.create_or_update([
+    {title: 'Pallor', sub_category: 'pallor', category: 'gpe', super_category: 'examination'},
+    {title: 'Icterus', sub_category: 'Icterus', category: 'gpe', super_category: 'examination'},
+    {title: 'Cyanosis', sub_category: 'Cyanosis', category: 'gpe', super_category: 'examination'},
+    {title: 'Clubbing', sub_category: 'Clubbing', category: 'gpe', super_category: 'examination'},
+    {title: 'Edema', sub_category: 'Edema', category: 'gpe', super_category: 'examination'},
+    {title: 'Lymphadenopathy', sub_category: 'Lymphadenopathy', category: 'gpe', super_category: 'examination'},
+    {title: 'other_findings', sub_category: 'Other Findings', category: 'gpe', super_category: 'examination'},
+    ])
+end
+
+def populate_vitals_questions
+  descriptive_vital_questions = DescriptiveQuestion.create_or_update([
+    {title: 'Temperature', sub_category: 'Temperature', category: 'vitals', super_category: 'examination'},
+    {title: 'Blood Pressure', sub_category: 'Blood Pressure', category: 'vitals', super_category: 'examination'},
+    {title: 'Pulse', sub_category: 'Pulse', category: 'vitals', super_category: 'examination'},
+    {title: 'Respiratory Rate', sub_category: 'Respiratory Rate', category: 'vitals', super_category: 'examination'},
+    {title: 'Height', sub_category: '', category: 'vitals', super_category: 'examination'},
+    {title: 'Weight', sub_category: '', category: 'vitals', super_category: 'examination'},
+    {title: 'other_findings', sub_category: '', category: 'vitals', super_category: 'examination'},
+    ])
+end
+
 def populate_questions
 	populate_chief_complaint_questions()
   populate_past_medical_and_surgical_history_questions()
@@ -131,8 +155,11 @@ def populate_questions
   populate_family_medical_history_questions()
   populate_fm_extended_history_questions()
   populate_visit_questions()
+  populate_gpe_questions()
+  populate_vitals_questions()
 
 end
+
 
 def populate_answers
 	static_answers = Answer.create_or_update([
