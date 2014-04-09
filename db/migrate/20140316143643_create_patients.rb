@@ -3,7 +3,7 @@ class CreatePatients < ActiveRecord::Migration
     create_table :patients do |t|
       t.string  :first_name
       t.string  :last_name
-      t.integer :mobile
+      t.string :mobile
   	  t.string  :husband_name
   	  t.string  :father_name
   	  t.integer :age
@@ -24,6 +24,7 @@ class CreatePatients < ActiveRecord::Migration
   	  t.string  :insurance_provider
   	  t.string  :insurance_policy_number
       t.string  :religion
+      t.string  :email
 
       t.timestamps
     end
