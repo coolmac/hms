@@ -69,7 +69,6 @@ class VisitsController < ApplicationController
   # PUT /visits/1.json
   def update
     @visit = Visit.find(params[:id])
-
     respond_to do |format|
       if @visit.update_attributes(params[:visit])
         format.html { redirect_to @visit, notice: 'Visit was successfully updated.' }
@@ -89,7 +88,7 @@ class VisitsController < ApplicationController
     # existing_descriptive_question_ids = VisitDescriptiveQuestion.where(:visit_id => visit_id).collect{|vdq| vdq.descriptive_question_id}.delete(nil)
     existing_answered_question_ids = VisitQuestion.where(:visit_id => visit_id).collect{|vq| vq.question_id}
     existing_descriptive_question_ids = VisitDescriptiveQuestion.where(:visit_id => visit_id).collect{|vdq| vdq.descriptive_question_id}
-    params.each do |key, value| 
+    params.each do |key, value|
       if key.start_with?APP_CONFIG["question_prefix"]
         question_id = key.split(APP_CONFIG["question_prefix"])[1].to_i
         if (value != "")
@@ -118,7 +117,6 @@ class VisitsController < ApplicationController
         end
       end
     end # end of params check
-binding.pry
 
     if (existing_answered_question_ids.size > 0)
       # remove entries which were answered earlier but deselected on edit
@@ -155,7 +153,7 @@ binding.pry
     if @descriptive_questions.size > 0
       csv_descriptive_question_ids = @descriptive_questions.collect{|dq| dq.id}.join(', ')
       @visit_descriptive_questions = VisitDescriptiveQuestion.where("descriptive_question_id in (#{csv_descriptive_question_ids}) and visit_id = #{visit_id}")
-      if @visit_descriptive_questions.size > 0 
+      if @visit_descriptive_questions.size > 0
         @visit_descriptive_questions.each do |vdq|
           @answers_hash["#{APP_CONFIG['descriptive_question_prefix']}#{vdq.descriptive_question_id}"] = vdq.answer
         end
