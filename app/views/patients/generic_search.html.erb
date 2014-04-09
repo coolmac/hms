@@ -1,11 +1,61 @@
-<h1>Generic Search</h1>
+<body class="">
+	<header id="header">
+			<h1>Generic Search</h1>
+	</header>
+
+<h1 class="font-md"> Search Result based on exact input: </h1><br />
+<div class="table-responsive">
+
+	<table id="resultTable" class="table table-striped table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Mobile</th>
+				<th>Email</th>
+				<th>Status</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% if @exact_result_found %>
+				<%@exact_results.each do |er|%>
+				<tr>
+					<td><%=er.id%></td>
+					<td><%=er.first_name%></td>
+					<td><%=er.last_name%></td>
+					<td><%=er.mobile%></td>
+					<td><%=er.email%><a href="javascript:void(0);" class="pull-right"><i class="fa fa-key"></i></a></td>
+					<td><span class="label label-success">Active</span></td>
+				</tr>
+				<% end %>
+
+				<% else %>
+				<%=@comments%>
+				<%@fuzzy_results.each do |fr|%>
+				<tr>
+					<td><%=fr.id%></td>
+					<td><%=fr.first_name%></td>
+					<td><%=fr.last_name%></td>
+					<td><%=fr.mobile%></td>
+					<td><%=fr.email%><a href="javascript:void(0);" class="pull-right"><i class="fa fa-key"></i></a></td>
+					<td><span class="label label-success">Active</span></td>
+				</tr>
+				<% end %>
+
+			<% end %>
+		</tbody>
+	</table>
+
+</div>
 
 
-<h2> Search Result based on exact input: </h2>
+
+<!-- <h2> Search Result based on exact input: </h2>
 
 <% if @exact_result_found %>
 	<h3>Result found: </h3>
-	<table>		
+	<table>
 	<%@exact_results.each do |er|%>
 	<tr>
 		<p> <%=er.id%></p>
@@ -14,7 +64,7 @@
 	</table>
 <% else %>
 	<%=@comments%>
-	<table>		
+	<table>
 	<%@fuzzy_results.each do |fr|%>
 	<tr>
 		<td> <%=fr.id%></td>
@@ -23,7 +73,7 @@
 	<% end %>
 	</table>
 
-<% end %>
+<% end %> -->
 
 
 
