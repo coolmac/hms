@@ -16,7 +16,8 @@ module ActiveRecordExtension
   		model = where(param)
   		if model.size > 0
   		  # puts "Entry #{param} - already exists"
-  		  model[0].update_attributes(param)
+        # nothing to update, it's already the same parameters
+  		  # model[0].update_attributes(param)
   		else
   		  create(param)
   		end

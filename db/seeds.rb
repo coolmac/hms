@@ -168,6 +168,36 @@ def populate_answers
 		])
 end
 
+
+def hemogram_investigation
+  puts "Populating Hemogram Investigation"
+  investigation_fields = Investigation.create_or_update([
+    {field: 'WBC', units: 'x10E3/uL', normal_min: '4.0', normal_max: '10.5', sub_category: '', category: 'hemogram'},
+    {field: 'RBC', units: 'x10E3/uL', normal_min: '4.14', normal_max: '5.80', sub_category: '', category: 'hemogram'},
+    {field: 'Hemoglobin', units: 'x10E3/uL', normal_min: '12.6', normal_max: '17.7', sub_category: '', category: 'hemogram'}
+    ])  
+end
+
+def lft_investigation
+  puts "Populating LFT Investigation"
+  investigation_fields = Investigation.create_or_update([
+    {field: 'Albumin', units: 'x10E3/uL', normal_min: '4.0', normal_max: '10.5', sub_category: '', category: 'lft'},
+    {field: 'GGT', units: 'x10E3/uL', normal_min: '4.14', normal_max: '5.80', sub_category: '', category: 'lft'},
+    {field: 'Total Bilirubin', units: 'x10E3/uL', normal_min: '12.6', normal_max: '17.7', sub_category: '', category: 'lft'}
+    ])  
+end
+
+
+def populate_investigations
+  hemogram_investigation()
+  lft_investigation()
+end
+
+
+
+
+
+
 def create_test_users
   puts "Creating test users ++++++++++++++++++++++++++++"
   if (test_user = User.find_by_email("akhilsikri@gmail.com")).nil?
@@ -200,4 +230,5 @@ end
 create_test_users()
 populate_questions()
 populate_answers()
+populate_investigations()
 
