@@ -17,10 +17,10 @@ class ApplicationController < ActionController::Base
 
   def set_patient
     if user_session
-      if user_session[:current_patient] == nil
+      if user_session[:current_patient_id] == nil
         # redirect to home page
       else
-        @current_patient = user_session[:current_patient]
+        @current_patient = Patient.find_by_id user_session[:current_patient_id]
       end
     end
   end

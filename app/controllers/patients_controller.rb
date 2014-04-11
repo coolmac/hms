@@ -40,7 +40,7 @@ class PatientsController < ApplicationController
     @patient = Patient.new(params[:patient])
     respond_to do |format|
       if @patient.save
-        user_session[:current_patient] = @patient
+        user_session[:current_patient_id] = @patient.id
         @user.patients << @patient
         format.html { redirect_to @patient, notice: 'Patient was successfully created.' }
         format.json { render json: @patient, status: :created, location: @patient }

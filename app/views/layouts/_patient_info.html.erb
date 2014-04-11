@@ -1,0 +1,21 @@
+<h1> 
+
+<% if @show_patient_info %>
+<div class="row">
+  <% if @current_patient %>
+	<div class="col-md-4">Patient INFO - Name: <%= @current_patient.first_name%></div>  
+	<div class="col-md-2">Mobile:<%= @current_patient.mobile%></div>
+	<div class="col-md-2">UHID: </div>
+  <% end %>
+</div>
+<% end %>
+
+
+<% if @show_visit_info %>
+	<div class="row">
+	<% if @current_visit %>
+	 <div class="col-md-4">Visit Id:<%= @current_visit.id%></div>  
+	 <div class="col-md-4">Created At:<%= @current_visit.created_at%></div>
+	<% end %>
+	</div>
+<% end %>
