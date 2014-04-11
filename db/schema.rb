@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140409180654) do
+ActiveRecord::Schema.define(:version => 20140411045503) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line1"
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(:version => 20140409180654) do
   end
 
   create_table "investigations", :force => true do |t|
-    t.string   "field"
+    t.string   "title"
     t.string   "units"
     t.string   "normal_min"
     t.string   "normal_max"
@@ -174,6 +174,16 @@ ActiveRecord::Schema.define(:version => 20140409180654) do
     t.string   "answer_type"
   end
 
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
   create_table "trigrams", :force => true do |t|
     t.string  "trigram",     :limit => 3
     t.integer "score",       :limit => 2
@@ -226,6 +236,14 @@ ActiveRecord::Schema.define(:version => 20140409180654) do
     t.text     "answer"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
+  end
+
+  create_table "visit_investigations", :force => true do |t|
+    t.integer  "visit_id"
+    t.integer  "investigation_id"
+    t.string   "report"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "visit_questions", :force => true do |t|

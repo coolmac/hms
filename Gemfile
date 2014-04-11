@@ -21,6 +21,7 @@ gem 'recaptcha', :require => "recaptcha/rails"
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
+gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 
 gem 'cancan'

@@ -55,7 +55,8 @@ class VisitsController < ApplicationController
 
     respond_to do |format|
       if @visit.save
-      user_session[:current_visit_id] = @visit.id
+        user_session[:current_visit_id] = @visit.id
+        user_session[:current_visit] = @visit
         format.html { redirect_to @visit, notice: 'Visit was successfully created.' }
         format.json { render json: @visit, status: :created, location: @visit }
       else
@@ -81,7 +82,6 @@ class VisitsController < ApplicationController
   end
 
   def show_updated_details
-    # this is for static answers
     visit_id = user_session[:current_visit_id]
     # remove nil values in case those get fetched
     # existing_answered_question_ids = VisitQuestion.where(:visit_id => visit_id).collect{|vq| vq.question_id}.delete(nil)
@@ -94,6 +94,7 @@ class VisitsController < ApplicationController
         if (value != "")
           # VisitQuestion.create_or_update({question_id: question_id, visit_id: visit_id, answer_id: value.to_i})
           if existing_answered_question_ids.include?question_id
+            #TODO this MySQL call can be removed, we have already fetch the result
             visit_question = VisitQuestion.find_by_question_id_and_visit_id(question_id, visit_id)
             visit_question.answer_id = value.to_i
             visit_question.save
@@ -130,6 +131,34 @@ class VisitsController < ApplicationController
 
   end
 
+  def show_updated_investigations
+    visit_id = user_session[:current_visit_id]
+    # remove nil values in case those get fetched
+    existing_investigations = VisitInvestigation.where(:visit_id => visit_id).collect{|v| v.investigation_id}
+
+    params.each do |key, value|
+      if key.start_with?APP_CONFIG["investigation_prefix"]
+        investigation_id = key.split(APP_CONFIG["investigation_prefix"])[1].to_i
+        if (value != "")
+          if existing_investigations.include?investigation_id
+            #TODO this MySQL call can be removed, we have already fetch the result
+            visit_investigation = VisitInvestigation.find_by_investigation_id_and_visit_id(investigation_id, visit_id)
+            visit_investigation.report = value
+            visit_investigation.save
+            existing_investigations.delete(investigation_id)
+          else
+            VisitInvestigation.create({investigation_id: investigation_id, visit_id: visit_id, report: value})
+          end
+        end
+      end
+    end # end of params check
+
+    if (existing_investigations.size > 0)
+      # remove entries which were answered earlier but deselected on edit
+      VisitInvestigation.where("visit_id = #{visit_id} and investigation_id in (#{existing_investigations.join(', ')})").delete_all
+    end
+
+  end
 
   def update_details
     @super_category = params[:super_category]
@@ -156,6 +185,25 @@ class VisitsController < ApplicationController
       if @visit_descriptive_questions.size > 0
         @visit_descriptive_questions.each do |vdq|
           @answers_hash["#{APP_CONFIG['descriptive_question_prefix']}#{vdq.descriptive_question_id}"] = vdq.answer
+        end
+      end
+    end
+
+  end
+
+
+  def update_investigations
+    @sub_category = params[:sub_category]
+    @category = params[:category]
+    visit_id = user_session[:current_visit_id]
+    @reports_hash = {}
+    @investigations = Investigation.where(:category => @category, :sub_category => @sub_category)
+    if @investigations.size > 0
+      csv_investigation_ids = @investigations.collect{|q| q.id}.join(', ')
+      @visit_investigations = VisitInvestigation.where("investigation_id in (#{csv_investigation_ids}) and visit_id = #{visit_id}")
+      if @visit_investigations.size > 0
+        @visit_investigations.each do |vi|
+          @reports_hash["#{APP_CONFIG['investigation_prefix']}#{vi.investigation_id}"] = vi.report
         end
       end
     end

@@ -1,7 +1,7 @@
 class CreateInvestigations < ActiveRecord::Migration
   def change
     create_table :investigations do |t|
-      t.string :field
+      t.string :title
       t.string :units
       t.string :normal_min
       t.string :normal_max

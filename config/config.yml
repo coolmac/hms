@@ -6,6 +6,7 @@ defaults: &DEFAULTS
   description: "description"
   question_prefix: "question_id_"
   descriptive_question_prefix: "descriptive_question_id_"
+  investigation_prefix: "investigation_id_"
 development:
   <<: *DEFAULTS
 test:

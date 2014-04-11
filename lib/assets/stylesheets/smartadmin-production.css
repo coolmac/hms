@@ -15426,7 +15426,7 @@ html {
   height: 100%;
   overflow-x: hidden !important;
   /*- disabled for widget chrome bug */
-  background: url('../img/mybg.png') #ffffff;
+  /*background: url('../img/mybg.png') #ffffff;*/
 }
 body {
   margin: 0;
@@ -15434,7 +15434,7 @@ body {
   height: 100%;
   overflow: scroll;
   /*- disabled for widget chrome bug */
-  background: url('../img/mybg.png') #ffffff;
+  /*background: url('../img/mybg.png') #ffffff;*/
   direction: ltr;
 }
 a:hover,

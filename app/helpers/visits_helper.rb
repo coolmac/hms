@@ -10,6 +10,15 @@ module VisitsHelper
   	end
   end
 
+  def get_selected_report (investigation_id)
+  	report = @reports_hash[investigation_id]
+  	if @reports_hash[investigation_id] != nil
+  		return report
+  	else
+  		return ""
+  	end
+  end
+
 
   
 end

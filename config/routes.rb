@@ -3,6 +3,8 @@ Emr::Application.routes.draw do
   resources :visits
   match 'visits/:id/update_details', to: 'visits#update_details', :as => :visit_update_details
   match 'visits/:id/show_updated_details', to: 'visits#show_updated_details', as: :show_updated_details
+  match 'visits/:id/update_investigations', to: 'visits#update_investigations', :as => :visit_update_investigations
+  match 'visits/:id/show_updated_investigations', to: 'visits#show_updated_investigations', as: :show_updated_investigations
 
   resources :descriptions
   resources :answers
