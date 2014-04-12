@@ -29,13 +29,15 @@ class PatientsController < ApplicationController
     end
   end
 
-  # GET /patients/1/edit
   def edit
     @patient = Patient.find(params[:id])
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @patient }
+    end
   end
 
-  # POST /patients
-  # POST /patients.json
+
   def create
     @patient = Patient.new(params[:patient])
     respond_to do |format|
@@ -81,7 +83,7 @@ class PatientsController < ApplicationController
     if @exact_results.size > 0
       @exact_result_found = true
     else
-      @comments = "Similar Results based on your input: "
+      @comments = "NO Fuzzy Matches based on your input."
       @fuzzy_results = []
       if table_column == "first_name"
         @fuzzy_results = Patient.find_by_fuzzy_first_name(search_input)
@@ -92,7 +94,10 @@ class PatientsController < ApplicationController
       elsif table_column == "email"
         @fuzzy_results = Patient.find_by_fuzzy_email(search_input)
       else
-        @comments = "No fuzzy search for this search type - #{table_column}"
+        @fuzzy_results = Patient.find_by_fuzzy_uhid(search_input)
+      end
+      if @fuzzy_results.size > 0
+        @comments = "Fuzzy Matches found based on your input: "
       end
     end
 

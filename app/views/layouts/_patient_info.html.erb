@@ -4,8 +4,8 @@
 <div class="row">
   <% if @current_patient %>
 	<div class="col-md-4">Patient INFO - Name: <%= @current_patient.first_name%></div>  
-	<div class="col-md-2">Mobile:<%= @current_patient.mobile%></div>
-	<div class="col-md-2">UHID: </div>
+	<div class="col-md-2">Mobile:<%= @current_patient.mobile%> </div>
+	<div class="col-md-2">UHID: <%= @current_patient.uhid%> </div>
   <% end %>
 </div>
 <% end %>

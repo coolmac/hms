@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140411045503) do
+ActiveRecord::Schema.define(:version => 20140411145915) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line1"
@@ -148,6 +148,7 @@ ActiveRecord::Schema.define(:version => 20140411045503) do
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
     t.string   "email"
+    t.string   "uhid"
   end
 
   create_table "pms_histories", :force => true do |t|

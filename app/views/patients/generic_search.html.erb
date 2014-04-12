@@ -26,8 +26,8 @@
 					<td><%=er.first_name%></td>
 					<td><%=er.last_name%></td>
 					<td><%=er.mobile%></td>
-					<td><%=er.email%><a href="javascript:void(0);" class="pull-right"><i class="fa fa-key"></i></a></td>
-					<td><span class="label label-success"><%= link_to 'Show', er %></span></td>
+					<td><%=er.email%></td>
+					<td><span class="label label-success"><%= link_to 'Select', er %> </span>      |<span class="label label-success"> <%= link_to 'Edit', edit_patient_path(er) %> </span></td>
 				</tr>
 				<% end %>
 
@@ -39,8 +39,8 @@
 					<td><%=fr.first_name%></td>
 					<td><%=fr.last_name%></td>
 					<td><%=fr.mobile%></td>
-					<td><%=fr.email%><a href="javascript:void(0);" class="pull-right"><i class="fa fa-key"></i></a></td>
-					<td><span class="label label-success"><%= link_to 'Show', fr %></span></td>
+					<td><%=fr.email%></td>
+					<td><span class="label label-success"><%= link_to 'Select', fr %></span>|<span class="label label-success"><%= link_to 'Edit', edit_patient_path(fr) %> </span></td>
 				</tr>
 				<% end %>
 

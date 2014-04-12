@@ -7,6 +7,8 @@ defaults: &DEFAULTS
   question_prefix: "question_id_"
   descriptive_question_prefix: "descriptive_question_id_"
   investigation_prefix: "investigation_id_"
+  uhid_prefix: "NBNC"
+  sequence: "SEQ"
 development:
   <<: *DEFAULTS
 test:
