@@ -1,11 +1,10 @@
 Emr::Application.routes.draw do
 
+  match 'visits/update_details', to: 'visits#update_details', :as => :visit_update_details
+  match 'visits/show_updated_details', to: 'visits#show_updated_details', as: :show_updated_details
+  match 'visits/update_investigations', to: 'visits#update_investigations', :as => :visit_update_investigations
+  match 'visits/show_updated_investigations', to: 'visits#show_updated_investigations', as: :show_updated_investigations
   resources :visits
-  match 'visits/:id/update_details', to: 'visits#update_details', :as => :visit_update_details
-  match 'visits/:id/show_updated_details', to: 'visits#show_updated_details', as: :show_updated_details
-  match 'visits/:id/update_investigations', to: 'visits#update_investigations', :as => :visit_update_investigations
-  match 'visits/:id/show_updated_investigations', to: 'visits#show_updated_investigations', as: :show_updated_investigations
-
   resources :descriptions
   resources :answers
   resources :questions
@@ -18,12 +17,9 @@ Emr::Application.routes.draw do
   #TODO Allow visits/new only for put method
   match '/history/new' => 'histories#new', as: :new_history
 
+  match 'patients/create_new_visit', to: 'patients#create_new_visit', as: :create_new_visit
   match 'patients/search', to: 'patients#search', as: :search_patient
   match 'patients/generic_search', to: 'patients#generic_search', as: :generic_search_patient
-  # match 'patients/search_by_uhid' => 'patients#search_by_uhid'
-  # match 'patients/search_by_email' => 'patients#search_by_email'
-  # match 'patients/search_by_first_name' => 'patients#search_by_first_name'
-  # match 'patients/search_by_mobile' => 'patients#search_by_mobile'
   resources :patients
 
 

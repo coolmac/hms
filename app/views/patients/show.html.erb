@@ -5,12 +5,24 @@
   <%= @patient.first_name %>
 </p>
 
-<p>
-  <b>UHID:</b>
-  <%= "UHID#{@patient.id}" %>
-</p>
 
-<div class="row">
+<%= link_to "Create NEW Visit", create_new_visit_path(), :class => "btn btn-primary"%>
+
+<% if @visits.size > 0 %>
+	<h1>Existing Patient Visits: </h1>
+	<% @visits.each do |v|%>
+		<h2>Visit ID: <%=v.id%></h2>
+		<h2>Visited on: <%=v.created_at%></h2>
+		<h2>Summary</h2>
+	<% end %>
+<% else %>
+	<h1>No existing Visit of this patient</h1>
+<% end %>
+
+
+
+
+<!-- <div class="row">
 <%= link_to 'Registration', edit_patient_path(@patient), class: "btn btn-primary" %>
 <%= link_to 'Admit', edit_patient_path(@patient), class: "btn btn-primary" %>
 </div>
@@ -34,7 +46,7 @@
 <%= link_to 'Investigations', edit_patient_path(@patient), class: "btn btn-primary" %>
 <%= link_to 'Discharge Summary', edit_patient_path(@patient), class: "btn btn-primary" %>
 </div>
-
+ -->
 
 
 <%= link_to 'Edit', edit_patient_path(@patient) %>

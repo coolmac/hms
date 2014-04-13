@@ -18,18 +18,26 @@ class ApplicationController < ActionController::Base
   def set_patient
     if user_session
       if user_session[:current_patient_id] == nil
-        # redirect to home page
+        redirect_to root_path
       else
-        @current_patient = Patient.find_by_id user_session[:current_patient_id]
+        @current_patient = Patient.find user_session[:current_patient_id]
       end
     end
   end
 
   def set_visit
     if user_session
-      if user_session[:current_visit] == nil
-        # redirect to visit selection page if current_patient is available
-        # else redirect to patient selection page
+      if ( (user_session[:current_visit] == nil) || (user_session[:current_visit_id] == nil) )
+        if params[:visit_id]
+          user_session[:current_visit_id] = params[:visit_id]
+          user_session[:current_visit] = Visit.find params[:visit_id]
+        else
+          if user_session[:current_patient_id]
+            redirect_to patient_path(user_session[:current_patient_id])
+          else
+            redirect_to root_path
+          end
+        end
       else
         @current_visit = user_session[:current_visit]
       end

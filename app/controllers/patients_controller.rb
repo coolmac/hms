@@ -1,4 +1,21 @@
 class PatientsController < ApplicationController
+  skip_before_filter :set_visit
+
+
+  def select_views_in_layout
+    @show_patient_info = true
+    @show_visit_info = false
+  end
+
+  def create_new_visit
+    @current_visit = Visit.create({:patient_id => @current_patient.id})
+    user_session[:current_visit_id] = @current_visit.id
+    user_session[:current_visit] = @current_visit
+    respond_to do |format|
+      format.html { render 'visits/show'} 
+      format.json { render json: @patients }
+    end    
+  end
 
   def index
     @patients = @user.patients
@@ -11,15 +28,14 @@ class PatientsController < ApplicationController
 
   def show
     @patient = Patient.find(params[:id])
-
+    user_session[:current_patient_id] = @patient.id
+    @visits = @patient.visits
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @patient }
     end
   end
 
-  # GET /patients/new
-  # GET /patients/new.json
   def new
     @patient = Patient.new
     @patient.address = Address.new
@@ -44,7 +60,11 @@ class PatientsController < ApplicationController
       if @patient.save
         user_session[:current_patient_id] = @patient.id
         @user.patients << @patient
-        format.html { redirect_to @patient, notice: 'Patient was successfully created.' }
+        @current_visit = Visit.create({:patient_id => @patient.id})
+        user_session[:current_visit] = @current_visit
+        user_session[:current_visit_id] = @current_visit.id
+
+        format.html { render 'visits/show', notice: 'Patient was successfully created.' }
         format.json { render json: @patient, status: :created, location: @patient }
       else
         format.html { render action: "new" }
@@ -103,8 +123,6 @@ class PatientsController < ApplicationController
 
   end
 
-  # DELETE /patients/1
-  # DELETE /patients/1.json
   def destroy
     @patient = Patient.find(params[:id])
     @patient.destroy

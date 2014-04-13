@@ -1,6 +1,10 @@
 class VisitsController < ApplicationController
-  # GET /visits
-  # GET /visits.json
+
+  def select_views_in_layout
+    @show_patient_info = true
+    @show_visit_info = true
+  end
+
   def index
     patient_id = user_session[:current_patient_id]
     if !patient_id
@@ -15,10 +19,8 @@ class VisitsController < ApplicationController
     end
   end
 
-  # GET /visits/1
-  # GET /visits/1.json
   def show
-    @visit = Visit.find(params[:id])
+    # @visit = Visit.find(params[:visit_id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,27 +28,28 @@ class VisitsController < ApplicationController
     end
   end
 
-  # GET /visits/new
-  # GET /visits/new.json
   def new
-    @visit = Visit.new
     patient_id = user_session[:current_patient_id]
     if !patient_id
       patient_id = params[:patient_id]
     end
     user_session[:current_patient_id] = patient_id
-    @visit.patient_id = patient_id
+    @visit = Visit.create({:patient_id => patient_id})
+    user_session[:current_visit] = @visit
+    user_session[:current_visit_id] = @visit.id
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render 'show'}
       format.json { render json: @visit }
     end
   end
 
-  # GET /visits/1/edit
   def edit
     @visit = Visit.find(params[:id])
   end
+
+
+
 
   # POST /visits
   # POST /visits.json
@@ -66,8 +69,6 @@ class VisitsController < ApplicationController
     end
   end
 
-  # PUT /visits/1
-  # PUT /visits/1.json
   def update
     @visit = Visit.find(params[:id])
     respond_to do |format|
@@ -207,7 +208,6 @@ class VisitsController < ApplicationController
         end
       end
     end
-
   end
 
 

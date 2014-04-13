@@ -2,48 +2,47 @@
 
 <p>
   <b>Patient:</b>
-  <%= @visit.patient_id %>
+  <%= @current_visit.patient_id %>
 </p>
 
 <p>
   <b>Description:</b>
-  <%= @visit.description %>
+  <%= @current_visit.description %>
 </p>
 
 <p>
   <b>Chief complaint:</b>
-  <%= @visit.chief_complaint %>
+  <%= @current_visit.chief_complaint %>
 </p>
 
 <p>
   <b>Pms history:</b>
-  <%= @visit.pms_history %>
+  <%= @current_visit.pms_history %>
 </p>
 
 <p>
   <b>Fm history:</b>
-  <%= @visit.fm_history %>
+  <%= @current_visit.fm_history %>
 </p>
 
 <p>
   <b>Ps history:</b>
-  <%= @visit.ps_history %>
+  <%= @current_visit.ps_history %>
 </p>
 
 <p>
   <b>Treatment history:</b>
-  <%= @visit.treatment_history %>
+  <%= @current_visit.treatment_history %>
 </p>
 
 <p>
   <b>Other systems:</b>
-  <%= @visit.other_systems %>
+  <%= @current_visit.other_systems %>
 </p>
 
 <%= link_to 'Enter detailed Chief Complaints', visit_update_details_path(:super_category => 'history', :category => 'chief_complaint'), :class => "btn btn-primary" %>
 
-<%= link_to 'Edit', edit_visit_path(@visit) %> |
-<%= link_to 'Back', visits_path %>
+<%= link_to 'Search Patients', search_patient_path() %>
 
 
 
