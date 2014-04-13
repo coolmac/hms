@@ -53,8 +53,6 @@ class VisitsController < ApplicationController
     end
     #TODO if session variable is not set for current_patient_id, go back to selecting visits/patients
     user_session[:current_patient_id] = patient_id
-    binding.pry
-
   end
 
 

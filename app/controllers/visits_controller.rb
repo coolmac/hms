@@ -3,6 +3,7 @@ class VisitsController < ApplicationController
   def select_views_in_layout
     @show_patient_info = true
     @show_visit_info = true
+    @show_header = true
   end
 
   def index
@@ -21,7 +22,7 @@ class VisitsController < ApplicationController
 
   def show
     # @visit = Visit.find(params[:visit_id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @visit }

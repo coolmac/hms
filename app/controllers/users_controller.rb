@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
+  skip_before_filter :set_patient, :set_visit
 
   def select_views_in_layout
     @show_patient_info = true
     @show_visit_info = false
+    @show_header = true
   end
 
   def after_sign_out_path_for(resource_or_scope)

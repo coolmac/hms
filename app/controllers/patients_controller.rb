@@ -1,10 +1,11 @@
 class PatientsController < ApplicationController
-  skip_before_filter :set_visit
+  skip_before_filter :set_patient, :set_visit
 
 
   def select_views_in_layout
     @show_patient_info = true
     @show_visit_info = false
+    @show_header = true
   end
 
   def create_new_visit
@@ -29,6 +30,8 @@ class PatientsController < ApplicationController
   def show
     @patient = Patient.find(params[:id])
     user_session[:current_patient_id] = @patient.id
+    user_session[:current_visit_id] = nil
+    user_session[:current_visit] = nil
     @visits = @patient.visits
     respond_to do |format|
       format.html # show.html.erb

@@ -13,6 +13,13 @@ class ApplicationController < ActionController::Base
   def select_views_in_layout
     @show_patient_info = true
     @show_visit_info = true
+    @show_header = false
+  end
+
+  def reset_patient
+    user_session[:current_patient_id] = nil
+    user_session[:current_visit_id] = nil
+    user_session[:current_visit] = nil
   end
 
   def set_patient
@@ -31,6 +38,7 @@ class ApplicationController < ActionController::Base
         if params[:visit_id]
           user_session[:current_visit_id] = params[:visit_id]
           user_session[:current_visit] = Visit.find params[:visit_id]
+          @current_visit = user_session[:current_visit] 
         else
           if user_session[:current_patient_id]
             redirect_to patient_path(user_session[:current_patient_id])
