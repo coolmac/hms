@@ -6726,6 +6726,7 @@ table.fc-border-separate {
 .note-editor .note-toolbar .note-color .dropdown-toggle {
   width: 20px;
   padding-left: 5px;
+  z-index: 1000000;
 }
 .note-editor .note-toolbar .note-color .dropdown-menu {
   min-width: 290px;
