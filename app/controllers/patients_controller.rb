@@ -9,7 +9,7 @@ class PatientsController < ApplicationController
   end
 
   def create_new_visit
-    @current_visit = Visit.create({:patient_id => @current_patient.id})
+    @current_visit = Visit.create({:patient_id => user_session[:current_patient_id]})
     user_session[:current_visit_id] = @current_visit.id
     user_session[:current_visit] = @current_visit
     respond_to do |format|
