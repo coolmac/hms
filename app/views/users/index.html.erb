@@ -254,25 +254,31 @@
 		</aside>
 
 <div id="main" role="main">
-<h1>Welcome <%=@user.name%></h1>
+    <div id="content" class="container smart-form client-form">
 
-<br />
-<br />
-<br />
-<br />
+<div class="col-md-4 col-lg-4 col-md-2"></div>
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="well no-padding">
+        <header>
+            <h1>Welcome <%=@user.name%></h1>
+        </header>
 
-<% if can? :create, @patient %>
-  <%= link_to 'New Patient', new_patient_path, :class => "btn btn-primary btn-lg" %>
-<% end %>
-<%= link_to 'Existing Patient', 'patients/search', :class => "btn btn-info btn-lg" %>
-
-<br />
-<br />
-<br />
-<br />
-
-
-<%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => "btn btn-success btn-lg" %>
+        <fieldset>
+            <section>
+                <br>
+					<% if can? :create, @patient %>
+					<%= link_to 'New Patient', new_patient_path, :class => "btn btn-primary btn-lg" %>
+					<% end %>
+					<%= link_to 'Existing Patient', 'patients/search', :class => "btn btn-info btn-lg" %>
+				<br />
+				<br />
+				<br />
+				<br />
+					<%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => "btn btn-success btn-lg" %>
+					</div>
+            </section>
+        </fieldset>
+    </div>
 </div>
 
 
