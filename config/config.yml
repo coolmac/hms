@@ -9,6 +9,9 @@ defaults: &DEFAULTS
   investigation_prefix: "investigation_id_"
   uhid_prefix: "NBNC"
   sequence: "SEQ"
+  gs_username: "admin@genauth.com"
+  gs_password: "htuaneg123"
+  gs_spreadsheet_key: "0AsQY57nAWrTldHg2OEtEbjRDcDRsZTZscnhXRHRGanc" 
 development:
   <<: *DEFAULTS
 test:

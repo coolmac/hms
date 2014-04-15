@@ -195,6 +195,56 @@ end
 
 
 
+def update_from_google_spreadsheet
+  username = APP_CONFIG['gs_username']
+  password = APP_CONFIG['gs_password']
+  session = GoogleDrive.login(username, password)
+  spreadsheet_key = APP_CONFIG['gs_spreadsheet_key']
+  all_worksheets = session.spreadsheet_by_key(spreadsheet_key)
+
+  #TODO put this under transaction
+  ActiveRecord::Base.transaction do
+    all_worksheets.worksheets.each do |ws|
+      table_name = ws.title
+      puts "TAble name is #{table_name}"
+      table_columns = {}
+      params = {}
+      for row in 1..ws.num_rows
+        params = {}
+        for col in 1..ws.num_cols
+          puts "row:#{row},col:#{col} - #{ws[row, col]}"       
+          if row == 1 
+            table_columns[col] = ws[row,col].to_sym
+          else
+            params[table_columns[col]] = ws[row,col]
+          end
+        end   # end of col loop 
+
+        if row > 1
+          puts "Params are - #{params}"
+          puts "table columns hash is #{table_columns}"
+          primary_id = params[:id].to_i
+          if primary_id > 0
+            model_object = Object::const_get(table_name).find_by_id primary_id
+            if model_object
+              model_object.update_attributes(params)
+            else
+              Object::const_get(table_name).create(params)
+            end
+          else
+            puts "ERROR - id column has non integer value: #{primary_id}"
+            #raise exception
+          end
+        end
+
+      end # end of row loop
+    end
+  end
+
+end
+
+
+
 
 
 
@@ -226,9 +276,10 @@ def create_test_users
 
 end
 
+update_from_google_spreadsheet()
 
-create_test_users()
-populate_questions()
-populate_answers()
-populate_investigations()
+# create_test_users()
+# populate_questions()
+# populate_answers()
+# populate_investigations()
 

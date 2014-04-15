@@ -13,7 +13,6 @@ client = OAuth2::Client.new(
     :token_url => "/o/oauth2/token",
     :authorize_url => "/o/oauth2/auth")
 
-binding.pry
 puts client
 
 
