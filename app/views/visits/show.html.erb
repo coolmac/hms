@@ -1,49 +1,102 @@
+<body id="login" class="animated fadeInDown">
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+
 <p id="notice"><%= notice %></p>
 
-<p>
+<div id="content" class="container smart-form client-form">
+    <div class="well no-padding">
+        <header>Current details</header>
+          <fieldset>
+              <section>
+                <b>Patient:</b>
+                <%= @current_visit.patient_id %>
+              </section>
+
+              <section>
+                <b>Description:</b>
+                <%= @current_visit.description %>
+              </section>
+
+              <section>
+                <b>Chief complaint:</b>
+                <%= @current_visit.chief_complaint %>
+              </section>
+
+              <section>
+                <b>Pms history:</b>
+                <%= @current_visit.pms_history %>
+              </section>
+
+              <section>
+                <b>Fm history:</b>
+                <%= @current_visit.fm_history %>
+              </section>
+
+              <section>
+                <b>Ps history:</b>
+                <%= @current_visit.ps_history %>
+              </section>
+
+              <section>
+                <b>Treatment history:</b>
+                <%= @current_visit.treatment_history %>
+              </section>
+
+              <section>
+                <b>Other systems:</b>
+                <%= @current_visit.other_systems %>
+              </section>
+          </fieldset>
+        <footer>
+          <%= link_to 'Enter detailed Chief Complaints', visit_update_details_path(:super_category => 'history', :category => 'chief_complaint'), :class => "btn btn-primary active" %>
+          <%= link_to 'Search Patients', search_patient_path(), :class => "btn btn-success" %>
+        </footer>
+    </div>
+</div>
+
+<!-- <section>
   <b>Patient:</b>
   <%= @current_visit.patient_id %>
-</p>
+</section>
 
-<p>
+<section>
   <b>Description:</b>
   <%= @current_visit.description %>
-</p>
+</section>
 
-<p>
+<section>
   <b>Chief complaint:</b>
   <%= @current_visit.chief_complaint %>
-</p>
+</section>
 
-<p>
+<section>
   <b>Pms history:</b>
   <%= @current_visit.pms_history %>
-</p>
+</section>
 
-<p>
+<section>
   <b>Fm history:</b>
   <%= @current_visit.fm_history %>
-</p>
+</section>
 
-<p>
+<section>
   <b>Ps history:</b>
   <%= @current_visit.ps_history %>
-</p>
+</section>
 
-<p>
+<section>
   <b>Treatment history:</b>
   <%= @current_visit.treatment_history %>
-</p>
+</section>
 
-<p>
+<section>
   <b>Other systems:</b>
   <%= @current_visit.other_systems %>
-</p>
+</section>
 
 <%= link_to 'Enter detailed Chief Complaints', visit_update_details_path(:super_category => 'history', :category => 'chief_complaint'), :class => "btn btn-primary" %>
 
-<%= link_to 'Search Patients', search_patient_path() %>
+<%= link_to 'Search Patients', search_patient_path() %> -->
 
-
-
-
+</div>
+</body>
