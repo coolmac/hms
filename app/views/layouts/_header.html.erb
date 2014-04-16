@@ -140,10 +140,8 @@
 
       </li>
     </ul>
-      <div class="pull-right">
-        <div id="hide-menu" class="btn-header pull-right">
-          <span><a href="javascript:void(0);" title="Collapse Menu"><i class="fa fa-reorder"></i></a></span>
-        </div>
+      <div class="pull-right" style="padding:8px 8px 0 0">
+        <%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => "btn btn-success active" %>
       </div>
   </div>
 </div>
