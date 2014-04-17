@@ -1,5 +1,5 @@
 class VisitsController < ApplicationController
-  before_filter :set_patient
+  before_filter :set_patient, :set_visit
 
   def select_views_in_layout
     @show_patient_info = true
