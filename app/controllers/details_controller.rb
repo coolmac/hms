@@ -9,7 +9,6 @@ class DetailsController < ApplicationController
     @leave_space_for_left_bar = true
   end
 
-
   def show_all_investigations
     respond_to do |format|
       format.html { render 'details/show'} 
@@ -17,9 +16,23 @@ class DetailsController < ApplicationController
   end
 
   def show_all_examinations
-    respond_to do |format|
-      format.html { render 'details/show'} 
+    if params[:save] != nil
+      @current_visit.update_attributes(params[:visit])
+      respond_to do |format|
+        format.html { render 'details/show_history'}
+      end
+    elsif params[:next] != nil
+      @current_visit.update_attributes(params[:visit])
+
+      respond_to do |format|
+        format.html #{ render 'details/show_history'}
+      end
+    else
+      respond_to do |format|
+        format.html #{ render 'details/show_history'}
+      end
     end
+    # Don't render anything here
   end
 
   def show_all_histories
@@ -31,8 +44,7 @@ class DetailsController < ApplicationController
   def show_history
     # @questions = Question.where(:super_category => 'history')
     # @descriptive_questions = DescriptiveQuestion.where(:super_category => 'history', :category => 'history')
-    
-    update_details()
+
     respond_to do |format|
       format.html # { render 'details/show_history'} 
     end
@@ -58,8 +70,43 @@ class DetailsController < ApplicationController
   # @visit = Visit.find(params[:visit_id])
   end
 
-  def show_updated_details
+  def edit_details
+    @super_category = params[:super_category]
+    @category = params[:category]
     visit_id = user_session[:current_visit_id]
+    @answers = Answer.all
+    @answers_hash = {}
+
+    @questions = Question.where(:category => @category, :super_category => @super_category)
+    if @questions.size > 0
+      csv_question_ids = @questions.collect{|q| q.id}.join(', ')
+      @visit_questions = VisitQuestion.where("question_id in (#{csv_question_ids}) and visit_id = #{visit_id}")
+      if @visit_questions.size > 0
+        @visit_questions.each do |vq|
+          @answers_hash["#{APP_CONFIG['question_prefix']}#{vq.question_id}"] = vq.answer_id
+        end
+      end
+    end
+
+    @descriptive_questions = DescriptiveQuestion.where(:category => @category, :super_category => @super_category)
+    if @descriptive_questions.size > 0
+      csv_descriptive_question_ids = @descriptive_questions.collect{|dq| dq.id}.join(', ')
+      @visit_descriptive_questions = VisitDescriptiveQuestion.where("descriptive_question_id in (#{csv_descriptive_question_ids}) and visit_id = #{visit_id}")
+      if @visit_descriptive_questions.size > 0
+        @visit_descriptive_questions.each do |vdq|
+          @answers_hash["#{APP_CONFIG['descriptive_question_prefix']}#{vdq.descriptive_question_id}"] = vdq.answer
+        end
+      end
+    end
+
+  end
+
+  def update_details
+    visit_id = user_session[:current_visit_id]
+    category = params[:category]
+    sub_category = params[:sub_category]
+    super_category = params[:super_category]
+
     # remove nil values in case those get fetched
     # existing_answered_question_ids = VisitQuestion.where(:visit_id => visit_id).collect{|vq| vq.question_id}.delete(nil)
     # existing_descriptive_question_ids = VisitDescriptiveQuestion.where(:visit_id => visit_id).collect{|vdq| vdq.descriptive_question_id}.delete(nil)
@@ -96,19 +143,37 @@ class DetailsController < ApplicationController
       end
     end # end of params check
 
-    if (existing_answered_question_ids.size > 0)
-      # remove entries which were answered earlier but deselected on edit
-      VisitQuestion.where("visit_id = #{visit_id} and question_id in (#{existing_answered_question_ids.join(', ')})").delete_all
-    end
+    #TODO this is WRONG
+    # if (existing_answered_question_ids.size > 0)
+    #   # remove entries which were answered earlier but deselected on edit
+    #   VisitQuestion.where("visit_id = #{visit_id} and question_id in (#{existing_answered_question_ids.join(', ')})").delete_all
+    # end
 
-    if (existing_descriptive_question_ids.size > 0)
-      # remove entries which were answered earlier but deselected on edit
-      VisitDescriptiveQuestion.where("visit_id = #{visit_id} and descriptive_question_id in (#{existing_descriptive_question_ids.join(', ')})").delete_all
-    end
+    # if (existing_descriptive_question_ids.size > 0)
+    #   # remove entries which were answered earlier but deselected on edit
+    #   VisitDescriptiveQuestion.where("visit_id = #{visit_id} and descriptive_question_id in (#{existing_descriptive_question_ids.join(', ')})").delete_all
+    # end
 
   end
 
-  def show_updated_investigations
+  def edit_investigations
+    @sub_category = params[:sub_category]
+    @category = params[:category]
+    visit_id = user_session[:current_visit_id]
+    @reports_hash = {}
+    @investigations = Investigation.where(:category => @category, :sub_category => @sub_category)
+    if @investigations.size > 0
+      csv_investigation_ids = @investigations.collect{|q| q.id}.join(', ')
+      @visit_investigations = VisitInvestigation.where("investigation_id in (#{csv_investigation_ids}) and visit_id = #{visit_id}")
+      if @visit_investigations.size > 0
+        @visit_investigations.each do |vi|
+          @reports_hash["#{APP_CONFIG['investigation_prefix']}#{vi.investigation_id}"] = vi.report
+        end
+      end
+    end
+  end
+
+  def update_investigations
     visit_id = user_session[:current_visit_id]
     # remove nil values in case those get fetched
     existing_investigations = VisitInvestigation.where(:visit_id => visit_id).collect{|v| v.investigation_id}
@@ -130,60 +195,12 @@ class DetailsController < ApplicationController
       end
     end # end of params check
 
-    if (existing_investigations.size > 0)
-      # remove entries which were answered earlier but deselected on edit
-      VisitInvestigation.where("visit_id = #{visit_id} and investigation_id in (#{existing_investigations.join(', ')})").delete_all
-    end
+    #TODO this is WRONG
+    # if (existing_investigations.size > 0)
+    #   # remove entries which were answered earlier but deselected on edit
+    #   VisitInvestigation.where("visit_id = #{visit_id} and investigation_id in (#{existing_investigations.join(', ')})").delete_all
+    # end
 
-  end
-
-  def update_details
-    @super_category = params[:super_category]
-    @category = params[:category]
-    visit_id = user_session[:current_visit_id]
-    @answers = Answer.all
-    @answers_hash = {}
-
-    @questions = Question.where(:category => @category, :super_category => @super_category)
-    if @questions.size > 0
-      csv_question_ids = @questions.collect{|q| q.id}.join(', ')
-      @visit_questions = VisitQuestion.where("question_id in (#{csv_question_ids}) and visit_id = #{visit_id}")
-      if @visit_questions.size > 0
-        @visit_questions.each do |vq|
-          @answers_hash["#{APP_CONFIG['question_prefix']}#{vq.question_id}"] = vq.answer_id
-        end
-      end
-    end
-
-    @descriptive_questions = DescriptiveQuestion.where(:category => @category, :super_category => @super_category)
-    if @descriptive_questions.size > 0
-      csv_descriptive_question_ids = @descriptive_questions.collect{|dq| dq.id}.join(', ')
-      @visit_descriptive_questions = VisitDescriptiveQuestion.where("descriptive_question_id in (#{csv_descriptive_question_ids}) and visit_id = #{visit_id}")
-      if @visit_descriptive_questions.size > 0
-        @visit_descriptive_questions.each do |vdq|
-          @answers_hash["#{APP_CONFIG['descriptive_question_prefix']}#{vdq.descriptive_question_id}"] = vdq.answer
-        end
-      end
-    end
-
-  end
-
-
-  def update_investigations
-    @sub_category = params[:sub_category]
-    @category = params[:category]
-    visit_id = user_session[:current_visit_id]
-    @reports_hash = {}
-    @investigations = Investigation.where(:category => @category, :sub_category => @sub_category)
-    if @investigations.size > 0
-      csv_investigation_ids = @investigations.collect{|q| q.id}.join(', ')
-      @visit_investigations = VisitInvestigation.where("investigation_id in (#{csv_investigation_ids}) and visit_id = #{visit_id}")
-      if @visit_investigations.size > 0
-        @visit_investigations.each do |vi|
-          @reports_hash["#{APP_CONFIG['investigation_prefix']}#{vi.investigation_id}"] = vi.report
-        end
-      end
-    end
   end
 
 

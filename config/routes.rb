@@ -10,10 +10,10 @@ Emr::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  match 'details/update_details', to: 'details#update_details', :as => :visit_update_details
-  match 'details/show_updated_details', to: 'details#show_updated_details', as: :show_updated_details
-  match 'details/update_investigations', to: 'details#update_investigations', :as => :visit_update_investigations
-  match 'details/show_updated_investigations', to: 'details#show_updated_investigations', as: :show_updated_investigations
+  match 'details/edit_details', to: 'details#edit_details', :as => :edit_details
+  match 'details/update_details', to: 'details#update_details', as: :update_details
+  match 'details/edit_investigations', to: 'details#edit_investigations', :as => :edit_investigations
+  match 'details/update_investigations', to: 'details#update_investigations', as: :update_investigations
   match 'details/show_all_investigations', to: 'details#show_all_investigations', :as => :show_all_investigations
   match 'details/show_all_histories', to: 'details#show_all_histories', :as => :show_all_histories
   match 'details/show_all_examinations', to: 'details#show_all_examinations', :as => :show_all_examinations
@@ -21,6 +21,13 @@ Emr::Application.routes.draw do
   match 'details/show_history', to: 'details#show_history', :as => :show_history
   match 'details/show', to: 'details#show', :as => :show_details
 
+  match 'details/history/main', to: 'histories#main', :as => :main_history
+  match 'details/history/chief_complaint', to: 'histories#chief_complaint', :as => :chief_complaint
+  match 'details/history/past-medical-surgical', to: 'histories#pms_history', :as => :pms_history
+  match 'details/history/fms_history', to: 'histories#fms_history', :as => :fms_history
+  match 'details/history/ps_history', to: 'histories#ps_history', :as => :ps_history
+  match 'details/history/treatment', to: 'histories#treatment_history', :as => :treatment_history
+  match 'details/history/other_systems', to: 'histories#other_systems_history', :as => :other_systems_history
 
   #TODO Allow visits/new only for put method
   match 'visits/create', to: 'visits#create', as: :create_new_visit

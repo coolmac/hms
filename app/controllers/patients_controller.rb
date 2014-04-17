@@ -21,7 +21,6 @@ class PatientsController < ApplicationController
     @patient = Patient.find(params[:id])
     user_session[:current_patient_id] = @patient.id
     user_session[:current_visit_id] = nil
-    user_session[:current_visit] = nil
     @visits = @patient.visits
     respond_to do |format|
       format.html # show.html.erb
@@ -54,7 +53,6 @@ class PatientsController < ApplicationController
         user_session[:current_patient_id] = @current_patient.id
         @user.patients << @current_patient
         @current_visit = Visit.create({:patient_id => @current_patient.id})
-        user_session[:current_visit] = @current_visit
         user_session[:current_visit_id] = @current_visit.id
         format.html { render 'details/show', notice: 'Patient was successfully created.' }
       else

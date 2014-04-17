@@ -10,11 +10,7 @@ class Patient < ActiveRecord::Base
   has_one :address, :dependent => :destroy
   accepts_nested_attributes_for :address
   has_many :visits
-  after_create :set_uhid_for_patient, :create_visit
-
-
-
-
+  after_create :set_uhid_for_patient
 
   def set_uhid_for_patient
   	today = Date.today.strftime("%Y%m%d")
@@ -22,10 +18,5 @@ class Patient < ActiveRecord::Base
   	self.save!
   end
 
-  def create_visit
-    visit = Visit.create({:patient_id => self.id})
-    # user_session[:current_visit] = visit
-    # user_session[:current_visit_id] = visit.id
-  end
 
 end

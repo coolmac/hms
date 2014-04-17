@@ -22,7 +22,6 @@ class ApplicationController < ActionController::Base
   def reset_patient
     user_session[:current_patient_id] = nil
     user_session[:current_visit_id] = nil
-    user_session[:current_visit] = nil
   end
 
   def set_patient
@@ -37,22 +36,20 @@ class ApplicationController < ActionController::Base
 
   def set_visit
     if user_session
-      if params[:visit_id]
-        user_session[:current_visit_id] = params[:visit_id]
-        user_session[:current_visit] = Visit.find params[:visit_id]
-        @current_visit = user_session[:current_visit] 
-      end
-
-      if ( (user_session[:current_visit] == nil) )
+      if (user_session[:current_visit_id] == nil)
         if user_session[:current_patient_id]
-          redirect_to patient_path(user_session[:current_patient_id])
+          if params[:visit_id]
+            user_session[:current_visit_id] = params[:visit_id]
+            @current_visit = Visit.find params[:visit_id]
+          else
+            redirect_to patient_path(user_session[:current_patient_id])
+          end
         else
           redirect_to root_path
         end
       else
-        @current_visit = user_session[:current_visit]
+        @current_visit = Visit.find user_session[:current_visit_id]
       end
-
     end    
   end
 

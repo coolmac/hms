@@ -1,0 +1,63 @@
+<body id="login" class="animated fadeInDown">
+<div id="main" role="main">
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>ID:</b>
+  <%= @current_visit.id %>
+</p>
+
+<p>
+  <b>Patient:</b>
+  <%= @current_visit.patient_id %>
+</p>
+
+
+<%# link_to 'Enter detailed Chief Complaints', visit_update_details_path(:super_category => 'history', :category => 'chief_complaint'), :class => "btn btn-primary" %>
+
+
+<div class="row">
+  <div class="col-md-4">
+    <%= link_to 'Registration Details', edit_patient_path(@current_patient), :class => "btn btn-primary btn-lg"%>
+  </div>
+
+  <div class="col-md-4">
+    <%= link_to 'Investigation', show_all_investigations_path(:super_category => 'investigation', :category => 'investigation', :sub_category => 'investigation'), :class => "btn btn-primary btn-lg"%>
+  </div>
+
+</div>
+
+<br />
+<br />
+<br />
+
+<div class="row">
+  <div class="col-md-4">
+    <%= link_to 'History', show_history_path(:super_category => 'history', :category => 'history', :sub_category => 'history'), :class => "btn btn-primary btn-lg"%>
+  </div>
+
+  <div class="col-md-4">
+    <%= link_to 'Admit', root_path, :class => "btn btn-primary btn-lg"%>
+  </div>
+</div>
+
+
+<br />
+<br />
+<br />
+
+
+<div class="row">
+  <div class="col-md-4">
+    <%= link_to 'Examination', show_links_path(:super_category => 'examination', :category => 'examination', :sub_category => 'examination'), :class => "btn btn-primary btn-lg"%>
+  </div>
+
+  <div class="col-md-4">
+    <%= link_to 'Out Patient Follow-Up', root_path, :class => "btn btn-primary btn-lg"%>
+  </div>
+</div>
+
+</div>
+</body>
