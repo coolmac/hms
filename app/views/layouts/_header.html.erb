@@ -140,9 +140,30 @@
 
       </li>
     </ul>
-      <div class="pull-right" style="padding:8px 8px 0 0">
-        <%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => "btn btn-success active" %>
+    <ul class="nav navbar-nav navbar-right">
+    <div style="padding:8px 8px 0 0">
+      <div class="btn-group">
+        <button class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+          Settings <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => "btn btn-success active" %>
+          </li>
+          <li>
+            <a href="javascript:void(0);">Another action</a>
+          </li>
+          <li>
+            <a href="javascript:void(0);">Something else here</a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="javascript:void(0);">Separated link</a>
+          </li>
+        </ul>
       </div>
+    </div>
+    </ul>
   </div>
 </div>
 
