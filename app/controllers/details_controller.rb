@@ -1,5 +1,5 @@
 class DetailsController < ApplicationController
-	before_filter :set_patient, :set_visit
+  before_filter :set_patient, :set_visit
 
   def select_views_in_layout
     @show_patient_info = true
@@ -10,19 +10,19 @@ class DetailsController < ApplicationController
 
   def show_all_investigations
     respond_to do |format|
-      format.html { render 'visits/show'} 
+      format.html { render 'details/show'} 
     end    
   end
 
   def show_all_examinations
     respond_to do |format|
-      format.html { render 'visits/show'} 
+      format.html { render 'details/show'} 
     end
   end
 
   def show_all_histories
     respond_to do |format|
-      format.html { render 'visits/show'} 
+      format.html { render 'details/show'} 
     end
   end
 
@@ -43,7 +43,7 @@ class DetailsController < ApplicationController
 
 
     respond_to do |format|
-      format.html { render 'visits/show'} 
+      format.html { render 'details/show'} 
     end
   end
 	
