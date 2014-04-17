@@ -13763,7 +13763,7 @@ label:hover input[type="checkbox"][disabled].checkbox:checked + span:before {
 }
 #login #main {
   background: #ffffff;
-  margin-left: 0;
+/*  margin-left: 220px;*/
 }
 #login .hero {
   background-image: url("../img/gradient/login.png");
@@ -16017,7 +16017,7 @@ aside {
  */
 #left-panel {
   position: absolute;
-  top: 49px;
+  top: 50px;
   left: 0px;
   z-index: 1002;
 }

@@ -1,11 +1,14 @@
+<body id="login" class="animated fadeInDown">
+
+<div id="main" role="main">
 <div class="container" width="80%">
 
 
 <% if @exact_result_found %>
-	Patient Info found exactly: @patient.id 
+	Patient Info found exactly: @patient.id
 
 <% else %>
-	Exact Patient data could not be found in database. 
+	Exact Patient data could not be found in database.
 
 	<% if @fuzzy_results_by_name %>
 		Similar Results based on name:

@@ -1,3 +1,7 @@
+<body id="login" class="animated fadeInDown">
+<div id="main" role="main">
+	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -6,18 +10,28 @@
 </p>
 
 
-<%= link_to "Create NEW Visit", create_new_visit_path(), :class => "btn btn-primary"%>
+<%= link_to "Create NEW Visit", create_new_visit_path(), :class => "btn btn-primary active"%>
 
 <% if @visits.size > 0 %>
 	<h1>Existing Patient Visits: </h1>
 	<% @visits.each do |v|%>
-		<h2>Visit ID: <%=v.id%> | <%= link_to "Edit", {:controller => 'visits', :action => 'show', :visit_id => v.id}, :class => "btn btn-primary"%></h2>
-		<h2>Visited on: <%=v.created_at%></h2>
-		<h2>Summary</h2>
+	<div id="content" class="container smart-form client-form">
+	    <div class="well no-padding">
+	        <header><h2>Visit ID: <%=v.id%> | <%= link_to "Edit", {:controller => 'visits', :action => 'show', :visit_id => v.id}, :class => "btn btn-primary active"%></h2></header>
+		        <fieldset>
+		            <section>
+		                <br>
+						<h2>Visited on: <%=v.created_at%></h2>
+						<h2>Summary</h2>
+		            </section>
+		        </fieldset>
+	    </div>
+	</div>
 	<% end %>
-<% else %>
-	<h1>No existing Visit of this patient</h1>
-<% end %>
+
+	<% else %>
+		<h1>No existing Visit of this patient</h1>
+	<% end %>
 
 
 
@@ -51,3 +65,6 @@
 
 <%= link_to 'Edit', edit_patient_path(@patient) %>
 <%= link_to 'Back', patients_path %>
+
+</div>
+</body>
