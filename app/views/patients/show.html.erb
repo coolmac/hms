@@ -17,7 +17,7 @@
 		<div class="panel panel-default">
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
-		      	Visit ID: <%=v.id%> | <%= link_to "Edit", {:controller => 'visits', :action => 'show', :visit_id => v.id}, :class => "btn btn-primary active"%>
+		      	Visit ID: <%=v.id%> | <%= link_to "Edit", show_details_path(:visit_id => v.id), :class => "btn btn-primary active"%>
 		        <a class="pull-right" data-toggle="collapse" href="#<%=i%>">
 		          <i class="fa fa-lg fa-fw fa-align-justify"></i>
 		        </a>
@@ -36,58 +36,6 @@
 	<% else %>
 		<h1>No existing Visit of this patient</h1>
 	<% end %>
-
-<!--
-<%= link_to "Create NEW Visit", create_new_visit_path(), :class => "btn btn-primary active"%>
-
-<% if @visits.size > 0 %>
-	<h1>Existing Patient Visits: </h1>
-	<% @visits.each do |v|%>
-	<div id="content" class="container smart-form client-form">
-	    <div class="well no-padding">
-	        <header><h2>Visit ID: <%=v.id%> | <%= link_to "Edit", {:controller => 'details', :action => 'show', :visit_id => v.id}, :class => "btn btn-primary active"%></h2></header>
-		        <fieldset>
-		            <section>
-		                <br>
-						<h2>Visited on: <%=v.created_at%></h2>
-						<h2>Summary</h2>
-		            </section>
-		        </fieldset>
-	    </div>
-	</div>
-	<% end %>
-
-	<% else %>
-		<h1>No existing Visit of this patient</h1>
-	<% end %>
- -->
-
-<!-- <div class="row">
-<%= link_to 'Registration', edit_patient_path(@patient), class: "btn btn-primary" %>
-<%= link_to 'Admit', edit_patient_path(@patient), class: "btn btn-primary" %>
-</div>
-
-<br />
-<div class="row">
-<%= link_to 'History', edit_patient_path(@patient), class: "btn btn-primary" %>
-<%= link_to 'Treatment', edit_patient_path(@patient), class: "btn btn-primary" %>
-</div>
-
-<br />
-
-<div class="row">
-<%= link_to 'Examination', edit_patient_path(@patient), class: "btn btn-primary" %>
-<%= link_to 'Follow Up', edit_patient_path(@patient), class: "btn btn-primary" %>
-</div>
-
-<br />
-
-<div class="row">
-<%= link_to 'Investigations', edit_patient_path(@patient), class: "btn btn-primary" %>
-<%= link_to 'Discharge Summary', edit_patient_path(@patient), class: "btn btn-primary" %>
-</div>
- -->
-
 
 <%= link_to 'Edit', edit_patient_path(@patient) %>
 <%= link_to 'Back', patients_path %>
