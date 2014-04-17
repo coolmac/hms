@@ -10,45 +10,50 @@
   <%= @current_visit.patient_id %>
 </p>
 
-<p>
-  <b>Description:</b>
-  <%= @current_visit.description %>
-</p>
 
-<p>
-  <b>Chief complaint:</b>
-  <%= @current_visit.chief_complaint %>
-</p>
+<%# link_to 'Enter detailed Chief Complaints', visit_update_details_path(:super_category => 'history', :category => 'chief_complaint'), :class => "btn btn-primary" %>
 
-<p>
-  <b>Pms history:</b>
-  <%= @current_visit.pms_history %>
-</p>
 
-<p>
-  <b>Fm history:</b>
-  <%= @current_visit.fm_history %>
-</p>
+<div class="row">
+  <div class="col-md-4">
+    <%= link_to 'Registration Details', edit_patient_path(@current_patient), :class => "btn btn-primary btn-lg"%>
+  </div>
 
-<p>
-  <b>Ps history:</b>
-  <%= @current_visit.ps_history %>
-</p>
+  <div class="col-md-4">
+    <%= link_to 'Investigation', show_all_investigations_path(:super_category => 'investigation', :category => 'investigation', :sub_category => 'investigation'), :class => "btn btn-primary btn-lg"%>
+  </div>
 
-<p>
-  <b>Treatment history:</b>
-  <%= @current_visit.treatment_history %>
-</p>
+</div>
 
-<p>
-  <b>Other systems:</b>
-  <%= @current_visit.other_systems %>
-</p>
+<br />
+<br />
+<br />
 
-<%= link_to 'Enter detailed Chief Complaints', visit_update_details_path(:super_category => 'history', :category => 'chief_complaint'), :class => "btn btn-primary" %>
+<div class="row">
+  <div class="col-md-4">
+    <%= link_to 'History', show_history_path(:super_category => 'history', :category => 'history', :sub_category => 'history'), :class => "btn btn-primary btn-lg"%>
+  </div>
 
-<%= link_to 'Search Patients', search_patient_path() %>
+  <div class="col-md-4">
+    <%= link_to 'Admit', root_path, :class => "btn btn-primary btn-lg"%>
+  </div>
+</div>
 
+
+<br />
+<br />
+<br />
+
+
+<div class="row">
+  <div class="col-md-4">
+    <%= link_to 'Examination', show_links_path(:super_category => 'examination', :category => 'examination', :sub_category => 'examination'), :class => "btn btn-primary btn-lg"%>
+  </div>
+
+  <div class="col-md-4">
+    <%= link_to 'Out Patient Follow-Up', root_path, :class => "btn btn-primary btn-lg"%>
+  </div>
+</div>
 
 
 

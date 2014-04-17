@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :authenticate_and_set_user, :set_patient, :set_visit, :select_views_in_layout
+  before_filter :authenticate_and_set_user, :select_views_in_layout
+  # :set_patient, :set_visit, 
   after_filter :post_test
 
   def authenticate_and_set_user

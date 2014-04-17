@@ -1,10 +1,52 @@
 class VisitsController < ApplicationController
+  before_filter: :set_patient
 
   def select_views_in_layout
     @show_patient_info = true
     @show_visit_info = true
     @show_header = true
   end
+
+
+  def show_all_investigations
+    respond_to do |format|
+      format.html { render 'visits/show'} 
+    end    
+  end
+
+  def show_all_examinations
+    respond_to do |format|
+      format.html { render 'visits/show'} 
+    end
+  end
+
+  def show_all_histories
+    respond_to do |format|
+      format.html { render 'visits/show'} 
+    end
+  end
+
+  def show_history
+    @questions = Question.where(:super_category => 'history')
+    @descriptive_questions = DescriptiveQuestion.where(:super_category => 'history', :category => 'history')
+
+  end
+
+  def show_links
+    category = params[:category]
+    sub_category = params[:sub_category]
+    super_category = params[:super_category]
+    @categories = []
+    Question.where(:super_category => super_category).each do |q|
+      @categories << q.category
+    end
+
+
+    respond_to do |format|
+      format.html { render 'visits/show'} 
+    end
+  end
+
 
   def index
     patient_id = user_session[:current_patient_id]

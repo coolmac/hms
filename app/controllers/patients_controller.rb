@@ -1,6 +1,4 @@
 class PatientsController < ApplicationController
-  skip_before_filter :set_patient, :set_visit
-
 
   def select_views_in_layout
     @show_patient_info = true
@@ -14,7 +12,6 @@ class PatientsController < ApplicationController
     user_session[:current_visit] = @current_visit
     respond_to do |format|
       format.html { render 'visits/show'} 
-      format.json { render json: @patients }
     end    
   end
 
@@ -58,20 +55,17 @@ class PatientsController < ApplicationController
 
 
   def create
-    @patient = Patient.new(params[:patient])
+    @current_patient = Patient.new(params[:patient])
     respond_to do |format|
-      if @patient.save
-        user_session[:current_patient_id] = @patient.id
-        @user.patients << @patient
-        @current_visit = Visit.create({:patient_id => @patient.id})
+      if @current_patient.save
+        user_session[:current_patient_id] = @current_patient.id
+        @user.patients << @current_patient
+        @current_visit = Visit.create({:patient_id => @current_patient.id})
         user_session[:current_visit] = @current_visit
         user_session[:current_visit_id] = @current_visit.id
-
         format.html { render 'visits/show', notice: 'Patient was successfully created.' }
-        format.json { render json: @patient, status: :created, location: @patient }
       else
         format.html { render action: "new" }
-        format.json { render json: @patient.errors, status: :unprocessable_entity }
       end
     end
   end

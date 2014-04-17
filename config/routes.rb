@@ -4,19 +4,21 @@ Emr::Application.routes.draw do
   match 'visits/show_updated_details', to: 'visits#show_updated_details', as: :show_updated_details
   match 'visits/update_investigations', to: 'visits#update_investigations', :as => :visit_update_investigations
   match 'visits/show_updated_investigations', to: 'visits#show_updated_investigations', as: :show_updated_investigations
+  match 'visits/show_all_investigations', to: 'visits#show_all_investigations', :as => :show_all_investigations
+  match 'visits/show_all_histories', to: 'visits#show_all_histories', :as => :show_all_histories
+  match 'visits/show_all_examinations', to: 'visits#show_all_examinations', :as => :show_all_examinations
+  match 'visits/show_links', to: 'visits#show_links', :as => :show_links
+  match 'visits/show_history', to: 'visits#show_history', :as => :show_history
   resources :visits
   resources :descriptions
   resources :answers
   resources :questions
   resources :categories
-
   resources :departments
   resources :hospitals
 
 
   #TODO Allow visits/new only for put method
-  match '/history/new' => 'histories#new', as: :new_history
-
   match 'patients/create_new_visit', to: 'patients#create_new_visit', as: :create_new_visit
   match 'patients/search', to: 'patients#search', as: :search_patient
   match 'patients/generic_search', to: 'patients#generic_search', as: :generic_search_patient
