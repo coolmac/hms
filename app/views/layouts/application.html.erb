@@ -12,9 +12,20 @@
 
 <%= render 'layouts/patient_info'%>
 
-<%= render 'layouts/left_bar'%>
+<% if @show_left_bar %>
+	<%= render 'layouts/left_bar'%>
+<% end %>
+
+<% if @leave_space_for_left_bar %>
+<div id="main" role="main">
+<% end %>
 
 <%= yield %>
+
+<% if @leave_space_for_left_bar %>
+</div>
+<% end %>
+
 
 </body>
 </html>

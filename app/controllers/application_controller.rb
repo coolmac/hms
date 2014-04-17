@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
     @show_patient_info = true
     @show_visit_info = true
     @show_header = false
+    @show_left_bar = false
+    @leave_space_for_left_bar = false
   end
 
   def reset_patient

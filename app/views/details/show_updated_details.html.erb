@@ -1,1 +1,25 @@
-show_updated_details.html.erb
+<h1> top menu will have some basic patient details, we will make it part of the template itself </h1>
+
+<h2> Formatting basic questions of super category: <%=@super_category%>,  category: <%=@category%></h2>
+
+</table>
+
+<%= form_tag show_updated_details_path do %>
+
+  <% @questions.each do |q| %>
+    <%= label_tag q.title%>
+	<%= select_tag "#{APP_CONFIG['question_prefix']}#{q.id}", options_from_collection_for_select(@answers, "id", "title", get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") ), include_blank: true%>
+    <br>
+  <% end %>
+
+  <% @descriptive_questions.each do |dq| %>
+    <%= label_tag dq.title%>
+	<%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}") %>
+    <br>
+  <% end %>
+
+
+<%= text_field_tag :email, "Your email address..." %>
+<%= submit_tag "Enter To Win" %>
+<% end %>
+

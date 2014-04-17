@@ -4,6 +4,8 @@ class PatientsController < ApplicationController
     @show_patient_info = true
     @show_visit_info = false
     @show_header = true
+    @show_left_bar = true
+    @leave_space_for_left_bar = true
   end
 
   def index

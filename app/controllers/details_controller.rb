@@ -5,6 +5,8 @@ class DetailsController < ApplicationController
     @show_patient_info = true
     @show_visit_info = true
     @show_header = true
+    @show_left_bar = true
+    @leave_space_for_left_bar = true
   end
 
 
@@ -27,8 +29,13 @@ class DetailsController < ApplicationController
   end
 
   def show_history
-    @questions = Question.where(:super_category => 'history')
-    @descriptive_questions = DescriptiveQuestion.where(:super_category => 'history', :category => 'history')
+    # @questions = Question.where(:super_category => 'history')
+    # @descriptive_questions = DescriptiveQuestion.where(:super_category => 'history', :category => 'history')
+    
+    update_details()
+    respond_to do |format|
+      format.html # { render 'details/show_history'} 
+    end
 
   end
 
