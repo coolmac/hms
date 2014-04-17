@@ -9,7 +9,34 @@
   <%= @patient.first_name %>
 </p>
 
+<%= link_to "Create NEW Visit", create_new_visit_path(), :class => "btn btn-primary active"%>
 
+<% if @visits.size > 0 %>
+	<h1>Existing Patient Visits: </h1>
+	<% @visits.each do |v|%>
+		<div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		      	Visit ID: <%=v.id%> | <%= link_to "Edit", {:controller => 'visits', :action => 'show', :visit_id => v.id}, :class => "btn btn-primary active"%>
+		        <a class="pull-right" data-toggle="collapse" href="#collapseOne">
+		          <i class="fa fa-lg fa-fw fa-align-justify"></i>
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseOne" class="panel-collapse collapse">
+		      <div class="panel-body">
+		      	<h2>Visited on: <%=v.created_at%></h2>
+				<h2>Summary</h2>
+		      </div>
+		    </div>
+		</div>
+	<% end %>
+
+	<% else %>
+		<h1>No existing Visit of this patient</h1>
+	<% end %>
+
+<!--
 <%= link_to "Create NEW Visit", create_new_visit_path(), :class => "btn btn-primary active"%>
 
 <% if @visits.size > 0 %>
@@ -32,9 +59,7 @@
 	<% else %>
 		<h1>No existing Visit of this patient</h1>
 	<% end %>
-
-
-
+ -->
 
 <!-- <div class="row">
 <%= link_to 'Registration', edit_patient_path(@patient), class: "btn btn-primary" %>
