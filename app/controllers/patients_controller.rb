@@ -6,15 +6,6 @@ class PatientsController < ApplicationController
     @show_header = true
   end
 
-  def create_new_visit
-    @current_visit = Visit.create({:patient_id => user_session[:current_patient_id]})
-    user_session[:current_visit_id] = @current_visit.id
-    user_session[:current_visit] = @current_visit
-    respond_to do |format|
-      format.html { render 'visits/show'} 
-    end    
-  end
-
   def index
     @patients = @user.patients
 
@@ -63,15 +54,13 @@ class PatientsController < ApplicationController
         @current_visit = Visit.create({:patient_id => @current_patient.id})
         user_session[:current_visit] = @current_visit
         user_session[:current_visit_id] = @current_visit.id
-        format.html { render 'visits/show', notice: 'Patient was successfully created.' }
+        format.html { render 'details/show', notice: 'Patient was successfully created.' }
       else
         format.html { render action: "new" }
       end
     end
   end
 
-  # PUT /patients/1
-  # PUT /patients/1.json
   def update
     @patient = Patient.find(params[:id])
 

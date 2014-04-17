@@ -1,15 +1,5 @@
 Emr::Application.routes.draw do
 
-  match 'visits/update_details', to: 'visits#update_details', :as => :visit_update_details
-  match 'visits/show_updated_details', to: 'visits#show_updated_details', as: :show_updated_details
-  match 'visits/update_investigations', to: 'visits#update_investigations', :as => :visit_update_investigations
-  match 'visits/show_updated_investigations', to: 'visits#show_updated_investigations', as: :show_updated_investigations
-  match 'visits/show_all_investigations', to: 'visits#show_all_investigations', :as => :show_all_investigations
-  match 'visits/show_all_histories', to: 'visits#show_all_histories', :as => :show_all_histories
-  match 'visits/show_all_examinations', to: 'visits#show_all_examinations', :as => :show_all_examinations
-  match 'visits/show_links', to: 'visits#show_links', :as => :show_links
-  match 'visits/show_history', to: 'visits#show_history', :as => :show_history
-  resources :visits
   resources :descriptions
   resources :answers
   resources :questions
@@ -17,9 +7,23 @@ Emr::Application.routes.draw do
   resources :departments
   resources :hospitals
 
+  # The priority is based upon order of creation:
+  # first created -> highest priority.
+
+  match 'details/update_details', to: 'details#update_details', :as => :visit_update_details
+  match 'details/show_updated_details', to: 'details#show_updated_details', as: :show_updated_details
+  match 'details/update_investigations', to: 'details#update_investigations', :as => :visit_update_investigations
+  match 'details/show_updated_investigations', to: 'details#show_updated_investigations', as: :show_updated_investigations
+  match 'details/show_all_investigations', to: 'details#show_all_investigations', :as => :show_all_investigations
+  match 'details/show_all_histories', to: 'details#show_all_histories', :as => :show_all_histories
+  match 'details/show_all_examinations', to: 'details#show_all_examinations', :as => :show_all_examinations
+  match 'details/show_links', to: 'details#show_links', :as => :show_links
+  match 'details/show_history', to: 'details#show_history', :as => :show_history
+  match 'details/show', to: 'details#show', :as => :show_details
+
 
   #TODO Allow visits/new only for put method
-  match 'patients/create_new_visit', to: 'patients#create_new_visit', as: :create_new_visit
+  match 'visits/create', to: 'visits#create', as: :create_new_visit
   match 'patients/search', to: 'patients#search', as: :search_patient
   match 'patients/generic_search', to: 'patients#generic_search', as: :generic_search_patient
   resources :patients
@@ -30,8 +34,6 @@ Emr::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => 'registrations'}, :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock'}
 
 
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

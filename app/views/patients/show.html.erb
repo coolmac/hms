@@ -17,7 +17,7 @@
 	<% @visits.each do |v|%>
 	<div id="content" class="container smart-form client-form">
 	    <div class="well no-padding">
-	        <header><h2>Visit ID: <%=v.id%> | <%= link_to "Edit", {:controller => 'visits', :action => 'show', :visit_id => v.id}, :class => "btn btn-primary active"%></h2></header>
+	        <header><h2>Visit ID: <%=v.id%> | <%= link_to "Edit", {:controller => 'details', :action => 'show', :visit_id => v.id}, :class => "btn btn-primary active"%></h2></header>
 		        <fieldset>
 		            <section>
 		                <br>
