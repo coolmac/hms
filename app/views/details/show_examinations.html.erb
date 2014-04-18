@@ -1,0 +1,41 @@
+
+<h1> Examinations </h1>
+
+ <%= form_for @current_visit, url: show_investigations_path(), html: {class: "smart-form client-form", role:"form" } do |f| %>
+  <% if @current_visit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@current_visit.errors.count, "error") %> prohibited this visit from being saved:</h2>
+      <ul>
+      <% @current_visit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= link_to 'General Physical Examination', chief_complaint_path(:category => 'gpe', :super_category => 'examination'), :class => "btn btn-primary"%>
+    <%= f.text_area :gpe, :autofocus => true, class: "form-control", cols:4, rows:2 %>
+  </div>
+
+  <div class="field">
+    <%= link_to 'Vitals Examination', chief_complaint_path(:category => 'vitals', :super_category => 'examination'), :class => "btn btn-primary"%>
+    <%= f.text_area :vitals, :autofocus => true, class: "form-control", cols:4, rows:2 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Save', :name => 'save', :class => "btn btn-success"%>
+    <%= f.submit 'Next', :name => 'next', :class => "btn btn-success"%>
+  </div>
+ <% end %>
+
+
+
+
+
+
+
+
+
+
+

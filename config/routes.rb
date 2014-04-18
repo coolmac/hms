@@ -14,9 +14,7 @@ Emr::Application.routes.draw do
   match 'details/update_details', to: 'details#update_details', as: :update_details
   match 'details/edit_investigations', to: 'details#edit_investigations', :as => :edit_investigations
   match 'details/update_investigations', to: 'details#update_investigations', as: :update_investigations
-  match 'details/show_all_investigations', to: 'details#show_all_investigations', :as => :show_all_investigations
   match 'details/show_all_histories', to: 'details#show_all_histories', :as => :show_all_histories
-  match 'details/show_all_examinations', to: 'details#show_all_examinations', :as => :show_all_examinations
   match 'details/show_links', to: 'details#show_links', :as => :show_links
   match 'details/show_history', to: 'details#show_history', :as => :show_history
   match 'details/show', to: 'details#show', :as => :show_details
@@ -28,6 +26,11 @@ Emr::Application.routes.draw do
   match 'details/history/ps_history', to: 'histories#ps_history', :as => :ps_history
   match 'details/history/treatment', to: 'histories#treatment_history', :as => :treatment_history
   match 'details/history/other_systems', to: 'histories#other_systems_history', :as => :other_systems_history
+
+  match 'details/show_examinations', to: 'details#show_examinations', :as => :show_examinations
+
+
+  match 'details/show_investigations', to: 'details#show_investigations', :as => :show_investigations
 
   #TODO Allow visits/new only for put method
   match 'visits/create', to: 'visits#create', as: :create_new_visit

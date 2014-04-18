@@ -1,7 +1,7 @@
 
 <h1> HISTORY </h1>
 
- <%= form_for @current_visit, url: {:controller => 'details', :action => 'show_all_examinations'}, html: {class: "smart-form client-form", role:"form" } do |f| %>
+ <%= form_for @current_visit, url: show_examinations_path(), html: {class: "smart-form client-form", role:"form" } do |f| %>
   <% if @current_visit.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@current_visit.errors.count, "error") %> prohibited this visit from being saved:</h2>

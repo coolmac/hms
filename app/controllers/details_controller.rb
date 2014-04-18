@@ -9,13 +9,13 @@ class DetailsController < ApplicationController
     @leave_space_for_left_bar = true
   end
 
-  def show_all_investigations
+  def show_investigations
     respond_to do |format|
       format.html { render 'details/show'} 
     end    
   end
 
-  def show_all_examinations
+  def show_examinations
     if params[:save] != nil
       @current_visit.update_attributes(params[:visit])
       respond_to do |format|
