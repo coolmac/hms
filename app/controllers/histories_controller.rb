@@ -27,6 +27,7 @@ class HistoriesController < DetailsController
         format.html { render 'details/show_history' }
       end
 	else
+	  edit_details()
 	  respond_to do |format|
         format.html { render 'details/show_history' }
       end
@@ -174,6 +175,7 @@ class HistoriesController < DetailsController
         format.html { render 'details/show_history' }
       end
 	elsif params[:next] != nil
+	  edit_details()
 	  respond_to do |format|
         format.html { render 'details/show_history'}
       end

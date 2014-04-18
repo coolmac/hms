@@ -32,8 +32,13 @@ Emr::Application.routes.draw do
   match 'details/examinations/gpe', to: 'examinations#gpe', :as => :gpe_examinations
   match 'details/examinations/vitals', to: 'examinations#vitals', :as => :vitals_examinations
 
-
   match 'details/show_investigations', to: 'details#show_investigations', :as => :show_investigations
+  match 'details/investigations/main', to: 'investigations#main', :as => :main_investigations
+  match 'details/investigations/hemogram', to: 'investigations#hemogram', :as => :hemogram_investigations
+  match 'details/investigations/glucose', to: 'investigations#glucose', :as => :glucose_investigations
+  match 'details/investigations/lft', to: 'investigations#lft', :as => :lft_investigations
+  match 'details/investigations/rft', to: 'investigations#rft', :as => :rft_investigations
+  match 'details/investigations/lipid_profile', to: 'investigations#lipid_profile', :as => :lipid_profile_investigations
 
   #TODO Allow visits/new only for put method
   match 'visits/create', to: 'visits#create', as: :create_new_visit

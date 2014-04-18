@@ -9,12 +9,27 @@ class DetailsController < ApplicationController
     @leave_space_for_left_bar = true
   end
 
+  #flow can come from examinations or Directly
   def show_investigations
-    respond_to do |format|
-      format.html { render 'details/show'} 
-    end    
+    if params[:save] != nil
+      @current_visit.update_attributes(params[:visit])
+      respond_to do |format|
+        format.html { render 'details/show_examinations'}
+      end
+    elsif params[:next] != nil
+      @current_visit.update_attributes(params[:visit])
+      respond_to do |format|
+        format.html 
+      end
+    else
+      respond_to do |format|
+        format.html 
+      end
+    end
+    # Don't render anything here
   end
 
+  # flow can come from show_history page or Directly
   def show_examinations
     if params[:save] != nil
       @current_visit.update_attributes(params[:visit])
@@ -23,13 +38,12 @@ class DetailsController < ApplicationController
       end
     elsif params[:next] != nil
       @current_visit.update_attributes(params[:visit])
-
       respond_to do |format|
-        format.html #{ render 'details/show_history'}
+        format.html 
       end
     else
       respond_to do |format|
-        format.html #{ render 'details/show_history'}
+        format.html 
       end
     end
     # Don't render anything here
@@ -42,13 +56,9 @@ class DetailsController < ApplicationController
   end
 
   def show_history
-    # @questions = Question.where(:super_category => 'history')
-    # @descriptive_questions = DescriptiveQuestion.where(:super_category => 'history', :category => 'history')
-
     respond_to do |format|
-      format.html # { render 'details/show_history'} 
+      format.html 
     end
-
   end
 
   def show_links
@@ -143,7 +153,7 @@ class DetailsController < ApplicationController
       end
     end # end of params check
 
-    #TODO this is WRONG
+    #TODO this is WRONG - we should first find out questions based on category and super_category
     # if (existing_answered_question_ids.size > 0)
     #   # remove entries which were answered earlier but deselected on edit
     #   VisitQuestion.where("visit_id = #{visit_id} and question_id in (#{existing_answered_question_ids.join(', ')})").delete_all
@@ -161,7 +171,7 @@ class DetailsController < ApplicationController
     @category = params[:category]
     visit_id = user_session[:current_visit_id]
     @reports_hash = {}
-    @investigations = Investigation.where(:category => @category, :sub_category => @sub_category)
+    @investigations = Investigation.where(:category => @category)
     if @investigations.size > 0
       csv_investigation_ids = @investigations.collect{|q| q.id}.join(', ')
       @visit_investigations = VisitInvestigation.where("investigation_id in (#{csv_investigation_ids}) and visit_id = #{visit_id}")

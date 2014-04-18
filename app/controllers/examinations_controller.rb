@@ -19,6 +19,7 @@ class ExaminationsController < DetailsController
         format.html { render 'details/show_examinations' }
       end
 	else
+	  edit_details()
 	  respond_to do |format|
         format.html
       end
@@ -48,6 +49,7 @@ class ExaminationsController < DetailsController
         format.html { render 'details/show_examinations' }
       end
 	elsif params[:next] != nil
+	  edit_details()
 	  respond_to do |format|
         format.html 
       end
