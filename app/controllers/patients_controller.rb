@@ -21,7 +21,7 @@ class PatientsController < ApplicationController
     @patient = Patient.find(params[:id])
     user_session[:current_patient_id] = @patient.id
     user_session[:current_visit_id] = nil
-    @visits = @patient.visits
+    @visits = @patient.visits.sort! { |a,b| b.created_at <=> a.created_at}
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @patient }
