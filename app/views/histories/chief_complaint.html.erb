@@ -10,6 +10,7 @@
             <% @questions.each do |q| %>
               <section>
               <%= label_tag q.title%>
+              <br>
               <%= select_tag "#{APP_CONFIG['question_prefix']}#{q.id}", options_from_collection_for_select(@answers, "id", "title", get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") ), include_blank: true%>
               </section>
             <% end %>
@@ -17,6 +18,7 @@
             <% @descriptive_questions.each do |dq| %>
               <section>
               <%= label_tag dq.title%>
+              <br>
               <%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}") %>
               </section>
             <% end %>
