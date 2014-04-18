@@ -5,26 +5,26 @@
   <div class="navbar-collapse navbar-inverse">
     <ul class="nav navbar-nav">
       <li><%= link_to "DocOnline", root_path %></li>
-      <li><%= link_to "New Patient", new_patient_path %></li>
+<!--       <li><%= link_to "New Patient", new_patient_path %></li>
       <li><%= link_to "Search Patient", search_patient_path %></li>
-
+ -->
       <li class="dropdown dropdown-large">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Large Dropdown <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Functions<b class="caret"></b></a>
 
         <ul class="dropdown-menu dropdown-menu-large row">
           <li class="col-sm-3">
             <ul>
               <li class="dropdown-header">
-                Glyphicons
+                Managine Patients
               </li>
               <li>
-                <a href="javascript:void(0);">Available glyphs</a>
-              </li>
-              <li class="disabled">
-                <a href="javascript:void(0);">How to use</a>
+                <%= link_to "New Patient", new_patient_path %>
               </li>
               <li>
-                <a href="javascript:void(0);">Examples</a>
+                <%= link_to "Search Patient", search_patient_path %>
+              </li>
+              <li>
+                <%= link_to "List of Patients", patients_path %>
               </li>
               <li class="divider"></li>
               <li class="dropdown-header">
