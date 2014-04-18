@@ -27,9 +27,8 @@ class HistoriesController < DetailsController
         format.html { render 'details/show_history' }
       end
 	else
-	  edit_details()
 	  respond_to do |format|
-        format.html
+        format.html { render 'details/show_history' }
       end
 	end
 	# Please don't render here  	

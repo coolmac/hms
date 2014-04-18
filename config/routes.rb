@@ -28,6 +28,9 @@ Emr::Application.routes.draw do
   match 'details/history/other_systems', to: 'histories#other_systems_history', :as => :other_systems_history
 
   match 'details/show_examinations', to: 'details#show_examinations', :as => :show_examinations
+  match 'details/examinations/main', to: 'examinations#main', :as => :main_examinations
+  match 'details/examinations/gpe', to: 'examinations#gpe', :as => :gpe_examinations
+  match 'details/examinations/vitals', to: 'examinations#vitals', :as => :vitals_examinations
 
 
   match 'details/show_investigations', to: 'details#show_investigations', :as => :show_investigations

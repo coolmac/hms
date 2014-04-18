@@ -2,7 +2,7 @@
 
 </table>
 
-<%= form_tag main_history_path(:previous_category => @category, :previous_super_category => @super_category, :category => 'other_systems_history', :super_category => 'history') do %>
+<%= form_tag vitals_examinations_path(:previous_category => @category, :previous_super_category => @super_category, :category => 'vitals', :super_category => 'examination') do %>
 
   <% @questions.each do |q| %>
     <%= label_tag q.title%>
@@ -16,6 +16,7 @@
     <br>
   <% end %>
   <%= submit_tag "Save Details", :name => 'save' %>
+  <%= submit_tag "Save and Next", :name => 'next' %>
   <%= submit_tag "Save and Return", :name => 'exit' %>
 <% end %>
 
