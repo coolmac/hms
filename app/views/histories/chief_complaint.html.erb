@@ -1,6 +1,37 @@
-<h2> Formatting basic questions of super category: <%=@super_category%>,  category: <%=@category%></h2>
+<body id="login" class="animated fadeInDown">
+    <div id="content" class="container smart-form client-form">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-10" style="padding-top:10px">
+    <div class="well no-padding">
+        <header>
+            Formatting basic questions of super category: <%=@super_category%>,  category: <%=@category%>
+        </header>
+            <%= form_tag pms_history_path(:previous_category => @category, :previous_super_category => @super_category, :category => 'pms_history', :super_category => 'history') do %>
+        <fieldset>
+            <% @questions.each do |q| %>
+              <section>
+              <%= label_tag q.title%>
+              <%= select_tag "#{APP_CONFIG['question_prefix']}#{q.id}", options_from_collection_for_select(@answers, "id", "title", get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") ), include_blank: true%>
+              </section>
+            <% end %>
 
-</table>
+            <% @descriptive_questions.each do |dq| %>
+              <section>
+              <%= label_tag dq.title%>
+              <%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}") %>
+              </section>
+            <% end %>
+            <footer>
+                <%= submit_tag "Save Details", :name => 'save', :class => "btn btn-primary" %>
+                <%= submit_tag "Save and Next", :name => 'next', :class => "btn btn-success" %>
+                <%= submit_tag "Save and Return", :name => 'exit', :class => "btn btn-info" %>
+            </footer>
+            <% end %>
+        </fieldset>
+    </div>
+</div>
+
+
+<!--
 
 <%= form_tag pms_history_path(:previous_category => @category, :previous_super_category => @super_category, :category => 'pms_history', :super_category => 'history') do %>
 
@@ -19,9 +50,4 @@
   <%= submit_tag "Save and Next", :name => 'next' %>
   <%= submit_tag "Save and Return", :name => 'exit' %>
 <% end %>
-
-
-<br>
-<br>
-<br>
-<br>
+ -->
