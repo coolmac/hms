@@ -31,25 +31,3 @@
         </fieldset>
     </div>
 </div>
-
-
-<!--
-
-<%= form_tag pms_history_path(:previous_category => @category, :previous_super_category => @super_category, :category => 'pms_history', :super_category => 'history') do %>
-
-  <% @questions.each do |q| %>
-    <%= label_tag q.title%>
-	<%= select_tag "#{APP_CONFIG['question_prefix']}#{q.id}", options_from_collection_for_select(@answers, "id", "title", get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") ), include_blank: true%>
-    <br>
-  <% end %>
-
-  <% @descriptive_questions.each do |dq| %>
-    <%= label_tag dq.title%>
-	<%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}") %>
-    <br>
-  <% end %>
-  <%= submit_tag "Save Details", :name => 'save' %>
-  <%= submit_tag "Save and Next", :name => 'next' %>
-  <%= submit_tag "Save and Return", :name => 'exit' %>
-<% end %>
- -->
