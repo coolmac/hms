@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Admission:</b>
+  <%= @admit_day.admission_id %>
+</p>
+
+<p>
+  <b>Admit date:</b>
+  <%= @admit_day.admit_date %>
+</p>
+
+<p>
+  <b>Doctor notes:</b>
+  <%= @admit_day.doctor_notes %>
+</p>
+
+<p>
+  <b>Nurse notes:</b>
+  <%= @admit_day.nurse_notes %>
+</p>
+
+<p>
+  <b>Care giver notes:</b>
+  <%= @admit_day.care_giver_notes %>
+</p>
+
+<p>
+  <b>Treatment:</b>
+  <%= @admit_day.treatment %>
+</p>
+
+<p>
+  <b>Serial number:</b>
+  <%= @admit_day.serial_number %>
+</p>
+
+
+<%= link_to 'Edit', edit_admission_admit_day_path(@admit_day.admission, @admit_day) %> |
+<%= link_to 'Back', admission_admit_days_path(@admit_day.admission) %>

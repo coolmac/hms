@@ -12,12 +12,11 @@ gem "dynamic_form"
 gem 'devise'
 gem 'fuzzily'
 gem 'recaptcha', :require => "recaptcha/rails"
+
 # gem 'client_side_validations'
 
 #TODO check these gems
 # gem "therubyracer"
-# gem "less-rails"
-# gem "twitter-bootstrap-rails"
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
@@ -39,9 +38,8 @@ gem 'uglifier', '>= 1.3.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-# NOT Using it for now
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-# gem 'turbolinks'
+gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'

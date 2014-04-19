@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Visit:</b>
+  <%= @admission.visit_id %>
+</p>
+
+<p>
+  <b>Admission date:</b>
+  <%= @admission.admission_date %>
+</p>
+
+<p>
+  <b>Bed:</b>
+  <%= @admission.bed %>
+</p>
+
+<p>
+  <b>Doctor:</b>
+  <%= @admission.doctor %>
+</p>
+
+<p>
+  <b>Is mlc:</b>
+  <%= @admission.is_mlc %>
+</p>
+
+<p>
+  <b>Mlc details:</b>
+  <%= @admission.mlc_details %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @admission.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_visit_admission_path(@admission.visit, @admission) %> |
+<%= link_to 'Back', visit_admissions_path(@admission.visit) %>

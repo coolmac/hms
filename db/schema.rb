@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140418100834) do
+ActiveRecord::Schema.define(:version => 20140419080305) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line1"
@@ -26,6 +26,34 @@ ActiveRecord::Schema.define(:version => 20140418100834) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  create_table "admissions", :force => true do |t|
+    t.integer  "visit_id"
+    t.datetime "admission_date"
+    t.string   "bed"
+    t.string   "doctor"
+    t.boolean  "is_mlc"
+    t.text     "mlc_details"
+    t.text     "description"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "admissions", ["visit_id"], :name => "index_admissions_on_visit_id"
+
+  create_table "admit_days", :force => true do |t|
+    t.integer  "admission_id"
+    t.datetime "admit_date"
+    t.text     "doctor_notes"
+    t.text     "nurse_notes"
+    t.text     "care_giver_notes"
+    t.text     "treatment"
+    t.integer  "serial_number"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "admit_days", ["admission_id"], :name => "index_admit_days_on_admission_id"
 
   create_table "answers", :force => true do |t|
     t.string   "title"

@@ -1,5 +1,11 @@
 Emr::Application.routes.draw do
 
+  resources :admissions do
+    resources :admit_days
+  end
+
+  resources :admissions
+
   resources :descriptions
   resources :answers
   resources :questions

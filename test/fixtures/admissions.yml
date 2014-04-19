@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  visit_id: 1
+  admission_date: 2014-04-19 13:20:08
+  bed: MyString
+  doctor: MyString
+  is_mlc: false
+  mlc_details: MyText
+  description: MyText
+
+two:
+  visit_id: 1
+  admission_date: 2014-04-19 13:20:08
+  bed: MyString
+  doctor: MyString
+  is_mlc: false
+  mlc_details: MyText
+  description: MyText

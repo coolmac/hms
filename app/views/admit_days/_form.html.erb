@@ -1,0 +1,45 @@
+<%= form_for([@admit_day.admission, @admit_day]) do |f| %>
+  <% if @admit_day.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admit_day.errors.count, "error") %> prohibited this admit_day from being saved:</h2>
+
+      <ul>
+      <% @admit_day.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :admission_id %><br />
+    <%= f.number_field :admission_id %>
+  </div>
+  <div class="field">
+    <%= f.label :admit_date %><br />
+    <%= f.datetime_select :admit_date %>
+  </div>
+  <div class="field">
+    <%= f.label :doctor_notes %><br />
+    <%= f.text_area :doctor_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :nurse_notes %><br />
+    <%= f.text_area :nurse_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :care_giver_notes %><br />
+    <%= f.text_area :care_giver_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :treatment %><br />
+    <%= f.text_area :treatment %>
+  </div>
+  <div class="field">
+    <%= f.label :serial_number %><br />
+    <%= f.number_field :serial_number %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

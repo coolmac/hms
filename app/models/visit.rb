@@ -5,6 +5,8 @@ class Visit < ActiveRecord::Base
   EXAMINATION = 'examination'
   INVESTIGATION = 'investigation'
 
+  
+  # has_many :admissions
 
 
 

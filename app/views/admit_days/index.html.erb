@@ -1,0 +1,35 @@
+<h1>Listing admit_days</h1>
+
+<table>
+  <tr>
+    <th>Admission</th>
+    <th>Admit date</th>
+    <th>Doctor notes</th>
+    <th>Nurse notes</th>
+    <th>Care giver notes</th>
+    <th>Treatment</th>
+    <th>Serial number</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @admit_days.each do |admit_day| %>
+  <tr>
+    <td><%= admit_day.admission_id %></td>
+    <td><%= admit_day.admit_date %></td>
+    <td><%= admit_day.doctor_notes %></td>
+    <td><%= admit_day.nurse_notes %></td>
+    <td><%= admit_day.care_giver_notes %></td>
+    <td><%= admit_day.treatment %></td>
+    <td><%= admit_day.serial_number %></td>
+    <td><%= link_to 'Show', [admit_day.admission, admit_day] %></td>
+    <td><%= link_to 'Edit', edit_admission_admit_day_path(admit_day.admission, admit_day) %></td>
+    <td><%= link_to 'Destroy', [admit_day.admission, admit_day], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Admit day', new_admission_admit_day_path(params[:admission_id]) %>
