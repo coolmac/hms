@@ -1,4 +1,4 @@
-class AdmitDaysController < ApplicationController
+class AdmitDaysController < DetailsController
 
   def index
     @admission = Admission.find(params[:admission_id])

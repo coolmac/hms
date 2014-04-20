@@ -1,5 +1,8 @@
 Emr::Application.routes.draw do
 
+  resources :follow_ups
+
+
   resources :admissions do
     resources :admit_days
   end

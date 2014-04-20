@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Follow up date:</b>
+  <%= @follow_up.follow_up_date %>
+</p>
+
+<p>
+  <b>Final diagnosis:</b>
+  <%= @follow_up.final_diagnosis %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%= @follow_up.comments %>
+</p>
+
+<p>
+  <b>Visit:</b>
+  <%= @follow_up.visit_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_follow_up_path(@follow_up) %> |
+<%= link_to 'Back', follow_ups_path %>

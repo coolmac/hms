@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  follow_up_date: 2014-04-20 19:07:52
+  final_diagnosis: MyText
+  comments: MyText
+  visit_id: 1
+
+two:
+  follow_up_date: 2014-04-20 19:07:52
+  final_diagnosis: MyText
+  comments: MyText
+  visit_id: 1

@@ -1,0 +1,28 @@
+<h1>Listing follow_ups</h1>
+
+<table>
+  <tr>
+    <th>Follow up date</th>
+    <th>Final diagnosis</th>
+    <th>Comments</th>
+    <th>Visit</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @follow_ups.each do |follow_up| %>
+  <tr>
+    <td><%= follow_up.follow_up_date %></td>
+    <td><%= follow_up.final_diagnosis %></td>
+    <td><%= follow_up.comments %></td>
+    <td><%= link_to 'Show', follow_up %></td>
+    <td><%= link_to 'Edit', edit_follow_up_path(follow_up) %></td>
+    <td><%= link_to 'Destroy', follow_up, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Follow up', new_follow_up_path %>
