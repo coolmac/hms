@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :admission_id %><br />
-    <%= f.number_field :admission_id %>
-  </div>
-  <div class="field">
     <%= f.label :admit_date %><br />
     <%= f.datetime_select :admit_date %>
   </div>
@@ -36,7 +32,7 @@
     <%= f.text_area :treatment %>
   </div>
   <div class="field">
-    <%= f.label :serial_number %><br />
+    <%= f.label "Entry Day " %><br />
     <%= f.number_field :serial_number %>
   </div>
   <div class="actions">

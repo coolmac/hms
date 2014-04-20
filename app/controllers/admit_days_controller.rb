@@ -1,6 +1,5 @@
 class AdmitDaysController < ApplicationController
-  # GET admissions/1/admit_days
-  # GET admissions/1/admit_days.json
+
   def index
     @admission = Admission.find(params[:admission_id])
     @admit_days = @admission.admit_days
@@ -11,8 +10,6 @@ class AdmitDaysController < ApplicationController
     end
   end
 
-  # GET admissions/1/admit_days/1
-  # GET admissions/1/admit_days/1.json
   def show
     @admission = Admission.find(params[:admission_id])
     @admit_day = @admission.admit_days.find(params[:id])
@@ -23,8 +20,6 @@ class AdmitDaysController < ApplicationController
     end
   end
 
-  # GET admissions/1/admit_days/new
-  # GET admissions/1/admit_days/new.json
   def new
     @admission = Admission.find(params[:admission_id])
     @admit_day = @admission.admit_days.build
@@ -35,14 +30,11 @@ class AdmitDaysController < ApplicationController
     end
   end
 
-  # GET admissions/1/admit_days/1/edit
   def edit
     @admission = Admission.find(params[:admission_id])
     @admit_day = @admission.admit_days.find(params[:id])
   end
 
-  # POST admissions/1/admit_days
-  # POST admissions/1/admit_days.json
   def create
     @admission = Admission.find(params[:admission_id])
     @admit_day = @admission.admit_days.build(params[:admit_day])
@@ -53,13 +45,11 @@ class AdmitDaysController < ApplicationController
         format.json { render :json => @admit_day, :status => :created, :location => [@admit_day.admission, @admit_day] }
       else
         format.html { render :action => "new" }
-        format.json { render :json => @admit_day.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # PUT admissions/1/admit_days/1
-  # PUT admissions/1/admit_days/1.json
+
   def update
     @admission = Admission.find(params[:admission_id])
     @admit_day = @admission.admit_days.find(params[:id])
@@ -83,7 +73,7 @@ class AdmitDaysController < ApplicationController
     @admit_day.destroy
 
     respond_to do |format|
-      format.html { redirect_to admission_admit_days_url(admission) }
+      format.html { redirect_to admission_admit_days_path() }
       format.json { head :ok }
     end
   end

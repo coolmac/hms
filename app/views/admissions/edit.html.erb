@@ -1,5 +1,12 @@
 <h1>Editing admission</h1>
 
+<h2>
+<% @admission.admit_days.sort_by {|a| a.serial_number}.each do |ad|%>
+	<%= link_to "DAY#{ad.serial_number}", edit_admission_admit_day_path(@admission.id, ad), :class => "btn btn-primary" %>
+<% end %>
+</h2>
+<%= link_to "Create New Day Entry", new_admission_admit_day_path(@admission), :class => "btn btn-success" %>
+
 <%= render 'form' %>
 
 <%= link_to 'Show', @admission %> |

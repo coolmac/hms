@@ -21,6 +21,7 @@ class AdmissionsController < DetailsController
   def new
     visit_id = user_session[:current_visit_id]
     @admission = Admission.find_by_visit_id(visit_id)
+    # binding.pry
     if @admission
       respond_to do |format|
         format.html { render 'admissions/edit'}
