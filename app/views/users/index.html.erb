@@ -2,26 +2,25 @@
 <div id="content" class="container smart-form client-form">
 
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-    <div class="well no-padding">
-        <header>
-            <h1>Welcome <%=@user.name%></h1>
-        </header>
+  <div class="well no-padding">
+    <header>
+      <h1>Welcome <%=@user.name%></h1>
+    </header>
+      <fieldset>
+        <section>
+          <br>
+		  <% if can? :create, @patient %>
+		  <%= link_to 'New Patient', new_patient_path, :class => "btn btn-primary btn-lg" %>
+		  <% end %>
+		  <%= link_to 'Existing Patient', search_patient_path, :class => "btn btn-info btn-lg" %>
+		  <br />
+		  <br />
+		  <br />
+		  <br />
+        </section>
+      </fieldset>
 
-        <fieldset>
-            <section>
-                <br>
-					<% if can? :create, @patient %>
-					<%= link_to 'New Patient', new_patient_path, :class => "btn btn-primary btn-lg active" %>
-					<% end %>
-					<%= link_to 'Existing Patient', search_patient_path, :class => "btn btn-info btn-lg active" %>
-				<br />
-				<br />
-				<br />
-				<br />
-<!-- 					<%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => "btn btn-success btn-lg" %> -->
-            </section>
-        </fieldset>
-    </div>
+  </div>
 </div>
 
 </div>
