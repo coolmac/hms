@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medicine: MyString
+  frequency: MyString
+  duration: MyString
+  route: MyString
+
+two:
+  medicine: MyString
+  frequency: MyString
+  duration: MyString
+  route: MyString

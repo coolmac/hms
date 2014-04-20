@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Medicine:</b>
+  <%= @prescription.medicine %>
+</p>
+
+<p>
+  <b>Frequency:</b>
+  <%= @prescription.frequency %>
+</p>
+
+<p>
+  <b>Duration:</b>
+  <%= @prescription.duration %>
+</p>
+
+<p>
+  <b>Route:</b>
+  <%= @prescription.route %>
+</p>
+
+
+<%= link_to 'Edit', edit_visit_prescription_path(@prescription.visit, @prescription) %> |
+<%= link_to 'Back', visit_prescriptions_path(@prescription.visit) %>

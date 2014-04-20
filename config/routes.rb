@@ -1,31 +1,9 @@
 Emr::Application.routes.draw do
 
-  resources :follow_ups
-
-
-  resources :admissions do
-    resources :admit_days
-  end
-
-  resources :admissions
-  # match 'admissions/index', to: 'admissions#index', :as => :admissions
-
-  #TODO check this out for has_one relation
-  # resources :visits do
-  #   resource :admission
-  # end
-
-  resources :descriptions
-  resources :answers
-  resources :questions
-  resources :categories
-  resources :departments
-  resources :hospitals
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  match 'details/edit_details', to: 'details#edit_details', :as => :edit_details
+  match 'details/edit_details',   to: 'details#edit_details', :as => :edit_details
   match 'details/update_details', to: 'details#update_details', as: :update_details
   match 'details/edit_investigations', to: 'details#edit_investigations', :as => :edit_investigations
   match 'details/update_investigations', to: 'details#update_investigations', as: :update_investigations
@@ -59,6 +37,34 @@ Emr::Application.routes.draw do
   match 'visits/create', to: 'visits#create', as: :create_new_visit
   match 'patients/search', to: 'patients#search', as: :search_patient
   match 'patients/generic_search', to: 'patients#generic_search', as: :generic_search_patient
+
+  resources :visits do
+    resources :prescriptions
+  end
+
+  resources :follow_ups
+
+
+  resources :admissions do
+    resources :admit_days
+  end
+
+  resources :admissions
+  # match 'admissions/index', to: 'admissions#index', :as => :admissions
+
+  #TODO check this out for has_one relation
+  # resources :visits do
+  #   resource :admission
+  # end
+
+  resources :descriptions
+  resources :answers
+  resources :questions
+  resources :categories
+  resources :departments
+  resources :hospitals
+
+
   resources :patients
 
 

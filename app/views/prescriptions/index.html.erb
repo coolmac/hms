@@ -1,0 +1,27 @@
+<h1>Listing prescriptions</h1>
+
+<table class="bordered">
+  <tr>
+    <th>Medicine</th>
+    <th>Frequency</th>
+    <th>Duration</th>
+    <th>Route</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @prescriptions.each do |prescription| %>
+  <tr>
+    <td><%= prescription.medicine %></td>
+    <td><%= prescription.frequency %></td>
+    <td><%= prescription.duration %></td>
+    <td><%= prescription.route %></td>
+    <td><%= link_to 'Edit', edit_visit_prescription_path(prescription.visit, prescription), :class => "btn btn-success btn-sm" %></td>
+    <td><%= link_to 'Destroy', [prescription.visit, prescription], :class => "btn btn-danger btn-sm", :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Add New Prescription', new_visit_prescription_path(params[:visit_id]), :class => "btn btn-primary btn-lg" %>

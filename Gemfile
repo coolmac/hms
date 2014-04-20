@@ -15,6 +15,9 @@ gem 'recaptcha', :require => "recaptcha/rails"
 
 # gem 'client_side_validations'
 
+# nested resources
+gem 'nested_scaffold'
+
 #TODO check these gems
 # gem "therubyracer"
 
