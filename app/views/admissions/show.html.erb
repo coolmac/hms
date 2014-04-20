@@ -4,7 +4,6 @@
   <b>Visit:</b>
   <%= @admission.visit_id %>
 </p>
-
 <p>
   <b>Admission date:</b>
   <%= @admission.admission_date %>
@@ -36,5 +35,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_visit_admission_path(@admission.visit, @admission) %> |
-<%= link_to 'Back', visit_admissions_path(@admission.visit) %>
+<%= link_to 'Edit', edit_admission_path(@admission) %> |
+<%= link_to 'Back', show_details_path() %>

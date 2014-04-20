@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', [@admission.visit, @admission] %> |
-<%= link_to 'Back', visit_admissions_path(@admission.visit) %>
+<%= link_to 'Show', @admission %> |
+<%= link_to 'Back', admissions_path(@admission) %>

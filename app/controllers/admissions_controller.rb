@@ -1,10 +1,7 @@
-class AdmissionsController < ApplicationController
+class AdmissionsController < DetailsController
 
-  # GET visits/1/admissions
-  # GET visits/1/admissions.json
   def index
-    @visit = Visit.find(params[:visit_id])
-    @admissions = @visit.admissions
+    @admissions = Admission.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,11 +9,8 @@ class AdmissionsController < ApplicationController
     end
   end
 
-  # GET visits/1/admissions/1
-  # GET visits/1/admissions/1.json
   def show
-    @visit = Visit.find(params[:visit_id])
-    @admission = @visit.admissions.find(params[:id])
+    @admission = Admission.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,50 +18,45 @@ class AdmissionsController < ApplicationController
     end
   end
 
-  # GET visits/1/admissions/new
-  # GET visits/1/admissions/new.json
   def new
-    @visit = Visit.find(params[:visit_id])
-    @admission = @visit.admissions.build
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @admission }
-    end
-  end
-
-  # GET visits/1/admissions/1/edit
-  def edit
-    @visit = Visit.find(params[:visit_id])
-    @admission = @visit.admissions.find(params[:id])
-  end
-
-  # POST visits/1/admissions
-  # POST visits/1/admissions.json
-  def create
-    @visit = Visit.find(params[:visit_id])
-    @admission = @visit.admissions.build(params[:admission])
-
-    respond_to do |format|
-      if @admission.save
-        format.html { redirect_to([@admission.visit, @admission], :notice => 'Admission was successfully created.') }
-        format.json { render :json => @admission, :status => :created, :location => [@admission.visit, @admission] }
-      else
-        format.html { render :action => "new" }
-        format.json { render :json => @admission.errors, :status => :unprocessable_entity }
+    visit_id = user_session[:current_visit_id]
+    @admission = Admission.find_by_visit_id(visit_id)
+    if @admission
+      respond_to do |format|
+        format.html { render 'admissions/edit'}
+      end
+    else
+      @admission = Admission.new(:visit_id => visit_id)
+      respond_to do |format|
+        format.html # new.html.erb
       end
     end
   end
 
-  # PUT visits/1/admissions/1
-  # PUT visits/1/admissions/1.json
+  def edit
+    @admission = Admission.find(params[:id])
+  end
+
+  def create
+    visit_id = user_session[:current_visit_id]
+    params[:admission][:visit_id] = visit_id
+    @admission = Admission.new(params[:admission])
+
+    respond_to do |format|
+      if @admission.save
+        format.html { redirect_to(@admission, :notice => 'Admission was successfully created.') }
+      else
+        format.html { render :action => "new" }
+      end
+    end
+  end
+
   def update
-    @visit = Visit.find(params[:visit_id])
-    @admission = @visit.admissions.find(params[:id])
+    @admission = Admission.find(params[:id])
 
     respond_to do |format|
       if @admission.update_attributes(params[:admission])
-        format.html { redirect_to([@admission.visit, @admission], :notice => 'Admission was successfully updated.') }
+        format.html { redirect_to(@admission, :notice => 'Admission was successfully updated.') }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }
@@ -76,15 +65,12 @@ class AdmissionsController < ApplicationController
     end
   end
 
-  # DELETE visits/1/admissions/1
-  # DELETE visits/1/admissions/1.json
   def destroy
-    @visit = Visit.find(params[:visit_id])
-    @admission = @visit.admissions.find(params[:id])
+    @admission = Admission.find(params[:id])
     @admission.destroy
 
     respond_to do |format|
-      format.html { redirect_to visit_admissions_url(visit) }
+      format.html { redirect_to admissions_url(visit) }
       format.json { head :ok }
     end
   end
