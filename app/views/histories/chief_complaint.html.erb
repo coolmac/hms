@@ -1,6 +1,7 @@
+
 <body id="login" class="animated fadeInDown">
     <div id="content" class="container smart-form client-form">
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-10" style="padding-top:30px">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-10" style="padding-top:10px">
     <div class="well no-padding">
         <header>
             Formatting basic questions of super category: <%=@super_category%>,  category: <%=@category%>
@@ -19,20 +20,13 @@
 
             <% @descriptive_questions.each do |dq| %>
               <section>
-                  <h1><%= label_tag dq.title%></h1><br>
-                    <a href="#" id="descriptive_question_id_<%=dq.id%>" name="descriptive_question_id_<%=dq.id%>" data-type="textarea" data-pk="1" style="color:black">Click to edit</a>
-                    <script>
-                    $(function(){
-                        $('#descriptive_question_id_<%=dq.id%>').editable({
-                            url: '#',
-                            rows: 10
-                        });
-                    });
-                    </script>
+                  <h1><%= label_tag dq.title%></h1>
+                    <%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}"), :style=>"border-style: dotted; border-width: 3px; border-color: blue; resize: none;", :rows=>"6", :cols=>"100", :wrap=>"soft" %>
                   <br>
                   <br>
               </section>
             <% end %>
+
             <footer>
                 <%= submit_tag "Save Details", :name => 'save', :class => "btn btn-primary" %>
                 <%= submit_tag "Save and Next", :name => 'next', :class => "btn btn-success" %>
