@@ -33,7 +33,7 @@
   </div>
   <div class="field">
     <%= f.label "Entry Day " %><br />
-    <%= f.number_field :serial_number %>
+    <%= f.number_field :serial_number, :value => get_serial_number() %>
   </div>
   <div class="actions">
     <%= f.submit %>

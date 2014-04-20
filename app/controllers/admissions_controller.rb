@@ -1,12 +1,20 @@
 class AdmissionsController < DetailsController
 
+  # only allowed Url as of now
   def index
-    @admissions = Admission.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @admissions }
+    visit_id = user_session[:current_visit_id]
+    @admission = Admission.find_by_visit_id(visit_id)
+    if @admission
+      respond_to do |format|
+        format.html { render 'admissions/edit'}
+      end
+    else
+      @admission = Admission.new(:visit_id => visit_id)
+      respond_to do |format|
+        format.html { render 'admissions/new'}
+      end
     end
+
   end
 
   def show
@@ -45,7 +53,8 @@ class AdmissionsController < DetailsController
 
     respond_to do |format|
       if @admission.save
-        format.html { redirect_to(@admission, :notice => 'Admission was successfully created.') }
+        # format.html { redirect_to(@admission, :notice => 'Admission was successfully created.') }
+        format.html { redirect_to new_admission_admit_day_path(@admission)}
       else
         format.html { render :action => "new" }
       end
@@ -57,11 +66,9 @@ class AdmissionsController < DetailsController
 
     respond_to do |format|
       if @admission.update_attributes(params[:admission])
-        format.html { redirect_to(@admission, :notice => 'Admission was successfully updated.') }
-        format.json { head :ok }
+        format.html { render 'details/show'}
       else
         format.html { render :action => "edit" }
-        format.json { render :json => @admission.errors, :status => :unprocessable_entity }
       end
     end
   end

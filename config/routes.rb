@@ -4,12 +4,14 @@ Emr::Application.routes.draw do
     resources :admit_days
   end
 
+  resources :admissions
+  # match 'admissions/index', to: 'admissions#index', :as => :admissions
+
   #TODO check this out for has_one relation
   # resources :visits do
   #   resource :admission
   # end
 
-  resources :admissions
   resources :descriptions
   resources :answers
   resources :questions

@@ -1,13 +1,17 @@
 class AdmitDay < ActiveRecord::Base
   belongs_to :admission
-  attr_accessible :admit_date, :care_giver_notes, :doctor_notes, :nurse_notes, :serial_number, :treatment
+  attr_accessible :admit_date, :care_giver_notes, :doctor_notes, :nurse_notes, :serial_number, :treatment, :admission_id
   validate :validate_admission_dates
   validates :serial_number, :numericality => { :only_integer => true, :greater_than_or_equal_to => 0 }
+
+
+
+
+
   def validate_admission_dates
   	admission = self.admission
-  	associated_admit_days = admission.admit_days
+  	associated_admit_days = AdmitDay.where(:admission_id => admission.id)
 
-  	#Replace self if it's not a new record
   	if self.new_record?
 	  associated_admit_days << self
   	else
@@ -20,14 +24,14 @@ class AdmitDay < ActiveRecord::Base
 
   	ads_sorted_by_serial_number = associated_admit_days.sort_by { |a| a.serial_number }
   	ads_sorted_by_admit_date = associated_admit_days.sort_by { |a| a.admit_date}
-
   	if (ads_sorted_by_admit_date == ads_sorted_by_serial_number)
-  		# no error
-  		return true
+  	  # no error
+  	  return true
   	else
-  		errors.add(:base, "Admit Date doesn't follow the order of entry day")
-  		return false
+  	  errors.add(:base, "Admit Date doesn't follow the order of entry day")
+  	  return false
   	end
+
   end
 
 end

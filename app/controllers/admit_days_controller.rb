@@ -37,12 +37,12 @@ class AdmitDaysController < ApplicationController
 
   def create
     @admission = Admission.find(params[:admission_id])
-    @admit_day = @admission.admit_days.build(params[:admit_day])
+    params[:admit_day][:admission_id] = @admission.id
+    @admit_day = AdmitDay.new(params[:admit_day])
 
     respond_to do |format|
       if @admit_day.save
-        format.html { redirect_to([@admit_day.admission, @admit_day], :notice => 'Admit day was successfully created.') }
-        format.json { render :json => @admit_day, :status => :created, :location => [@admit_day.admission, @admit_day] }
+        format.html { redirect_to( admissions_path(), :notice => 'Admit day was successfully created.') }
       else
         format.html { render :action => "new" }
       end
