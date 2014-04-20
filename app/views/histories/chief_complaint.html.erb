@@ -19,13 +19,19 @@
 
             <% @descriptive_questions.each do |dq| %>
               <section>
-              <h1><%= label_tag dq.title%></h1>
-              <br>
-              <%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}"), :style=>"border-style: solid ; border-width: 5px; border-color: blue;", :rows=>"4", :cols=>"40" %>
-              <br>
-              <br>
+                <div class="col-lg-4 col-md-4">
+                  <h1><%= label_tag dq.title%></h1>
+                </div>
+                    <%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}"), :style=>"border-style: solid; border-width: 5px; border-color: blue;", :rows=>"2", :cols=>"60", :wrap=>"soft" %>
+                    <script type="text/javascript">
+                      $("textarea[name='descriptive_question_id_<%=dq.id%>']").on('keyup',function(){
+                      $("#review<%=dq.id%>").html($("textarea[name='descriptive_question_id_<%=dq.id%>']").val());
+                      });
+                    </script>
+                    <div id="review<%=dq.id%>" style="border-style: solid; border-width:2px;"></div>
               </section>
             <% end %>
+
             <footer>
                 <%= submit_tag "Save Details", :name => 'save', :class => "btn btn-primary" %>
                 <%= submit_tag "Save and Next", :name => 'next', :class => "btn btn-success" %>
