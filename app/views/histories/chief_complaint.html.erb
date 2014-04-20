@@ -9,17 +9,21 @@
         <fieldset>
             <% @questions.each do |q| %>
               <section>
-              <%= label_tag q.title%>
+              <h1><%= label_tag q.title%></h1>
               <br>
-              <%= select_tag "#{APP_CONFIG['question_prefix']}#{q.id}", options_from_collection_for_select(@answers, "id", "title", get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") ), include_blank: true%>
+              <%= select_tag "#{APP_CONFIG['question_prefix']}#{q.id}", options_from_collection_for_select(@answers, "id", "title", get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") ), include_blank: true, :style=>"border-style: solid ; border-width: 5px; border-color: red;"%>
+              <br>
+              <br>
               </section>
             <% end %>
 
             <% @descriptive_questions.each do |dq| %>
               <section>
-              <%= label_tag dq.title%>
+              <h1><%= label_tag dq.title%></h1>
               <br>
-              <%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}") %>
+              <%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}"), :style=>"border-style: solid ; border-width: 5px; border-color: red;", :rows=>"4", :cols=>"40" %>
+              <br>
+              <br>
               </section>
             <% end %>
             <footer>
