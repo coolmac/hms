@@ -19,11 +19,11 @@ class DetailsController < ApplicationController
     elsif params[:next] != nil
       @current_visit.update_attributes(params[:visit])
       respond_to do |format|
-        format.html 
+        format.html
       end
     else
       respond_to do |format|
-        format.html 
+        format.html
       end
     end
     # Don't render anything here
@@ -39,11 +39,11 @@ class DetailsController < ApplicationController
     elsif params[:next] != nil
       @current_visit.update_attributes(params[:visit])
       respond_to do |format|
-        format.html 
+        format.html
       end
     else
       respond_to do |format|
-        format.html 
+        format.html
       end
     end
     # Don't render anything here
@@ -51,13 +51,13 @@ class DetailsController < ApplicationController
 
   def show_all_histories
     respond_to do |format|
-      format.html { render 'details/show'} 
+      format.html { render 'details/show'}
     end
   end
 
   def show_history
     respond_to do |format|
-      format.html 
+      format.html
     end
   end
 
@@ -72,10 +72,10 @@ class DetailsController < ApplicationController
 
 
     respond_to do |format|
-      format.html { render 'details/show'} 
+      format.html { render 'details/show'}
     end
   end
-	
+
   def show
   # @visit = Visit.find(params[:visit_id])
   end
