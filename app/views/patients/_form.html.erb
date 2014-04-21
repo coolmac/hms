@@ -1,5 +1,4 @@
-<body id="login" class="animated fadeInDown">
-  <div id="content" class="container animated fadeInDown" overflow="scroll">
+<div id="content" class="animated fadeInDown" overflow="scroll">
     <%= form_for(@patient, html: { class: "smart-form client-form", role:"form" } ) do |f| %>
       <% if @patient.errors.any? %>
         <div id="error_explanation">
