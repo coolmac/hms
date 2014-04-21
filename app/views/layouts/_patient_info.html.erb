@@ -1,22 +1,20 @@
+<div id="over">
 
 <% if @show_patient_info %>
-<div class="row">
   <% if @current_patient %>
   	<div class="col-lg-2 col-md-3"></div>
 	<div class="col-md-3" style="padding-top:6px"><h4><span class="label label-success">Patient INFO - Name:</span> <%= @current_patient.first_name%></h4></div>
 	<div class="col-md-3" style="padding-top:6px"><h4><span class="label label-success">Mobile:</span> <%= @current_patient.mobile%></h4></div>
 	<div class="col-md-3" style="padding-top:6px"><h4><span class="label label-success">UHID:</span> <%= @current_patient.uhid%></h4></div>
   <% end %>
-</div>
 <% end %>
 
 
 <% if @show_visit_info %>
-	<div class="row">
 	<% if @current_visit %>
 	<div class="col-lg-2 col-md-3"></div>
-	 <div class="col-md-3" style="padding-top:6px"><h4><span class="label label-success">Visit Id:</span> <%= @current_visit.id%></h4></div>
-	 <div class="col-md-3" style="padding-top:6px"><h4><span class="label label-success">Created At:</span> <%= @current_visit.created_at%></h4></div>
+	<div class="col-md-3" style="padding-top:6px"><h1><span class="label label-success">Created At:</span> <%= @current_visit.created_at%></h4></div>
 	<% end %>
-	</div>
 <% end %>
+
+</div>

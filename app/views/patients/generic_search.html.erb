@@ -33,7 +33,7 @@
 					<td><%=fr.last_name%></td>
 					<td><%=fr.mobile%></td>
 					<td><%=fr.email%></td>
-					<td><span class="label label-success"><%= link_to 'Select', fr %></span>|<span class="label label-success"><%= link_to 'Edit', edit_patient_path(fr) %> </span></td>
+					<td><span class="label label-primary"><%= link_to 'Select', fr, :style=>"color:white" %></span>|<span class="label label-success"><%= link_to 'Edit', edit_patient_path(fr), :style=>"color:white" %> </span></td>
 				</tr>
 				<% end %>
 
