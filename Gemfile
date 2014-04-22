@@ -30,7 +30,7 @@ gem 'nested_scaffold'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 gem 'bootstrap-sass'
-gem 'font-awesome-sass'
+gem 'font-awesome-rails'
 
 gem 'cancan'
 
