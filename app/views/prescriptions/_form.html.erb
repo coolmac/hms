@@ -1,3 +1,105 @@
+<div class="smart-form client-form animated fadeInDown">
+
+<%= form_for([@prescription.visit, @prescription]) do |f| %>
+  <% if @prescription.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@prescription.errors.count, "error") %> prohibited this prescription from being saved:</h2>
+
+      <ul>
+      <% @prescription.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="col-md-2 col-lg-2"></div>
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+    <div class="well no-padding">
+        <header>
+            New Prescription
+        </header>
+
+        <fieldset>
+          <section>
+            <label class="label">Medicine</label>
+            <label class="input">
+              <input id="prescription_medicine" name="prescription[medicine]" size="30" type="text" list="list1">
+              <datalist id="list1">
+                <option value="Paracetamol">Paracetamol</option>
+                <option value="Metachlopramide">Metachlopramide</option>
+                <option value="Levocetrizine">Levocetrizine</option>
+                <option value="Domeperidone">Domeperidone</option>
+              </datalist>
+            </label>
+          </section>
+          <section>
+            <label class="label">Frequency</label>
+            <label class="input">
+              <input id="prescription_medicine" name="prescription[medicine]" size="30" type="text" list="list2">
+              <datalist id="list2">
+                <option value="OD">OD</option>
+                <option value="OM">OM</option>
+                <option value="HS">HS</option>
+                <option value="BD">BD</option>
+                <option value="TDS">TDS</option>
+                <option value="QID">QID</option>
+              </datalist>
+            </label>
+          </section>
+          <section>
+            <label class="label">Duration</label>
+            <label class="input">
+              <input id="prescription_duration" name="prescription[duration]" size="30" type="text" list="list3">
+              <datalist id="list3">
+                <option value="1day">1day</option>
+                <option value="2days">2days</option>
+                <option value="3days">3days</option>
+                <option value="4to6days">4-6days</option>
+                <option value="1week">1week</option>
+                <option value="2weeks">2weeks</option>
+                <option value="3weeks">3weeks</option>
+                <option value="1month">1month</option>
+                <option value="2months">2months</option>
+                <option value="3months">3months</option>
+                <option value="6months">6months</option>
+                <option value="1year">1year</option>
+              </datalist>
+            </label>
+          </section>
+          <section>
+            <label class="label">Route</label>
+            <label class="input">
+              <input id="prescription_route" name="prescription[route]" size="30" type="text" list="list4">
+              <datalist id="list4">
+                <option value="im">im</option>
+                <option value="iv">iv</option>
+                <option value="po">po</option>
+                <option value="pr">pr</option>
+                <option value="intramuscular">intramuscular</option>
+                <option value="intravenous">intravenous</option>
+                <option value="per-oral">per oral</option>
+                <option value="per-rectal">per rectal</option>
+              </datalist>
+            </label>
+          </section>
+          <footer>
+            <input class="btn btn-primary" name="commit" type="submit" value="Create Prescription">
+          </footer>
+        </fieldset>
+    </div>
+</div>
+<% end %>
+
+</div>
+
+<!--
+<input id="prescription_frequency" name="prescription[frequency]" size="30" type="text">
+<input id="prescription_duration" name="prescription[duration]" size="30" type="text">
+<input id="prescription_route" name="prescription[route]" size="30" type="text">
+<input name="commit" type="submit" value="Create Prescription">
+ -->
+<!--
 <%= form_for([@prescription.visit, @prescription]) do |f| %>
   <% if @prescription.errors.any? %>
     <div id="error_explanation">
@@ -31,3 +133,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+ -->
