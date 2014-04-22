@@ -21,7 +21,7 @@ test:
   adapter: postgresql
   encoding: utf8
   reconnect: false
-  database: emr_test
+  database: emr_testdfsd
   pool: 5
   username: root
   password:

@@ -27,9 +27,11 @@ gem 'nested_scaffold'
 #TODO check these gems
 # gem "therubyracer"
 
-# Use SCSS for stylesheets
-gem 'sass-rails'
+# Use SCSS for stylesheets - setting exact version for compatibility with Heroku
+gem 'sass-rails', '3.1.4'
 gem 'bootstrap-sass'
+
+# changed font-awesome-sass to font-awesome-rails for heroku
 gem 'font-awesome-rails'
 
 gem 'cancan'
