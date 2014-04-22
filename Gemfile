@@ -28,8 +28,8 @@ gem 'nested_scaffold'
 # gem "therubyracer"
 
 # Use SCSS for stylesheets - setting exact version for compatibility with Heroku
-gem 'sass-rails', '3.1.4'
-gem 'bootstrap-sass'
+# gem 'sass-rails', '3.1.5'
+# gem 'bootstrap-sass'
 
 # changed font-awesome-sass to font-awesome-rails for heroku
 gem 'font-awesome-rails'
