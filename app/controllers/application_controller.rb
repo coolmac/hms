@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def select_views_in_layout
     @show_patient_info = true
-    @show_visit_info = true
+    @show_visit_info = false
     @show_header = false
     @show_left_bar = false
     @leave_space_for_left_bar = false
