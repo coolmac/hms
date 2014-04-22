@@ -10,14 +10,16 @@
 
 <%= render 'layouts/header'%>
 
+<% if @show_visit_info %>
 <%= render 'layouts/patient_info'%>
+<% end %>
 
 <% if @show_left_bar %>
 	<%= render 'layouts/left_bar'%>
 <% end %>
 
 <% if @leave_space_for_left_bar %>
-	<div id="main" role="main">
+<div id="main" role="main">
 <% end %>
 
 <%= yield %>

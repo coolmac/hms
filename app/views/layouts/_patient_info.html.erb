@@ -1,6 +1,7 @@
+
 <div id="over">
-<div class="col-lg-2 col-md-3"></div>
-<article class="col-sm-12 col-md-8 col-lg-6">
+<div class="col-lg-3 col-md-3"></div>
+<article class="col-sm-12 col-md-8 col-lg-8">
   <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3" data-widget-editbutton="false">
 	<header>
 	  <span class="widget-icon"> <i class="fa fa-group"></i> </span>
@@ -19,18 +20,14 @@
 		</thead>
 		<tbody>
           <tr class="info">
-          	<% if @show_patient_info %>
   			  <% if @current_patient %>
 	          	<td><%= @current_patient.uhid%></td>
 	          	<td><%= @current_patient.first_name%></td>
 	          	<td><%= @current_patient.mobile%></td>
 	          <% end %>
-			<% end %>
-			<% if @show_visit_info %>
 			  <% if @current_visit %>
 	          	<td><%= @current_visit.created_at%></td>
 	          <% end %>
-			<% end %>
           </tr>
         </tbody>
       </table>
@@ -40,20 +37,3 @@
 
 </div>
 
-
-<!-- <% if @show_patient_info %>
-  <% if @current_patient %>
-  	<div class="col-lg-2 col-md-3"></div>
-	<div class="col-md-3" style="padding-top:6px"><h4><span class="label label-success">Patient INFO - Name:</span> <%= @current_patient.first_name%></h4></div>
-	<div class="col-md-3" style="padding-top:6px"><h4><span class="label label-success">Mobile:</span> <%= @current_patient.mobile%></h4></div>
-	<div class="col-md-3" style="padding-top:6px"><h4><span class="label label-success">UHID:</span> <%= @current_patient.uhid%></h4></div>
-  <% end %>
-<% end %>
-
-
-<% if @show_visit_info %>
-	<% if @current_visit %>
-	<div class="col-lg-2 col-md-3"></div>
-	<div class="col-md-3" style="padding-top:6px"><h1><span class="label label-success">Created At:</span> <%= @current_visit.created_at%></h4></div>
-	<% end %>
-<% end %> -->
