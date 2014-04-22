@@ -27,7 +27,7 @@
           <td><%= prescription.duration %></td>
           <td><%= prescription.route %></td>
           <td><%= link_to 'Edit', edit_visit_prescription_path(prescription.visit, prescription), :class => "btn btn-success btn-sm" %></td>
-          <td><%= link_to 'Destroy', [prescription.visit, prescription], :class => "btn btn-danger btn-sm", :confirm => 'Are you sure?', :method => :delete %></td>
+          <td><%= link_to 'Remove', [prescription.visit, prescription], :class => "btn btn-danger btn-sm", :confirm => 'Are you sure?', :method => :delete %></td>
         </tr>
       <% end %>
     </table>
