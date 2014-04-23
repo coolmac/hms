@@ -245,15 +245,24 @@ end
 
 
 
-
-
-
 def create_test_users
   puts "Creating test users ++++++++++++++++++++++++++++"
   if (test_user = User.find_by_email("akhilsikri@gmail.com")).nil?
     test_user = User.create!(
       :name => "Akhil Sikri",
       :email => "akhilsikri@gmail.com",
+      :password => 'password123',
+      :role => 'doctor'
+    )
+    test_user.confirmed_at = Time.now
+    test_user.save!
+  end
+  puts "Created test user for akhilsikri@gmail.com"
+
+  if (test_user = User.find_by_email("genauthpvtltd@gmail.com")).nil?
+    test_user = User.create!(
+      :name => "GenAuth Pvt. Ltd.",
+      :email => "genauthpvtltd@gmail.com",
       :password => 'password123',
       :role => 'doctor'
     )
