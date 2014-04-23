@@ -8,11 +8,14 @@
 /*
 	 * MAIN
 	 */
+#over-the-top {
+  z-index: 100000000;
+  position: relative;
+}
 #over {
   z-index: 10000000;
   position: relative;
 }
-
 article.sortable-grid {
   min-height: 30px;
 }

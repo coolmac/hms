@@ -13,175 +13,115 @@
 
   <nav>
 	<ul>
-	  <li class="active">
+	  <li>
 		<a href="/" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Home</span></a>
-	  </li>
-
-	  <li class="active">
-		<a href="/patients"><i class="fa fa-lg fa-fw fa-group"></i> <span class="menu-item-parent">Patients</span></a>
 	  </li>
 
 	  <li>
 	  	<div class="panel-heading" style="padding:0px">
-		<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i>  <span class="menu-item-parent">Graphs</span>
+		<a href="#"><i class="fa fa-lg fa-fw fa-group"></i>  <span class="menu-item-parent">Managing Patients</span>
 		  <b class="collapse-sign" data-toggle="collapse" href="#a1">
-		  	<i class="fa fa-fw fa-align-justify"></i>
+		  	<i class="fa fa-fw fa-bars"></i>
 		  </b>
 		</a>
 		  <div id="a1" class="panel-collapse collapse">
 		  	<div class="panel-body" style="padding:0px">
-			  <a href="flot.html"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Flot Chart</a>
-			  <a href="morris.html"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Morris Charts</a>
-			  <a href="inline-charts.html"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Inline Charts</a>
+			  <a href="/patients/new"><i class="fa fa-fw fa-arrow-circle-o-right"></i> New Patient</a>
+			  <a href="/patients/search"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Search Patient</a>
+			  <a href="/patients"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Current Patients</a>
 		    </div>
 	      </div>
 		</div>
 	  </li>
 
 	  <li>
-		<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Tables</span></a>
-		  <ul>
-			<li>
-			  <a href="table.html">Normal Tables</a>
-			</li>
-			<li>
-			  <a href="datatables.html">Data Tables</a>
-		    </li>
-		  </ul>
+	  	<div class="panel-heading" style="padding:0px">
+		<a href="#"><i class="fa fa-lg fa-fw fa-list-alt"></i>  <span class="menu-item-parent">Visit Details</span>
+		  <b class="collapse-sign" data-toggle="collapse" href="#a2">
+		  	<i class="fa fa-fw fa-bars"></i>
+		  </b>
+		</a>
+		  <div id="a2" class="panel-collapse collapse">
+		  	<div class="panel-body" style="padding:0px">
+			  <a href="/details/show"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Main Page</a>
+			  <a href="/details/show_history"><i class="fa fa-fw fa-arrow-circle-o-right"></i> History</a>
+			  <a href="/details/show_examinations"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Examinations</a>
+			  <a href="/details/show_investigations"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Investigations</a>
+			  <a href="/follow_ups"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Follow Up</a>
+			  <a href="/admissions"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Admissions</a>
+		    </div>
+	      </div>
+		</div>
 	  </li>
 
 	  <li>
-	    <a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Forms</span></a>
-		  <ul>
-			<li>
-			  <a href="form-elements.html">Smart Form Elements</a>
-			</li>
-			<li>
-			  <a href="form-templates.html">Smart Form Layouts</a>
-			</li>
-			<li>
-			  <a href="validation.html">Smart Form Validation</a>
-			</li>
-			<li>
-			  <a href="bootstrap-forms.html">Bootstrap Form Elements</a>
-			</li>
-			<li>
-			  <a href="plugins.html">Form Plugins</a>
-			</li>
-			<li>
-			  <a href="wizard.html">Wizards</a>
-			</li>
-			<li>
-			  <a href="other-editors.html">Bootstrap Editors</a>
-			</li>
-			<li>
-			  <a href="dropzone.html">Dropzone <span class="badge pull-right inbox-badge bg-color-yellow">new</span></a>
-			</li>
-		  </ul>
+	  	<div class="panel-heading" style="padding:0px">
+		<a href="#"><i class="fa fa-lg fa-fw fa-calendar"></i> <span class="menu-item-parent">History</span>
+		  <b class="collapse-sign" data-toggle="collapse" href="#a3">
+		  	<i class="fa fa-fw fa-bars"></i>
+		  </b>
+		</a>
+		  <div id="a3" class="panel-collapse collapse">
+		  	<div class="panel-body" style="padding:0px">
+			  <a href="/details/history/chief_complaint"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Chief Complaint</a>
+			  <a href="/details/history/past-medical-surgical"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Past Medical Surgical</a>
+			  <a href="/details/history/fms_history"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Family Medical Surgical</a>
+			  <a href="/details/history/ps_history"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Personal/Social</a>
+			  <a href="/details/history/treatment"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Treatment</a>
+			  <a href="/details/history/other_systems"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Other Systems</a>
+		    </div>
+	      </div>
+		</div>
 	  </li>
 
 	  <li>
-		<a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">UI Elements</span></a>
-		  <ul>
-			<li>
-			  <a href="general-elements.html">General Elements</a>
-			</li>
-			<li>
-			  <a href="buttons.html">Buttons</a>
-			</li>
-			<li>
-			  <a href="#">Icons</a>
-		      <ul>
-				<li>
-				  <a href="fa.html"><i class="fa fa-plane"></i> Font Awesome</a>
-				</li>
-				<li>
-				  <a href="glyph.html"><i class="glyphicon glyphicon-plane"></i> Glyph Icons </a>
-				</li>
-			  </ul>
-			</li>
-			<li>
-			  <a href="grid.html">Grid</a>
-			</li>
-			<li>
-			  <a href="treeview.html">Tree View</a>
-			</li>
-			<li>
-			  <a href="nestable-list.html">Nestable Lists</a>
-			</li>
-			<li>
-			  <a href="jqui.html">JQuery UI</a>
-			</li>
-		  </ul>
+	  	<div class="panel-heading" style="padding:0px">
+		<a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Examinations</span>
+		  <b class="collapse-sign" data-toggle="collapse" href="#a4">
+		  	<i class="fa fa-fw fa-bars"></i>
+		  </b>
+		</a>
+		  <div id="a4" class="panel-collapse collapse">
+		  	<div class="panel-body" style="padding:0px">
+			  <a href="/details/examinations/gpe"><i class="fa fa-fw fa-arrow-circle-o-right"></i> General Physical Examination</a>
+			  <a href="/details/examinations/vitals"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Vitals Examination</a>
+		    </div>
+	      </div>
+		</div>
 	  </li>
 
 	  <li>
-		<a href="calendar.html"><i class="fa fa-lg fa-fw fa-calendar"><em>3</em></i> <span class="menu-item-parent">Calendar</span></a>
+	  	<div class="panel-heading" style="padding:0px">
+		<a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Investigations</span>
+		  <b class="collapse-sign" data-toggle="collapse" href="#a5">
+		  	<i class="fa fa-fw fa-bars"></i>
+		  </b>
+		</a>
+		  <div id="a5" class="panel-collapse collapse">
+		  	<div class="panel-body" style="padding:0px">
+			  <a href="/details/investigations/hemogram"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Hemogram</a>
+			  <a href="/details/investigations/lft"><i class="fa fa-fw fa-arrow-circle-o-right"></i> LFT</a>
+			  <a href="/details/investigations/rft"><i class="fa fa-fw fa-arrow-circle-o-right"></i> RFT</a>
+			  <a href="/details/investigations/glucose"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Glucose</a>
+			  <a href="/details/investigations/lipid_profile"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Lipid Profile</a>
+		    </div>
+	      </div>
+		</div>
 	  </li>
+
 	  <li>
-		<a href="widgets.html"><i class="fa fa-lg fa-fw fa-list-alt"></i> <span class="menu-item-parent">Widgets</span></a>
+	  	<div class="panel-heading" style="padding:0px">
+		<a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Admissions</span>
+		  <b class="collapse-sign" data-toggle="collapse" href="#a6">
+		  	<i class="fa fa-fw fa-bars"></i>
+		  </b>
+		</a>
+		  <div id="a6" class="panel-collapse collapse">
+		  	<div class="panel-body" style="padding:0px">
+			  <a href="/admissions"><i class="fa fa-fw fa-arrow-circle-o-right"></i>Main Page</a>
+		    </div>
+	      </div>
+		</div>
 	  </li>
-	  <li>
-		<a href="gallery.html"><i class="fa fa-lg fa-fw fa-picture-o"></i> <span class="menu-item-parent">Gallery</span></a>
-	  </li>
-	  <li>
-		<a href="gmap-xml.html"><i class="fa fa-lg fa-fw fa-map-marker"></i> <span class="menu-item-parent">Google Map Skins</span><span class="badge bg-color-greenLight pull-right inbox-badge">9</span></a>
-	  </li>
-	  <li>
-		<a href="#"><i class="fa fa-lg fa-fw fa-windows"></i> <span class="menu-item-parent">Miscellaneous</span></a>
-		  <ul>
-			<li>
-			  <a href="typography.html">Typography</a>
-			</li>
-			<li>
-			  <a href="pricing-table.html">Pricing Tables</a>
-			</li>
-			<li>
-			  <a href="invoice.html">Invoice</a>
-			</li>
-			<li>
-			  <a href="login.html" target="_top">Login</a>
-			</li>
-			<li>
-			  <a href="register.html" target="_top">Register</a>
-			</li>
-			<li>
-			  <a href="lock.html" target="_top">Locked Screen</a>
-			</li>
-			<li>
-			  <a href="error404.html">Error 404</a>
-			</li>
-			<li>
-			  <a href="error500.html">Error 500</a>
-			</li>
-			<li>
-			  <a href="blank_.html">Blank Page</a>
-			</li>
-			<li>
-			  <a href="email-template.html">Email Template</a>
-			</li>
-			<li>
-			  <a href="search.html">Search Page</a>
-			</li>
-			<li>
-			  <a href="ckeditor.html">CK Editor</a>
-			</li>
-		  </ul>
-	  </li>
-	  <li>
-		<a href="#"><i class="fa fa-lg fa-fw fa-file"></i> <span class="menu-item-parent">Other Pages</span></a>
-		  <ul>
-			<li>
-			  <a href="forum.html">Forum Layout</a>
-			</li>
-			<li>
-			  <a href="profile.html">Profile</a>
-			</li>
-			<li>
-			  <a href="timeline.html">Timeline</a>
-			</li>
-		  </ul>
-	  </li>
-	</ul>
   </nav>
 </aside>
