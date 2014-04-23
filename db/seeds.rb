@@ -259,10 +259,10 @@ def create_test_users
   end
   puts "Created test user for akhilsikri@gmail.com"
 
-  if (test_user = User.find_by_email("genauthpvtltd@gmail.com")).nil?
+  if (test_user = User.find_by_email("genauth.pvt.ltd@gmail.com")).nil?
     test_user = User.create!(
       :name => "GenAuth Pvt. Ltd.",
-      :email => "genauthpvtltd@gmail.com",
+      :email => "genauth.pvt.ltd@gmail.com",
       :password => 'password123',
       :role => 'doctor'
     )
@@ -285,9 +285,9 @@ def create_test_users
 
 end
 
+create_test_users()
 update_from_google_spreadsheet()
 
-# create_test_users()
 # populate_questions()
 # populate_answers()
 # populate_investigations()
