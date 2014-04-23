@@ -60,7 +60,7 @@ Emr::Application.configure do
   config.i18n.fallbacks = true
 
   # To avoid heroku warning - [deprecated] I18n.enforce_available_locales will default to true in the future. If you really want to skip validation of your locale you can set I18n.enforce_available_locales = false to avoid this message.
-  config.I18n.enforce_available_locales = false
+  config.i18n.enforce_available_locales = false
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
