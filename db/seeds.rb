@@ -254,7 +254,6 @@ def create_test_users
       :password => 'password123',
       :role => 'doctor'
     )
-    test_user.confirmed_at = Time.now
     test_user.save!
   end
   puts "Created test user for akhilsikri@gmail.com"
@@ -266,10 +265,9 @@ def create_test_users
       :password => 'password123',
       :role => 'doctor'
     )
-    test_user.confirmed_at = Time.now
     test_user.save!
   end
-  puts "Created test user for akhilsikri@gmail.com"
+  puts "Created test user for genauth.pvt.ltd@gmail.com"
 
   if (test_user = User.find_by_email("beartran3@gmail.com")).nil?
     test_user = User.create!(
@@ -278,7 +276,6 @@ def create_test_users
       :password => 'password123',
       :role => 'doctor'
     )
-    test_user.confirmed_at = Time.now
     test_user.save!
   end
   puts "Created test user for beartran3@gmail.com"
