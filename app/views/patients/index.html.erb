@@ -17,9 +17,9 @@
           <td><%= patient.last_name %></td>
           <td><%= patient.mobile %></td>
           <td><%= patient.email %></td>
-          <td><%= link_to 'Show', patient, :style => "color:blue" %></td>
+          <td><%= link_to 'Show', patient, :class=>"btn btn-xs btn-primary" %></td>
           <td><%= link_to 'Edit', edit_patient_path(patient), :style => "color:black" %></td>
-          <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' }, :style => "color:black"%></td>
+          <td><%= link_to 'Remove', patient, method: :delete, data: { confirm: 'Are you sure?' }, :style => "color:black"%></td>
         </tr>
       <% end %>
     </tbody>

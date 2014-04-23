@@ -55,17 +55,9 @@ a.tip:hover:after {
                 <li class="dropdown-header">
                   Managing Patients
                 </li>
-                <li>
-                  <%= link_to "New Patient", new_patient_path %>
-                </li>
-                <li>
-                  <%= link_to "Search Patient", search_patient_path %>
-                </li>
-<!--                 <li>
-                  <%= link_to "List of Patients", patients_path %>
-                </li>
- -->
-                <li class="divider"></li>
+                <li><%= link_to "New Patient", new_patient_path %></li>
+                <li><%= link_to "Search Patient", search_patient_path %></li>
+                <li><%= link_to "Current Patients", patients_path %></li>
                 <li class="dropdown-header">
                   Visit Details
                 </li>
@@ -106,7 +98,6 @@ a.tip:hover:after {
                 <li> <%= link_to 'RFT', rft_investigations_path %></li>
                 <li> <%= link_to 'Glucose', glucose_investigations_path %></li>
                 <li> <%= link_to 'Lipid Profile', lipid_profile_investigations_path %></li>
-                <li class="divider"></li>
                 <li class="dropdown-header">
                   Admissions
                 </li>
