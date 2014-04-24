@@ -37,8 +37,8 @@
 		<h1>No existing Visit of this patient</h1>
 	<% end %>
 
-<%= link_to 'Edit', edit_patient_path(@patient) %>
-<%= link_to 'Back', patients_path %>
+<%= link_to 'Edit', edit_patient_path(@patient), :class=>"btn btn-info" %>
+<%= link_to 'Back', patients_path, :class=>"btn btn-success" %>
 
 </div>
 </body>
