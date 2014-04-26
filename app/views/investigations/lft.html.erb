@@ -1,17 +1,29 @@
-<h2> Formatting basic Investigations of category: <%=@category%>,  sub_category: <%=@sub_category%></h2>
+<div id="login" class="container animated fadeInDown">
+  <div id="content" class="smart-form client-form">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10" style="padding-top:10px">
+      <div class="well no-padding">
+        <header>
+          Formatting basic Investigations of category: <%=@category%>,  sub_category: <%=@sub_category%>
+        </header>
+          <%= form_tag rft_investigations_path(:previous_category => @category, :category => 'rft') do %>
+          <fieldset>
+            <section>
+                <% @investigations.each do |dq| %>
+				    <%= label_tag dq.title%>
+				    <%= text_field_tag "#{APP_CONFIG['investigation_prefix']}#{dq.id}", get_selected_report("#{APP_CONFIG['investigation_prefix']}#{dq.id}") %>
+				    <br>
+				  <% end %>
+            </section>
 
-<%= form_tag rft_investigations_path(:previous_category => @category, :category => 'rft') do %>
-
-  <% @investigations.each do |dq| %>
-    <%= label_tag dq.title%>
-    <%= text_field_tag "#{APP_CONFIG['investigation_prefix']}#{dq.id}", get_selected_report("#{APP_CONFIG['investigation_prefix']}#{dq.id}") %>
-    <br>
-
-  <% end %>
-
-  <div class="actions">
-    <%= submit_tag 'Save', :name => 'save', :class => "btn btn-success"%>
-    <%= submit_tag 'Next', :name => 'next', :class => "btn btn-success"%>
+            <footer>
+             <div class="actions">
+			    <%= submit_tag 'Save', :name => 'save', :class => "btn btn-success"%>
+			    <%= submit_tag 'Next', :name => 'next', :class => "btn btn-info"%>
+			  </div>
+			<% end %>
+            </footer>
+          </fieldset>
+      </div>
+    </div>
   </div>
-<% end %>
-
+</div>

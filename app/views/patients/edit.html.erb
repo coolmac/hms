@@ -1,8 +1,11 @@
 <div class="animated fadeInDown" style="padding-top:5px">
-<h1>Editing patient</h1>
+<div class="alert alert-info fade in">
+	<i class="fa-fw fa fa-info"></i>
+	Editing Patient
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @patient %> |
-<%= link_to 'Back', patients_path %>
+<%= link_to 'Show', @patient, :class=>"btn btn-success" %> |
+<%= link_to 'Back', patients_path, :class=>"btn btn-info" %>
 </div>

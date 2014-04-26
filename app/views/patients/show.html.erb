@@ -27,6 +27,7 @@
 		      <div class="panel-body">
 		      	<h2>Visited on: <%=v.created_at%></h2>
 				<h2>Summary</h2>
+				<div class="btn btn-success">View Details</div>
 		      </div>
 		   </div>
 		</div>
@@ -37,8 +38,8 @@
 		<h1>No existing Visit of this patient</h1>
 	<% end %>
 
-<%= link_to 'Edit', edit_patient_path(@patient) %>
-<%= link_to 'Back', patients_path %>
+<%= link_to 'Edit', edit_patient_path(@patient), :class=>"btn btn-info" %>
+<%= link_to 'Back', patients_path, :class=>"btn btn-success" %>
 
 </div>
 </body>
