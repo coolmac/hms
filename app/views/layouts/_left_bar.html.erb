@@ -20,11 +20,14 @@
 	  <li>
 	  	<div class="panel-heading" style="padding:0px">
 		<a href="#"><i class="fa fa-lg fa-fw fa-group"></i>  <span class="menu-item-parent">Managing Patients</span>
-		  <b class="collapse-sign" data-toggle="collapse" href="#a1">
+		  <b class="collapse-sign" data-toggle="collapse" href="#patients">
 		  	<i class="fa fa-fw fa-bars"></i>
 		  </b>
 		</a>
-		  <div id="a1" class="panel-collapse collapse">
+		<!-- #TODO open sub-menu based on the page, give proper ids 		
+		#TODO to do that, you JUST need to add or remove the class "in"
+		$("#patients").addClass("in") -->
+ 		  <div id="patients" class="panel-collapse collapse">
 		  	<div class="panel-body" style="padding:0px">
 			  <a href="/patients/new"><i class="fa fa-fw fa-arrow-circle-o-right"></i> New Patient</a>
 			  <a href="/patients/search"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Search Patient</a>
@@ -37,11 +40,11 @@
 	  <li>
 	  	<div class="panel-heading" style="padding:0px">
 		<a href="/details/show"><i class="fa fa-lg fa-fw fa-list-alt"></i>  <span class="menu-item-parent">Visit Details</span>
-		  <b class="collapse-sign" data-toggle="collapse" href="#a2">
+		  <b class="collapse-sign" data-toggle="collapse" href="#visit_details">
 		  	<i class="fa fa-fw fa-bars"></i>
 		  </b>
 		</a>
-		  <div id="a2" class="panel-collapse collapse">
+		  <div id="visit_details" class="panel-collapse collapse">
 		  	<div class="panel-body" style="padding:0px">
 			  <a href="/details/show"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Main Page</a>
 			  <a href="/details/show_history"><i class="fa fa-fw fa-arrow-circle-o-right"></i> History</a>
@@ -57,11 +60,11 @@
 	  <li>
 	  	<div class="panel-heading" style="padding:0px">
 		<a href="/details/show_history"><i class="fa fa-lg fa-fw fa-calendar"></i> <span class="menu-item-parent">History</span>
-		  <b class="collapse-sign" data-toggle="collapse" href="#a3">
+		  <b class="collapse-sign" data-toggle="collapse" href="#history">
 		  	<i class="fa fa-fw fa-bars"></i>
 		  </b>
 		</a>
-		  <div id="a3" class="panel-collapse collapse">
+		  <div id="history" class="panel-collapse collapse">
 		  	<div class="panel-body" style="padding:0px">
 			  <a href="/details/history/chief_complaint"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Chief Complaint</a>
 			  <a href="/details/history/past-medical-surgical"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Past Medical Surgical</a>
@@ -77,11 +80,11 @@
 	  <li>
 	  	<div class="panel-heading" style="padding:0px">
 		<a href="/details/show_examinations"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Examinations</span>
-		  <b class="collapse-sign" data-toggle="collapse" href="#a4">
+		  <b class="collapse-sign" data-toggle="collapse" href="#examinations">
 		  	<i class="fa fa-fw fa-bars"></i>
 		  </b>
 		</a>
-		  <div id="a4" class="panel-collapse collapse">
+		  <div id="examinations" class="panel-collapse collapse">
 		  	<div class="panel-body" style="padding:0px">
 			  <a href="/details/examinations/gpe"><i class="fa fa-fw fa-arrow-circle-o-right"></i> General Physical Examination</a>
 			  <a href="/details/examinations/vitals"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Vitals Examination</a>
@@ -93,11 +96,11 @@
 	  <li>
 	  	<div class="panel-heading" style="padding:0px">
 		<a href="/details/show_investigations"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Investigations</span>
-		  <b class="collapse-sign" data-toggle="collapse" href="#a5">
+		  <b class="collapse-sign" data-toggle="collapse" href="#investigations">
 		  	<i class="fa fa-fw fa-bars"></i>
 		  </b>
 		</a>
-		  <div id="a5" class="panel-collapse collapse">
+		  <div id="investigations" class="panel-collapse collapse">
 		  	<div class="panel-body" style="padding:0px">
 			  <a href="/details/investigations/hemogram"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Hemogram</a>
 			  <a href="/details/investigations/lft"><i class="fa fa-fw fa-arrow-circle-o-right"></i> LFT</a>
@@ -112,17 +115,26 @@
 	  <li>
 	  	<div class="panel-heading" style="padding:0px">
 		<a href="/admissions"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Admissions</span>
-		  <b class="collapse-sign" data-toggle="collapse" href="#a6">
-		  	<i class="fa fa-fw fa-bars"></i>
-		  </b>
 		</a>
-		  <div id="a6" class="panel-collapse collapse">
-		  	<div class="panel-body" style="padding:0px">
-			  <a href="/admissions"><i class="fa fa-fw fa-arrow-circle-o-right"></i>Main Page</a>
-		    </div>
-	      </div>
 		</div>
 	  </li>
+
+	  <li>
+	  	<div class="panel-heading" style="padding:0px">
+		<a href="/follow_ups"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Follow Ups</span>
+		</a>
+		</div>
+	  </li>
+
+	<% if @current_visit %>
+	  <li>
+	  	<div class="panel-heading" style="padding:0px">
+		<a href="/visits/<%= @current_visit.id %>/prescriptions"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Medication</span>
+		</a>
+		</div>
+	  </li>
+	<% end %>
+
   </nav>
 </aside>
 
