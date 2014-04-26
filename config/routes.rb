@@ -45,6 +45,7 @@ Emr::Application.routes.draw do
   resources :follow_ups
 
 
+  #TODO check out shallow option
   resources :admissions do
     resources :admit_days
   end

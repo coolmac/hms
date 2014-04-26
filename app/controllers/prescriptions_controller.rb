@@ -1,4 +1,4 @@
-class PrescriptionsController < ApplicationController
+class PrescriptionsController < DetailsController
   # GET visits/1/prescriptions
   # GET visits/1/prescriptions.json
   def index
