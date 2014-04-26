@@ -11,6 +11,7 @@ Emr::Application.configure do
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
 
+  config.assets.precompile += %w( *.css *.js)
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
@@ -19,6 +20,9 @@ Emr::Application.configure do
 
   # Generate digests for assets URLs
   config.assets.digest = true
+
+  # for devise
+  config.action_mailer.default_url_options = { :host => 'hidden-island-6329.heroku.com' }
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
@@ -58,10 +62,30 @@ Emr::Application.configure do
   # the I18n.default_locale when a translation can not be found)
   config.i18n.fallbacks = true
 
+  # To avoid heroku warning - [deprecated] I18n.enforce_available_locales will default to true in the future. If you really want to skip validation of your locale you can set I18n.enforce_available_locales = false to avoid this message.
+  config.i18n.enforce_available_locales = false
+
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+
+  # Options for action mailer
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :enable_starttls_auto => true,
+      :address => "smtp.gmail.com",
+      :port => 587,
+      :domain => "genauth.com",
+      :authentication => :login,
+      :user_name => 'genauth.pvt.ltd@gmail.com',
+      :password  => 'htuaneg123' }
+
+  config.mailer = 'DeviseMailer'
+
+  
 end

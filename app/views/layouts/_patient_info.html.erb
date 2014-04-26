@@ -20,7 +20,7 @@
 		<tbody>
           <tr class="info">
   			  <% if @current_patient %>
-	          	<td><%= @current_patient.uhid%></td>
+	          	<td><%= link_to @current_patient.uhid, @current_patient, title: "Click to see All visits"%></td>
 	          	<td><%= @current_patient.first_name%></td>
 	          	<td><%= @current_patient.mobile%></td>
 	          <% end %>

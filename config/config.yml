@@ -19,6 +19,7 @@ test:
 cucumber:
   <<: *DEFAULTS
 staging:
+  <<: *DEFAULTS
   host_name: "my-staging-staging.heroku.com"
   api_username: test@example.com
   api_pass: password
@@ -28,6 +29,7 @@ staging:
     access_key_id: secret_key_id
     secret_access_key: secret_key
 production:
+  <<: *DEFAULTS
   host_name: "my-production.heroku.com"
   api_username: test@example.com
   api_pass: password

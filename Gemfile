@@ -3,15 +3,21 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '3.2.12'
 
-# Use sqlite3 as the database for Active Record
-gem 'mysql2'
+# Using postgresql on production for heroku
+gem 'pg', :group => :production
+
+# to avoid errors on heroku
+gem 'rails_12factor', group: :production
+
 
 # some useful gems
 gem 'strip_attributes'
 gem "dynamic_form"
 gem 'devise'
 gem 'fuzzily'
-gem 'recaptcha', :require => "recaptcha/rails"
+
+# Issues with recaptcha with initializer, assets:precompile
+# gem 'recaptcha', :require => "recaptcha/rails"
 
 # gem 'client_side_validations'
 
@@ -21,10 +27,12 @@ gem 'nested_scaffold'
 #TODO check these gems
 # gem "therubyracer"
 
-# Use SCSS for stylesheets
-gem 'sass-rails'
-gem 'bootstrap-sass'
-gem 'font-awesome-sass'
+# Use SCSS for stylesheets - setting exact version for compatibility with Heroku
+# gem 'sass-rails', '3.1.5'
+# gem 'bootstrap-sass'
+
+# changed font-awesome-sass to font-awesome-rails for heroku
+gem 'font-awesome-rails'
 
 gem 'cancan'
 
@@ -59,7 +67,7 @@ gem 'google_drive'
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
@@ -70,10 +78,13 @@ gem 'google_drive'
 
 
 group :development do
+	gem 'mysql2'
 	gem 'pry'
 	gem 'pry-remote'
 	gem 'pry-stack_explorer'
 	gem 'pry-debugger'
 end
 
+# As adviced on heroku
+ruby '1.9.3'
 
