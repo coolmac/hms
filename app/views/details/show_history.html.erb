@@ -1,6 +1,4 @@
-<body id="login" class="animated fadeInDown">
-    <div id="content" class="container smart-form client-form">
-
+<div id="content" class="container smart-form client-form">
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10" style="padding-top:10px">
     <div class="well no-padding">
         <header>
@@ -34,9 +32,9 @@
             </section>
             <section>
               <div class="field">
-                <!-- <%= f.label :fm_history %><br /> -->
+                <!-- <%= f.label :fms_history %><br /> -->
                 <%= link_to 'Family Medical History', fms_history_path(:category => 'fms_history', :super_category => 'history'), :class => "btn btn-primary"%>
-                <%= f.text_area :fm_history, :autofocus => true, class: "form-control", cols:4, rows:2 %>
+                <%= f.text_area :fms_history, :autofocus => true, class: "form-control", cols:4, rows:2 %>
               </div>
             </section>
             <section>
@@ -69,9 +67,7 @@
         </fieldset>
         <% end %>
     </div>
+    <br />
 </div>
 
-<br />
-<br />
-<br />
-
+<!-- #TODO why is one div container NOT being closed -->

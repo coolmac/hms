@@ -6,9 +6,12 @@
           Formatting basic questions of super category: <%=@super_category%>,  category: <%=@category%>
         </header>
 		<%= form_tag treatment_history_path(:previous_category => @category, :previous_super_category => @super_category, :category => 'treatment_history', :super_category => 'history') do %>
-		  <fieldset>
-		    <%= render 'form' %>
-		  </fieldset>
+        <section>
+        <%= text_area_tag :ps_history, @current_visit.ps_history, :autofocus => true, class: "form-control", cols:4, rows:2 %>
+        </section>
+        <fieldset>
+          <%= render 'form' %>
+        </fieldset>
 		<% end %>      
 	  </div>
     </div>
