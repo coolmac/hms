@@ -14,7 +14,7 @@
 			<th><i class="fa fa-medkit"></i> UHID</th>
 			<th><i class="fa fa-user"></i> Patients's Name</th>
 			<th><i class="fa fa-mobile"></i> Mobile Number</th>
-			<th><i class="fa fa-calendar"></i> Created at</th>
+			<th><i class="fa fa-calendar"></i> Visit Date</th>
 		  </tr>
 		</thead>
 		<tbody>
@@ -25,7 +25,7 @@
 	          	<td><%= @current_patient.mobile%></td>
 	          <% end %>
 			  <% if @current_visit %>
-	          	<td><%= @current_visit.created_at%></td>
+	          	<td><%= @current_visit.created_at.strftime("%d-%m-%Y (%A)")%></td>
 	          <% end %>
           </tr>
         </tbody>
