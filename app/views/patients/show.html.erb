@@ -9,7 +9,8 @@
         <th>Gender</th>
         <th>Mobile</th>
         <th>Email</th>
-        <th>Patient ID</th>
+        <th>Patient Type</th>
+        <th>Patient IDtype & Number</th>
         <th>Reference Name</th>
         <th>Reference Number</th>
         <th>Emergency Name</th>
@@ -24,6 +25,7 @@
           <td><%= @patient.mobile %></td>
           <td><%= @patient.email %></td>
           <td><%= @patient.patient_type %></td>
+          <td><%= @patient.id_type %> <%= @patient.id_number %></td>
           <td><%= @patient.reference_name %></td>
           <td><%= @patient.reference_mobile %></td>
           <td><%= @patient.emergency_name %></td>
