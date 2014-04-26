@@ -1,6 +1,15 @@
 class ExaminationsController < DetailsController
 
+  # previous category is vitals
   def main
+  	vitals_description = params[:vitals]
+  	if vitals_description
+  	  if @current_visit.vitals != vitals_description
+  	  	@current_visit.vitals = vitals_description
+  	  	@current_visit.save
+  	  end
+  	end
+
 	update_details()
 
 	if params[:save] != nil
@@ -35,6 +44,14 @@ class ExaminationsController < DetailsController
 
 
   def vitals
+  	gpe_description = params[:gpe]
+  	if gpe_description
+  	  if @current_visit.gpe != gpe_description
+  	  	@current_visit.gpe = gpe_description
+  	  	@current_visit.save
+  	  end
+  	end
+	
 	update_details()
 
 	if params[:save] != nil

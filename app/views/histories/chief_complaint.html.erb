@@ -8,6 +8,7 @@
           <%= form_tag pms_history_path(:previous_category => @category, :previous_super_category => @super_category, :category => 'pms_history', :super_category => 'history') do %>
           <fieldset>
             <section>
+            <%= label_tag 'description', 'Description' %>
             <%= text_area_tag :chief_complaint, @current_visit.chief_complaint, :autofocus => true, class: "form-control", cols:4, rows:2 %>
             </section>
             <%= render 'form' %>

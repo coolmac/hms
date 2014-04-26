@@ -7,6 +7,7 @@
         </header>
 		<%= form_tag fms_history_path(:previous_category => @category, :previous_super_category => @super_category, :category => 'fms_history', :super_category => 'history') do %>
         <section>
+        <%= label_tag 'description', 'Description' %>
         <%= text_area_tag :pms_history, @current_visit.pms_history, :autofocus => true, class: "form-control", cols:4, rows:2 %>
         </section>
   		  <fieldset>
