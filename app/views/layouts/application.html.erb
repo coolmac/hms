@@ -12,9 +12,6 @@
 <%= render 'layouts/header'%>
 <% end %>
 
-<% if @show_visit_info %>
-<%= render 'layouts/patient_info'%>
-<% end %>
 
 <% if @show_left_bar %>
 	<%= render 'layouts/left_bar'%>
@@ -25,6 +22,10 @@
 <div id="main" role="main">
 <% end %>
   
+  <% if @show_visit_info %>
+  <%= render 'layouts/patient_info'%>
+  <% end %>
+
   <%= render 'layouts/messages' %>
   <%= yield %>
 
