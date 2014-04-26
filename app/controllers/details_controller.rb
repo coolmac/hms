@@ -49,13 +49,9 @@ class DetailsController < ApplicationController
     # Don't render anything here
   end
 
-  def show_all_histories
-    respond_to do |format|
-      format.html { render 'details/show'}
-    end
-  end
-
   def show_history
+    
+    
     respond_to do |format|
       format.html
     end

@@ -1,26 +1,16 @@
-<h2> Formatting basic questions of super category: <%=@super_category%>,  category: <%=@category%></h2>
-
-</table>
-
-<%= form_tag main_history_path(:previous_category => @category, :previous_super_category => @super_category, :category => 'other_systems_history', :super_category => 'history') do %>
-
-  <% @questions.each do |q| %>
-    <%= label_tag q.title%>
-	<%= select_tag "#{APP_CONFIG['question_prefix']}#{q.id}", options_from_collection_for_select(@answers, "id", "title", get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") ), include_blank: true%>
-    <br>
-  <% end %>
-
-  <% @descriptive_questions.each do |dq| %>
-    <%= label_tag dq.title%>
-	<%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}") %>
-    <br>
-  <% end %>
-  <%= submit_tag "Save Details", :name => 'save' %>
-  <%= submit_tag "Save and Return", :name => 'exit' %>
-<% end %>
-
-
-<br>
-<br>
-<br>
-<br>
+<div id="login" class="container animated fadeInDown">
+  <div id="content" class="smart-form client-form">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10" style="padding-top:10px">
+      <div class="well no-padding">
+        <header>
+          Formatting basic questions of super category: <%=@super_category%>,  category: <%=@category%>
+        </header>
+		<%= form_tag main_history_path(:previous_category => @category, :previous_super_category => @super_category, :category => 'other_systems_history', :super_category => 'history') do %>
+		  <fieldset>
+		    <%= render 'form' %>
+		  </fieldset>
+		<% end %>
+      </div>
+    </div>
+  </div>
+</div>

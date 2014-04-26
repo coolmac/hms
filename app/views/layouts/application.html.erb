@@ -8,7 +8,9 @@
 </head>
 <body>
 
+<% if @show_header %>
 <%= render 'layouts/header'%>
+<% end %>
 
 <% if @show_visit_info %>
 <%= render 'layouts/patient_info'%>
