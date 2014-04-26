@@ -1,13 +1,16 @@
 <body id="login" class="animated fadeInDown">
 	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Patient Name:</b>
-  <%= @patient.first_name %>
-</p>
+  <%= @patient.first_name %> <%= @patient.last_name %>
 
+</p>
+<%= link_to 'Edit Registration Details', edit_patient_path(@patient), :class=>"btn btn-info" %>
+
+<br>
+<br>
+<br>
 <%= link_to "Create NEW Visit", create_new_visit_path(), :class => "btn btn-primary active"%>
 
 <% if @visits.size > 0 %>
@@ -37,9 +40,6 @@
 	<% else %>
 		<h1>No existing Visit of this patient</h1>
 	<% end %>
-
-<%= link_to 'Edit', edit_patient_path(@patient), :class=>"btn btn-info" %>
-<%= link_to 'Back', patients_path, :class=>"btn btn-success" %>
 
 </div>
 </body>
