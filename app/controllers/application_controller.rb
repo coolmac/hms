@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :authenticate_and_set_user, :select_views_in_layout
   # :set_patient, :set_visit, 
-  after_filter :post_test
+  # after_filter :post_test
 
   def authenticate_and_set_user
   	authenticate_user!
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   def set_patient
     if user_session
       if user_session[:current_patient_id] == nil
-        redirect_to root_path
+        redirect_to root_path, :flash => {:error => "No Patient has been selected yet!"}
       else
         @current_patient = Patient.find user_session[:current_patient_id]
       end
@@ -42,10 +42,10 @@ class ApplicationController < ActionController::Base
             user_session[:current_visit_id] = params[:visit_id]
             @current_visit = Visit.find params[:visit_id]
           else
-            redirect_to patient_path(user_session[:current_patient_id])
+            redirect_to patient_path(user_session[:current_patient_id]), :flash => {:error => "No Visit has been selected for this patient yet!"}
           end
         else
-          redirect_to root_path
+          redirect_to root_path, :flash => {:error => "No Patient has been selected yet!"}
         end
       else
         @current_visit = Visit.find user_session[:current_visit_id]

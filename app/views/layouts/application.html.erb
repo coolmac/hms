@@ -18,11 +18,13 @@
 	<%= render 'layouts/left_bar'%>
 <% end %>
 
+
 <% if @leave_space_for_left_bar %>
 <div id="main" role="main">
 <% end %>
-
-<%= yield %>
+  
+  <%= render 'layouts/messages' %>
+  <%= yield %>
 
 <% if @leave_space_for_left_bar %>
 </div>
