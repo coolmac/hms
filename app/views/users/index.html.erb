@@ -1,30 +1,24 @@
-<body id="login" class="animated fadeInDown">
-<div id="content" class="container smart-form client-form">
+<div id="content" class="container smart-form client-form animated fadeInDown">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="well no-padding">
+      <header>
+        <h1>Welcome <%=@user.name%></h1>
+      </header>
+        <fieldset>
+          <section>
+            <br>
+  		  <% if can? :create, @patient %>
+  		  <%= link_to 'New Patient', new_patient_path, :class => "btn btn-primary btn-lg" %>
+  		  <% end %>
+  		  <%= link_to 'Existing Patient', search_patient_path, :class => "btn btn-info btn-lg" %>
+  		  <br />
+  		  <br />
+  		  <br />
+  		  <br />
+          </section>
+        </fieldset>
 
-<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-  <div class="well no-padding">
-    <header>
-      <h1>Welcome <%=@user.name%></h1>
-    </header>
-      <fieldset>
-        <section>
-          <br>
-		  <% if can? :create, @patient %>
-		  <%= link_to 'New Patient', new_patient_path, :class => "btn btn-primary btn-lg" %>
-		  <% end %>
-		  <%= link_to 'Existing Patient', search_patient_path, :class => "btn btn-info btn-lg" %>
-		  <br />
-		  <br />
-		  <br />
-		  <br />
-        </section>
-      </fieldset>
-
+    </div>
   </div>
 </div>
-
-</div>
-
-</body>
-
 
