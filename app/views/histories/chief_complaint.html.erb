@@ -9,13 +9,12 @@
           <fieldset>
             <section>
             <h3><%= label_tag 'description', 'Description' %></h3>
-            <%= text_area_tag :chief_complaint, @current_visit.chief_complaint, :autofocus => true, class: "dashed-input1 col-lg-12 col-md-12 col-sm-12 col-xs-12", rows:4 %>
+            <%= text_area_tag :chief_complaint, @current_visit.chief_complaint, :autofocus => true, :class=>"dashed-input1 col-lg-12 col-md-12 col-sm-12 col-xs-12", rows:4 %>
             </section>
             <br>
             <br>
             <br>
             <br>
-
             <%= render 'form' %>
           </fieldset>
           <% end %>

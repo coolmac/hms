@@ -6,11 +6,15 @@
           Formatting basic questions of super category: <%=@super_category%>,  category: <%=@category%>
         </header>
           <%= form_tag ps_history_path(:previous_category => @category, :previous_super_category => @super_category, :category => 'ps_history', :super_category => 'history') do %>
-          <section>
-            <%= label_tag 'description', 'Description' %>
-          <%= text_area_tag :fms_history, @current_visit.fms_history, :autofocus => true, class: "form-control", cols:4, rows:2 %>
-          </section>
           <fieldset>
+            <section>
+            <h3><%= label_tag 'description', 'Description' %></h3>
+            <%= text_area_tag :fms_history, @current_visit.fms_history, :autofocus => true, :class=>"dashed-input1 col-lg-12 col-md-12 col-sm-12 col-xs-12", rows:4 %>
+            </section>
+            <br>
+            <br>
+            <br>
+            <br>
             <%= render 'form' %>
           </fieldset>
           <% end %>
