@@ -1,0 +1,6 @@
+.dashed-input1{
+	border-style: dashed;
+	border-width: 1px;
+	border-color: gray;
+	resize: none;
+}
