@@ -11,15 +11,8 @@
     </div>
   <% end %>
 
-  <script>
-  $(function() {
-    $( "#datepicker" ).datepicker();
-  });
-  </script>
-</head>
-<body>
-
-<p>Date: <input type="text" id="datepicker"></p>
+<!-- id="follow_up_follow_up_date_1i" name="follow_up[follow_up_date(1i)]"　-->
+<p>Date: <input type="text" id="datepicker" name="follow_up_date"></p>
 
   <div class="field">
     <%= f.label :follow_up_date %><br />
@@ -37,3 +30,9 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
