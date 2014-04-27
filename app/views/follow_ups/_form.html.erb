@@ -11,9 +11,13 @@
     </div>
   <% end %>
 
+<!-- id="follow_up_follow_up_date_1i" name="follow_up[follow_up_date(1i)]"　-->
+<!-- <p>Date: <input type="text" id="datepicker" name="follow_up_date"></p> -->
+
   <div class="field">
     <%= f.label :follow_up_date %><br />
-    <%= f.datetime_select :follow_up_date %>
+    <!--  <%= f.datetime_select :follow_up_date %> -->
+    <%= f.text_field :follow_up_date, :id => 'datepicker' %>
   </div>
   <div class="field">
     <%= f.label :final_diagnosis %><br />
@@ -27,3 +31,9 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>

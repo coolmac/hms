@@ -10,8 +10,10 @@
 
     <% @descriptive_questions.each do |dq| %>
       <section>
-          <h1><%= label_tag dq.title%></h1>
-            <%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}"), :style=>"border-style: dotted; border-width: 3px; border-color: blue; resize: none;", :rows=>"6", :cols=>"100", :wrap=>"soft" %>
+          <h3><%= label_tag dq.title%></h3>
+            <%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}"), :style=>"border-style: dashed; border-width: 1px; border-color: gray; resize: none;", :rows=>"4", :class=>"col-lg-12 col-md-12 col-sm-12 col-xs-12", :wrap=>"soft" %>
+          <br>
+          <br>
           <br>
           <br>
       </section>

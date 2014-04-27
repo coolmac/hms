@@ -1,5 +1,19 @@
-<h1>New follow_up</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', follow_ups_path %>
+<div id="login" class="container animated fadeInDown">
+  <div id="content" class="smart-form client-form">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10" style="padding-top:10px">
+      <div class="well no-padding">
+        <header>
+          New Follow Up
+        </header>
+          <fieldset>
+          	<section>
+			  <%= render 'form' %>
+          	</section>
+            <footer>
+			  <%= link_to 'Back', follow_ups_path, :class=>"btn btn-success" %>
+            </footer>
+          </fieldset>
+      </div>
+    </div>
+  </div>
+</div>
