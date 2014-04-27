@@ -7,21 +7,8 @@
         </header>
           <%= form_tag lipid_profile_investigations_path(:previous_category => @category, :category => 'lipid_profile') do %>
           <fieldset>
-            <section>
-                <% @investigations.each do |dq| %>
-				    <%= label_tag dq.title%>
-				    <%= text_field_tag "#{APP_CONFIG['investigation_prefix']}#{dq.id}", get_selected_report("#{APP_CONFIG['investigation_prefix']}#{dq.id}") %>
-				    <br>
-				  <% end %>
-            </section>
-
-            <footer>
-                <div class="actions">
-				    <%= submit_tag 'Save', :name => 'save', :class => "btn btn-success"%>
-				    <%= submit_tag 'Next', :name => 'next', :class => "btn btn-info"%>
-				  </div>
-			<% end %>
-            </footer>
+            <%= render 'form' %>
+          <% end %>
           </fieldset>
       </div>
     </div>
