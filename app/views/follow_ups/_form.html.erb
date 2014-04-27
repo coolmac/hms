@@ -11,6 +11,16 @@
     </div>
   <% end %>
 
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+</head>
+<body>
+
+<p>Date: <input type="text" id="datepicker"></p>
+
   <div class="field">
     <%= f.label :follow_up_date %><br />
     <%= f.datetime_select :follow_up_date %>

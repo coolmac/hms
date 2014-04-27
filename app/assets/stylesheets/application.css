@@ -13,5 +13,6 @@
 *= require font-awesome
 *= require smartadmin-production
 *= require bootstrap-editable
+*= require jquery-ui
 *= require_tree .
 */
