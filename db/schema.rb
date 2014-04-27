@@ -68,31 +68,8 @@ ActiveRecord::Schema.define(:version => 20140426132130) do
     t.datetime "updated_at",      :null => false
   end
 
-  create_table "chief_complaints", :force => true do |t|
-    t.text     "symptom"
-    t.text     "onset"
-    t.text     "duration"
-    t.text     "course"
-    t.text     "severity"
-    t.text     "precipitating_factors"
-    t.text     "relieving_factors"
-    t.text     "associated_features"
-    t.text     "previous_episodes"
-    t.text     "free_text"
-    t.integer  "visit_id"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
-  end
-
   create_table "departments", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "descriptions", :force => true do |t|
-    t.text     "title"
-    t.integer  "visit_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -102,20 +79,6 @@ ActiveRecord::Schema.define(:version => 20140426132130) do
     t.string   "sub_category"
     t.string   "category"
     t.string   "super_category"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
-  create_table "fm_histories", :force => true do |t|
-    t.integer  "visit_id"
-    t.integer  "diabetes"
-    t.integer  "hypertension"
-    t.integer  "hyperlipidemia"
-    t.integer  "tuberculosis"
-    t.integer  "stroke"
-    t.integer  "asthma"
-    t.integer  "surgery"
-    t.text     "free_text"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
@@ -159,15 +122,14 @@ ActiveRecord::Schema.define(:version => 20140426132130) do
 
   create_table "patients", :force => true do |t|
     t.string   "first_name"
+    t.string   "last_name"
     t.string   "mobile"
     t.string   "husband_name"
     t.string   "father_name"
     t.integer  "age"
-    t.integer  "integer"
     t.string   "gender"
     t.datetime "date_of_registration"
     t.string   "middle_name"
-    t.string   "last_name"
     t.datetime "date_of_birth"
     t.string   "reference_mobile"
     t.string   "reference_name"
@@ -186,20 +148,6 @@ ActiveRecord::Schema.define(:version => 20140426132130) do
     t.datetime "updated_at",              :null => false
     t.string   "email"
     t.string   "uhid"
-  end
-
-  create_table "pms_histories", :force => true do |t|
-    t.integer  "visit_id"
-    t.integer  "diabetes"
-    t.integer  "hypertension"
-    t.integer  "hyperlipidemia"
-    t.integer  "tuberculosis"
-    t.integer  "stroke"
-    t.integer  "asthma"
-    t.integer  "surgery"
-    t.text     "free_text"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
   end
 
   create_table "prescriptions", :force => true do |t|
@@ -221,7 +169,6 @@ ActiveRecord::Schema.define(:version => 20140426132130) do
     t.string   "sub_category"
     t.string   "category"
     t.string   "super_category"
-    t.string   "answer_type"
   end
 
   create_table "sessions", :force => true do |t|
