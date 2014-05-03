@@ -34,7 +34,7 @@ Emr::Application.routes.draw do
   match 'details/investigations/lipid_profile', to: 'investigations#lipid_profile', :as => :lipid_profile_investigations, category: "lipid_profile"
 
   #TODO Allow visits/new only for put method
-  match 'visits/create', to: 'visits#create', as: :create_new_visit
+  match 'visits/create_new_visit', to: 'visits#create_new_visit', as: :create_new_visit
   match 'patients/search', to: 'patients#search', as: :search_patient
   match 'patients/generic_search', to: 'patients#generic_search', as: :generic_search_patient
 

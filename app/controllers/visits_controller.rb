@@ -9,8 +9,7 @@ class VisitsController < ApplicationController
     @leave_space_for_left_bar = true
   end
 
-  #TODO patients/create_new_visit should come up here
-  def create
+  def create_new_visit
     @current_visit = Visit.create({:patient_id => user_session[:current_patient_id]})
     user_session[:current_visit_id] = @current_visit.id
     respond_to do |format|

@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   def set_patient
     if user_session
       if user_session[:current_patient_id] == nil
-        redirect_to root_path, :flash => {:error => "No Patient has been selected yet!"}
+        redirect_to root_path, :flash => {:error => "No Patient has been selected yet!"} and return
       else
         @current_patient = Patient.find user_session[:current_patient_id]
       end
@@ -42,10 +42,10 @@ class ApplicationController < ActionController::Base
             user_session[:current_visit_id] = params[:visit_id]
             @current_visit = Visit.find params[:visit_id]
           else
-            redirect_to patient_path(user_session[:current_patient_id]), :flash => {:error => "No Visit has been selected for this patient yet!"}
+            redirect_to patient_path(user_session[:current_patient_id]), :flash => {:error => "No Visit has been selected for this patient yet!"} and return
           end
         else
-          redirect_to root_path, :flash => {:error => "No Patient has been selected yet!"}
+          redirect_to root_path, :flash => {:error => "No Patient has been selected yet!"} and return
         end
       else
         @current_visit = Visit.find user_session[:current_visit_id]
