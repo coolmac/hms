@@ -1,44 +1,40 @@
-<body id="login">
-    <div id="content" class="container smart-form client-form animated fadeInDown">
-
-<div class="col-md-2 col-lg-2"></div>
-<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+<div id="content" class="smart-form client-form animated fadeInDown">
+  <div class="col-md-2 col-lg-2"></div>
+  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
     <div class="well no-padding">
-        <header>
-            Search Patients
-        </header>
-
-        <fieldset>
-            <section>
-                <br>
-                    <%= form_tag("/patients/generic_search", method: "get") do %>
-                        <div class="inline-group">
-                            <label class="radio">
-                                <input type="radio" name="radio-inline" value="uhid">
-                                <i></i>UHID</label>
-                            <label class="radio">
-                                <input type="radio" name="radio-inline" checked="checked" value="first_name">
-                                <i></i>First Name</label>
-                            <label class="radio">
-                                <input type="radio" name="radio-inline" value="mobile">
-                                <i></i>Mobile Number</label>
-                            <label class="radio">
-                                <input type="radio" name="radio-inline" value="email">
-                                <i></i>Email address</label>
-                        </div><br>
-                            <div class="form-group">
-                                <label for="search" class="input"> 
-                                <input type="text" name="search_input" placeholder="Type here">
-                                <i class="icon-append fa fa-search"></i><b class="tooltip tooltip-bottom-right">Type text here for search</b> </label>
-                            </div>
-                        <footer>
-                            <%= submit_tag "Search Patient", class: "btn btn-primary"%>
-                        </footer>
-                    <% end %>
-            </section>
-
-        </fieldset>
-
+    <header> 
+      Search Patients
+    </header>
+    <fieldset>
+    <section>
+    <br />
+    <%= form_tag("/patients/generic_search", method: "get") do %>
+      <div class="inline-group">
+        <label class="radio">
+          <input type="radio" name="radio-inline" value="uhid">
+          <i></i>UHID</label>
+        <label class="radio">
+          <input type="radio" name="radio-inline" checked="checked" value="first_name">
+          <i></i>First Name</label>
+        <label class="radio">
+          <input type="radio" name="radio-inline" value="mobile">
+          <i></i>Mobile Number</label>
+        <label class="radio">
+          <input type="radio" name="radio-inline" value="email">
+          <i></i>Email address</label>
+        </div>
+        <br />
+        <div class="form-group">
+            <label for="search" class="input"> 
+            <input type="text" name="search_input" placeholder="Type here">
+            <i class="icon-append fa fa-search"></i><b class="tooltip tooltip-bottom-right">Type text here for search</b> </label>
+        </div>
+        <footer>
+            <%= submit_tag "Search Patient", class: "btn btn-primary"%>
+        </footer>
+        <% end %>
+    </section>
+    </fieldset>
     </div>
+  </div>
 </div>
-
