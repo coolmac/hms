@@ -44,18 +44,17 @@
 
 <% if @visits.size > 0 %>
 	<h1>Existing Patient Visits: </h1>
-	<% i = 0 %>
 	<% @visits.each do |v|%>
 		<div class="panel panel-default">
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
 		      	Visit ID: <%=v.id%> | <%= link_to "Edit", show_details_path(:visit_id => v.id), :class => "btn btn-primary active"%>
-		        <a class="pull-right" data-toggle="collapse" href="#<%=i%>">
+		        <a class="pull-right" data-toggle="collapse" href="#<%=v.id%>">
 		          <i class="fa fa-lg fa-fw fa-align-justify"></i>
 		        </a>
 		      </h4>
 		    </div>
-		   <div id=<%=i%> class="panel-collapse collapse">
+		   <div id=<%=v.id%> class="panel-collapse collapse">
 		      <div class="panel-body">
 		      	<h2>Visited on: <%=v.created_at%></h2>
 				<h2>Summary</h2>
@@ -63,7 +62,6 @@
 		      </div>
 		   </div>
 		</div>
-		<% i = i + 1 %>
 	<% end %>
 
 	<% else %>
