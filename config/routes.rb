@@ -38,6 +38,9 @@ Emr::Application.routes.draw do
   match 'patients/search', to: 'patients#search', as: :search_patient
   match 'patients/generic_search', to: 'patients#generic_search', as: :generic_search_patient
 
+  get 'users/:id/edit' => 'users#edit', :as => :user
+  put 'users/:id' => 'users#update', :as => :user
+
   resources :visits do
     resources :prescriptions
   end
@@ -66,13 +69,16 @@ Emr::Application.routes.draw do
   resources :hospitals
 
 
+
   resources :patients
 
 
 
   root to: "users#index"
   # devise_for :users, :controllers => { :registrations => 'registrations'}, :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock'}
-  devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :unlock => 'unblock'}, :skip => :registration
+  devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :unlock => 'unblock'} do
+   get 'settings/password' => 'devise/registrations#edit'
+ end
 
 
 

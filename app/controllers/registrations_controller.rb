@@ -12,6 +12,5 @@ class RegistrationsController < Devise::RegistrationsController
       render :new
     end
   end
-
-
+  
 end

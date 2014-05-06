@@ -82,7 +82,7 @@
               <%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => "btn btn-success active" %>
             </li>
             <li>
-              <a href="javascript:void(0);">Profile</a>
+              <a href="/users/<%=current_user.id%>/edit">Profile</a>
             </li>
             <li>
               <a href="javascript:void(0);">Contact Us</a>

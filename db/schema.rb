@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140426132130) do
+ActiveRecord::Schema.define(:version => 20140506053621) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line1"
@@ -144,9 +144,9 @@ ActiveRecord::Schema.define(:version => 20140426132130) do
     t.string   "insurance_provider"
     t.string   "insurance_policy_number"
     t.string   "religion"
+    t.string   "email"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
-    t.string   "email"
     t.string   "uhid"
   end
 
@@ -164,11 +164,11 @@ ActiveRecord::Schema.define(:version => 20140426132130) do
 
   create_table "questions", :force => true do |t|
     t.string   "title"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
     t.string   "sub_category"
     t.string   "category"
     t.string   "super_category"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "sessions", :force => true do |t|
@@ -217,6 +217,22 @@ ActiveRecord::Schema.define(:version => 20140426132130) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.integer  "age"
+    t.string   "gender"
+    t.date     "date_of_birth"
+    t.string   "address_line1"
+    t.string   "address_line2"
+    t.string   "address_line3"
+    t.string   "city"
+    t.string   "district"
+    t.string   "state"
+    t.integer  "pin_code"
+    t.string   "country"
+    t.string   "phone_number"
+    t.string   "mobile"
+    t.string   "graduation"
+    t.string   "post_graduation"
+    t.text     "about_me"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

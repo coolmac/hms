@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   # after_filter :post_test
 
   def authenticate_and_set_user
-  	authenticate_user!
+   	authenticate_user!
   	if user_signed_in?
   		@user = current_user
   	end

@@ -92,7 +92,6 @@ GEM
     multi_json (1.9.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    mysql2 (0.3.15)
     nested_scaffold (0.2.1)
       rails (~> 3.2.2)
     nokogiri (1.6.1)
@@ -190,7 +189,6 @@ DEPENDENCIES
   google_drive
   jbuilder (~> 1.2)
   jquery-rails
-  mysql2
   nested_scaffold
   pg
   pry

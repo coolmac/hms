@@ -16,3 +16,8 @@
 *= require jquery-ui
 *= require_tree .
 */
+
+.left_bar_nav ul li {
+
+	overflow: auto !important;
+}

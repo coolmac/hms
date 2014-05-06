@@ -9,7 +9,7 @@ development:
   reconnect: false
   database: emr_development
   pool: 5
-  username: postgres
+  username: postgresql
   password: alexkj25
   # socket: /tmp/mysql.sock
   host: 127.0.0.1
@@ -23,7 +23,7 @@ test:
   reconnect: false
   database: emr_testdfsd
   pool: 5
-  username: postgres
+  username: postgresql
   password: alexkj25
   # socket: /tmp/mysql.sock
   host: 127.0.0.1
