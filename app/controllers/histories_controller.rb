@@ -30,14 +30,6 @@ class HistoriesController < DetailsController
 	# Please don't render here  	
   end
 
-
-  #TODO one common method to handle all updates
-  def update_history_category
-
-
-  end
-
-
   def chief_complaint
   	edit_details()
 
