@@ -4,14 +4,14 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 development:
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
   reconnect: false
   database: emr_development
   pool: 5
-  username: root
+  username: akhil
   password:
-  socket: /tmp/mysql.sock
+  # socket: /tmp/mysql.sock
   host: 127.0.0.1
 
 # Warning: The database defined as "test" will be erased and
@@ -25,7 +25,7 @@ test:
   pool: 5
   username: root
   password:
-  socket: /tmp/mysql.sock
+  # socket: /tmp/mysql.sock
   host: 127.0.0.1
 
 # Ensure that postgresql client is installed on production

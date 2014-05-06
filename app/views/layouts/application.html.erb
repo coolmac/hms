@@ -27,8 +27,10 @@
   <% end %>
 
   <%= render 'layouts/messages' %>
-  <%= yield %>
-
+  <div id="page_content">
+    <%= yield %>
+  </div>
+  
 <% if @leave_space_for_left_bar %>
 </div>
 <% end %>
