@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140507054342) do
+ActiveRecord::Schema.define(:version => 20140507132423) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line1"
@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(:version => 20140507054342) do
     t.string   "gender"
     t.datetime "date_of_registration"
     t.string   "middle_name"
-    t.datetime "date_of_birth"
+    t.date     "date_of_birth"
     t.string   "reference_mobile"
     t.string   "reference_name"
     t.string   "emergency_mobile"
