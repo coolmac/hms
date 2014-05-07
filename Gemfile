@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.12'
 
 # Using postgresql on production for heroku
-gem 'pg', :group => :production
+gem 'pg'
 
 # to avoid errors on heroku
 gem 'rails_12factor', group: :production
@@ -78,7 +78,7 @@ gem 'unicorn'
 
 
 group :development do
-	gem 'mysql2'
+	# gem 'mysql2'
 	gem 'pry'
 	gem 'pry-remote'
 	gem 'pry-stack_explorer'
