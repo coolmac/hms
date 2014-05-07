@@ -1,0 +1,63 @@
+
+
+<div id="content" class="animated fadeInDown" overflow="scroll">
+	<%= form_for(@enquiry, :html => { style: "margin-left:20px;",  class: "smart-form client-form", role:"form" }) do |f|%>
+
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+      		<div class="well no-padding">
+      			<header>Contact Us</header>
+        		<fieldset>
+				  
+				  <section>
+		            <div class="form-group">
+		                <%= f.label :contact_type %><br />
+		                <%= f.select :contact_type , {"Feedback"=>"Feedback", "Enquiry"=>"Enqiry", "Complaint"=>"Complaint", "Other"=>"Other"}, :prompt=>"Select"%>
+		            </div>
+		          </section>
+		          <section>
+					  <div class="field-group">
+					    <%= f.label :Name %><br />
+					    <%= f.text_field :person_name, class: "form-control", placeholder: "Name" %>
+					  </div>
+		          </section>
+		          <section>
+					  <div class="field-group">
+					    <%= f.label :phone_number %><br />
+					    <%= f.text_field :phone_number, class: "form-control", placeholder: "Phone number" %>
+					  </div>
+		          </section>
+		          <section>
+					  <div class="field-group">
+					    <%= f.label :heading %><br />
+					    <%= f.text_field :heading, class: "form-control", placeholder: "Heading" %>
+					  </div>
+		          </section>
+		          <section>
+					  <div class="field-group">
+					    <%= f.label :subheading %><br />
+					    <%= f.text_field :sub_heading, class: "form-control", placeholder: "subheading" %>
+					  </div>
+		          </section>
+				</fieldset>
+		    </div>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+      		<div class="well no-padding">
+        		<fieldset>
+        		  <section>
+					  <div class="form-group">
+					    <%= f.label :message %><br />
+					    <%= f.text_area :message, class: "form-control", placeholder: "Message", style: "height:240px; max-height:240px;" %>
+					  </div>
+		          </section>
+        		<fieldset>
+		        <footer>
+		            <div>
+		                <%= f.submit "Send", class: "btn btn-primary" %>
+		            </div>
+		        <% end %>
+		        </footer>
+		    </div>
+		</div>
+
+</div>

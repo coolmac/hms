@@ -1,5 +1,7 @@
 Emr::Application.routes.draw do
 
+  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -41,6 +43,8 @@ Emr::Application.routes.draw do
   get 'users/:id/edit' => 'users#edit', :as => :user
   put 'users/:id' => 'users#update', :as => :user
 
+  #get "enquiries/index"
+
   resources :visits do
     resources :prescriptions
   end
@@ -67,6 +71,7 @@ Emr::Application.routes.draw do
   resources :categories
   resources :departments
   resources :hospitals
+  resources :enquiries
 
 
 

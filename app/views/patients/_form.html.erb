@@ -38,7 +38,7 @@
           <section>
             <div class="form-group">
                 <%= f.label :date_of_birth %><br />
-                <%= f.date_select :date_of_birth, {:order => [:month, :day, :year],:prompt => true, :use_two_digit_numbers => true, :start_year => 1900, :end_year => 2014} %>
+                <%= f.text_field :date_of_birth, class: "form-control", placeholder: "Date of birth" %>
             </div>
           </section>
 
@@ -199,3 +199,16 @@
       </div>
     </div>
   </div>
+
+   <script type="text/javascript">
+        $(document).ready(function ()
+        {
+            $('#patient_date_of_birth').datepicker({
+              dateFormat: "yy-mm-dd",
+              changeMonth: true,
+              changeYear: true,
+              yearRange: '1900:2014',
+              defaultDate: '1970-01-01'
+            });
+        });
+    </script>

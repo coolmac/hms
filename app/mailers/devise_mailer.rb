@@ -36,5 +36,13 @@ class DeviseMailer < Devise::Mailer
   	mail(mail_options)
   end  
 
+  def enquiry_mail(enquiry_id)
+    @enquiry = Enquiry.where(:id => enquiry_id)[0]
+    mail_options = @@MAIL_OPTIONS
+    mail_options[:to] = 'alexkj25@gmail.com'
+    mail_options[:subject] = @enquiry.contact_type+' - '+ @enquiry.heading
+    mail(mail_options)
+  end
+
 
 end

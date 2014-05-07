@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140506053621) do
+ActiveRecord::Schema.define(:version => 20140507054342) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line1"
@@ -81,6 +81,17 @@ ActiveRecord::Schema.define(:version => 20140506053621) do
     t.string   "super_category"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "enquiries", :force => true do |t|
+    t.string   "contact_type"
+    t.string   "person_name"
+    t.string   "phone_number"
+    t.string   "heading"
+    t.string   "sub_heading"
+    t.text     "message"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "follow_ups", :force => true do |t|

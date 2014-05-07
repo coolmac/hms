@@ -82,10 +82,10 @@
               <%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => "btn btn-success active" %>
             </li>
             <li>
-              <a href="/users/<%=current_user.id%>/edit">Profile</a>
+              <a onclick="javascript:window.location.href='/users/<%=current_user.id%>/edit'" style="cursor:pointer;">Profile</a>
             </li>
             <li>
-              <a href="javascript:void(0);">Contact Us</a>
+              <a href="/enquiries/new">Contact Us</a>
             </li>
             <li class="divider"></li>
             <li>

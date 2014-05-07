@@ -72,6 +72,7 @@ class UsersController < ApplicationController
     #@user = User.find(params[:id])
     @user = current_user
     respond_to do |format|
+      #binding.pry
       if @user.update_attributes(params[:user])
         format.html { redirect_to '/users/'+@user.id.to_s+'/edit', notice: 'User was successfully updated.' }
         format.json { head :no_content }
