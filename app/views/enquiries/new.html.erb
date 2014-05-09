@@ -17,13 +17,13 @@
 		          <section>
 					  <div class="field-group">
 					    <%= f.label :Name %><br />
-					    <%= f.text_field :person_name, class: "form-control", placeholder: "Name" %>
+					    <%= f.text_field :person_name, class: "form-control", value: current_user.name, placeholder: "Name" %>
 					  </div>
 		          </section>
 		          <section>
 					  <div class="field-group">
 					    <%= f.label :phone_number %><br />
-					    <%= f.text_field :phone_number, class: "form-control", placeholder: "Phone number" %>
+					    <%= f.text_field :phone_number, class: "form-control", value: current_user.mobile, placeholder: "Phone" %>
 					  </div>
 		          </section>
 		          <section>
