@@ -28,13 +28,14 @@ function draw_charts() {
 				if (type == 'Bar'){
 					 var plot2 = $.jqplot('chart', [chartData], {
 	                title: data[0].name,
-	                	seriesDefaults:{
+	                seriesDefaults:{
 	                     		renderer: $.jqplot.BarRenderer,
 	                     		rendererOptions: {
 	                        	barPadding: 1,
 	                        	barMargin: 15,
 	                        	barDirection: 'vertical',
-	                        	barWidth: 50
+	                        	barWidth: 50,
+	                			varyBarColor: true
 	                    		}, 
 	                    		pointLabels: { show: true }
 	                },
@@ -54,7 +55,8 @@ function draw_charts() {
 	                },
 	                cursor: {
 	                    show: true
-	                }
+	                },
+
 	            });
 				}
 				else{

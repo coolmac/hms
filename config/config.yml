@@ -8,6 +8,7 @@ defaults: &DEFAULTS
   descriptive_question_prefix: "descriptive_question_id_"
   investigation_prefix: "investigation_id_"
   uhid_prefix: "NBNC"
+  hospital_name: ""
   sequence: "SEQ"
   gs_username: "admin@genauth.com"
   gs_password: "htuaneg123"

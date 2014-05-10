@@ -1,3 +1,7 @@
+
+##TODO Analyse row query option
+
+
 def create_patients (total_patients)
     begin
       if Patient.find_by_first_name('TestPatient-'+total_patients.to_s).nil?
@@ -36,15 +40,18 @@ def create_visits_for_existing_patients(total_patients, total_visits, start_date
     patients_count = total_patients
     # Creating visit for each patient
     begin 
-      visit = Visit.new
-      visit.patient_id = patients[(patients_count-1)].id
-      visit.visit_time = start_date
-      visit.save
-      puts "Created a test visit for patient_id - #{visit.patient_id}"
+      if Visit.find_by_patient_id_and_visit_time(patients[(patients_count-1)].id,start_date).nil?
+        visit = Visit.new
+        visit.patient_id = patients[(patients_count-1)].id
+        visit.visit_time = start_date
+        visit.save
+        puts "Created a test visit for patient_id - #{visit.patient_id}"
+        
+      end
       visits_per_date -=1
       if visits_per_date < 0
-        start_date = (start_date + 1.days)
-        visits_per_date = total_visits/total_dates
+          start_date = (start_date + 1.days)
+          visits_per_date = total_visits/total_dates
       end
       patients_count -=1
     end while patients_count > 0
@@ -65,10 +72,55 @@ def create_visits_for_existing_patients(total_patients, total_visits, start_date
         extra_visit -=1
     end while extra_visit > 0
   end
+end
 
+def create_total_visits(start_date_for_p24h,end_date)
+  if start_date_for_p24h.length==0
+    total_visits = Visit.select("count(id),date(visit_time)").where("visit_time BETWEEN ? AND ?",'2014-05-05', end_date).group("date(visit_time)").order("visit_time")
+  else
+    total_visits = Visit.select("count(id),date(visit_time)").where("visit_time BETWEEN ? AND ?",start_date_for_p24h[0].date, end_date).group("date(visit_time)").order("visit_time")
+  end
+  puts "========total visits/date====="
+  puts total_visits.length
+  i =  0
+  while i < total_visits.length 
+    if Chart.find_by_xvalue_and_tag(total_visits[i].date,'p24h').nil?
+      puts total_visits[i].date.to_s+"/"+total_visits[i].count.to_s
+      chart_value = Chart.new
+      chart_value.tag = 'p24h'
+      chart_value.name = 'Patients Every Day'
+      chart_value.xvalue = total_visits[i].date
+      chart_value.yvalue = total_visits[i].count
+      chart_value.save
+    end
+    i +=1
+  end
+end
+
+def create_unique_visits(start_date_for_v24h,end_date)
+  if start_date_for_v24h.length==0
+    unique_visits = Patient.select("count(id),date(registration_time)").where("registration_time BETWEEN ? AND ?",'2014-05-05', end_date).group("date(registration_time)").order("registration_time")
+  else
+    unique_visits = Patient.select("count(id),date(registration_time)").where("registration_time BETWEEN ? AND ?",start_date_for_v24h[0].date, end_date).group("date(registration_time)").order("registration_time")
+  end  
+  j =  0
+  puts "========unique visits/date====="
+  while j < unique_visits.length
+    if Chart.find_by_xvalue_and_tag(unique_visits[j].date,'v24h').nil? 
+      puts unique_visits[j].date.to_s+"/"+unique_visits[j].count.to_s
+      chart_value = Chart.new
+      chart_value.tag = 'v24h'
+      chart_value.name = 'Unique Visits'
+      chart_value.xvalue = unique_visits[j].date
+      chart_value.yvalue = unique_visits[j].count
+      chart_value.save
+    end
+    j +=1
+  end
 end
 
 namespace :testing do
+  
   desc "TODO"
   task :dummy_patients => :environment do
   	number=25
@@ -89,53 +141,17 @@ namespace :testing do
 
   desc "TODO"
   task :dummy_chart_values => :environment do
-    last_chart_date_p24h = Chart.select("date(xvalue)").where("tag='p24h'").order("xvalue desc").limit(1)
-    last_chart_date_v24h = Chart.select("date(xvalue)").where("tag='v24h'").order("xvalue desc").limit(1)
+    total_patients = 25
+    total_visits = 75
+    start_date = Date.parse('2014-05-05')
+    end_date = Date.parse('2014-05-08')
+    create_patients(total_patients)   
+    create_visits_for_existing_patients(total_patients, total_visits, start_date, end_date)
+    start_date_for_p24h = Chart.select("date(xvalue)").where("tag='p24h'").order("xvalue desc").limit(1)
+    start_date_for_v24h = Chart.select("date(xvalue)").where("tag='v24h'").order("xvalue desc").limit(1)
     end_date = (Time.now).strftime("%Y-%m-%d")
-    if last_chart_date_p24h.length==0
-      total_visits = Visit.select("count(id),date(visit_time)").where("visit_time BETWEEN ? AND ?",'2014-05-05', end_date).group("date(visit_time)").order("visit_time")
-    else
-      total_visits = Visit.select("count(id),date(visit_time)").where("visit_time BETWEEN ? AND ?",last_chart_date_p24h[0].date, end_date).group("date(visit_time)").order("visit_time")
-    end
-    if last_chart_date_v24h.length==0
-      unique_visits = Patient.select("count(id),date(registration_time)").where("registration_time BETWEEN ? AND ?",'2014-05-05', end_date).group("date(registration_time)").order("registration_time")
-    else
-      unique_visits = Patient.select("count(id),date(registration_time)").where("registration_time BETWEEN ? AND ?",last_chart_date_v24h[0].date, end_date).group("date(registration_time)").order("registration_time")
-    end
-      puts "============ end date =========="
-      #puts last_chart_date[0].date
-      puts end_date
-      puts "========total visits/date====="
-    puts total_visits.length
-
-    i =  0
-    while i < total_visits.length 
-      if Chart.find_by_xvalue_and_tag(total_visits[i].date,'p24h').nil?
-        puts total_visits[i].date.to_s+"/"+total_visits[i].count.to_s
-        chart_value = Chart.new
-        chart_value.tag = 'p24h'
-        chart_value.name = 'Patients Every Day'
-        chart_value.xvalue = total_visits[i].date
-        chart_value.yvalue = total_visits[i].count
-        chart_value.save
-      end
-      i +=1
-    end
-    j =  0
-
-    puts "========unique visits/date====="
-    while j < unique_visits.length
-      if Chart.find_by_xvalue_and_tag(unique_visits[j].date,'v24h').nil? 
-        puts unique_visits[j].date.to_s+"/"+unique_visits[j].count.to_s
-        chart_value = Chart.new
-        chart_value.tag = 'v24h'
-        chart_value.name = 'Unique Visits'
-        chart_value.xvalue = unique_visits[j].date
-        chart_value.yvalue = unique_visits[j].count
-        chart_value.save
-      end
-      j +=1
-    end
+    create_total_visits(start_date_for_p24h,end_date)
+    create_unique_visits(start_date_for_v24h,end_date)
   end
 
 end
