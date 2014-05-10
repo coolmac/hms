@@ -16,10 +16,11 @@ class Ability
       can :read, :all
     end
     if user.role? :doctor
-      can :manage, :all
+      can :manage, [Patient]
     end
     if user.role? :hospital
-      can :manage, :all
+      cannot :manage, [Patient]
+      can :manage, [User]
     end
     if user.role? :superadmin
       can :manage, :all

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140507132423) do
+ActiveRecord::Schema.define(:version => 20140509135033) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line1"
@@ -66,6 +66,15 @@ ActiveRecord::Schema.define(:version => 20140507132423) do
     t.string   "master_category"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "charts", :force => true do |t|
+    t.string   "tag"
+    t.string   "name"
+    t.date     "xvalue"
+    t.integer  "yvalue"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "departments", :force => true do |t|
@@ -159,6 +168,7 @@ ActiveRecord::Schema.define(:version => 20140507132423) do
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
     t.string   "uhid"
+    t.date     "registration_time"
   end
 
   create_table "prescriptions", :force => true do |t|
@@ -292,6 +302,7 @@ ActiveRecord::Schema.define(:version => 20140507132423) do
     t.text     "gpe"
     t.text     "vitals"
     t.text     "general_examination"
+    t.date     "visit_time"
   end
 
 end

@@ -43,6 +43,9 @@ Emr::Application.routes.draw do
   get 'users/:id/edit' => 'users#edit', :as => :user
   put 'users/:id' => 'users#update', :as => :user
 
+  get '/draw_chart' => 'users#draw_charts'
+
+
   #get "enquiries/index"
 
   resources :visits do

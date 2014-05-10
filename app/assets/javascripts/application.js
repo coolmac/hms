@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jqplot
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap

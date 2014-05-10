@@ -20,5 +20,27 @@
 
     </div>
   </div>
+  <% if can? :draw_chart, @user %>
+  <div class="col-xs-12  col-sm-12 col-md-10 col-lg-10">
+    <div class="well no-padding">
+      <header>
+        <h1>Charts</h1>
+      </header>
+        <fieldset>
+          <section>
+            <label class="chart_select_label"><%= select_tag "chart_type", options_for_select([ "Bar", "Line" ], "Bar")%></label>&nbsp;&nbsp;
+            <label class="chart_select_label"><%= select_tag "chart_tag", options_for_select([ "p24h", "v24h" ], "p24h")%></label>&nbsp;&nbsp;
+            <button onclick="draw_charts()" id="chart_button" class=".btn">Draw Chart</button>
+            <div id='chart'>
+            </div>
+          </section>
+        </fieldset>
+
+    </div>
+
+  </div>
+  <%end%>
 </div>
+
+
 

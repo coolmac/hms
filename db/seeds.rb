@@ -280,7 +280,18 @@ def create_test_users
   end
   puts "Created test user for beartran3@gmail.com"
 
+  if (test_user = User.find_by_email("alexkj25@gmail.com")).nil?
+    test_user = User.create!(
+      :name => "Alex K Jose",
+      :email => "alexkj25@gmail.com",
+      :password => 'password123',
+      :role => 'doctor'
+    )
+    test_user.save!
+  end
+  puts "Created test user for alexkj25@gmail.com"
 end
+
 
 create_test_users()
 update_from_google_spreadsheet()

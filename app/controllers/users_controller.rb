@@ -18,9 +18,18 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @patient = Patient.new
+    
     respond_to do |format|
       format.html # index.html.erb
     end
+  end
+
+  def draw_charts
+      @tag = params[:tag]
+      @chart_values = Chart.where( tag: @tag).where("date(xvalue) > ?", 6.days.ago).order("xvalue ASC")
+      respond_to do |format|
+          format.json {render json: @chart_values}
+      end
   end
 
   # GET /users/1
