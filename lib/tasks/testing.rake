@@ -1,77 +1,89 @@
-namespace :testing do
-  desc "TODO"
-  task :dummy_patients => :environment do
-  	number=25
+def create_patients (total_patients)
     begin
-      if Patient.find_by_first_name('TestPatient-'+number.to_s).nil?
+      if Patient.find_by_first_name('TestPatient-'+total_patients.to_s).nil?
         test_patient=Patient.new
-        test_patient.first_name='TestPatient-'+number.to_s
-        test_patient.age = 25+number
-        test_patient.mobile = '98546000'+number.to_s
+        test_patient.first_name='TestPatient-'+total_patients.to_s
+        test_patient.age = 25+total_patients
+        test_patient.mobile = '98546000'+total_patients.to_s
         test_patient.registration_time = '2014-05-05'
         test_patient.save
         puts "Created a test patient with first name - #{test_patient.first_name}"
 
       else
-      	puts "Patient already exists"
+        puts "Patient already exists"
       end
-      number -=1
-    end while number >0
+      total_patients -=1
+    end while total_patients >0  
+end
 
-  end
+def create_visits_for_existing_patients(total_patients, total_visits, start_date, end_date)
+    patients = Patient.find(:all, :order => "id desc", :limit => total_patients)
+    total_dates = (end_date - start_date).to_i + 1
+    puts "==================>>>>>>>>>total dates"
+    puts total_dates
+    visit_per_patient = total_visits/total_patients
+    extra_visit = total_visits%total_patients
+    puts "==================>>>>>>>>>visit_per_patient"
+    puts visit_per_patient
+    puts extra_visit
+    visits_per_date = total_visits/total_dates
+    puts "==================>>>>>>>>>visit_per_date"
+    puts visits_per_date
 
-  desc "TODO"
-  task :dummy_visits => :environment do
-  	patients = 25
-  	visits = 75
-  	patient_id = Patient.find(:all, :order => "id desc", :limit => patients)
-    #puts patient_id[2].id
-  	start_date = Date.parse('2014-05-05')
-  	end_date = Date.parse('2014-05-08')
-  	total_dates = (end_date - start_date).to_i + 1
-  	   puts "==================>>>>>>>>>total dates"
-  	   puts total_dates
-	  visit_per_patient = visits/patients
-    extra_visit = visits%patients
-      puts "==================>>>>>>>>>visit_per_patient"
-      puts visit_per_patient
-      puts extra_visit
-  	visits_per_date = visits/total_dates
-      puts "==================>>>>>>>>>visit_per_date"
-      puts visits_per_date
-  	begin
-      puts "==========XXXXXXXXX=========="
-      patients =25
-	  	begin 
-	  		visit = Visit.new
-	  		visit.patient_id = patient_id[(patients-1)].id
-	  		visit.visit_time = start_date
-        puts visit.patient_id.to_s+"/"+visit.visit_time.to_s
-	  		visit.save
-	  		puts "Created a test visit for patient_id - #{visit.patient_id}"
-	  		visits_per_date -=1
-	  		if visits_per_date < 0
-          start_date = (start_date + 1.days)
-          visits_per_date = visits/total_dates
-        end
-	  		patients -=1
-	  	end while patients > 0
-	  	visit_per_patient -=1
-	end while visit_per_patient > 0
+  # Loop for visit_per_patient
+  begin
+    puts "==========XXXXXXXXX=========="
+    patients_count = total_patients
+    # Creating visit for each patient
+    begin 
+      visit = Visit.new
+      visit.patient_id = patients[(patients_count-1)].id
+      visit.visit_time = start_date
+      visit.save
+      puts "Created a test visit for patient_id - #{visit.patient_id}"
+      visits_per_date -=1
+      if visits_per_date < 0
+        start_date = (start_date + 1.days)
+        visits_per_date = total_visits/total_dates
+      end
+      patients_count -=1
+    end while patients_count > 0
+    visit_per_patient -=1
+  end while visit_per_patient > 0
+
   if extra_visit > 0
     begin
       visit = Visit.new
-            puts "===========Extra======="
-            puts extra_visit-1
-            #puts patient_id[(extra_visit-1)].id
-          visit.patient_id = patient_id[(extra_visit-1)].id
-          visit.visit_time = end_date
-            puts visit.patient_id.to_s+"/"+visit.visit_time.to_s
-          visit.save
-          puts "Created a test visit for patient_id - #{visit.patient_id}"
-          extra_visit -=1
+        puts "===========Extra======="
+        puts extra_visit-1
+        #puts patient_id[(extra_visit-1)].id
+        visit.patient_id = patient_id[(extra_visit-1)].id
+        visit.visit_time = end_date
+          puts visit.patient_id.to_s+"/"+visit.visit_time.to_s
+        visit.save
+        puts "Created a test visit for patient_id - #{visit.patient_id}"
+        extra_visit -=1
     end while extra_visit > 0
   end
+
+end
+
+namespace :testing do
+  desc "TODO"
+  task :dummy_patients => :environment do
+  	number=25
+    create_patients(number)
+  end
+
+
+  desc "TODO"
+  task :dummy_visits => :environment do
+  	total_patients = 25
+  	total_visits = 75
+    start_date = Date.parse('2014-05-05')
+    end_date = Date.parse('2014-05-08')
+    create_patients(total_patients)  	
+    create_visits_for_existing_patients(total_patients, total_visits, start_date, end_date)
 
   end
 
