@@ -17,18 +17,18 @@ def create_patients (total_patients)
 end
 
 def create_visits_for_existing_patients(total_patients, total_visits, start_date, end_date)
-    patients = Patient.find(:all, :order => "id desc", :limit => total_patients)
-    total_dates = (end_date - start_date).to_i + 1
-    puts "==================>>>>>>>>>total dates"
-    puts total_dates
-    visit_per_patient = total_visits/total_patients
-    extra_visit = total_visits%total_patients
-    puts "==================>>>>>>>>>visit_per_patient"
-    puts visit_per_patient
-    puts extra_visit
-    visits_per_date = total_visits/total_dates
-    puts "==================>>>>>>>>>visit_per_date"
-    puts visits_per_date
+  patients = Patient.find(:all, :order => "id desc", :limit => total_patients)
+  total_dates = (end_date - start_date).to_i + 1
+  puts "==================>>>>>>>>>total dates"
+  puts total_dates
+  visit_per_patient = total_visits/total_patients
+  extra_visit = total_visits%total_patients
+  puts "==================>>>>>>>>>visit_per_patient"
+  puts visit_per_patient
+  puts extra_visit
+  visits_per_date = total_visits/total_dates
+  puts "==================>>>>>>>>>visit_per_date"
+  puts visits_per_date
 
   # Loop for visit_per_patient
   begin
@@ -107,6 +107,7 @@ namespace :testing do
       puts end_date
       puts "========total visits/date====="
     puts total_visits.length
+
     i =  0
     while i < total_visits.length 
       if Chart.find_by_xvalue_and_tag(total_visits[i].date,'p24h').nil?
@@ -121,6 +122,7 @@ namespace :testing do
       i +=1
     end
     j =  0
+
     puts "========unique visits/date====="
     while j < unique_visits.length
       if Chart.find_by_xvalue_and_tag(unique_visits[j].date,'v24h').nil? 
