@@ -16,10 +16,9 @@ class Visit < ActiveRecord::Base
   #TODO set up associations
   # has_many :admissions
 
-  def self.get_matched_index(present_super_category, present_category)
-    category_map = CATEGORIES[present_super_category]
+  def self.get_matched_index(category_map, present_super_category, present_category)
     matched_index = -1
-    category_map.each_with_index do |index, category_info|
+    category_map.each_with_index do |category_info, index|
       if category_info[0] == present_category
         matched_index = index
         break
@@ -33,7 +32,7 @@ class Visit < ActiveRecord::Base
     if category_map == nil
       return nil
     else
-      matched_index = get_matched_index(present_super_category, present_category)
+      matched_index = get_matched_index(category_map, present_super_category, present_category)
       if matched_index == ((category_map.size) -1)
         return category_map[matched_index]
       else
@@ -41,6 +40,21 @@ class Visit < ActiveRecord::Base
         return category_map[matched_index+1]
       end
     end
+  end
+
+  def self.get_previous_category(present_super_category, present_category)
+    category_map = CATEGORIES[present_super_category]
+    output_index = 0
+    if category_map == nil
+      return nil
+    else
+      # if no match is found, return first category
+      matched_index = get_matched_index(category_map, present_super_category, present_category)
+      if matched_index > 0
+        output_index = matched_index-1
+      end
+    end
+    return category_map[output_index]
   end
 
 end

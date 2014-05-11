@@ -99,30 +99,35 @@ class DetailsController < ApplicationController
   end
 
 
-  #TODO one common method to handle all updates, call it as :remote => true
+  #DOING one common method to handle all updates, call it as :remote => true
   def edit_category
     #TODO what if present category/super_category is unknown
     present_super_category = params[:super_category]
     present_category = params[:category]
-
-    @next_category_info = Visit.get_next_category(present_super_category, present_category)
-
     if params[:save] != nil
       update_details()
     elsif params[:exit] != nil
       update_details()
-      # need to render parent page for super category
+      #TODO need to render parent page for super category
     elsif params[:next] != nil
       update_details()
-      params[:category] = next_category_info[0]
+      @next_category_info = Visit.get_next_category(present_super_category, present_category)
+      if @next_category_info != nil
+        params[:category] = @next_category_info[0]
+      end
+    elsif params[:prev] != nil
+      update_details()
+      @previous_category_info = Visit.get_previous_category(present_super_category, present_category)
+      if @previous_category_info != nil
+        params[:category] = @previous_category_info[0]
+      end
     else
       # it's not a form submission
     end
     
     edit_details()
-
     respond_to do |format|
-      format.js { render :layout => false }
+      format.js { render :layout => false }        
     end
 
   end

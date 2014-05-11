@@ -1,9 +1,14 @@
+<br />
 <% @questions.each do |q| %>
   <section>
-  <h1><%= label_tag q.title%></h1>
-  <br>
-  <%= select_tag "#{APP_CONFIG['question_prefix']}#{q.id}", options_from_collection_for_select(@answers, "id", "title", get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") ), include_blank: true, :style=>"border-style: solid ; border-width: 5px; border-color: gray;", :rows=>"4", :cols=>"40"%>
-  <br>
+  <div class="row">
+    <div class=" col-md-3">
+    <%= label_tag q.title%>
+    </div>
+    <div class="col-md-3">
+    <%= select_tag "#{APP_CONFIG['question_prefix']}#{q.id}", options_from_collection_for_select(@answers, "id", "title", get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") ), include_blank: true, :style=>"border-style: solid ; border-width: 5px; border-color: gray;", :rows=>"4", :cols=>"40"%>
+    </div>
+  </div>
   <br>
   </section>
 <% end %>
@@ -22,6 +27,7 @@
 <footer>
     <%= submit_tag "Save Details", :name => 'save', :class => "btn btn-primary" %>
     <%= submit_tag "Save and Next", :name => 'next', :class => "btn btn-success" %>
+    <%= submit_tag "Save and Previous", :name => 'prev', :class => "btn btn-warning" %>
     <%= submit_tag "Save and Return", :name => 'exit', :class => "btn btn-info" %>
 </footer>
 
