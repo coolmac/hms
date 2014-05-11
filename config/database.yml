@@ -11,6 +11,8 @@ development:
   pool: 5
   username: postgres
   password: alexkj25
+  # username: akhil
+  # password:
   # socket: /tmp/mysql.sock
   host: 127.0.0.1
 
@@ -25,7 +27,6 @@ test:
   pool: 5
   username: postgres
   password: alexkj25
-  # socket: /tmp/mysql.sock
   host: 127.0.0.1
 
 # Ensure that postgresql client is installed on production

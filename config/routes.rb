@@ -5,6 +5,7 @@ Emr::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
+  match 'details/edit_category',   to: 'details#edit_category', :as => :edit_category
   match 'details/edit_details',   to: 'details#edit_details', :as => :edit_details
   match 'details/update_details', to: 'details#update_details', as: :update_details
   match 'details/edit_investigations', to: 'details#edit_investigations', :as => :edit_investigations

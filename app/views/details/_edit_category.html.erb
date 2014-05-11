@@ -2,12 +2,18 @@
   <div id="content" class="smart-form client-form">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10" style="padding-top:10px">
       <div class="well no-padding">
+          <%= form_tag edit_category_path(:category => @category, :super_category => @super_category), remote: true do %>
         <header>
-          Formatting basic questions of super category: <%=@super_category%>,  category: <%=@category%>
+        <%=@super_category%>: <%=@category%>
+    <%= submit_tag "Save and Return", :name => 'exit', :class => "btn btn-info" %>
+    <%= submit_tag "Save and Previous", :name => 'prev', :class => "btn btn-warning" %>
+    <%= submit_tag "Save and Next", :name => 'next', :class => "btn btn-success" %>
+    <%= submit_tag "Save Details", :name => 'save', :class => "btn btn-primary" %>
+
         </header>
-          <%= form_tag pms_history_path(:previous_category => @category, :previous_super_category => @super_category, :category => 'pms_history', :super_category => 'history') do %>
           <fieldset>
             <section>
+            <% #TODO remove this %>
             <h3><%= label_tag 'description', 'Description' %></h3>
             <%= text_area_tag :chief_complaint, @current_visit.chief_complaint, :autofocus => true, :class=>"dashed-input1 col-lg-12 col-md-12 col-sm-12 col-xs-12", rows:4 %>
             </section>

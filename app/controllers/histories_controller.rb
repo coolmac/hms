@@ -21,22 +21,14 @@ class HistoriesController < DetailsController
         format.html { render 'histories/other_systems_history'} 
       end
 	elsif params[:exit] != nil
-	  respond_to do |format|
-        format.html { render 'details/show_history' }
-      end
+    render_history_main_page()
 	elsif params[:next] != nil
-	  respond_to do |format|
-        format.html { render 'details/show_history' }
-      end
+    render_history_main_page()
 	else
-	  edit_details()
-	  respond_to do |format|
-        format.html { render 'details/show_history' }
-      end
+    render_history_main_page()
 	end
 	# Please don't render here  	
   end
-
 
   def chief_complaint
   	edit_details()
@@ -64,9 +56,7 @@ class HistoriesController < DetailsController
         format.html { render 'histories/chief_complaint'} 
       end
 	elsif params[:exit] != nil
-	  respond_to do |format|
-        format.html { render 'details/show_history' }
-      end
+    render_history_main_page()
 	elsif params[:next] != nil
 	  edit_details()
 	  respond_to do |format|
@@ -102,9 +92,7 @@ class HistoriesController < DetailsController
         format.html { render 'histories/pms_history' } 
       end
 	elsif params[:exit] != nil
-	  respond_to do |format|
-        format.html { render 'details/show_history' }
-      end
+    render_history_main_page()
 	elsif params[:next] != nil
 	  edit_details()
 	  respond_to do |format|
@@ -142,9 +130,7 @@ class HistoriesController < DetailsController
         format.html { render 'histories/fms_history'} 
       end
 	elsif params[:exit] != nil
-	  respond_to do |format|
-        format.html { render 'details/show_history' }
-      end
+    render_history_main_page()
 	elsif params[:next] != nil
 	  edit_details()
 	  respond_to do |format|
@@ -180,9 +166,7 @@ class HistoriesController < DetailsController
         format.html { render 'histories/ps_history'} 
       end
 	elsif params[:exit] != nil
-	  respond_to do |format|
-        format.html { render 'details/show_history' }
-      end
+    render_history_main_page()
 	elsif params[:next] != nil
 	  edit_details()
 	  respond_to do |format|
@@ -219,9 +203,7 @@ class HistoriesController < DetailsController
         format.html { render 'histories/treatment_history'} 
       end
 	elsif params[:exit] != nil
-	  respond_to do |format|
-        format.html { render 'details/show_history' }
-      end
+    render_history_main_page()
 	elsif params[:next] != nil
 	  edit_details()
 	  respond_to do |format|

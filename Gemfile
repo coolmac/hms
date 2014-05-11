@@ -78,7 +78,7 @@ gem 'unicorn'
 
 
 group :development do
-#	gem 'mysql2'	
+	# gem 'mysql2'
 	gem 'pry'
 	gem 'pry-remote'
 	gem 'pry-stack_explorer'

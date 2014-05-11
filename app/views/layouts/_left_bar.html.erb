@@ -66,7 +66,10 @@
 		</a>
 		  <div id="history" class="panel-collapse collapse">
 		  	<div class="panel-body" style="padding:0px">
-			  <a href="/details/history/chief_complaint"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Chief Complaint</a>
+			<%= link_to chief_complaint_path() do %>
+				<i class="fa fa-fw fa-arrow-circle-o-right"></i> Chief Complaint
+			<% end %>
+
 			  <a href="/details/history/past-medical-surgical"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Past Medical Surgical</a>
 			  <a href="/details/history/fms_history"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Family Medical Surgical</a>
 			  <a href="/details/history/ps_history"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Personal/Social</a>

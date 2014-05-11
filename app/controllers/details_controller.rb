@@ -29,10 +29,36 @@ class DetailsController < ApplicationController
     # Don't render anything here
   end
 
+  def get_visit_question_details
+    visit_id = @current_visit.id
+    super_category = params[:super_category]
+    @questions = Question.where(:super_category => super_category)
+    @descriptive_questions = Question.where(:super_category => super_category)
+
+    @question_ids = @questions.collect{|hq| hq.id}
+    @descriptive_question_ids = @descriptive_questions.collect{|hdq| hdq.id}
+
+    @sc_visit_questions = VisitQuestion.where(:visit_id => visit_id, :question_id => @question_ids)
+    @sc_visit_descriptive_questions = VisitDescriptiveQuestion.where(:visit_id => visit_id, :descriptive_question_id => @descriptive_question_ids)
+    # @existing_answered_question_ids = @sc_visit_questions.collect{|vq| vq.question_id}
+    # @existing_descriptive_question_ids = @sc_visit_descriptive_questions.collect{|vdq| vdq.descriptive_question_id}
+  end
+
+  def render_history_main_page
+    params[:super_category] = 'history'
+    get_visit_question_details()
+    respond_to do |format|
+      format.html {render 'details/show_history'}
+    end
+
+  end
+
   # flow can come from show_history page or Directly
   def show_examinations
     if params[:save] != nil
       @current_visit.update_attributes(params[:visit])
+      params[:super_category] = 'history'
+      get_visit_question_details()
       respond_to do |format|
         format.html { render 'details/show_history'}
       end
@@ -50,11 +76,7 @@ class DetailsController < ApplicationController
   end
 
   def show_history
-    
-    
-    respond_to do |format|
-      format.html
-    end
+    render_history_main_page()
   end
 
   def show_links
@@ -74,6 +96,40 @@ class DetailsController < ApplicationController
 
   def show
   # @visit = Visit.find(params[:visit_id])
+  end
+
+
+  #DOING one common method to handle all updates, call it as :remote => true
+  def edit_category
+    #TODO what if present category/super_category is unknown
+    present_super_category = params[:super_category]
+    present_category = params[:category]
+    if params[:save] != nil
+      update_details()
+    elsif params[:exit] != nil
+      update_details()
+      #TODO need to render parent page for super category
+    elsif params[:next] != nil
+      update_details()
+      @next_category_info = Visit.get_next_category(present_super_category, present_category)
+      if @next_category_info != nil
+        params[:category] = @next_category_info[0]
+      end
+    elsif params[:prev] != nil
+      update_details()
+      @previous_category_info = Visit.get_previous_category(present_super_category, present_category)
+      if @previous_category_info != nil
+        params[:category] = @previous_category_info[0]
+      end
+    else
+      # it's not a form submission
+    end
+    
+    edit_details()
+    respond_to do |format|
+      format.js { render :layout => false }        
+    end
+
   end
 
   def edit_details
