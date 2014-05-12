@@ -52,7 +52,7 @@ class PatientsController < ApplicationController
       if @current_patient.save
         user_session[:current_patient_id] = @current_patient.id
         @user.patients << @current_patient
-        @current_visit = Visit.create({:patient_id => @current_patient.id})
+        @current_visit = Visit.create({:patient_id => @current_patient.id, :visit_time =>(Time.now).strftime("%Y-%m-%d")})
         user_session[:current_visit_id] = @current_visit.id
         format.html { render 'details/show', notice: 'Patient was successfully created.' }
       else
@@ -65,7 +65,7 @@ class PatientsController < ApplicationController
     @patient = Patient.find(params[:id])
 
     respond_to do |format|
-      binding.pry
+      #binding.pry
       if @patient.update_attributes(params[:patient])
         format.html { redirect_to @patient, notice: 'Patient was successfully updated.' }
         format.json { head :no_content }

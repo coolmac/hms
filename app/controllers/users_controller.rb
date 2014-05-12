@@ -26,7 +26,11 @@ class UsersController < ApplicationController
 
   def draw_charts
       @tag = params[:tag]
-      @chart_values = Chart.where( tag: @tag).where("date(xvalue) > ?", 6.days.ago).order("xvalue ASC")
+      if @tag=='Both'
+        @chart_values = Chart.where("date(xvalue) > ?", 10.days.ago).order("xvalue ASC")
+      else
+        @chart_values = Chart.where( tag: @tag).where("date(xvalue) > ?", 10.days.ago).order("xvalue ASC")
+      end
       respond_to do |format|
           format.json {render json: @chart_values}
       end

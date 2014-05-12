@@ -1,6 +1,6 @@
 class Visit < ActiveRecord::Base
   has_many :prescriptions
-  attr_accessible :chief_complaint, :description, :fms_history, :other_systems, :patient_id, :pms_history, :ps_history, :treatment_history, :gpe, :vitals, :general_examination
+  attr_accessible :chief_complaint, :description, :fms_history, :other_systems, :patient_id, :pms_history, :ps_history, :treatment_history, :gpe, :vitals, :general_examination, :visit_time
 
   HISTORY = 'history'
   EXAMINATION = 'examination'

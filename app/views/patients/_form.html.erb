@@ -188,6 +188,17 @@
                   <%= f.text_field :religion, class: "form-control", placeholder: "Religion" %>
               </div>
             </section>
+
+            <section>
+              <div class="form-group">
+                  <%= f.label 'Registration Time' %><br />
+                  <%if @patient.registration_time.blank?%>
+                      <%= f.text_field :registration_time, class: "form-control", value: (Time.now).strftime("%Y-%m-%d"),placeholder: "Registration Time" %>
+                  <%else%>
+                      <%= f.text_field :registration_time, class: "form-control",placeholder: "Registration Time" %>
+                  <%end%>
+              </div>
+            </section>
           </fieldset>
 
         <footer>
@@ -209,6 +220,13 @@
               changeYear: true,
               yearRange: '1900:2014',
               defaultDate: '1970-01-01'
+            });
+            $('#patient_registration_time').datepicker({
+              dateFormat: "yy-mm-dd",
+              changeMonth: true,
+              changeYear: true,
+              // yearRange: '2014',
+              // defaultDate: '1970-01-01'
             });
         });
     </script>

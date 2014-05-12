@@ -10,7 +10,7 @@ class VisitsController < ApplicationController
   end
 
   def create_new_visit
-    @current_visit = Visit.create({:patient_id => user_session[:current_patient_id]})
+    @current_visit = Visit.create({:patient_id => user_session[:current_patient_id],:visit_time => (Time.now).strftime("%Y-%m-%d")})
     user_session[:current_visit_id] = @current_visit.id
     respond_to do |format|
       format.html { render 'details/show'} 
