@@ -21,3 +21,7 @@
 .left_bar_nav ul li {
 	overflow: auto !important;
 }
+
+#ui-datepicker-div {
+	z-index:100000000 !important;
+}

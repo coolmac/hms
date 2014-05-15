@@ -2,11 +2,11 @@
 // All this logic will automatically be available in application.js.
 
 
-function generate_summary() {
-	url = window.location
-	history = document.getElementById("history_cb").value
-	alert
-	$('#summary_div').load(url +' #summary_div', function() {
+// function generate_summary() {
+// 	url = window.location
+// 	history = document.getElementById("history_cb").value
+// 	alert(form.data)
+// 	$('#summary_div').load(url +' #summary_div', function() {
 
-	});
-}
+// 	});
+// }

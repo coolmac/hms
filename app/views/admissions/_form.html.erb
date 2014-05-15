@@ -14,12 +14,14 @@
   <% end %>
   <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
     <div class="well no-padding">
-      <header>Contact Us</header>
+      <header>Admission</header>
       <fieldset>
           <section>
             <div class="form-group">
                 <%= f.label :admission_Date %><br />
-                <%= f.text_field :admission_date, class: "form-control", placeholder: "Admission Date" %>
+                <%#TODO time slider error fix%> 
+                <%= f.text_field :admission_date, class: "form-control", placeholder: "Admission Date", value: @admission.admission_date
+                %>
             </div>
           </section>
           <section>
@@ -66,12 +68,13 @@
 <script type="text/javascript">
         $(document).ready(function ()
         {
-            $('#admission_admission_date').datepicker({
+            $('#admission_admission_date').datetimepicker({
               dateFormat: "yy-mm-dd",
+              timeFormat: 'hh:mm:ss',
+              defaultTimezone: "+0530",
               changeMonth: true,
               changeYear: true,
-              yearRange: '1900:2014',
-              defaultDate: '1970-01-01'
+              yearRange: '1900:2014'
             });
         });
-    </script>
+</script>

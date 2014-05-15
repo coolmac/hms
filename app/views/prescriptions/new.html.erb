@@ -1,14 +1,18 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
+<div class="smart-form client-form animated fadeInDown">
 <div class="container">
-
-<%= render 'form' %>
+	<div class="col-md-2 col-lg-2"></div>
+	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+		<div class="well no-padding">
+		    <header>
+		            New Prescription
+		    </header>
+		    <fieldset>
+					<%= render 'form' %>
+			</fieldset>
+		</div>
+	</div>
+</div>
 
 <%= link_to 'Back', visit_prescriptions_path(@prescription.visit) %>
+</div>
 </div>

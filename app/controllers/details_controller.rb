@@ -301,6 +301,12 @@ class DetailsController < ApplicationController
   end
 
   def discharge_summary
+    @history = ""
+    if params[:history_cb]
+      params[:super_category] = params[:history_cb]
+      @history = params[:history_cb]
+      get_visit_question_details
+    end
   end
 
 end

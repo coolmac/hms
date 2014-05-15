@@ -13,14 +13,6 @@
     </div>
   <% end %>
 
-<div class="col-md-2 col-lg-2"></div>
-<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-    <div class="well no-padding">
-        <header>
-            New Prescription
-        </header>
-
-        <fieldset>
           <section>
             <h3><%= f.label :medicine %></h3>
             <h3><%= f.text_field :medicine, :list=>"list1" %></h3>
@@ -85,14 +77,11 @@
               </datalist>
           </section>
           <footer>
-            <input class="btn btn-primary" name="commit" type="submit" value="Create Prescription">
+              <input class="btn btn-primary" name="commit" type="submit" value="Submit">
           </footer>
-        </fieldset>
-    </div>
-</div>
+          
 <% end %>
 
-</div>
 
 <!--
 <%= form_for([@prescription.visit, @prescription]) do |f| %>

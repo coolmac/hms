@@ -56,7 +56,8 @@ class AdmitDaysController < DetailsController
 
     respond_to do |format|
       if @admit_day.update_attributes(params[:admit_day])
-        format.html { redirect_to([@admit_day.admission, @admit_day], :notice => 'Admit day was successfully updated.') }
+        #format.html { redirect_to([@admit_day.admission, @admit_day], :notice => 'Admit day was successfully updated.') }
+        format.html { redirect_to '/admissions'}
         format.json { head :ok }
       else
         format.html { render :action => "edit" }

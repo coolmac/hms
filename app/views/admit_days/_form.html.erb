@@ -1,3 +1,4 @@
+<div class="smart-form client-form animated fadeInDown">
 <%= form_for([@admit_day.admission, @admit_day]) do |f| %>
   <% if @admit_day.errors.any? %>
     <div id="error_explanation">
@@ -10,32 +11,58 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :admit_date %><br />
-    <%= f.datetime_select :admit_date %>
-  </div>
-  <div class="field">
-    <%= f.label :doctor_notes %><br />
-    <%= f.text_area :doctor_notes %>
-  </div>
-  <div class="field">
-    <%= f.label :nurse_notes %><br />
-    <%= f.text_area :nurse_notes %>
-  </div>
-  <div class="field">
-    <%= f.label :care_giver_notes %><br />
-    <%= f.text_area :care_giver_notes %>
-  </div>
-  <div class="field">
-    <%= f.label :treatment %><br />
-    <%= f.text_area :treatment %>
-  </div>
-  <div class="field">
-    <%= f.label "Entry Day " %><br />
-    <%= f.number_field :serial_number, :value => get_serial_number() %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <section>
+    <div class="form-group">
+        <%= f.label :admit_Date %><br />
+        <%= f.text_field :admit_date, class: "form-control", placeholder: "Admission Date", value: @admit_day.admit_date%>
+    </div>
+  </section>
+  <section>
+    <div class="field">
+      <%= f.label :doctor_notes %><br />
+      <%= f.text_area :doctor_notes, class: "form-control" %>
+    </div>
+  </section>
+  <section>
+    <div class="field">
+      <%= f.label :nurse_notes %><br />
+      <%= f.text_area :nurse_notes, class: "form-control" %>
+    </div>
+  </section>
+  <section>
+    <div class="field">
+      <%= f.label :care_giver_notes %><br />
+      <%= f.text_area :care_giver_notes, class: "form-control" %>
+    </div>
+  </section>
+  <section>
+    <div class="field">
+      <%= f.label :treatment %><br />
+      <%= f.text_area :treatment, class: "form-control" %>
+    </div>
+  </section>
+  <section>
+    <div class="field">
+      <%= f.label "Entry Day " %><br />
+      <%= f.number_field :serial_number, :value => get_serial_number(), class: "form-control" %>
+    </div>
+  </section>
+  <footer>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </footer>
 <% end %>
+<div>
+
+<script type="text/javascript">
+    $(document).ready(function ()
+    {
+        $('#admit_day_admit_date').datetimepicker({
+          dateFormat: "yy-mm-dd",
+            timeFormat: 'hh:mm:ss',
+            defaultTimezone: "+0530",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1900:2014'
+        });
+    });
+</script>
