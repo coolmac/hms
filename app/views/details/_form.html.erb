@@ -24,6 +24,25 @@
   </section>
 <% end %>
 
+<%if !@investigations.blank? %>
+<section>
+  <table class="table table-bordered table-hover">
+    <th>Field</th>
+    <th>Value</th>
+    <th>Units</th>
+    <th>Normal Range</th>
+    <% @investigations.each do |dq| %>
+    <tr>
+      <td> <%= label_tag dq.title%> </td>
+      <td> <%= text_field_tag "#{APP_CONFIG['investigation_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['investigation_prefix']}#{dq.id}") %> </td>
+      <td> <%= label_tag dq.units %> </td>
+      <td> <%= label_tag "(#{dq.normal_min} - #{dq.normal_max})" %> </td>
+    </tr>
+    <% end %>
+  </table>
+</section>
+<%end%>
+
 <footer>
     <%= submit_tag "Save Details", :name => 'save', :class => "btn btn-primary" %>
     <%= submit_tag "Save and Next", :name => 'next', :class => "btn btn-success" %>

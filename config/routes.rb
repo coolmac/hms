@@ -41,11 +41,12 @@ Emr::Application.routes.draw do
   match 'patients/search', to: 'patients#search', as: :search_patient
   match 'patients/generic_search', to: 'patients#generic_search', as: :generic_search_patient
 
+
   get 'users/:id/edit' => 'users#edit', :as => :user
   put 'users/:id' => 'users#update', :as => :user
 
   get '/draw_chart' => 'users#draw_charts'
-
+  match '/discharge_summary' => 'details#discharge_summary'
 
   #get "enquiries/index"
 

@@ -1,10 +1,10 @@
 <div>
 <aside id="left-panel" style="min-height: auto;overflow:auto;">
 
-  <div class="login-info">
+  <div class="login-info" style="padding-top:50px;">
     <span>
       <a href="#" id="show-shortcut">
-        <span>
+        <span style="overflow:auto;">
 		  <%=@user.name%>
 		</span>
 	  </a>
@@ -59,22 +59,31 @@
 
 	  <li>
 	  	<div class="panel-heading" style="padding:0px">
-		<a href="/details/show_history"><i class="fa fa-lg fa-fw fa-calendar"></i> <span class="menu-item-parent">History</span>
-		  <b class="collapse-sign" data-toggle="collapse" href="#history">
+		<%= link_to edit_category_path(:super_category => 'history', :category => 'chief_complaint'), :remote => true do %>
+			<i class="fa fa-lg fa-fw fa-calendar"></i> <span class="menu-item-parent">History</span>
+		  	<b class="collapse-sign" data-toggle="collapse" href="#history">
 		  	<i class="fa fa-fw fa-bars"></i>
-		  </b>
-		</a>
+		  	</b>
+		<%end%>
 		  <div id="history" class="panel-collapse collapse">
 		  	<div class="panel-body" style="padding:0px">
-			<%= link_to chief_complaint_path() do %>
-				<i class="fa fa-fw fa-arrow-circle-o-right"></i> Chief Complaint
-			<% end %>
+			  	<%= link_to edit_category_path(:super_category => 'history', :category => 'chief_complaint'), :remote => true do %>
+			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> Chief Complaint
+			  	<%end%>
 
-			  <a href="/details/history/past-medical-surgical"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Past Medical Surgical</a>
-			  <a href="/details/history/fms_history"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Family Medical Surgical</a>
-			  <a href="/details/history/ps_history"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Personal/Social</a>
-			  <a href="/details/history/treatment"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Treatment</a>
-			  <a href="/details/history/other_systems"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Other Systems</a>
+			  	<%= link_to edit_category_path(:super_category => 'history', :category => 'pms_history'), :remote => true do %>
+			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> Past Medical Surgical
+			  	<%end%>
+			  	<%= link_to edit_category_path(:super_category => 'history', :category => 'fms_history'), :remote => true do %>
+			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> Family Medical Surgical
+			  	<%end%>
+			  	<%= link_to edit_category_path(:super_category => 'history', :category => 'ps_history'), :remote => true do %>
+			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> Personal/Social
+			  	<%end%>
+			  	<%= link_to edit_category_path(:super_category => 'history', :category => 'other_systems_history'), :remote => true do %>
+			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> Other Systems
+			  	<%end%>
+			  	<a href="/details/history/treatment"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Treatment</a>
 		    </div>
 	      </div>
 		</div>
@@ -82,15 +91,20 @@
 
 	  <li>
 	  	<div class="panel-heading" style="padding:0px">
-		<a href="/details/show_examinations"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Examinations</span>
-		  <b class="collapse-sign" data-toggle="collapse" href="#examinations">
+		<%= link_to edit_category_path(:super_category => 'examination', :category => 'gpe'), :remote => true do %>
+			<i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Examinations</span>
+		  	<b class="collapse-sign" data-toggle="collapse" href="#examinations">
 		  	<i class="fa fa-fw fa-bars"></i>
-		  </b>
-		</a>
+		  	</b>
+		<%end%>
 		  <div id="examinations" class="panel-collapse collapse">
 		  	<div class="panel-body" style="padding:0px">
-			  <a href="/details/examinations/gpe"><i class="fa fa-fw fa-arrow-circle-o-right"></i> General Physical Examination</a>
-			  <a href="/details/examinations/vitals"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Vitals Examination</a>
+		  		<%= link_to edit_category_path(:super_category => 'examination', :category => 'gpe'), :remote => true do %>
+			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> General Physical Examination
+			  	<%end%>
+			  	<%= link_to edit_category_path(:super_category => 'examination', :category => 'vitals'), :remote => true do %>
+			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> Vitals Examination
+			  	<%end%>
 		    </div>
 	      </div>
 		</div>
@@ -98,18 +112,29 @@
 
 	  <li>
 	  	<div class="panel-heading" style="padding:0px">
-		<a href="/details/show_investigations"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Investigations</span>
-		  <b class="collapse-sign" data-toggle="collapse" href="#investigations">
+		<%= link_to edit_category_path(:super_category => 'investigation', :category => 'hemogram'), :remote => true do %>
+			<i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Investigations</span>
+		  	<b class="collapse-sign" data-toggle="collapse" href="#investigations">
 		  	<i class="fa fa-fw fa-bars"></i>
-		  </b>
-		</a>
+		  	</b>
+		<%end%>
 		  <div id="investigations" class="panel-collapse collapse">
 		  	<div class="panel-body" style="padding:0px">
-			  <a href="/details/investigations/hemogram"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Hemogram</a>
-			  <a href="/details/investigations/lft"><i class="fa fa-fw fa-arrow-circle-o-right"></i> LFT</a>
-			  <a href="/details/investigations/rft"><i class="fa fa-fw fa-arrow-circle-o-right"></i> RFT</a>
-			  <a href="/details/investigations/glucose"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Glucose</a>
-			  <a href="/details/investigations/lipid_profile"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Lipid Profile</a>
+		  		<%= link_to edit_category_path(:super_category => 'investigation', :category => 'hemogram'), :remote => true do %>
+			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> Hemogram
+			  	<%end%>
+			  	<%= link_to edit_category_path(:super_category => 'investigation', :category => 'lft'), :remote => true do %>
+			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> LFT
+			  	<%end%>
+			  	<%= link_to edit_category_path(:super_category => 'investigation', :category => 'rft'), :remote => true do %>
+			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> RFT
+			  	<%end%>
+			  	<%= link_to edit_category_path(:super_category => 'investigation', :category => 'glucose'), :remote => true do %>
+			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> Glucose
+			  	<%end%>
+			  	<%= link_to edit_category_path(:super_category => 'investigation', :category => 'lipid_profile'), :remote => true do %>
+			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> Lipid Profile
+			  	<%end%>
 		    </div>
 	      </div>
 		</div>
@@ -137,6 +162,13 @@
 		</div>
 	  </li>
 	<% end %>
+
+	<li>
+	  	<div class="panel-heading" style="padding:0px">
+		<a href="/discharge_summary"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Discharge Summary</span>
+		</a>
+		</div>
+	  </li>
 
   </nav>
 </aside>

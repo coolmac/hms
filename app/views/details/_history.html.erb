@@ -1,40 +1,106 @@
-<table>
-  <tr>
-  <th> Question Id: </th>
-  <th> Question </th>
-  <th> Answer Id: </th>
-  <th> Answer </th>
-  </tr>
-<% @sc_visit_questions.each do |eaq| %>
-  <tr>
-  	<td> <%= eaq.question_id %> </td>
-  	<% #TODO Don't make another SQL query, fetch it from existing activerecord object %>
-  	<td> <%= Question.find(eaq.question_id).title %> </td>
-  	<td> <%= eaq.answer_id %> </td>
-  	<td> <%= Answer.find(eaq.answer_id).title %> </td>
-  </tr>
-<% end %>
-</table>
+<div id="content" class="smart-form client-form">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-top:10px">
+    <div class="well no-padding">
+        <header>
+            <b>HISTORY</b>
+        </header>
+    </div>
+  </div>
+</div>
+<% @categories.each do |index,value| %>
+    <div class="">
+      <table class="table table-bordered" style="width:97.5%;margin:auto;">
+        <tr class="success">
+          <td>
+            <b style="font-size:15px"><%= value%></b>
+          </td>
+        </tr>
+        <tr>
+        <% @questions.each do |question| %>
+          <% if question.category == index%>
+            <td style="width:50%;float:left;">
+              <table>
+                <tr>
+                  <td valign="top">
+                    <b><%=question.title%>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</b>
+                  </td>
+                  <td>
+                    <%@answer = @sc_visit_questions.find_by_question_id(question.id)%>
+                    <%=Answer.find(@answer.answer_id).title if !@answer.nil?%>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          <%end%>
+        <%end%>
+        </tr>
+        <% @descriptive_questions.each do |question| %>
+          <% if question.category == index%>
+          <tr>
+            <td>
+            <table>
+                <tr>
+                  <td valign="top">
+                    <b><%=question.title%>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</b>
+                  </td>
+                  <td>
+                    <%@answer = @sc_visit_descriptive_questions.find_by_descriptive_question_id(question.id)%>
+                    <%=@answer.answer if !@answer.nil?%>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <%end%>
+        <%end%>
+      </table>
+    </div>
+<%end%>
+
+
+<%#TODO To be removed%>
+<%if false%>
+  <%if !@sc_investigations.nil?%>
+    <%= render 'investigations'%>
+  <%end%>
+  <table>
+    <tr>
+    <th> Question Id: </th>
+    <th> Question </th>
+    <th> Answer Id: </th>
+    <th> Answer </th>
+    </tr>
+  <% @sc_visit_questions.each do |eaq| %>
+    <tr>
+    	<td> <%= eaq.question_id %> </td>
+    	<% #TODO Don't make another SQL query, fetch it from existing activerecord object %>
+    	<td> <%= Question.find(eaq.question_id).title %> </td>
+    	<td> <%= eaq.answer_id %> </td>
+    	<td> <%= Answer.find(eaq.answer_id).title %> </td>
+    </tr>
+  <% end %>
+  </table>
 
 
 
-<table>
-  <tr>
-  <th> Descriptive Question Id: </th>
-  <th> Descriptive Question </th>
-  <th> Category </th>
-  <th> Descriptive Answer </th>
-  </tr>
-<% @sc_visit_descriptive_questions.each do |eaq| %>
-  <tr>
-  	<td> <%= eaq.descriptive_question_id %> </td>
-  	<% #TODO Don't make another SQL query, fetch it from existing activerecord object %>
-  	<td> <%= DescriptiveQuestion.find(eaq.descriptive_question_id).title %> </td>
-  	<td> <%= DescriptiveQuestion.find(eaq.descriptive_question_id).category %> </td>
-  	<td> <%= eaq.answer %> </td>
-  </tr>
-<% end %>
-</table>
+  <table>
+    <tr>
+    <th> Descriptive Question Id: </th>
+    <th> Descriptive Question </th>
+    <th> Category </th>
+    <th> Descriptive Answer </th>
+    </tr>
+  <% @sc_visit_descriptive_questions.each do |eaq| %>
+    <tr>
+    	<td> <%= eaq.descriptive_question_id %> </td>
+    	<% #TODO Don't make another SQL query, fetch it from existing activerecord object %>
+    	<td> <%= DescriptiveQuestion.find(eaq.descriptive_question_id).title %> </td>
+    	<td> <%= DescriptiveQuestion.find(eaq.descriptive_question_id).category %> </td>
+    	<td> <%= eaq.answer %> </td>
+    </tr>
+  <% end %>
+  </table>
+<%end%>
 
 
 

@@ -119,11 +119,13 @@ def create_unique_visits(start_date_for_v24h,end_date)
   end
 end
 
+
+# USAGE : rake namespace:task_name[parameter1,parameter2]
 namespace :testing do
   
   desc "TODO"
-  task :dummy_patients => :environment do
-  	number=25
+  task :dummy_patients,[:number] => :environment do |t, args|
+  	number=args[:number].to_i
     create_patients(number)
   end
 

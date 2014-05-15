@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140509135033) do
+ActiveRecord::Schema.define(:version => 20140513115138) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line1"
@@ -303,6 +303,7 @@ ActiveRecord::Schema.define(:version => 20140509135033) do
     t.text     "vitals"
     t.text     "general_examination"
     t.date     "visit_time"
+    t.string   "name"
   end
 
 end

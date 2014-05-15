@@ -30,7 +30,7 @@
           <section>
             <label class="chart_select_label"><%= select_tag "chart_type", options_for_select([ "Bar", "Line" ], "Bar")%></label>&nbsp;&nbsp;
             <label class="chart_select_label"><%= select_tag "chart_tag", options_for_select([ "p24h", "v24h","Both" ], "Both")%></label>&nbsp;&nbsp;
-            <button onclick="draw_charts()" id="chart_button" class=".btn">Draw Chart</button>
+            <button onclick="charts()" id="chart_button" class=".btn">Draw Chart</button>
             <div id='chart'>
             </div>
           </section>

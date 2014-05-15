@@ -12,7 +12,7 @@
   </div>
 
   <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6">
-    <%= link_to 'Investigation', show_investigations_path(:super_category => 'investigation', :category => 'investigation', :sub_category => 'investigation'), :class => "btn btn-primary btn-xl"%>
+    <%= link_to 'Investigation', edit_category_path(:super_category => 'investigation', :category => 'hemogram'), :remote => true, :class => "btn btn-primary btn-xl"%>
   </div>
 </div>
 
@@ -28,7 +28,7 @@
 
 <div class="row">
   <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6">
-    <%= link_to 'Examination', show_examinations_path(:super_category => 'examination', :category => 'examination', :sub_category => 'examination'), :class => "btn btn-primary btn-xl"%>
+    <%= link_to 'Examination', edit_category_path(:super_category => 'examination', :category => 'gpe'), :remote => true, :class => "btn btn-primary btn-xl"%>
   </div>
 
   <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6">

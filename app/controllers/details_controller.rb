@@ -32,14 +32,20 @@ class DetailsController < ApplicationController
   def get_visit_question_details
     visit_id = @current_visit.id
     super_category = params[:super_category]
+    @categories = Visit.get_categories(super_category)
+    #binding.pry
     @questions = Question.where(:super_category => super_category)
-    @descriptive_questions = Question.where(:super_category => super_category)
+    @descriptive_questions = DescriptiveQuestion.where(:super_category => super_category)
+    #@investigations = Investigation.all
 
     @question_ids = @questions.collect{|hq| hq.id}
     @descriptive_question_ids = @descriptive_questions.collect{|hdq| hdq.id}
+    #@investigation_ids = @investigations.collect{|q| q.id}.join(', ')
 
     @sc_visit_questions = VisitQuestion.where(:visit_id => visit_id, :question_id => @question_ids)
     @sc_visit_descriptive_questions = VisitDescriptiveQuestion.where(:visit_id => visit_id, :descriptive_question_id => @descriptive_question_ids)
+    #@sc_investigations = VisitInvestigation.where(:visit_id => visit_id, :investigation_id => @investigation_ids)
+    
     # @existing_answered_question_ids = @sc_visit_questions.collect{|vq| vq.question_id}
     # @existing_descriptive_question_ids = @sc_visit_descriptive_questions.collect{|vdq| vdq.descriptive_question_id}
   end
@@ -47,6 +53,7 @@ class DetailsController < ApplicationController
   def render_history_main_page
     params[:super_category] = 'history'
     get_visit_question_details()
+    #binding.pry
     respond_to do |format|
       format.html {render 'details/show_history'}
     end
@@ -126,6 +133,7 @@ class DetailsController < ApplicationController
     end
     
     edit_details()
+    #binding.pry
     respond_to do |format|
       format.js { render :layout => false }        
     end
@@ -161,6 +169,17 @@ class DetailsController < ApplicationController
       end
     end
 
+    @investigations = Investigation.where(:category => @category)
+    if @investigations.size > 0
+      csv_investigation_ids = @investigations.collect{|q| q.id}.join(', ')
+      @visit_investigations = VisitInvestigation.where("investigation_id in (#{csv_investigation_ids}) and visit_id = #{visit_id}")
+      if @visit_investigations.size > 0
+        @visit_investigations.each do |vi|
+          @answers_hash["#{APP_CONFIG['investigation_prefix']}#{vi.investigation_id}"] = vi.report
+        end
+      end
+    end
+
   end
 
   def update_details
@@ -174,8 +193,11 @@ class DetailsController < ApplicationController
     # existing_descriptive_question_ids = VisitDescriptiveQuestion.where(:visit_id => visit_id).collect{|vdq| vdq.descriptive_question_id}.delete(nil)
     existing_answered_question_ids = VisitQuestion.where(:visit_id => visit_id).collect{|vq| vq.question_id}
     existing_descriptive_question_ids = VisitDescriptiveQuestion.where(:visit_id => visit_id).collect{|vdq| vdq.descriptive_question_id}
+    existing_investigations = VisitInvestigation.where(:visit_id => visit_id).collect{|v| v.investigation_id}
     params.each do |key, value|
+      #binding.pry
       if key.start_with?APP_CONFIG["question_prefix"]
+        
         question_id = key.split(APP_CONFIG["question_prefix"])[1].to_i
         if (value != "")
           # VisitQuestion.create_or_update({question_id: question_id, visit_id: visit_id, answer_id: value.to_i})
@@ -200,6 +222,19 @@ class DetailsController < ApplicationController
             existing_descriptive_question_ids.delete(descriptive_question_id)
           else
             VisitDescriptiveQuestion.create({descriptive_question_id: descriptive_question_id, visit_id: visit_id, answer: value})
+          end
+        end
+      elsif key.start_with?APP_CONFIG["investigation_prefix"]
+        investigation_id = key.split(APP_CONFIG["investigation_prefix"])[1].to_i
+        if (value != "")
+          if existing_investigations.include?investigation_id
+            #TODO this MySQL call can be removed, we have already fetch the result
+            visit_investigation = VisitInvestigation.find_by_investigation_id_and_visit_id(investigation_id, visit_id)
+            visit_investigation.report = value
+            visit_investigation.save
+            existing_investigations.delete(investigation_id)
+          else
+            VisitInvestigation.create({investigation_id: investigation_id, visit_id: visit_id, report: value})
           end
         end
       end
@@ -263,6 +298,9 @@ class DetailsController < ApplicationController
     #   VisitInvestigation.where("visit_id = #{visit_id} and investigation_id in (#{existing_investigations.join(', ')})").delete_all
     # end
 
+  end
+
+  def discharge_summary
   end
 
 end

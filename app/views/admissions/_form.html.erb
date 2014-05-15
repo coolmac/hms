@@ -1,4 +1,6 @@
-<%= form_for(@admission) do |f| %>
+<div id="content" class="animated fadeInDown" overflow="scroll">
+
+<%= form_for(@admission, :html => { style: "margin-left:20px;",  class: "smart-form client-form", role:"form" }) do |f| %>
   <% if @admission.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@admission.errors.count, "error") %> prohibited this admission from being saved:</h2>
@@ -10,32 +12,66 @@
       </ul>
     </div>
   <% end %>
+  <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+    <div class="well no-padding">
+      <header>Contact Us</header>
+      <fieldset>
+          <section>
+            <div class="form-group">
+                <%= f.label :admission_Date %><br />
+                <%= f.text_field :admission_date, class: "form-control", placeholder: "Admission Date" %>
+            </div>
+          </section>
+          <section>
+            <div class="field-group">
+              <%= f.label :bed %><br />
+              <%= f.text_field :bed, class: "form-control", placeholder: "Bed" %>
+            </div>
+          </section>
+          <section>
+            <div class="field-group">
+              <%= f.label :doctor %><br />
+              <%= f.text_field :doctor, class: "form-control", placeholder: "Doctor" %>
+            </div>
+          </section>
+          <section>
+            <div class="field-group">
+              <%= f.check_box :is_mlc%>
+              <label for="admission_is_mlc" >Is mlc</label>
+            </div>
+          </section>
+          <section>
+            <div class="field-group">
+              <%= f.label :mlc_details %><br />
+              <%= f.text_area :mlc_details, class: "form-control", style: "height:200px;max-height:200px;" %>
+            </div>
+          </section>
+          <section>
+            <div class="field-group">
+              <%= f.label :description %><br />
+              <%= f.text_area :description, class: "form-control", style: "height:200px;max-height:200px;" %>
+            </div>
+          </section>
+      </fieldset>
+      <footer>
+        <div>
+            <%= f.submit "Submit", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+      </footer>
+      </div>
+    </div>
+</div>
 
-  <div class="field">
-    <%= f.label :admission_date %><br />
-    <%= f.datetime_select :admission_date %>
-  </div>
-  <div class="field">
-    <%= f.label :bed %><br />
-    <%= f.text_field :bed %>
-  </div>
-  <div class="field">
-    <%= f.label :doctor %><br />
-    <%= f.text_field :doctor %>
-  </div>
-  <div class="field">
-    <%= f.label :is_mlc %><br />
-    <%= f.check_box :is_mlc %>
-  </div>
-  <div class="field">
-    <%= f.label :mlc_details %><br />
-    <%= f.text_area :mlc_details %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<script type="text/javascript">
+        $(document).ready(function ()
+        {
+            $('#admission_admission_date').datepicker({
+              dateFormat: "yy-mm-dd",
+              changeMonth: true,
+              changeYear: true,
+              yearRange: '1900:2014',
+              defaultDate: '1970-01-01'
+            });
+        });
+    </script>

@@ -1,0 +1,23 @@
+<div id="content" class="smart-form client-form">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-top:10px">
+    <div class="well no-padding">
+        <header>
+            <b>INVESTIGATIONS</b>
+        </header>
+    </div>
+  </div>
+</div>
+  <table class="table table-bordered table-hover">
+    <th>Field</th>
+    <th>Value</th>
+    <th>Units</th>
+    <th>Normal Range</th>
+    <% @sc_investigations.each do |dq| %>
+    <tr>
+      <td> <%= label_tag @investigations.find_by_id(dq.investigation_id).title%> </td>
+      <td> <%= text_field_tag "#{APP_CONFIG['investigation_prefix']}#{dq.id}", ("#{APP_CONFIG['investigation_prefix']}#{dq.id}") %> </td>
+      <td> <%= label_tag @investigations.find(dq.investigation_id).units %> </td>
+      <td> <%= label_tag "(#{dq.normal_min} - #{dq.normal_max})" %> </td>
+    </tr>
+    <% end %>
+  </table>

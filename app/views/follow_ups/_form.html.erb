@@ -13,24 +13,41 @@
 
 <!-- id="follow_up_follow_up_date_1i" name="follow_up[follow_up_date(1i)]"　-->
 <!-- <p>Date: <input type="text" id="datepicker" name="follow_up_date"></p> -->
-
-  <div class="field">
-    <%= f.label :follow_up_date %><br />
-    <!--  <%= f.datetime_select :follow_up_date %> -->
-    <%= f.text_field :follow_up_date, :id => 'datepicker' %>
-  </div>
-  <div class="field">
-    <%= f.label :final_diagnosis %><br />
-    <%= f.text_area :final_diagnosis %>
-  </div>
-  <div class="field">
-    <%= f.label :comments %><br />
-    <%= f.text_area :comments %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10" style="padding-top:10px">
+      <div class="well no-padding">
+        <header>
+          New Follow Up
+        </header>
+          <fieldset>
+            <section>
+              <div class="field">
+                <%= f.label :follow_up_date %><br />
+                <!--  <%= f.datetime_select :follow_up_date %> -->
+                <%= f.text_field :follow_up_date, :id => 'datepicker', class: "form-control" %>
+              </div>
+            </section>
+            <section>
+              <div class="field">
+                <%= f.label :final_diagnosis %><br />
+                <%= f.text_area :final_diagnosis, class: "form-control" %>
+              </div>
+            </section>
+            <section>
+              <div class="field">
+                <%= f.label :comments %><br />
+                <%= f.text_area :comments, class: "form-control" %>
+              </div>
+            </section>
+          </fieldset>
+          <footer>
+              <div class="actions">
+                <%= f.submit "Submit", class: "btn btn-primary" %>
+              </div>
+        <% end %>
+      </footer>
+      </div>
+    </div>
+</div>
 
   <script>
   $(function() {

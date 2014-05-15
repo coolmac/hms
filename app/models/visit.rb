@@ -9,12 +9,16 @@ class Visit < ActiveRecord::Base
   
   HISTORY_CATEGORY= [['chief_complaint','Chief Complaint History'] , ['pms_history', 'Past Medical & Surgical History'], ['fms_history', 'Family Medical & Surgical History'], ['ps_history', 'Past Social History'], ['other_systems_history', 'Other Systems History']]
   EXAMINATION_CATEGORY= [['gpe', 'General Physical Examination'], ['vitals', 'Vitals Examination']]  
-  INVESTIGATION_CATEGORY = [['lft', 'LFT']]
+  INVESTIGATION_CATEGORY = [['hemogram','Hemogram'],['lft', 'LFT'],['rft','RFT'],['glucose','Glucose'],['lipid_profile','Lipid Profile']]
 
   CATEGORIES = {HISTORY => HISTORY_CATEGORY, EXAMINATION => EXAMINATION_CATEGORY, INVESTIGATION => INVESTIGATION_CATEGORY}
   
   #TODO set up associations
   # has_many :admissions
+
+  def self.get_categories(present_super_category)
+    category_map = CATEGORIES[present_super_category]
+  end
 
   def self.get_matched_index(category_map, present_super_category, present_category)
     matched_index = -1
