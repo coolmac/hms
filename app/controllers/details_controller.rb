@@ -300,28 +300,6 @@ class DetailsController < ApplicationController
 
   end
 
-  # def get_summary_details
-  #   visit_id = @current_visit.id
-  #   super_category = params[:super_category]
-  #   #binding.pry
-  #   if @history = 'history'
-  #       @questions = Question.where(:super_category => super_category, :category => @category)
-  #       @descriptive_questions = DescriptiveQuestion.where(:super_category => super_category, :category => @category)
-
-  #       @question_ids = @questions.collect{|hq| hq.id}
-  #       @descriptive_question_ids = @descriptive_questions.collect{|hdq| hdq.id}
-
-  #       @sc_visit_questions = VisitQuestion.where(:visit_id => visit_id, :question_id => @question_ids)
-  #       @sc_visit_descriptive_questions = VisitDescriptiveQuestion.where(:visit_id => visit_id, :descriptive_question_id => @descriptive_question_ids)
-  #       @history = ""
-  #   end
-  #   if @investigation = 'investigation'
-  #       @investigations = Investigation.where(:category => @category)
-  #       @investigation_ids = @investigations.collect{|inv| inv.id}
-  #       @sc_investigations = VisitInvestigation.where(:investigation_id => @investigation_ids)
-  #       @investigation = ""
-  #   end
-  # end
 
   def get_history_details
     visit_id = @current_visit.id
@@ -366,15 +344,31 @@ class DetailsController < ApplicationController
       @follow_up = params[:follow_up_cb]
       @follow_ups = FollowUp.where(:visit_id => @current_visit.id)
     end
+    if params[:admission_cb]
+      @admission = params[:admission_cb]
+      @days = params[:admit_days]
+      @admission_details = Admission.where(:visit_id => @current_visit.id)
+      @admit_day_details = AdmitDay.where(:id => @days).order("admit_date ASC")
+    end
   end
 
   def sub_category
+    if params[:super_category]
       @categories = Visit.get_categories(params[:super_category])
       @category_list = @categories.collect{|first,second| first}
 
       respond_to do |format|
           format.json {render json: @category_list}
       end
+    elsif params[:dates]
+      @admission_info = Admission.find_by_visit_id(@current_visit.id)
+      @days = @admission_info.admit_days
+      #binding.pry
+      respond_to do |format|
+          format.json {render json: @days}
+      end
+    else
+    end
   end
 
 end

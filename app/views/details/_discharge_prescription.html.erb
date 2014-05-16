@@ -1,4 +1,5 @@
 
+<% if !@prescriptions.blank?%>
   <table class="table">
     <tr>
     <th> Medicine </th>
@@ -8,7 +9,6 @@
     </tr>
   <% @prescriptions.each do |pre| %>
     <tr>
-    	<% #TODO Don't make another SQL query, fetch it from existing activerecord object %>
     	<td> <%= pre.medicine %> </td>
     	<td> <%= pre.frequency %> </td>
     	<td> <%= pre.duration %> </td>
@@ -16,3 +16,4 @@
     </tr>
   <% end %>
   </table>
+<%end%>
