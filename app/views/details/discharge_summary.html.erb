@@ -5,10 +5,10 @@
 		<%= form_tag("/discharge_summary", id: "summary_form", method: "get") do %>
 			<input type="checkbox" name="history_cb" id="history_cb" value="history" onclick="show_sub_category('history')"/> History
 			<input type="checkbox" name="investigation_cb" id="investigation_cb" value="investigation" onclick="show_sub_category('investigation')"/> Investigation
-			<input type="checkbox" name="prescription_cb" id="prescription_cb" value="follow_up" /> Prescription
+			<input type="checkbox" name="prescription_cb" id="prescription_cb" value="prescription" /> Prescription
 			<input type="checkbox" name="follow_up_cb" id="follow_up_cb" value="follow_up" /> Follow Up
-			<input type="checkbox" name="diagnosis_cb" id="diagnosis_cb" value="follow_up" /> Diagnosis
-			<input type="checkbox" name="admission_cb" id="admission_cb" value="follow_up" /> Admission
+			<input type="checkbox" name="diagnosis_cb" id="diagnosis_cb" value="diagnosis" /> Diagnosis
+			<input type="checkbox" name="admission_cb" id="admission_cb" value="admission" /> Admission
 			<div id="sub_category_div">
 			</div>
 			<button type="button" onclick="get_summary()">Generate Summary</button>
@@ -29,6 +29,24 @@
     			<div class="well no-padding">
       				<header>Investigation</header>
 					<%= render "discharge_investigation"%>
+				</div>
+			</div>	
+		<%end%>
+
+		<%if @prescription == "prescription"%>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 smart-form client-form">
+    			<div class="well no-padding">
+      				<header>Prescription</header>
+					<%= render "discharge_prescription"%>
+				</div>
+			</div>	
+		<%end%>
+
+		<%if @follow_up == "follow_up"%>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 smart-form client-form">
+    			<div class="well no-padding">
+      				<header>Follow Up</header>
+					<%= render "discharge_follow_up"%>
 				</div>
 			</div>	
 		<%end%>

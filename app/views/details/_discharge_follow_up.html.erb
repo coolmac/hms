@@ -1,0 +1,16 @@
+
+  <table class="table">
+    <tr>
+    <th> Date </th>
+    <th> Final Diagnosis </th>
+    <th> comments </th>
+    </tr>
+  <% @follow_ups.each do |fu| %>
+    <tr>
+    	<% #TODO Don't make another SQL query, fetch it from existing activerecord object %>
+    	<td> <%= fu.follow_up_date %> </td>
+    	<td> <%= fu.final_diagnosis %> </td>
+    	<td> <%= fu.comments %> </td>
+    </tr>
+  <% end %>
+  </table>

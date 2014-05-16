@@ -358,6 +358,14 @@ class DetailsController < ApplicationController
       @category = params[:investigation_sub]
       get_investigation_details
     end
+    if params[:prescription_cb]
+      @prescription = params[:prescription_cb]
+      @prescriptions = Prescription.where(:visit_id => @current_visit.id)
+    end
+    if params[:follow_up_cb]
+      @follow_up = params[:follow_up_cb]
+      @follow_ups = FollowUp.where(:visit_id => @current_visit.id)
+    end
   end
 
   def sub_category
