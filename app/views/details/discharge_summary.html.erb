@@ -2,11 +2,13 @@
 
 <div id="summary_div" class="summary_div">
 	<div id="summary_form">
-		<%= form_tag("/discharge_summary", method: "get") do %>
-			<input type="checkbox" name="history_cb" id="history_cb" value="history" <%= @history.include?("history") ? "checked" : "" %> /> History
-			<input type="checkbox" name="investigation_cb" id="investigation_cb" value="investigation" /> Investigation
+		<%= form_tag("/discharge_summary", id: "summary_form", method: "get") do %>
+			<input type="checkbox" name="history_cb" id="history_cb" value="history" onclick="show_sub_category('history')"<%= @history.include?("history") ? "checked" : "" %> /> History
+			<input type="checkbox" name="investigation_cb" id="investigation_cb" value="investigation" onclick="show_sub_category('investigation')"/> Investigation
 			<input type="checkbox" name="follow_up_cb" id="follow_up_cb" value="follow_up" /> Follow Up
-			<button >Generate Summary</button>
+			<div id="sub_category_div">
+			</div>
+			<button type="button" onclick="get_summary()">Generate Summary</button>
 		<%end%>
 	</div></br>
 	<div id="summary_content">

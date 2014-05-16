@@ -300,13 +300,40 @@ class DetailsController < ApplicationController
 
   end
 
+  def get_summary_details
+    visit_id = @current_visit.id
+    super_category = params[:super_category]
+    #binding.pry
+    if @history = 'history'
+        @questions = Question.where(:super_category => super_category, :category => @category)
+        @descriptive_questions = DescriptiveQuestion.where(:super_category => super_category, :category => @category)
+
+        @question_ids = @questions.collect{|hq| hq.id}
+        @descriptive_question_ids = @descriptive_questions.collect{|hdq| hdq.id}
+
+        @sc_visit_questions = VisitQuestion.where(:visit_id => visit_id, :question_id => @question_ids)
+        @sc_visit_descriptive_questions = VisitDescriptiveQuestion.where(:visit_id => visit_id, :descriptive_question_id => @descriptive_question_ids)
+    end
+  end
+
   def discharge_summary
     @history = ""
+    #binding.pry
     if params[:history_cb]
       params[:super_category] = params[:history_cb]
       @history = params[:history_cb]
-      get_visit_question_details
+      @category = params[:history_sub]
+      get_summary_details
     end
+  end
+
+  def sub_category
+      @categories = Visit.get_categories(params[:super_category])
+      @category_list = @categories.collect{|first,second| first}
+
+      respond_to do |format|
+          format.json {render json: @category_list}
+      end
   end
 
 end

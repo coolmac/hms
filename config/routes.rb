@@ -47,6 +47,7 @@ Emr::Application.routes.draw do
 
   get '/draw_chart' => 'users#draw_charts'
   match '/discharge_summary' => 'details#discharge_summary'
+  match '/sub_category' => 'details#sub_category'
 
   #get "enquiries/index"
 
