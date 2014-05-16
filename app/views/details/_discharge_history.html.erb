@@ -1,38 +1,37 @@
 
+<%if !@sc_visit_questions.blank?%>
   <table class="table">
     <tr>
-    <th> Question Id </th>
     <th> Question </th>
     <th> Category </th>
     <th> Answer </th>
     </tr>
   <% @sc_visit_questions.each do |eaq| %>
     <tr>
-    	<td> <%= eaq.question_id %> </td>
     	<% #TODO Don't make another SQL query, fetch it from existing activerecord object %>
-    	<td> <%= Question.find(eaq.question_id).title %> </td>
-    	<td> <%= Question.find(eaq.question_id).category %> </td>
+    	<td> <%= @questions.find_by_id(eaq.question_id).title %> </td>
+    	<td> <%= @questions.find_by_id(eaq.question_id).category %> </td>
     	<td> <%= Answer.find(eaq.answer_id).title %> </td>
     </tr>
   <% end %>
   </table>
+<%end%>
 
 
-
+<%if !@sc_visit_descriptive_questions.blank?%>
   <table  class="table">
     <tr>
-    <th> Descriptive Question Id: </th>
     <th> Descriptive Question </th>
     <th> Category </th>
     <th> Descriptive Answer </th>
     </tr>
   <% @sc_visit_descriptive_questions.each do |eaq| %>
     <tr>
-    	<td> <%= eaq.descriptive_question_id %> </td>
     	<% #TODO Don't make another SQL query, fetch it from existing activerecord object %>
-    	<td> <%= DescriptiveQuestion.find(eaq.descriptive_question_id).title %> </td>
-    	<td> <%= DescriptiveQuestion.find(eaq.descriptive_question_id).category %> </td>
+    	<td> <%= @descriptive_questions.find_by_id(eaq.descriptive_question_id).title %> </td>
+    	<td> <%= @descriptive_questions.find_by_id(eaq.descriptive_question_id).category %> </td>
     	<td> <%= eaq.answer %> </td>
     </tr>
   <% end %>
   </table>
+<%end%>

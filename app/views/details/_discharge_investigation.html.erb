@@ -1,0 +1,20 @@
+
+  <table class="table">
+    <tr>
+    <th> Question </th>
+    <th> Category </th>
+    <th> Report </th>
+    <th> Unit </th>
+    <th> Normal </th>
+    </tr>
+  <% @sc_investigations.each do |inv| %>
+    <tr>
+    	<% #TODO Don't make another SQL query, fetch it from existing activerecord object %>
+    	<td> <%= @investigations.find_by_id(inv.investigation_id).title %> </td>
+    	<td> <%= @investigations.find_by_id(inv.investigation_id).category %> </td>
+    	<td> <%= inv.report %> </td>
+      <td> <%= @investigations.find_by_id(inv.investigation_id).units %> </td>
+      <td> <%= @investigations.find_by_id(inv.investigation_id).normal_min.to_s+ " - " +@investigations.find_by_id(inv.investigation_id).normal_max.to_s%> </td>
+    </tr>
+  <% end %>
+  </table>

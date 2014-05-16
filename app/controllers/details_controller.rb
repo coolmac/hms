@@ -300,30 +300,63 @@ class DetailsController < ApplicationController
 
   end
 
-  def get_summary_details
+  # def get_summary_details
+  #   visit_id = @current_visit.id
+  #   super_category = params[:super_category]
+  #   #binding.pry
+  #   if @history = 'history'
+  #       @questions = Question.where(:super_category => super_category, :category => @category)
+  #       @descriptive_questions = DescriptiveQuestion.where(:super_category => super_category, :category => @category)
+
+  #       @question_ids = @questions.collect{|hq| hq.id}
+  #       @descriptive_question_ids = @descriptive_questions.collect{|hdq| hdq.id}
+
+  #       @sc_visit_questions = VisitQuestion.where(:visit_id => visit_id, :question_id => @question_ids)
+  #       @sc_visit_descriptive_questions = VisitDescriptiveQuestion.where(:visit_id => visit_id, :descriptive_question_id => @descriptive_question_ids)
+  #       @history = ""
+  #   end
+  #   if @investigation = 'investigation'
+  #       @investigations = Investigation.where(:category => @category)
+  #       @investigation_ids = @investigations.collect{|inv| inv.id}
+  #       @sc_investigations = VisitInvestigation.where(:investigation_id => @investigation_ids)
+  #       @investigation = ""
+  #   end
+  # end
+
+  def get_history_details
     visit_id = @current_visit.id
     super_category = params[:super_category]
-    #binding.pry
-    if @history = 'history'
-        @questions = Question.where(:super_category => super_category, :category => @category)
-        @descriptive_questions = DescriptiveQuestion.where(:super_category => super_category, :category => @category)
+    @questions = Question.where(:super_category => super_category, :category => @category)
+    @descriptive_questions = DescriptiveQuestion.where(:super_category => super_category, :category => @category)
 
-        @question_ids = @questions.collect{|hq| hq.id}
-        @descriptive_question_ids = @descriptive_questions.collect{|hdq| hdq.id}
+    @question_ids = @questions.collect{|hq| hq.id}
+    @descriptive_question_ids = @descriptive_questions.collect{|hdq| hdq.id}
 
-        @sc_visit_questions = VisitQuestion.where(:visit_id => visit_id, :question_id => @question_ids)
-        @sc_visit_descriptive_questions = VisitDescriptiveQuestion.where(:visit_id => visit_id, :descriptive_question_id => @descriptive_question_ids)
-    end
+    @sc_visit_questions = VisitQuestion.where(:visit_id => visit_id, :question_id => @question_ids)
+    @sc_visit_descriptive_questions = VisitDescriptiveQuestion.where(:visit_id => visit_id, :descriptive_question_id => @descriptive_question_ids)
+  end
+
+  def get_investigation_details
+    visit_id = @current_visit.id
+    @investigations = Investigation.where(:category => @category)
+    @investigation_ids = @investigations.collect{|inv| inv.id}
+    @sc_investigations = VisitInvestigation.where(:investigation_id => @investigation_ids)
   end
 
   def discharge_summary
     @history = ""
+    @investigation = ""
     #binding.pry
     if params[:history_cb]
       params[:super_category] = params[:history_cb]
       @history = params[:history_cb]
       @category = params[:history_sub]
-      get_summary_details
+      get_history_details
+    end
+    if params[:investigation_cb]
+      @investigation = params[:investigation_cb]
+      @category = params[:investigation_sub]
+      get_investigation_details
     end
   end
 
