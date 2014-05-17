@@ -38,12 +38,13 @@ class DetailsController < ApplicationController
     @descriptive_questions = DescriptiveQuestion.where(:super_category => super_category)
     #@investigations = Investigation.all
 
-    @question_ids = @questions.collect{|hq| hq.id}
-    @descriptive_question_ids = @descriptive_questions.collect{|hdq| hdq.id}
+    #@question_ids = @questions.collect{|hq| hq.id}
+    #@descriptive_question_ids = @descriptive_questions.collect{|hdq| hdq.id}
     #@investigation_ids = @investigations.collect{|q| q.id}.join(', ')
 
-    @sc_visit_questions = VisitQuestion.where(:visit_id => visit_id, :question_id => @question_ids)
-    @sc_visit_descriptive_questions = VisitDescriptiveQuestion.where(:visit_id => visit_id, :descriptive_question_id => @descriptive_question_ids)
+    @sc_visit_questions = VisitQuestion.select("visit_questions.*,questions.title,questions.category").joins(",questions").where(:visit_id => visit_id).where("questions.id=visit_questions.question_id")
+    @sc_visit_descriptive_questions = VisitDescriptiveQuestion.select("visit_descriptive_questions.*,descriptive_questions.title,descriptive_questions.category").joins(",descriptive_questions").where(:visit_id => visit_id)
+                                      .where("descriptive_questions.id=visit_descriptive_questions.descriptive_question_id")
     #@sc_investigations = VisitInvestigation.where(:visit_id => visit_id, :investigation_id => @investigation_ids)
     
     # @existing_answered_question_ids = @sc_visit_questions.collect{|vq| vq.question_id}
@@ -54,10 +55,21 @@ class DetailsController < ApplicationController
     params[:super_category] = 'history'
     get_visit_question_details()
     #binding.pry
-    respond_to do |format|
-      format.html {render 'details/show_history'}
+    if params[:pdf]
+      dir = File.dirname("#{Rails.root}/pdfs/History/#{@current_patient.first_name}/x")
+      FileUtils.mkdir_p(dir) unless File.directory?(dir)
+      pdf = WickedPdf.new.pdf_from_string(render_to_string('details/_history_pdf.html.erb'))
+      save_path = Rails.root.join('pdfs/History/'+@current_patient.first_name,@current_visit.created_at.to_s)
+      File.open(save_path, 'wb') do |file|
+        file << pdf
+      end
+      pdf_filename = File.join(Rails.root, "pdfs/History/#{@current_patient.first_name}/#{@current_visit.created_at}")
+      send_file(pdf_filename, :filename => "History.pdf", :disposition => 'inline', :type => "application/pdf")
+    else
+      respond_to do |format|
+        format.html {render 'details/show_history'}
+      end
     end
-
   end
 
   # flow can come from show_history page or Directly

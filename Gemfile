@@ -90,4 +90,7 @@ ruby '1.9.3'
 
 gem 'jqplot-rails'
 
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
+
 

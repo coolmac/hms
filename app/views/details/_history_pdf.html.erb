@@ -18,7 +18,7 @@
           </td>
         </tr>
         <tr>
-        <% @questions.each do |question| %>
+        <% @sc_visit_questions.each do |question| %>
           <% if question.category == index%>
             <td style="width:50%;float:left;">
               <table>
@@ -27,8 +27,7 @@
                     <b><%=question.title%>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</b>
                   </td>
                   <td>
-                    <%@answer = @sc_visit_questions.find_by_question_id(question.id)%>
-                    <%=Answer.find(@answer.answer_id).title if !@answer.nil?%>
+                    <%=Answer.find(question.answer_id).title%>
                   </td>
                 </tr>
               </table>
@@ -36,7 +35,7 @@
           <%end%>
         <%end%>
         </tr>
-        <% @descriptive_questions.each do |question| %>
+        <% @sc_visit_descriptive_questions.each do |question| %>
           <% if question.category == index%>
           <tr>
             <td>
@@ -46,8 +45,7 @@
                     <b><%=question.title%>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</b>
                   </td>
                   <td>
-                    <%@answer = @sc_visit_descriptive_questions.find_by_descriptive_question_id(question.id)%>
-                    <%=@answer.answer if !@answer.nil?%>
+                    <%=question.answer%>
                   </td>
                 </tr>
               </table>

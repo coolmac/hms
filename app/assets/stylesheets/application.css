@@ -25,3 +25,23 @@
 #ui-datepicker-div {
 	z-index:100000000 !important;
 }
+
+
+
+table, tr, td, th, tbody, thead, tfoot {
+    page-break-inside: avoid !important;
+}
+
+@media print {
+	body {
+		overflow:visible !important;
+	}
+	#over-the-top {
+		display:none !important;
+	}
+	#history_pdf_button {
+		display:none;
+	}
+	#history_category_title{
+	}
+}
