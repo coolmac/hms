@@ -13,6 +13,7 @@ defaults: &DEFAULTS
   gs_username: "admin@genauth.com"
   gs_password: "htuaneg123"
   gs_spreadsheet_key: "0AsQY57nAWrTldHg2OEtEbjRDcDRsZTZscnhXRHRGanc" 
+  deployment_date: '2014-05-05'
 development:
   <<: *DEFAULTS
 test:

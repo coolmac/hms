@@ -19,6 +19,7 @@
         </tr>
         <tr>
         <% @questions.each do |question| %>
+        <%#TODO optimize this. Have questions based on each category%>
           <% if question.category == index%>
             <td style="width:50%;float:left;">
               <table>
