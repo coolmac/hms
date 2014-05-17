@@ -362,6 +362,17 @@ class DetailsController < ApplicationController
       @admission_details = Admission.where(:visit_id => @current_visit.id)
       @admit_day_details = AdmitDay.where(:id => @days).order("admit_date ASC")
     end
+    if params[:submit]
+      dir = File.dirname("#{Rails.root}/pdfs/Discharge/#{@current_patient.first_name}/x")
+      FileUtils.mkdir_p(dir) unless File.directory?(dir)
+      pdf = WickedPdf.new.pdf_from_string(render_to_string('details/discharge_summary.html.erb'))
+      save_path = Rails.root.join('pdfs/Discharge/'+@current_patient.first_name,@current_visit.created_at.to_s)
+      File.open(save_path, 'wb') do |file|
+        file << pdf
+      end
+      pdf_filename = File.join(Rails.root, "pdfs/Discharge/#{@current_patient.first_name}/#{@current_visit.created_at}")
+      send_file(pdf_filename, :filename => "History.pdf", :disposition => 'inline', :type => "application/pdf")
+    end
   end
 
   def sub_category

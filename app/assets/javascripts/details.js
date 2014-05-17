@@ -9,6 +9,15 @@ function get_summary(){
 
 	});
 }
+function get_summary_pdf(){
+	var data = $('form').serialize();
+
+		alert("hai")
+	url = window.location+"?&pdf=true&"+data
+	$.get(url, function(data, status, xhr) {
+		alert("hai")
+	});
+}
 
 
 function show_sub_category(super_category) {

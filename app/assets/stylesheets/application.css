@@ -28,9 +28,9 @@
 
 
 
-table, tr, td, th, tbody, thead, tfoot {
+/*table, tr, td, th, tbody, thead, tfoot {
     page-break-inside: avoid !important;
-}
+}*/
 
 @media print {
 	body {
@@ -42,6 +42,7 @@ table, tr, td, th, tbody, thead, tfoot {
 	#history_pdf_button {
 		display:none;
 	}
-	#history_category_title{
+	#summary_form {
+		display:none;
 	}
 }
