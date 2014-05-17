@@ -202,7 +202,6 @@ def update_from_google_spreadsheet
   spreadsheet_key = APP_CONFIG['gs_spreadsheet_key']
   all_worksheets = session.spreadsheet_by_key(spreadsheet_key)
 
-  #TODO put this under transaction
   ActiveRecord::Base.transaction do
     all_worksheets.worksheets.each do |ws|
       table_name = ws.title
