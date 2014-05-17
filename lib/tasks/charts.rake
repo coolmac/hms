@@ -156,4 +156,15 @@ namespace :testing do
     create_unique_visits(start_date_for_v24h,end_date)
   end
 
+  desc "TODO"
+  task :generate_chart_values => :environment do
+    start_date = Date.parse(APP_CONFIG[:deployment_date])
+    end_date = (Time.now).strftime("%Y-%m-%d")
+    start_date_for_p24h = Chart.select("date(xvalue)").where("tag='p24h'").order("xvalue desc").limit(1)
+    start_date_for_v24h = Chart.select("date(xvalue)").where("tag='v24h'").order("xvalue desc").limit(1)
+    create_total_visits(start_date_for_p24h,end_date)
+    create_unique_visits(start_date_for_v24h,end_date)
+  end
+
+
 end
