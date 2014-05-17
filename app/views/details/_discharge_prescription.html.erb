@@ -1,0 +1,19 @@
+
+<% if !@prescriptions.blank?%>
+  <table class="table">
+    <tr>
+    <th> Medicine </th>
+    <th> Frequency </th>
+    <th> Duration </th>
+    <th> Route </th>
+    </tr>
+  <% @prescriptions.each do |pre| %>
+    <tr>
+    	<td> <%= pre.medicine %> </td>
+    	<td> <%= pre.frequency %> </td>
+    	<td> <%= pre.duration %> </td>
+      <td> <%= pre.route %> </td>
+    </tr>
+  <% end %>
+  </table>
+<%end%>

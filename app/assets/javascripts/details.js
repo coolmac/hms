@@ -2,11 +2,43 @@
 // All this logic will automatically be available in application.js.
 
 
-function generate_summary() {
-	url = window.location
-	history = document.getElementById("history_cb").value
-	alert
-	$('#summary_div').load(url +' #summary_div', function() {
+function get_summary(){
+	var data = $('form').serialize();
+	url = window.location+"?&"+data
+	$('#summary_content').load(url +' #summary_content', function() {
 
 	});
 }
+
+
+function show_sub_category(super_category) {
+ 	url = '/sub_category?&super_category='+super_category
+ 	if($("#"+super_category+"_cb").is(':checked')) {
+		$.get(url, function(data, status, xhr) {
+			$("#sub_category_div").append("<div class='"+super_category+"_sb_div' style='margin-left:10px;'></br><p><b>"+super_category.toUpperCase()+"</b></p></div>")
+			for(i=0;i<data.length;i++){
+				$("."+super_category+"_sb_div").append("&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' name='"+super_category+"_sub[]' value='"+data[i]+"' checked/>"+data[i])
+			}
+
+		});
+	}
+	else {
+		$("."+super_category+"_sb_div").remove()
+	}
+
+ }
+
+ function get_admit_days(){
+ 	url = '/sub_category?&dates=true'
+ 	if($("#admission_cb").is(':checked')) {
+	 	$.get(url, function(data, status, xhr) {
+	 		$("#sub_category_div").append("<div class='admit_sb_div' style='margin-left:10px;'></br><p><b>ADMIT DAYS</b></p></div>")
+	 		for(i=0;i<data.length;i++){
+	 			$(".admit_sb_div").append("&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' name='admit_days[]' value='"+data[i].id+"' checked/> Day "+(i+1))
+	 		}
+	 	});
+	}
+	else {
+		$(".admit_sb_div").remove()
+	}
+ }

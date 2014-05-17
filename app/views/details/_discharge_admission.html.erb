@@ -1,0 +1,45 @@
+
+<%if !@admission_details.blank?%>
+  <table class="table">
+    <tr>
+    <th> Date of admission </th>
+    <th> bed </th>
+    <th> Doctor </th>
+    <th> mlc </th>
+    <th> mlc details </th>
+    <th> Description </th>
+    </tr>
+  <% @admission_details.each do |adm| %>
+    <tr>
+    	<% #TODO Don't make another SQL query, fetch it from existing activerecord object %>
+    	<td> <%= adm.admission_date %> </td>
+    	<td> <%= adm.bed %> </td>
+    	<td> <%= adm.doctor %> </td>
+      <td> <%= adm.is_mlc %> </td>
+      <td> <%= adm.mlc_details %> </td>
+      <td> <%= adm.description %> </td>
+    </tr>
+  <% end %>
+  </table>
+<%end%> 
+<%if !@admit_day_details.blank?%>
+  <table class="table">
+    <tr>
+    <th> Admit Day </th>
+    <th> Doctor Notes </th>
+    <th> Nurse Notes </th>
+    <th> Care Giver Notes </th>
+    <th> Treatment </th>
+    </tr>
+  <% @admit_day_details.each do |admd| %>
+    <tr>
+      <% #TODO Don't make another SQL query, fetch it from existing activerecord object %>
+      <td> <%= admd.admit_date %> </td>
+      <td> <%= admd.doctor_notes %> </td>
+      <td> <%= admd.nurse_notes %> </td>
+      <td> <%= admd.care_giver_notes %> </td>
+      <td> <%= admd.treatment %> </td>
+    </tr>
+  <% end %>
+  </table>
+<%end%>

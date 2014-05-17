@@ -1,13 +1,21 @@
-<h1>Editing admission</h1>
 
-<h2>
-<% @admission.admit_days.sort_by {|a| a.serial_number}.each do |ad|%>
-	<%= link_to "DAY#{ad.serial_number}", edit_admission_admit_day_path(@admission.id, ad), :class => "btn btn-primary" %>
-<% end %>
-</h2>
-<%= link_to "Create New Day Entry", new_admission_admit_day_path(@admission), :class => "btn btn-success" %>
+<div class="table-responsive animated fadeInDown">
+	<table id="resultTable" class="table table-striped table-bordered table-hover">
+		<tr>
+			<td><h1>Admissions <%= link_to "Create New Day Entry", new_admission_admit_day_path(@admission), :class => "btn btn-success" %></h1></td>
+		</tr>
+	</table>	
+	<table id="resultTable" class="table table-bordered">
+		  <% @admission.admit_days.sort_by {|a| a.serial_number}.each do |ad| %>
+			<tr>
+		      <td><%= link_to "DAY#{ad.serial_number}", edit_admission_admit_day_path(@admission.id, ad), :class => "btn btn-primary" %></td>
+			</tr>
+		  <% end %>
+	</table>
+</div>
+
+
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @admission %> |
-<%= link_to 'Back', admissions_path(@admission) %>
+

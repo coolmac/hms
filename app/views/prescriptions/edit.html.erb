@@ -1,6 +1,19 @@
-<h1>Editing prescription</h1>
+<div class="smart-form client-form animated fadeInDown">
+<div class="container">
+	<div class="col-md-2 col-lg-2"></div>
+	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+		<div class="well no-padding">
+		    <header>
+		            Edit Prescription
+		    </header>
+		    <fieldset>
+					<%= render 'form' %>
+			</fieldset>
+		</div>
+	</div>
+</div>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', [@prescription.visit, @prescription] %> |
 <%= link_to 'Back', visit_prescriptions_path(@prescription.visit) %>
+</div>
+</div>
+
