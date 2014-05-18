@@ -36,18 +36,26 @@
                 <li class="dropdown-header">
                   History
                 </li>
-                <li> <%= link_to 'Chief Complaint', chief_complaint_path %></li>
-                <li> <%= link_to 'Past Medical Surgical', pms_history_path %></li>
-                <li> <%= link_to 'Family Medical Surgical', fms_history_path %></li>
-                <li> <%= link_to 'Personal/Social', ps_history_path %></li>
-                <li> <%= link_to 'Treatment', treatment_history_path %></li>
-                <li> <%= link_to 'Other Systems', other_systems_history_path %></li>
+                <li>   <%= link_to 'Chief Complaint', edit_category_path(:super_category => 'history', :category => 'chief_complaint'), :remote => true %>
+                </li>
+                <li>   <%= link_to 'Past Medical Surgical', edit_category_path(:super_category => 'history', :category => 'pms_history'), :remote => true %>
+                </li>
+                <li>   <%= link_to 'Family Medical Surgical', edit_category_path(:super_category => 'history', :category => 'fms_history'), :remote => true %>
+                </li>
+                <li>   <%= link_to 'Personal/Social', edit_category_path(:super_category => 'history', :category => 'ps_history'), :remote => true %>
+                </li>
+                <li>   <%= link_to 'Treatment History', edit_category_path(:super_category => 'history', :category => 'treatment_history'), :remote => true %>
+                </li>
+                <li>   <%= link_to 'Other Systems History', edit_category_path(:super_category => 'history', :category => 'other_systems_history'), :remote => true %>
+                </li>
                 <br>
                 <li class="dropdown-header">
                   Examinations
                 </li>
-                <li> <%= link_to 'General Physical Examination', gpe_examinations_path %></li>
-                <li> <%= link_to 'Vitals Examination', vitals_examinations_path %></li>
+                <li>   <%= link_to 'General Physical Examination', edit_category_path(:super_category => 'examination', :category => 'gpe'), :remote => true %>
+                </li>
+                <li>   <%= link_to 'Vitals Examination', edit_category_path(:super_category => 'examination', :category => 'vitals'), :remote => true %>
+                </li>
               </ul>
             </li>
             <li class="col-sm-4">
@@ -55,11 +63,16 @@
                 <li class="dropdown-header">
                   Investigations
                 </li>
-                <li> <%= link_to 'Hemogram', hemogram_investigations_path %></li>
-                <li> <%= link_to 'LFT', lft_investigations_path %></li>
-                <li> <%= link_to 'RFT', rft_investigations_path %></li>
-                <li> <%= link_to 'Glucose', glucose_investigations_path %></li>
-                <li> <%= link_to 'Lipid Profile', lipid_profile_investigations_path %></li>
+                <li>   <%= link_to 'Hemogram', edit_category_path(:super_category => 'investigation', :category => 'hemogram'), :remote => true %>
+                </li>
+                <li>   <%= link_to 'LFT', edit_category_path(:super_category => 'investigation', :category => 'lft'), :remote => true %>
+                </li>
+                <li>   <%= link_to 'RFT', edit_category_path(:super_category => 'investigation', :category => 'rft'), :remote => true %>
+                </li>
+                <li>   <%= link_to 'Glucose', edit_category_path(:super_category => 'investigation', :category => 'glucose'), :remote => true %>
+                </li>
+                <li>   <%= link_to 'Lipid Profile', edit_category_path(:super_category => 'investigation', :category => 'lipid_profile'), :remote => true %>
+                </li>
                 <br>
                 <li class="dropdown-header">
                   Admissions
