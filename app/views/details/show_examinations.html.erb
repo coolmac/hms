@@ -25,13 +25,13 @@
       </section>
       <section>
       <div class="field">
-        <%= link_to 'General Physical Examination', gpe_examinations_path(:category => 'gpe', :super_category => 'examination'), :class => "btn btn-primary"%>
+        <%= link_to 'General Physical Examination', edit_category_path(:super_category => 'examination', :category => 'gpe'), :remote => true, :class => "btn btn-primary"%>
         <%= f.text_area :gpe, :autofocus => true, class: "form-control", cols:4, rows:2 %>
       </div>
       </section>
       <section>
       <div class="field">
-        <%= link_to 'Vitals Examination', vitals_examinations_path(:category => 'vitals', :super_category => 'examination'), :class => "btn btn-primary"%>
+        <%= link_to 'Vitals Examination', edit_category_path(:super_category => 'examination', :category => 'vitals'), :remote => true, :class => "btn btn-primary"%>
         <%= f.text_area :vitals, :autofocus => true, class: "form-control", cols:4, rows:2 %>
       </div>
       </section>

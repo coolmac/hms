@@ -7,7 +7,7 @@ class Visit < ActiveRecord::Base
   INVESTIGATION = 'investigation'
   SUPER_CATEGORY_ORDER = [HISTORY, EXAMINATION, INVESTIGATION]
   
-  HISTORY_CATEGORY= [['chief_complaint','Chief Complaint History'] , ['pms_history', 'Past Medical & Surgical History'], ['fms_history', 'Family Medical & Surgical History'], ['ps_history', 'Past Social History'], ['other_systems_history', 'Other Systems History']]
+  HISTORY_CATEGORY= [['chief_complaint','Chief Complaint History'] , ['pms_history', 'Past Medical & Surgical History'], ['fms_history', 'Family Medical & Surgical History'], ['ps_history', 'Past Social History'], ['treatment_history', 'Treatment History'], ['other_systems_history', 'Other Systems History']]
   EXAMINATION_CATEGORY= [['gpe', 'General Physical Examination'], ['vitals', 'Vitals Examination']]  
   INVESTIGATION_CATEGORY = [['hemogram','Hemogram'],['lft', 'LFT'],['rft','RFT'],['glucose','Glucose'],['lipid_profile','Lipid Profile']]
 

@@ -1,7 +1,8 @@
 <div id="over-the-top" style="padding-bottom:10px;">
     <div class="navbar-collapse navbar-inverse navbar-static-top">
       <ul class="nav navbar-nav">
-        <li><%= link_to "DocOnline", root_path, title: "Home Page" %></li>
+        <% #TODO set title for DocOnline %>
+        <li><%= link_to root_path do %> <i class="fa fa-lg fa-fw fa-home"></i> DocOnline <% end %> </li>
         <li><%= link_to "New Patient", new_patient_path, title: "Add a New Patient" %></li>
         <li><%= link_to "Search Patient", search_patient_path, title: "Search for a patient in database" %>
         <li><%= link_to "Visit Details", show_details_path, title: "Takes you to Details page only if patient visit is selected" %></li>

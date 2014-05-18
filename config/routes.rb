@@ -1,6 +1,6 @@
 Emr::Application.routes.draw do
 
-  
+  #TODO set up indices for all the tables  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -72,9 +72,6 @@ gem 'unicorn'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
 
 
 group :development do
@@ -83,13 +80,17 @@ group :development do
 	gem 'pry-remote'
 	gem 'pry-stack_explorer'
 	gem 'pry-debugger'
+	# Use debugger
+	# gem 'debugger', group: [:development, :test]
 end
 
 # As adviced on heroku
 ruby '1.9.3'
 
+# jqplot for charts
 gem 'jqplot-rails'
 
+# wicked_pdf for generating pdf
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 

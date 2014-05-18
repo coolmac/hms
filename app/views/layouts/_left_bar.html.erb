@@ -13,10 +13,10 @@
 
   <nav class="left_bar_nav">
 	<ul>
-	  <li>
+<!-- 	  <li>
 		<a href="/" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Home</span></a>
 	  </li>
-
+ -->
 	  <li>
 	  	<div class="panel-heading" style="padding:0px">
 		<a href="#"><i class="fa fa-lg fa-fw fa-group"></i>  <span class="menu-item-parent">Managing Patients</span>
@@ -65,6 +65,7 @@
 		  	<i class="fa fa-fw fa-bars"></i>
 		  	</b>
 		<%end%>
+		<% #TODO make these links disabled with title saying 'You need select patient/visit for this' %>
 		  <div id="history" class="panel-collapse collapse">
 		  	<div class="panel-body" style="padding:0px">
 			  	<%= link_to edit_category_path(:super_category => 'history', :category => 'chief_complaint'), :remote => true do %>
