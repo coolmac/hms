@@ -36,45 +36,6 @@ class DetailsController < ApplicationController
     # Don't render anything here
   end
 
-  def get_visit_question_details
-    visit_id = @current_visit.id
-    @super_category = params[:super_category]
-    @categories = Visit.get_categories(@super_category)
-    @questions = Question.where(:super_category => @super_category)
-    @descriptive_questions = DescriptiveQuestion.where(:super_category => @super_category)
-    #@investigations = Investigation.all
-    @question_ids = @questions.collect{|hq| hq.id}.join(', ')
-    @descriptive_question_ids = @descriptive_questions.collect{|hdq| hdq.id}
-    #@investigation_ids = @investigations.collect{|q| q.id}.join(', ')
-
-    #TODO Doesn't seem optimized - Need to check up difference between joins (two tables) and IN (one table) statement
-    @sc_visit_questions = VisitQuestion.select("visit_questions.*,questions.title,questions.category").joins(",questions").where(:visit_id => visit_id).where("questions.id=visit_questions.question_id")
-    @sc_visit_descriptive_questions = VisitDescriptiveQuestion.select("visit_descriptive_questions.*,descriptive_questions.title,descriptive_questions.category").joins(",descriptive_questions").where(:visit_id => visit_id)
-                                      .where("descriptive_questions.id=visit_descriptive_questions.descriptive_question_id")
-    # @sc_visit_questions = VisitQuestion.where(:visit_id => visit_id, :question_id => @question_ids)
-    # @sc_visit_descriptive_questions = VisitDescriptiveQuestion.where(:visit_id => visit_id, :descriptive_question_id => @descriptive_question_ids)
-
-    #@sc_investigations = VisitInvestigation.where(:visit_id => visit_id, :investigation_id => @investigation_ids)
-    
-    # @existing_answered_question_ids = @sc_visit_questions.collect{|vq| vq.question_id}
-    # @existing_descriptive_question_ids = @sc_visit_descriptive_questions.collect{|vdq| vdq.descriptive_question_id}
-
-    #TODO need to club it with whole single history view 
-    #TODO we can try using .includes which will pre-fetch all the descriptive answers
-    @answers = Answer.all
-    @answers_hash = {}
-    if @sc_visit_descriptive_questions.size > 0
-      @sc_visit_descriptive_questions.each do |vdq|
-        @answers_hash["#{APP_CONFIG['descriptive_question_prefix']}#{vdq.descriptive_question_id}"] = vdq.answer
-      end
-    end
-
-    @sc_visit_questions.each do |vq|
-      @answers_hash["#{APP_CONFIG['question_prefix']}#{vq.question_id}"] = vq.answer_id
-    end
-
-  end
-
   def render_history_main_page
     params[:super_category] = 'history'
     get_visit_question_details()
@@ -126,24 +87,49 @@ class DetailsController < ApplicationController
     render_history_main_page()
   end
 
-  def show_links
-    category = params[:category]
-    sub_category = params[:sub_category]
-    super_category = params[:super_category]
-    @categories = []
-    Question.where(:super_category => super_category).each do |q|
-      @categories << q.category
-    end
-
-
-    respond_to do |format|
-      format.html { render 'details/show'}
-    end
-  end
-
   def show
   # @visit = Visit.find(params[:visit_id])
   end
+
+  def get_visit_question_details
+    visit_id = @current_visit.id
+    @super_category = params[:super_category]
+    @categories = Visit.get_categories(@super_category)
+    @questions = Question.where(:super_category => @super_category)
+    @descriptive_questions = DescriptiveQuestion.where(:super_category => @super_category)
+    #@investigations = Investigation.all
+    @question_ids = @questions.collect{|hq| hq.id}.join(', ')
+    @descriptive_question_ids = @descriptive_questions.collect{|hdq| hdq.id}
+    #@investigation_ids = @investigations.collect{|q| q.id}.join(', ')
+
+    #TODO Doesn't seem optimized - Need to check up difference between joins (two tables) and IN (one table) statement
+    @sc_visit_questions = VisitQuestion.select("visit_questions.*,questions.title,questions.category").joins(",questions").where(:visit_id => visit_id).where("questions.id=visit_questions.question_id")
+    @sc_visit_descriptive_questions = VisitDescriptiveQuestion.select("visit_descriptive_questions.*,descriptive_questions.title,descriptive_questions.category").joins(",descriptive_questions").where(:visit_id => visit_id)
+                                      .where("descriptive_questions.id=visit_descriptive_questions.descriptive_question_id")
+    # @sc_visit_questions = VisitQuestion.where(:visit_id => visit_id, :question_id => @question_ids)
+    # @sc_visit_descriptive_questions = VisitDescriptiveQuestion.where(:visit_id => visit_id, :descriptive_question_id => @descriptive_question_ids)
+
+    #@sc_investigations = VisitInvestigation.where(:visit_id => visit_id, :investigation_id => @investigation_ids)
+    
+    # @existing_answered_question_ids = @sc_visit_questions.collect{|vq| vq.question_id}
+    # @existing_descriptive_question_ids = @sc_visit_descriptive_questions.collect{|vdq| vdq.descriptive_question_id}
+
+    #TODO need to club it with whole single history view 
+    #TODO we can try using .includes which will pre-fetch all the descriptive answers
+    @answers = Answer.all
+    @answers_hash = {}
+    if @sc_visit_descriptive_questions.size > 0
+      @sc_visit_descriptive_questions.each do |vdq|
+        @answers_hash["#{APP_CONFIG['descriptive_question_prefix']}#{vdq.descriptive_question_id}"] = vdq.answer
+      end
+    end
+
+    @sc_visit_questions.each do |vq|
+      @answers_hash["#{APP_CONFIG['question_prefix']}#{vq.question_id}"] = vq.answer_id
+    end
+
+  end
+
 
   def edit_category
     #TODO what if present category/super_category is unknown
