@@ -12,19 +12,22 @@
 
         </header>
           <fieldset>
-            <section>
-            <% #TODO remove this %>
-            <h3><%= label_tag 'description', 'Description' %></h3>
-            <%= text_area_tag :chief_complaint, @current_visit.chief_complaint, :autofocus => true, :class=>"dashed-input1 col-lg-12 col-md-12 col-sm-12 col-xs-12", rows:4 %>
-            </section>
-            <br>
-            <br>
-            <br>
-            <br>
             <%= render 'form' %>
+            <footer>
+                <%= submit_tag "Save Details", :name => 'save', :class => "btn btn-primary" %>
+                <%= submit_tag "Save and Next", :name => 'next', :class => "btn btn-success" %>
+                <%= submit_tag "Save and Previous", :name => 'prev', :class => "btn btn-warning" %>
+                <%= submit_tag "Save and Return", :name => 'exit', :class => "btn btn-info" %>
+            </footer>
+            <br />
+            <br />
+            <br />
           </fieldset>
           <% end %>
       </div>
     </div>
   </div>
 </div>
+
+
+

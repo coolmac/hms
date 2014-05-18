@@ -12,23 +12,23 @@
   </div>
 
   <div class="col-lg-6 col-md-6 col-sm-5 col-xs-6">
-    <%= link_to 'LFT', lft_investigations_path(:category => 'lft'), :class => "btn btn-primary btn-xl" %>
+    <%= link_to 'LFT', edit_category_path(:super_category => 'investigation', :category => 'lft'), :remote => true, :class => "btn btn-primary btn-xl" %>
   </div>
 </div>
 
 <div class="row">
   <div class="col-lg-6 col-md-6 col-sm-5 col-xs-6">
-    <%= link_to 'RFT', rft_investigations_path(:category => 'rft'), :class => "btn btn-primary btn-xl" %>
+    <%= link_to 'RFT', edit_category_path(:super_category => 'investigation', :category => 'rft'), :remote => true, :class => "btn btn-primary btn-xl" %>
   </div>
 
   <div class="col-lg-6 col-md-6 col-sm-5 col-xs-6">
-    <%= link_to 'Glucose', glucose_investigations_path(:category => 'glucose'), :class => "btn btn-primary btn-xl" %>
+    <%= link_to 'Glucose', edit_category_path(:super_category => 'investigation', :category => 'glucose'), :remote => true, :class => "btn btn-primary btn-xl" %>
   </div>
 </div>
 
 <div class="row">
   <div class="col-lg-6 col-md-6 col-sm-5 col-xs-6">
-    <%= link_to 'Lipid Profile', lipid_profile_investigations_path(:category => 'lipid_profile'), :class => "btn btn-primary btn-xl" %>
+    <%= link_to 'Lipid Profile', edit_category_path(:super_category => 'investigation', :category => 'lipid_profile'), :remote => true, :class => "btn btn-primary btn-xl" %>
   </div>
 </div>
 

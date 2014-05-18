@@ -1,75 +1,10 @@
-
-
 <%= render 'history' %>
 
 <div id="content" class="smart-form client-form">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10" style="padding-top:10px">
     <div class="well no-padding">
-        <header>
-            HISTORY
-        </header>
+        <%= render 'history_form_new' %>
 
-        <%= form_for @current_visit, url: show_examinations_path, html: {class: "smart-form client-form", role:"form" } do |f| %>
-                <% if @current_visit.errors.any? %>
-                  <div id="error_explanation">
-                    <h2><%= pluralize(@current_visit.errors.count, "error") %> prohibited this visit from being saved:</h2>
-                    <ul>
-                    <% @current_visit.errors.full_messages.each do |msg| %>
-                      <li><%= msg %></li>
-                    <% end %>
-                    </ul>
-                  </div>
-                <% end %>
-        <fieldset>
-            <section>
-              <div class="field">
-                <%= link_to 'Chief Complaint', edit_category_path(:category => 'chief_complaint', :super_category => 'history'), :remote => true, :class => "btn btn-primary"%>
-                <%= f.text_area :chief_complaint, :autofocus => true, class: "form-control", cols:4, rows:2 %>
-              </div>
-            </section>
-            <section>
-              <div class="field">
-                <!-- <%= f.label :pms_history %><br /> -->
-                <%= link_to 'Past Medical Surgical History', edit_category_path(:category => 'pms_history', :super_category => 'history'), :remote => true, :class => "btn btn-primary"%>
-                <%= f.text_area :pms_history, :autofocus => true, class: "form-control", cols:4, rows:2 %>
-              </div>
-            </section>
-            <section>
-              <div class="field">
-                <!-- <%= f.label :fms_history %><br /> -->
-                <%= link_to 'Family Medical History', edit_category_path(:category => 'fms_history', :super_category => 'history'), :remote => true, :class => "btn btn-primary"%>
-                <%= f.text_area :fms_history, :autofocus => true, class: "form-control", cols:4, rows:2 %>
-              </div>
-            </section>
-            <section>
-              <div class="field">
-                <!-- <%= f.label :ps_history %><br /> -->
-                <%= link_to 'Personal/Social History', edit_category_path(:category => 'ps_history', :super_category => 'history'), :remote => true, :class => "btn btn-primary"%>
-                <%= f.text_area :ps_history, :autofocus => true, class: "form-control", cols:4, rows:2 %>
-              </div>
-            </section>
-            <section>
-              <div class="field">
-                <!-- <%= f.label :treatment_history %><br /> -->
-                <%= link_to 'Treatment History', edit_category_path(:category => 'treatment_history', :super_category => 'history'), :remote => true, :class => "btn btn-primary"%>
-                <%= f.text_area :treatment_history, :autofocus => true, class: "form-control", cols:4, rows:2 %>
-              </div>
-            </section>
-            <section>
-              <div class="field">
-                <!-- <%= f.label :other_systems %><br /> -->
-                <%= link_to 'Other Systems', edit_category_path(:category => 'other_systems_history', :super_category => 'history'), :remote => true, :class => "btn btn-primary"%>
-                <%= f.text_area :other_systems, :autofocus => true, class: "form-control", cols:4, rows:2 %>
-              </div>
-            </section>
-            <footer>
-              <div class="actions">
-                <%= f.submit 'Save', :name => 'save', :class => "btn btn-success"%>
-                <%= f.submit 'Next', :name => 'next', :class => "btn btn-success"%>
-              </div>
-            </footer>
-        </fieldset>
-        <% end %>
     </div>
     <br />
   </div>

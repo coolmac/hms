@@ -1,59 +1,12 @@
-<div id="content" class="smart-form client-form">
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-10" style="padding-top:10px">
-    <div class="well no-padding">
-        <header>
-            Examinations
-        </header>
-     <%= form_for @current_visit, url: show_investigations_path(), html: {class: "smart-form client-form", role:"form" } do |f| %>
-      <% if @current_visit.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@current_visit.errors.count, "error") %> prohibited this visit from being saved:</h2>
-          <ul>
-          <% @current_visit.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
+<% #TODO _examination similar to history%>
+<%# render 'history' %>
 
-  <fieldset>
-      <section>
-      <div class="field">
-        <%= f.label 'General Examination'%>
-        <%= f.text_area :general_examination, :autofocus => true, class: "form-control", cols:4, rows:2 %>
-      </div>
-      </section>
-      <section>
-      <div class="field">
-        <%= link_to 'General Physical Examination', edit_category_path(:super_category => 'examination', :category => 'gpe'), :remote => true, :class => "btn btn-primary"%>
-        <%= f.text_area :gpe, :autofocus => true, class: "form-control", cols:4, rows:2 %>
-      </div>
-      </section>
-      <section>
-      <div class="field">
-        <%= link_to 'Vitals Examination', edit_category_path(:super_category => 'examination', :category => 'vitals'), :remote => true, :class => "btn btn-primary"%>
-        <%= f.text_area :vitals, :autofocus => true, class: "form-control", cols:4, rows:2 %>
-      </div>
-      </section>
-      <section>
-      <div class="actions">
-        <%= f.submit 'Save', :name => 'save', :class => "btn btn-success"%>
-        <%= f.submit 'Next', :name => 'next', :class => "btn btn-success"%>
-      </div>
-      </section>
-    </fieldset>
-     <% end %>
+<div id="content" class="smart-form client-form">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10" style="padding-top:10px">
+    <div class="well no-padding">
+        <%= render 'examinations_form_new' %>
+
     </div>
     <br />
+  </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-

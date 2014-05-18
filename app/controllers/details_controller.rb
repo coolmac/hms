@@ -9,52 +9,75 @@ class DetailsController < ApplicationController
     @leave_space_for_left_bar = true
   end
 
-  #flow can come from examinations or Directly
-  def show_investigations
-    if params[:save] != nil
-      @current_visit.update_attributes(params[:visit])
-      respond_to do |format|
-        format.html { render 'details/show_examinations'}
-      end
-    elsif params[:next] != nil
-      @current_visit.update_attributes(params[:visit])
-      respond_to do |format|
-        format.html
-      end
+  def render_investigations_main_page
+    params[:super_category] = 'investigation'
+    get_visit_question_details()
+    if params[:pdf]
+      #TODO pdf to be generated
     else
       respond_to do |format|
-        format.html
+        format.html {render 'details/show_investigations'}
       end
+    end
+  end
+
+
+  # flow can come from show_history page or Directly
+  def show_investigations
+    if params[:save] != nil
+      update_details()
+      render_examinations_main_page()
+    elsif params[:next] != nil
+      update_details()
+      render_investigations_main_page()
+    else
+      render_investigations_main_page()
     end
     # Don't render anything here
   end
 
   def get_visit_question_details
     visit_id = @current_visit.id
-    super_category = params[:super_category]
-    @categories = Visit.get_categories(super_category)
-    #binding.pry
-    @questions = Question.where(:super_category => super_category)
-    @descriptive_questions = DescriptiveQuestion.where(:super_category => super_category)
+    @super_category = params[:super_category]
+    @categories = Visit.get_categories(@super_category)
+    @questions = Question.where(:super_category => @super_category)
+    @descriptive_questions = DescriptiveQuestion.where(:super_category => @super_category)
     #@investigations = Investigation.all
-
-    #@question_ids = @questions.collect{|hq| hq.id}
-    #@descriptive_question_ids = @descriptive_questions.collect{|hdq| hdq.id}
+    @question_ids = @questions.collect{|hq| hq.id}.join(', ')
+    @descriptive_question_ids = @descriptive_questions.collect{|hdq| hdq.id}
     #@investigation_ids = @investigations.collect{|q| q.id}.join(', ')
 
+    #TODO Doesn't seem optimized - Need to check up difference between joins (two tables) and IN (one table) statement
     @sc_visit_questions = VisitQuestion.select("visit_questions.*,questions.title,questions.category").joins(",questions").where(:visit_id => visit_id).where("questions.id=visit_questions.question_id")
     @sc_visit_descriptive_questions = VisitDescriptiveQuestion.select("visit_descriptive_questions.*,descriptive_questions.title,descriptive_questions.category").joins(",descriptive_questions").where(:visit_id => visit_id)
                                       .where("descriptive_questions.id=visit_descriptive_questions.descriptive_question_id")
+    # @sc_visit_questions = VisitQuestion.where(:visit_id => visit_id, :question_id => @question_ids)
+    # @sc_visit_descriptive_questions = VisitDescriptiveQuestion.where(:visit_id => visit_id, :descriptive_question_id => @descriptive_question_ids)
+
     #@sc_investigations = VisitInvestigation.where(:visit_id => visit_id, :investigation_id => @investigation_ids)
     
     # @existing_answered_question_ids = @sc_visit_questions.collect{|vq| vq.question_id}
     # @existing_descriptive_question_ids = @sc_visit_descriptive_questions.collect{|vdq| vdq.descriptive_question_id}
+
+    #TODO need to club it with whole single history view 
+    #TODO we can try using .includes which will pre-fetch all the descriptive answers
+    @answers = Answer.all
+    @answers_hash = {}
+    if @sc_visit_descriptive_questions.size > 0
+      @sc_visit_descriptive_questions.each do |vdq|
+        @answers_hash["#{APP_CONFIG['descriptive_question_prefix']}#{vdq.descriptive_question_id}"] = vdq.answer
+      end
+    end
+
+    @sc_visit_questions.each do |vq|
+      @answers_hash["#{APP_CONFIG['question_prefix']}#{vq.question_id}"] = vq.answer_id
+    end
+
   end
 
   def render_history_main_page
     params[:super_category] = 'history'
     get_visit_question_details()
-    #binding.pry
     if params[:pdf]
       dir = File.dirname("#{Rails.root}/pdfs/History/#{@current_patient.first_name}/x")
       FileUtils.mkdir_p(dir) unless File.directory?(dir)
@@ -72,24 +95,29 @@ class DetailsController < ApplicationController
     end
   end
 
+  def render_examinations_main_page
+    params[:super_category] = 'examination'
+    get_visit_question_details()
+    if params[:pdf]
+      #TODO pdf to be generated
+    else
+      respond_to do |format|
+        format.html {render 'details/show_examinations'}
+      end
+    end
+  end
+
+
   # flow can come from show_history page or Directly
   def show_examinations
     if params[:save] != nil
-      @current_visit.update_attributes(params[:visit])
-      params[:super_category] = 'history'
-      get_visit_question_details()
-      respond_to do |format|
-        format.html { render 'details/show_history'}
-      end
+      update_details()
+      render_history_main_page()
     elsif params[:next] != nil
-      @current_visit.update_attributes(params[:visit])
-      respond_to do |format|
-        format.html
-      end
+      update_details()
+      render_examinations_main_page()
     else
-      respond_to do |format|
-        format.html
-      end
+      render_examinations_main_page()
     end
     # Don't render anything here
   end
@@ -117,8 +145,6 @@ class DetailsController < ApplicationController
   # @visit = Visit.find(params[:visit_id])
   end
 
-
-  #DOING one common method to handle all updates, call it as :remote => true
   def edit_category
     #TODO what if present category/super_category is unknown
     present_super_category = params[:super_category]
@@ -145,9 +171,10 @@ class DetailsController < ApplicationController
     end
     
     edit_details()
-    #binding.pry
+
+    #TODO also create format.html for this 
     respond_to do |format|
-      format.js { render :layout => false }        
+      format.js { render :layout => false }
     end
 
   end
@@ -181,6 +208,31 @@ class DetailsController < ApplicationController
       end
     end
 
+    # common questions and common descriptive questions
+    @common_questions = Question.where(:category => "#{@category}#{APP_CONFIG['common_category_tag']}", :super_category => @super_category)
+    if @questions.size > 0
+      csv_question_ids = @questions.collect{|q| q.id}.join(', ')
+      @visit_questions = VisitQuestion.where("question_id in (#{csv_question_ids}) and visit_id = #{visit_id}")
+      if @visit_questions.size > 0
+        @visit_questions.each do |vq|
+          @answers_hash["#{APP_CONFIG['question_prefix']}#{vq.question_id}"] = vq.answer_id
+        end
+      end
+    end
+
+    @common_descriptive_questions = DescriptiveQuestion.where(:category => "#{@category}#{APP_CONFIG['common_category_tag']}", :super_category => @super_category)
+    if @descriptive_questions.size > 0
+      csv_descriptive_question_ids = @descriptive_questions.collect{|dq| dq.id}.join(', ')
+      @visit_descriptive_questions = VisitDescriptiveQuestion.where("descriptive_question_id in (#{csv_descriptive_question_ids}) and visit_id = #{visit_id}")
+      if @visit_descriptive_questions.size > 0
+        @visit_descriptive_questions.each do |vdq|
+          @answers_hash["#{APP_CONFIG['descriptive_question_prefix']}#{vdq.descriptive_question_id}"] = vdq.answer
+        end
+      end
+    end
+
+
+    #TODO check if investigation needs to be evaluated
     @investigations = Investigation.where(:category => @category)
     if @investigations.size > 0
       csv_investigation_ids = @investigations.collect{|q| q.id}.join(', ')

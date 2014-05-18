@@ -92,7 +92,7 @@
 
 	  <li>
 	  	<div class="panel-heading" style="padding:0px">
-		<%= link_to edit_category_path(:super_category => 'examination', :category => 'gpe'), :remote => true do %>
+		<%= link_to show_examinations_path do %>
 			<i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Examinations</span>
 		  	<b class="collapse-sign" data-toggle="collapse" href="#examinations">
 		  	<i class="fa fa-fw fa-bars"></i>
@@ -113,7 +113,7 @@
 
 	  <li>
 	  	<div class="panel-heading" style="padding:0px">
-		<%= link_to edit_category_path(:super_category => 'investigation', :category => 'hemogram'), :remote => true do %>
+		<%= link_to show_investigations_path do %>
 			<i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Investigations</span>
 		  	<b class="collapse-sign" data-toggle="collapse" href="#investigations">
 		  	<i class="fa fa-fw fa-bars"></i>
