@@ -401,9 +401,10 @@ class DetailsController < ApplicationController
       @admit_day_details = AdmitDay.where(:id => @days).order("admit_date ASC")
     end
     if params[:submit]
+      @pdf = 'true'
       dir = File.dirname("#{Rails.root}/pdfs/Discharge/#{@current_patient.first_name}/x")
       FileUtils.mkdir_p(dir) unless File.directory?(dir)
-      pdf = WickedPdf.new.pdf_from_string(render_to_string('details/_summary_pdf.html.erb'))
+      pdf = WickedPdf.new.pdf_from_string(render_to_string('details/discharge_summary.html.erb'))
       save_path = Rails.root.join('pdfs/Discharge/'+@current_patient.first_name,@current_visit.created_at.to_s)
       File.open(save_path, 'wb') do |file|
         file << pdf
