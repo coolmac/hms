@@ -25,6 +25,14 @@
 #ui-datepicker-div {
 	z-index:100000000 !important;
 }
+#header_div {
+	position: fixed;
+	width:100%;
+	top:0;
+}
+#main{
+	margin-top:50px;
+}
 
 
 

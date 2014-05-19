@@ -4,7 +4,7 @@
       		<header>Discharge Summary</header>
 			<div id="summary_form"></br>
 				<%= form_tag("/discharge_summary", id: "summary_form", method: "get") do %>
-					<table class="table">
+					<table class="table table-responsive">
 						<tr>
 							<td>
 								<input type="checkbox" name="history_cb" id="history_cb" value="history" onclick="show_sub_category('history')"/> <label for="history_cb"><b>HISTORY</b></label>
