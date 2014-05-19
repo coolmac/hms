@@ -33,17 +33,18 @@
 #main{
 	margin-top:50px;
 }
-
-
+body {
+	overflow:visible !important;
+}
+#left-panel{
+	position: fixed !important;
+}
 
 /*table, tr, td, th, tbody, thead, tfoot {
     page-break-inside: avoid !important;
 }*/
 
 @media print {
-	body {
-		overflow:visible !important;
-	}
 	#over-the-top {
 		display:none !important;
 	}
