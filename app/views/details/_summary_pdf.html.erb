@@ -1,0 +1,52 @@
+<div id="summary_content">
+    <%if @history == "history"%>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 smart-form client-form">
+          <div class="well no-padding">
+              <header>History</header>
+          <%= render "discharge_history"%>
+        </div>
+      </div>  
+    <%end%>
+
+    <%if @investigation == "investigation"%>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 smart-form client-form">
+          <div class="well no-padding">
+              <header>Investigation</header>
+          <%= render "discharge_investigation"%>
+        </div>
+      </div>  
+    <%end%>
+
+    <%if @prescription == "prescription"%>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 smart-form client-form">
+          <div class="well no-padding">
+              <header>Prescription</header>
+          <%= render "discharge_prescription"%>
+        </div>
+      </div>  
+    <%end%>
+
+    <%if @follow_up == "follow_up"%>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 smart-form client-form">
+          <div class="well no-padding">
+              <header>Follow Up</header>
+          <%= render "discharge_follow_up"%>
+        </div>
+      </div>  
+    <%end%>
+
+    <%if @admission == "admission"%>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 smart-form client-form">
+          <div class="well no-padding">
+              <header>Admission</header>
+          <%= render "discharge_admission"%>
+        </div>
+      </div>  
+    <%end%>
+
+</div>
+<style>
+  #over-the-top {
+    display:none !important;
+  }
+</style>
