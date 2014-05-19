@@ -403,7 +403,7 @@ class DetailsController < ApplicationController
     if params[:submit]
       dir = File.dirname("#{Rails.root}/pdfs/Discharge/#{@current_patient.first_name}/x")
       FileUtils.mkdir_p(dir) unless File.directory?(dir)
-      pdf = WickedPdf.new.pdf_from_string(render_to_string('details/_summary_pdf.html.erb'))
+      pdf = WickedPdf.new.pdf_from_string(render_to_string('details/_discharge_summary_pdf.html.erb'))
       save_path = Rails.root.join('pdfs/Discharge/'+@current_patient.first_name,@current_visit.created_at.to_s)
       File.open(save_path, 'wb') do |file|
         file << pdf
