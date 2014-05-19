@@ -27,14 +27,16 @@
 				<% else %>
 				<h1 class="font-md"><%=@comments%></h1>
 				<%@fuzzy_results.each do |fr|%>
+				<%= link_to fr do%>
 				<tr>
-					<td><%=fr.id%></td>
-					<td><%=fr.first_name%></td>
-					<td><%=fr.last_name%></td>
-					<td><%=fr.mobile%></td>
-					<td><%=fr.email%></td>
-					<td><span class="label label-primary"><%= link_to 'Select', fr, :style=>"color:white" %></span>|<span class="label label-success"><%= link_to 'Edit', edit_patient_path(fr), :style=>"color:white" %> </span></td>
+					<td><%=link_to fr.id, fr, :style=>"color:black;", :id=>"patient_search"%></td>
+					<td><%=link_to fr.first_name, fr, :style=>"color:black;", :id=>"patient_search"%></td>
+					<td><%=link_to fr.last_name, fr, :style=>"color:black;", :id=>"patient_search" if fr.last_name%></td>
+					<td><%=link_to fr.mobile, fr, :style=>"color:black;", :id=>"patient_search" if fr.mobile%></td>
+					<td><%=link_to fr.email, fr, :style=>"color:black;", :id=>"patient_search" if fr.email%></td>
+					<td><span class="label label-primary"><%= link_to 'Select', fr, :style=>"color:white" %></span></td>
 				</tr>
+				<%end%>
 				<% end %>
 
 			<% end %>
