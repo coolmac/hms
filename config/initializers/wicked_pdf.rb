@@ -3,8 +3,9 @@
 # }
 
 if Rails.env.staging? || Rails.env.production?
-  exe_path = Rails.root.join('bin', 'wkhtmltopdf-amd64').to_s
+  wkhtmltopdf_path = Rails.root.join('bin', 'wkhtmltopdf-amd64').to_s
 else
-  exe_path = Rails.root.join('bin', 'wkhtmltopdf').to_s
+  wkhtmltopdf_path = '/usr/bin/wkhtmltopdf'
   # exe_path = '/usr/local/bin/wkhtmltopdf'
 end
+WickedPdf.config = { exe_path: wkhtmltopdf_path, wkhtmltopdf: wkhtmltopdf_path }
