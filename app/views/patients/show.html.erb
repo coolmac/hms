@@ -48,7 +48,7 @@
 		<div class="panel panel-default">
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
-		      	Visit ID: <%=v.id%> | <%= link_to "Edit", show_details_path(:visit_id => v.id), :class => "btn btn-primary active"%>
+		      	Visit ID: <%=v.id%> | <%=v.visit_time%> | <%= link_to "Edit", show_details_path(:visit_id => v.id), :class => "btn btn-primary active"%>
 		        <a class="pull-right" data-toggle="collapse" href="#<%=v.id%>">
 		          <i class="fa fa-lg fa-fw fa-align-justify"></i>
 		        </a>

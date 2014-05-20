@@ -39,7 +39,13 @@ body {
 #left-panel{
 	position: fixed !important;
 }
-
+.jarviswidget > div {
+	padding: 5px 13px 0px !important;
+}
+.btn-xl {
+	line-height:3 !important;
+	height:85px !important;
+}
 /*table, tr, td, th, tbody, thead, tfoot {
     page-break-inside: avoid !important;
 }*/

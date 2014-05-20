@@ -4,11 +4,11 @@
       <div class="well no-padding">
           <%= form_tag edit_category_path(:category => @category, :super_category => @super_category), remote: true do %>
         <header>
-        <%=@super_category%>: <%=@category%>
-    <%= submit_tag "Save and Return", :name => 'exit', :class => "btn btn-info" %>
+        <center><p ><b style="font-size:16px;"><%=@super_category.capitalize%> : <%=@full_category%></b></p></center></br>
+    <center><%= submit_tag "Save and Return", :name => 'exit', :class => "btn btn-info" %>
     <%= submit_tag "Save and Previous", :name => 'prev', :class => "btn btn-warning" %>
     <%= submit_tag "Save and Next", :name => 'next', :class => "btn btn-success" %>
-    <%= submit_tag "Save Details", :name => 'save', :class => "btn btn-primary" %>
+    <%= submit_tag "Save Details", :name => 'save', :class => "btn btn-primary" %></center>
 
         </header>
           <fieldset>

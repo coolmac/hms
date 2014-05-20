@@ -168,6 +168,7 @@ class DetailsController < ApplicationController
   def edit_details
     @super_category = params[:super_category]
     @category = params[:category]
+    @full_category = Visit.get_full_name(@super_category,@category)
     visit_id = user_session[:current_visit_id]
     @answers = Answer.all
     @answers_hash = {}

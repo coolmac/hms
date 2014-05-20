@@ -20,6 +20,16 @@ class Visit < ActiveRecord::Base
     category_map = CATEGORIES[present_super_category]
   end
 
+  def self.get_full_name(present_super_category,category)
+    category_map = CATEGORIES[present_super_category]
+    category_map.each do |index,value|
+      if index == category
+        return value
+        break
+      end
+    end
+  end
+
   def self.get_matched_index(category_map, present_super_category, present_category)
     matched_index = -1
     category_map.each_with_index do |category_info, index|
