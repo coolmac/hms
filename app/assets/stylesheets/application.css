@@ -46,9 +46,35 @@ body {
 	line-height:3 !important;
 	height:85px !important;
 }
+
+.smart-form footer .btn {
+	float: left !important;
+	padding: 0 2px !important;
+}
 /*table, tr, td, th, tbody, thead, tfoot {
     page-break-inside: avoid !important;
 }*/
+
+.div_right{
+	padding-top:10px;
+	float:right !important;
+}
+
+.div_left {
+	padding-top:10px;
+	float:left !important;
+}
+
+.category_name {
+	font-size:16px;
+}
+.pad {
+	padding-left:15px !important;
+}
+.question_table {
+	float:left;
+	padding:5px;
+}
 
 @media print {
 	#over-the-top {

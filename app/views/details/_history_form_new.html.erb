@@ -21,6 +21,8 @@
 			    </div>
 			</div>
 			<br />
+			<br />
+			<br />
 		  <%end%>
 		<%end%>
 		<% @descriptive_questions.each do |question| %>
@@ -30,6 +32,8 @@
 			        <%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{question.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{question.id}"), :rows=>"4", :class=>"col-lg-12 col-md-12 col-sm-12 col-xs-12 dashed-input1", :wrap=>"soft" %>
 			      <br />
 			  </section>
+			<br />
+			<br />
 			<br />
 		  <%end%>
 		<%end%>

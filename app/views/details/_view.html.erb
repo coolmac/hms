@@ -1,3 +1,4 @@
+
 <section>
 <div class="row pad">
   <% @common_questions.each do |q| %>
@@ -8,7 +9,9 @@
           <b><%= q.title%></b>&nbsp;:&nbsp;&nbsp;</b>
         </td>
         <td>
-          <%= select_tag "#{APP_CONFIG['question_prefix']}#{q.id}", options_from_collection_for_select(@answers, "id", "title", get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") ), include_blank: true, :style=>"", :rows=>"4", :cols=>"40"%>&nbsp;&nbsp;&nbsp;&nbsp; 
+          <% if !get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}").blank? %>
+            <%= Answer.find(get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}")).title%>
+          <%end%>  
         </td>
       </tr>
     </table>
@@ -26,21 +29,22 @@
           <b><%= q.title%></b>&nbsp;:&nbsp;&nbsp;</b>
         </td>
         <td>
-          <%= select_tag "#{APP_CONFIG['question_prefix']}#{q.id}", options_from_collection_for_select(@answers, "id", "title", get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") ), include_blank: true, :style=>"", :rows=>"4", :cols=>"40"%> &nbsp;&nbsp;&nbsp;&nbsp;
+          <% if !get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}").blank? %>
+            <%= Answer.find(get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}")).title %>&nbsp;&nbsp;&nbsp;&nbsp;
+          <%end%> 
         </td>
       </tr>
     </table>
 <% end %>
 </div>
+<br>
 </section>
 
 
 <% @common_descriptive_questions.each do |dq| %>
   <section>
       <h3><%= label_tag dq.title%></h3>
-        <%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}"), :rows=>"3", :class=>"col-lg-12 col-md-12 col-sm-12 col-xs-12 dashed-input1", :wrap=>"soft" %>
-      <br>
-      <br>
+        <%= get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}") %>
       <br>
       <br>
   </section>
@@ -49,9 +53,7 @@
 <% @descriptive_questions.each do |dq| %>
   <section>
       <h3><%= label_tag dq.title%></h3>
-        <%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}"), :rows=>"3", :class=>"col-lg-12 col-md-12 col-sm-12 col-xs-12 dashed-input1", :wrap=>"soft" %>
-      <br>
-      <br>
+        <%= get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}") %>
       <br>
       <br>
   </section>
@@ -67,7 +69,7 @@
     <% @investigations.each do |dq| %>
     <tr>
       <td> <%= label_tag dq.title%> </td>
-      <td> <%= text_field_tag "#{APP_CONFIG['investigation_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['investigation_prefix']}#{dq.id}") %> </td>
+      <td> <%= get_selected_answer_id("#{APP_CONFIG['investigation_prefix']}#{dq.id}") %></td>
       <td> <%= label_tag dq.units %> </td>
       <td> <%= label_tag "(#{dq.normal_min} - #{dq.normal_max})" %> </td>
     </tr>

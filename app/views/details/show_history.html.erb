@@ -1,10 +1,19 @@
-<%= render 'history' %>
-
 <div id="content" class="smart-form client-form">
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10" style="padding-top:10px">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 div_left">
+    <div class="well no-padding">
+        <header>
+            <b>HISTORY&nbsp;&nbsp;<button type="button" id="history_pdf_button" class= "btn btn-primary" onclick="javascript:window.location.href='/details/show_history?&pdf=true'">Generate PDF</button></b>
+        </header>
+
+		<%= render 'history' %>
+    </div>
+  </div>
+</div>
+
+<div id="content" class="smart-form client-form ">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 div_right">
     <div class="well no-padding">
         <%= render 'history_form_new' %>
-
     </div>
     <br />
   </div>

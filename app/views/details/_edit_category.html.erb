@@ -1,10 +1,29 @@
 <div id="login" class=" animated fadeInDown">
   <div id="content" class="smart-form client-form">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10" style="padding-top:10px">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 div_left">
+      <div class="well no-padding">
+        <header>
+          <center><p ><b class="category_name"><%=@super_category.capitalize%> : <%=@full_category%></b></p></center></br></br>
+        </header>
+          <fieldset>
+            <%= render 'view' %>
+          <footer>
+          </footer>
+            <br />
+            <br />
+            <br />
+          </fieldset>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="login" class=" animated fadeInDown">
+  <div id="content" class="smart-form client-form">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 div_right">
       <div class="well no-padding">
           <%= form_tag edit_category_path(:category => @category, :super_category => @super_category), remote: true do %>
         <header>
-        <center><p ><b style="font-size:16px;"><%=@super_category.capitalize%> : <%=@full_category%></b></p></center></br>
+        <center><p ><b class="category_name"><%=@super_category.capitalize%> : <%=@full_category%></b></p></center></br>
     <center><%= submit_tag "Save and Return", :name => 'exit', :class => "btn btn-info" %>
     <%= submit_tag "Save and Previous", :name => 'prev', :class => "btn btn-warning" %>
     <%= submit_tag "Save and Next", :name => 'next', :class => "btn btn-success" %>
@@ -19,7 +38,6 @@
                 <%= submit_tag "Save and Previous", :name => 'prev', :class => "btn btn-warning" %>
                 <%= submit_tag "Save and Return", :name => 'exit', :class => "btn btn-info" %>
             </footer>
-            <br />
             <br />
             <br />
           </fieldset>

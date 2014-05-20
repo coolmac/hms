@@ -1,27 +1,18 @@
 
-<div id="content" class="smart-form client-form">
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-top:10px">
-    <div class="well no-padding">
-        <header>
-            <b>HISTORY&nbsp;&nbsp;<button type="button" id="history_pdf_button" class= "btn btn-primary" onclick="javascript:window.location.href='/details/show_history?&pdf=true'">Generate PDF</button></b>
-        </header>
-    </div>
-  </div>
-</div>
+
 <% @categories.each do |index,value| %>
     </br>
-    <div class="">
-      <table class="table " style="width:97.5%;margin:auto;">
+      <table class="table ">
         <tr class="success">
           <td>
-            <b style="font-size:15px" id="history_category_title"><%= value%></b>
+            <b class="category_name"><%= value%></b>
           </td>
         </tr>
         <tr>
         <% @questions.each do |question| %>
         <%#TODO optimize this. Have questions based on each category%>
           <% if question.category == index%>
-            <td style="width:50%;float:left;">
+            <td style="float:left;">
               <table>
                 <tr>
                   <td valign="top">
@@ -57,7 +48,6 @@
           <%end%>
         <%end%>
       </table>
-    </div>
 <%end%>
 
 
