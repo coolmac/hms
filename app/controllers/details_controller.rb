@@ -60,7 +60,15 @@ class DetailsController < ApplicationController
     params[:super_category] = 'examination'
     get_visit_question_details()
     if params[:pdf]
-      #TODO pdf to be generated
+      dir = File.dirname("#{Rails.root}/pdfs/Examination/#{@current_patient.first_name}/x")
+      FileUtils.mkdir_p(dir) unless File.directory?(dir)
+      pdf = WickedPdf.new.pdf_from_string(render_to_string('details/_history_pdf.html.erb'))
+      save_path = Rails.root.join('pdfs/Examination/'+@current_patient.first_name,@current_visit.created_at.to_s)
+      File.open(save_path, 'wb') do |file|
+        file << pdf
+      end
+      pdf_filename = File.join(Rails.root, "pdfs/Examination/#{@current_patient.first_name}/#{@current_visit.created_at}")
+      send_file(pdf_filename, :filename => "Examination.pdf", :disposition => 'inline', :type => "application/pdf")
     else
       respond_to do |format|
         format.html {render 'details/show_examinations'}

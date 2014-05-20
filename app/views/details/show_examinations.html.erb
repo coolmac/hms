@@ -1,5 +1,14 @@
 <% #TODO _examination similar to history%>
-<%# render 'history' %>
+<div id="content" class="smart-form client-form">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 div_left">
+    <div class="well no-padding">
+        <header>
+            <b>EXAMINATION&nbsp;&nbsp;<button type="button" id="history_pdf_button" class= "btn btn-primary" onclick="javascript:window.location.href='/details/show_examinations?&pdf=true'">Generate PDF</button></b>
+        </header>
+		<%= render 'history' %>
+    </div>
+  </div>
+</div>
 
 <div id="content" class="smart-form client-form">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 div_right">

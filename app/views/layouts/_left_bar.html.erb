@@ -84,7 +84,8 @@
 			  	<%= link_to edit_category_path(:super_category => 'history', :category => 'other_systems_history'), :remote => true do %>
 			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> Other Systems
 			  	<%end%>
-			  	<a href="/details/history/treatment"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Treatment</a>
+			  	<%= link_to edit_category_path(:super_category => 'history', :category => 'treatment_history'), :remote => true do %><i class="fa fa-fw fa-arrow-circle-o-right"></i> Treatment History
+			  	<%end%>
 		    </div>
 	      </div>
 		</div>
