@@ -51,3 +51,17 @@ function show_sub_category(super_category) {
 		$(".admit_sb_div").remove()
 	}
  }
+
+function SetSel(elem){
+  elem_class =  elem.className;
+  elems = document.getElementsByClassName(elem_class);
+  currentState = elem.checked;
+  elemsLength = elems.length;
+
+  for(i=0; i<elemsLength; i++)
+  {
+       elems[i].checked = false;   
+  }
+
+  elem.checked = currentState;
+}
