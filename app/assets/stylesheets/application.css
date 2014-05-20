@@ -76,6 +76,14 @@ body {
 	padding:5px;
 }
 
+.btn_common {
+	width:250px;
+	padding:10px !important;
+}
+.btn_nad {
+	padding:5px !important;
+}
+
 @media print {
 	#over-the-top {
 		display:none !important;

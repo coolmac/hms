@@ -8,7 +8,8 @@
         <fieldset>
 	<% @categories.each do |index,value| %>
      <section>
-     	<%= link_to value, edit_category_path(:category => index, :super_category => @super_category), :remote => true, :class => "btn btn-primary btn-lg" %>
+
+     	<%= link_to value, edit_category_path(:category => index, :super_category => @super_category), :remote => true, :class => "btn btn-primary btn_common" %>
      	<br />
 		<% @questions.each do |question| %>
 		  <% if question.category == "#{index}#{APP_CONFIG['common_category_tag']}"%>
@@ -21,16 +22,18 @@
 			    </div>
 			</div>
 			<br />
+			<br/>
 		  <%end%>
 		<%end%>
 		<% @descriptive_questions.each do |question| %>
 		  <% if question.category == "#{index}#{APP_CONFIG['common_category_tag']}"%>
 			  <section>
-			      <h3><%= label_tag question.title%></h3>
+			      <h3><%= label_tag question.title%>&nbsp;<%=button_tag "NAD", :type=>"button", :onclick=>"setNad('#{APP_CONFIG['descriptive_question_prefix']}#{question.id}')", :class=> "btn btn-info btn_nad"%></h3>
 			        <%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{question.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{question.id}"), :rows=>"4", :class=>"col-lg-12 col-md-12 col-sm-12 col-xs-12 dashed-input1", :wrap=>"soft" %>
 			      <br />
 			  </section>
 			<br />
+			<br/>
 		  <%end%>
 		<%end%>
      </section>

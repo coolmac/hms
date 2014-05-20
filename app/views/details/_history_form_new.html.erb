@@ -8,7 +8,7 @@
         <fieldset>
 	<% @categories.each do |index,value| %>
      <section>
-     	<%= link_to value, edit_category_path(:category => index, :super_category => @super_category), :remote => true, :class => "btn btn-primary btn-lg" %>
+     	<%= link_to value, edit_category_path(:category => index, :super_category => @super_category), :remote => true, :class => "btn btn-primary btn_common" %>
      	<br />
 		<% @questions.each do |question| %>
 		  <% if question.category == "#{index}#{APP_CONFIG['common_category_tag']}"%>
