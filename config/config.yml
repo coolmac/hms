@@ -15,6 +15,7 @@ defaults: &DEFAULTS
   gs_spreadsheet_key: "0AsQY57nAWrTldHg2OEtEbjRDcDRsZTZscnhXRHRGanc" 
   deployment_date: '2014-05-05'
   common_category_tag: '-common'
+  NAD_text: 'No Abnormality Detected'
 development:
   <<: *DEFAULTS
 test:
