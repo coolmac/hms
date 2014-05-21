@@ -253,8 +253,9 @@ class DetailsController < ApplicationController
     existing_answered_question_ids = VisitQuestion.where(:visit_id => visit_id).collect{|vq| vq.question_id}
     existing_descriptive_question_ids = VisitDescriptiveQuestion.where(:visit_id => visit_id).collect{|vdq| vdq.descriptive_question_id}
     existing_investigations = VisitInvestigation.where(:visit_id => visit_id).collect{|v| v.investigation_id}
+    #binding.pry
     params.each do |key, value|
-      #binding.pry
+      
       if key.start_with?APP_CONFIG["question_prefix"]
         
         question_id = key.split(APP_CONFIG["question_prefix"])[1].to_i
@@ -269,6 +270,10 @@ class DetailsController < ApplicationController
           else
             VisitQuestion.create({question_id: question_id, visit_id: visit_id, answer_id: value.to_i})
           end
+        else
+          if existing_answered_question_ids.include?question_id
+            visit_question = VisitQuestion.find_by_question_id_and_visit_id(question_id, visit_id).destroy
+          end
         end
       elsif key.start_with?APP_CONFIG["descriptive_question_prefix"]
         descriptive_question_id = key.split(APP_CONFIG["descriptive_question_prefix"])[1].to_i
@@ -282,6 +287,10 @@ class DetailsController < ApplicationController
           else
             VisitDescriptiveQuestion.create({descriptive_question_id: descriptive_question_id, visit_id: visit_id, answer: value})
           end
+        else
+          if existing_descriptive_question_ids.include?descriptive_question_id
+            visit_descriptive_question = VisitDescriptiveQuestion.find_by_descriptive_question_id_and_visit_id(descriptive_question_id, visit_id).destroy
+          end
         end
       elsif key.start_with?APP_CONFIG["investigation_prefix"]
         investigation_id = key.split(APP_CONFIG["investigation_prefix"])[1].to_i
@@ -294,6 +303,10 @@ class DetailsController < ApplicationController
             existing_investigations.delete(investigation_id)
           else
             VisitInvestigation.create({investigation_id: investigation_id, visit_id: visit_id, report: value})
+          end
+        else
+          if existing_investigations.include?investigation_id
+            visit_investigation = VisitInvestigation.find_by_investigation_id_and_visit_id(investigation_id, visit_id).destroy
           end
         end
       end

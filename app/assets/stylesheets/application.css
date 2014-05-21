@@ -51,9 +51,6 @@ body {
 	float: left !important;
 	padding: 0 2px !important;
 }
-/*table, tr, td, th, tbody, thead, tfoot {
-    page-break-inside: avoid !important;
-}*/
 
 .div_right{
 	padding-top:10px;
@@ -84,6 +81,10 @@ body {
 }
 .btn_nad {
 	padding:5px !important;
+}
+.half_td {
+	float:left;
+	width:50%;
 }
 @media print {
 	#over-the-top {
@@ -156,6 +157,12 @@ body {
 		text-decoration: none;
 		color: #ffffff !important;
 		background-color: #3276b1 !important;
+	}
+}
+/*Questions on mobile*/
+@media only screen and (max-width : 500px) {
+	.half_td {
+		width:100%;
 	}
 }
 
