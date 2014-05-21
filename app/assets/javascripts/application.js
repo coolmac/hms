@@ -17,3 +17,17 @@
 //= require bootstrap
 //= require jquery-ui
 //= require_tree .
+
+/* Header for Mobile and tablet */
+function show_menu() {
+	document.getElementById("navbar_nav_id").style.display="block";
+	document.getElementById("menu-icon-list").style.display="none";
+	document.getElementById("menu-icon-close").style.display="block";
+	document.getElementById("navbar-right").style.display="block";
+} 
+function close_menu() {
+	document.getElementById("navbar_nav_id").style.display="none";
+	document.getElementById("menu-icon-list").style.display="block";
+	document.getElementById("menu-icon-close").style.display="none";
+	document.getElementById("navbar-right").style.display="none";
+} 

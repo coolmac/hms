@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       if @tag=='Both'
         @chart_values = Chart.order("xvalue ASC")
       else
-        @chart_values = Chart.where( tag: @tag).where("date(xvalue) > ?", 10.days.ago).order("xvalue ASC")
+        @chart_values = Chart.where( tag: @tag).order("xvalue ASC")
       end
       respond_to do |format|
           format.json {render json: @chart_values}

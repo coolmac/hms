@@ -1,8 +1,15 @@
 <div id="over-the-top" style="padding-bottom:10px;">
     <div id="header_div" class="navbar-collapse navbar-inverse navbar-static-top">
-      <ul class="nav navbar-nav">
+      
+      
+      <div id="header_small">
+        <label id="home_button"><%= link_to root_path do %> <i class="fa fa-lg fa-fw fa-home"></i> DocOnline <% end %></label> 
+        <label id="menu-icon-list" onclick="show_menu()"><i class="fa fa-align-justify"></i></label>
+        <label id="menu-icon-close" onclick="close_menu()"><i class="fa fa-times"></i></label>
+      </div>
+      <ul class="nav navbar-nav" id="navbar_nav_id">
         <% #TODO set title for DocOnline %>
-        <li><%= link_to root_path do %> <i class="fa fa-lg fa-fw fa-home"></i> DocOnline <% end %> </li>
+        <li><%= link_to root_path do %><i class="fa fa-lg fa-fw fa-home"></i> DocOnline <% end %></li>
         <li><%= link_to "New Patient", new_patient_path, title: "Add a New Patient" %></li>
         <li><%= link_to "Search Patient", search_patient_path, title: "Search for a patient in database" %>
         <li><%= link_to "Visit Details", show_details_path, title: "Takes you to Details page only if patient visit is selected" %></li>
@@ -84,7 +91,7 @@
 
         </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" id="navbar-right">
       <div style="padding:8px 8px 0 0">
         <div class="btn-group">
           <button class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
@@ -108,5 +115,6 @@
         </div>
       </div>
       </ul>
+    
     </div>
 </div>
