@@ -1,40 +1,50 @@
 <section>
 <div class="row pad">
+  <table class="question_table">
+  <tr>
   <% @common_questions.each do |q| %>
-
-    <table class="question_table">
-      <tr style="height:30px;">
-        <td >
-          <b><%= q.title%></b>&nbsp;:&nbsp;&nbsp;</b>
+        <td style="width:50%;float:left;">
+          <table>
+            <tr style="height:30px;">
+              <td>
+                <b><%= q.title%></b>&nbsp;:&nbsp;&nbsp;</b>
+              </td>
+              <td>
+                <%= check_box_tag "#{APP_CONFIG['question_prefix']}#{q.id}", '1',(get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") == 1 ? true : false), :class => "#{APP_CONFIG['question_prefix']}#{q.id}", :onclick=>"SetSel(this)"%>yes&nbsp;&nbsp;
+                <%= check_box_tag "#{APP_CONFIG['question_prefix']}#{q.id}", '2',(get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") == 2 ? true : false), :class => "#{APP_CONFIG['question_prefix']}#{q.id}", :onclick=>"SetSel(this)" %>No
+                <%#= select_tag "#{APP_CONFIG['question_prefix']}#{q.id}", options_from_collection_for_select(@answers, "id", "title", get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") ), include_blank: true, :style=>"", :rows=>"4", :cols=>"40"%>&nbsp;&nbsp;&nbsp;&nbsp; 
+            </td>
+            </tr>
+          </table>
         </td>
-        <td>
-          <%= check_box_tag "#{APP_CONFIG['question_prefix']}#{q.id}", '1',(get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") == 1 ? true : false), :class => "#{APP_CONFIG['question_prefix']}#{q.id}", :onclick=>"SetSel(this)"%>yes&nbsp;&nbsp;
-          <%= check_box_tag "#{APP_CONFIG['question_prefix']}#{q.id}", '2',(get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") == 2 ? true : false), :class => "#{APP_CONFIG['question_prefix']}#{q.id}", :onclick=>"SetSel(this)" %>No
-          <%#= select_tag "#{APP_CONFIG['question_prefix']}#{q.id}", options_from_collection_for_select(@answers, "id", "title", get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") ), include_blank: true, :style=>"", :rows=>"4", :cols=>"40"%>&nbsp;&nbsp;&nbsp;&nbsp; 
-        </td>
-      </tr>
-    </table>
-<% end %>
+  <% end %>
+  </tr>
+  </table>
 </div>
 </section>
 
 <section>
 <div class="row pad">
+  <table class="question_table">
+  <tr>
   <% @questions.each do |q| %>
-
-    <table class="question_table">
-      <tr style="height:30px;">
-        <td >
-          <b><%= q.title%></b>&nbsp;:&nbsp;&nbsp;</b>
+        <td style="width:50%;float:left;">
+          <table>
+            <tr style="height:30px;">
+              <td>
+                <b><%= q.title%></b>&nbsp;:&nbsp;&nbsp;</b>
+              </td>
+              <td>
+                <%= check_box_tag "#{APP_CONFIG['question_prefix']}#{q.id}", '1',(get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") == 1 ? true : false), :class => "#{APP_CONFIG['question_prefix']}#{q.id}", :onclick=>"SetSel(this)"%>yes&nbsp;&nbsp;
+                <%= check_box_tag "#{APP_CONFIG['question_prefix']}#{q.id}", '2',(get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") == 2 ? true : false), :class => "#{APP_CONFIG['question_prefix']}#{q.id}", :onclick=>"SetSel(this)" %>No
+                <%#= select_tag "#{APP_CONFIG['question_prefix']}#{q.id}", options_from_collection_for_select(@answers, "id", "title", get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") ), include_blank: true, :style=>"", :rows=>"4", :cols=>"40"%>
+              </td>
+            </tr>
+          </table>
         </td>
-        <td>
-          <%= check_box_tag "#{APP_CONFIG['question_prefix']}#{q.id}", '1',(get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") == 1 ? true : false), :class => "#{APP_CONFIG['question_prefix']}#{q.id}", :onclick=>"SetSel(this)"%>yes&nbsp;&nbsp;
-          <%= check_box_tag "#{APP_CONFIG['question_prefix']}#{q.id}", '2',(get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") == 2 ? true : false), :class => "#{APP_CONFIG['question_prefix']}#{q.id}", :onclick=>"SetSel(this)" %>No
-          <%#= select_tag "#{APP_CONFIG['question_prefix']}#{q.id}", options_from_collection_for_select(@answers, "id", "title", get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") ), include_blank: true, :style=>"", :rows=>"4", :cols=>"40"%> &nbsp;&nbsp;&nbsp;&nbsp;
-        </td>
-      </tr>
-    </table>
-<% end %>
+  <% end %>
+  </tr>
+  </table>
 </div>
 </section>
 

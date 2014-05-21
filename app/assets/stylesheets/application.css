@@ -71,11 +71,13 @@ body {
 .pad {
 	padding-left:15px !important;
 }
-.question_table {
+.question_table_view {
 	float:left;
 	padding:5px;
 }
-
+.question_table {
+	width:100%;
+}
 .btn_common {
 	width:250px;
 	padding:10px !important;
