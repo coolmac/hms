@@ -4,16 +4,18 @@ class AdmissionsController < DetailsController
   def index
     visit_id = user_session[:current_visit_id]
     @admission = Admission.find_by_visit_id(visit_id)
-    if @admission
-      respond_to do |format|
-        format.html { render 'admissions/edit'}
-      end
-    else
+    if !@admission
       @admission = Admission.new(:visit_id => visit_id)
-      respond_to do |format|
-        format.html { render 'admissions/new'}
-      end
     end
+    #   respond_to do |format|
+    #     format.html { render 'admissions/edit'}
+    #   end
+    # else
+    #   @admission = Admission.new(:visit_id => visit_id)
+    #   respond_to do |format|
+    #     format.html { render 'admissions/new'}
+    #   end
+    # end
 
   end
 
@@ -32,7 +34,7 @@ class AdmissionsController < DetailsController
     # binding.pry
     if @admission
       respond_to do |format|
-        format.html { render 'admissions/edit'}
+        format.html { render 'admissions/new'}
       end
     else
       @admission = Admission.new(:visit_id => visit_id)

@@ -6,16 +6,13 @@
 		</tr>
 	</table>	
 	<table id="resultTable" class="table table-bordered">
+		<tr>
 		  <% @admission.admit_days.sort_by {|a| a.serial_number}.each do |ad| %>
-			<tr>
-		      <td><%= link_to "DAY#{ad.serial_number}", edit_admission_admit_day_path(@admission.id, ad), :class => "btn btn-primary" %></td>
-			</tr>
+		      <td style="width:50%;float:left;"><%= link_to "DAY#{ad.serial_number}", edit_admission_admit_day_path(@admission.id, ad), :class => "btn btn-primary" %>&nbsp;&nbsp;<%=ad.admit_date.strftime("%d-%m-%Y (%A)")%></td>
 		  <% end %>
+		</tr>
 	</table>
 </div>
 
-
-
-<%= render 'form' %>
 
 
