@@ -2,7 +2,7 @@
 	<table id="resultTable" class="table table-striped table-bordered table-hover">
 		<thead>
 			<tr>
-				<th>Id</th>
+				<th>UHID</th>
 				<th>First Name</th>
 				<th>Last Name</th>
 				<th>Mobile</th>
@@ -14,29 +14,27 @@
 			<% if @exact_result_found %>
 				<h1 class="font-md"> Search Result based on exact input: </h1><br />
 				<%@exact_results.each do |er|%>
-				<tr>
-					<td><%=er.id%></td>
+				<tr class="search_result_tr" onclick="window.location='/patients/<%=er.id%>'">
+					<td><%=er.uhid%></td>
 					<td><%=er.first_name%></td>
 					<td><%=er.last_name%></td>
 					<td><%=er.mobile%></td>
 					<td><%=er.email%></td>
-					<td><span class="label label-success"><%= link_to 'Select', er %> </span>      |<span class="label label-success"> <%= link_to 'Edit', edit_patient_path(er) %> </span></td>
+					<td><span class="label label-success"><%= link_to 'Select', er %> </span> </td>
 				</tr>
 				<% end %>
 
 				<% else %>
 				<h1 class="font-md"><%=@comments%></h1>
 				<%@fuzzy_results.each do |fr|%>
-				<%= link_to fr do%>
-				<tr>
-					<td><%=link_to fr.id, fr, :style=>"color:black;", :id=>"patient_search"%></td>
-					<td><%=link_to fr.first_name, fr, :style=>"color:black;", :id=>"patient_search"%></td>
-					<td><%=link_to fr.last_name, fr, :style=>"color:black;", :id=>"patient_search" if fr.last_name%></td>
-					<td><%=link_to fr.mobile, fr, :style=>"color:black;", :id=>"patient_search" if fr.mobile%></td>
-					<td><%=link_to fr.email, fr, :style=>"color:black;", :id=>"patient_search" if fr.email%></td>
+				<tr class="search_result_tr" onclick="window.location='/patients/<%=fr.id%>'">
+					<td><%=fr.uhid%></td>
+					<td><%=fr.first_name%></td>
+					<td><%=fr.last_name%></td>
+					<td><%=fr.mobile%></td>
+					<td><%=fr.email%></td>
 					<td><span class="label label-primary"><%= link_to 'Select', fr, :style=>"color:white" %></span></td>
 				</tr>
-				<%end%>
 				<% end %>
 
 			<% end %>

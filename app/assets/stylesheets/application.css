@@ -18,6 +18,10 @@
 *= require_tree .
 */
 
+.search_result_tr:hover {
+	cursor: pointer;
+}
+
 .left_bar_nav ul li {
 	overflow: auto !important;
 }
