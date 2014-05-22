@@ -19,21 +19,25 @@
  -->
 	  <li>
 	  	<div class="panel-heading" style="padding:0px">
-		<a href="#"><i class="fa fa-lg fa-fw fa-group"></i>  <span class="menu-item-parent">Managing Patients</span>
-		  <b class="collapse-sign" data-toggle="collapse" href="#patients">
+	  	<% if user_session[:current_patient_id]%>
+			<a href="/patients/<%=user_session[:current_patient_id]%>"><i class="fa fa-lg fa-fw fa-group"></i>  <span class="menu-item-parent">Patient Visits</span></a>
+		<%else%>
+			<a href="#"><i class="fa fa-lg fa-fw fa-group"></i>  <span class="menu-item-parent">Managing Patients</span>
+		  	<b class="collapse-sign" data-toggle="collapse" href="#patients">
 		  	<i class="fa fa-fw fa-bars"></i>
-		  </b>
-		</a>
-		<!-- #TODO open sub-menu based on the page, give proper ids 		
-		#TODO to do that, you JUST need to add or remove the class "in"
-		$("#patients").addClass("in") -->
- 		  <div id="patients" class="panel-collapse collapse">
-		  	<div class="panel-body" style="padding:0px">
-			  <a href="/patients/new"><i class="fa fa-fw fa-arrow-circle-o-right"></i> New Patient</a>
-			  <a href="/patients/search"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Search Patient</a>
-			  <a href="/patients"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Current Patients</a>
-		    </div>
-	      </div>
+		  	</b>
+			</a>
+			<!-- #TODO open sub-menu based on the page, give proper ids 		
+			#TODO to do that, you JUST need to add or remove the class "in"
+			$("#patients").addClass("in") -->
+ 		  	<div id="patients" class="panel-collapse collapse">
+		  		<div class="panel-body" style="padding:0px">
+			  		<a href="/patients/new"><i class="fa fa-fw fa-arrow-circle-o-right"></i> New Patient</a>
+			  		<a href="/patients/search"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Search Patient</a>
+			  		<a href="/patients"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Current 	Patients</a>
+		    	</div>
+	      	</div>
+		<%end%>
 		</div>
 	  </li>
 
