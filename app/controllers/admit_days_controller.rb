@@ -42,7 +42,7 @@ class AdmitDaysController < DetailsController
 
     respond_to do |format|
       if @admit_day.save
-        format.html { redirect_to( admissions_path(), :notice => 'Admit day was successfully created.') }
+        format.html { redirect_to( edit_admission_path(@admission)) }
       else
         format.html { render :action => "new" }
       end

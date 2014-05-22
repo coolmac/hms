@@ -18,6 +18,13 @@
 *= require_tree .
 */
 
+#header {
+	overflow: auto !important;
+}
+#header img {
+	width:70px;
+	margin-top:5px;
+}
 .search_result_tr:hover {
 	cursor: pointer;
 }
