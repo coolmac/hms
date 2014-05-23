@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140513115138) do
+ActiveRecord::Schema.define(:version => 20140523090921) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line1"
@@ -102,6 +102,18 @@ ActiveRecord::Schema.define(:version => 20140513115138) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  create_table "favourite_prescriptions", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "medicine_name"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "frequency"
+    t.string   "duration"
+    t.string   "route"
+  end
+
+  add_index "favourite_prescriptions", ["user_id"], :name => "index_favourite_prescriptions_on_user_id"
 
   create_table "follow_ups", :force => true do |t|
     t.datetime "follow_up_date"

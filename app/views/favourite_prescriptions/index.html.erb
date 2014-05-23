@@ -1,0 +1,115 @@
+<div class="smart-form client-form animated fadeInDown" style="padding:20px">
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+      		<div class="well no-padding">
+      			<header>Favourite Prescription</header>
+				<%= form_for(@favourite_prescription) do |f| %>
+				  <% if @favourite_prescription.errors.any? %>
+				    <div id="error_explanation">
+				      <h2><%= pluralize(@favourite_prescription.errors.count, "error") %> prohibited this prescription from being saved:</h2>
+
+				      <ul>
+				      <% @favourite_prescription.errors.full_messages.each do |msg| %>
+				        <li><%= msg %></li>
+				      <% end %>
+				      </ul>
+				    </div>
+				  <% end %>
+				  <fieldset>
+			   		  <section>
+			            <h3><label> Medicine Name </label></h3>
+			  			<%= f.text_field :medicine_name, :calss => "fav_prescription_text", :style=>"padding:4px;" %>
+			          </section>
+
+			          <br />
+
+			  		  <section>
+			            <h3><%= f.label :frequency %></h3>
+			            <%= f.text_field :frequency, :list=>"list2", :style=>"padding:4px;"  %>
+			              <datalist id="list2">
+			                <option value="OD">OD</option>
+			                <option value="OM">OM</option>
+			                <option value="HS">HS</option>
+			                <option value="BD">BD</option>
+			                <option value="TDS">TDS</option>
+			                <option value="QID">QID</option>
+			              </datalist>
+			  		  </section>
+
+			          <br />
+
+			          <section>
+			            <h3><%= f.label :duration %></h3>
+			            <%= f.text_field :duration, :list=>"list3", :style=>"padding:4px;"  %>
+			              <datalist id="list3">
+			                <option value="1day">1day</option>
+			                <option value="2days">2days</option>
+			                <option value="3days">3days</option>
+			                <option value="4to6days">4-6days</option>
+			                <option value="1week">1week</option>
+			                <option value="2weeks">2weeks</option>
+			                <option value="3weeks">3weeks</option>
+			                <option value="1month">1month</option>
+			                <option value="2months">2months</option>
+			                <option value="3months">3months</option>
+			                <option value="6months">6months</option>
+			                <option value="1year">1year</option>
+			              </datalist>
+			          </section>
+
+			          <br />
+
+			          <section>
+			            <h3><%= f.label :route %></h3>
+			            <%= f.text_field :route, :list=>"list4", :style=>"padding:4px;"  %>
+			              <datalist id="list4">
+			                <option value="im">im</option>
+			                <option value="iv">iv</option>
+			                <option value="po">po</option>
+			                <option value="pr">pr</option>
+			                <option value="intramuscular">intramuscular</option>
+			                <option value="intravenous">intravenous</option>
+			                <option value="per-oral">per oral</option>
+			                <option value="per-rectal">per rectal</option>
+			              </datalist>
+			          </section>
+			          <footer>
+						  <input class="btn btn-primary fav_prescription_button" name="commit" type="submit" value="Submit">
+			          </footer>
+			      </fieldset>
+				          
+				<% end %>
+			</div>
+	</div>
+	</br>
+	</br>
+
+	<div>
+	  	<table id="resultTable" class="table table-striped table-bordered table-hover">
+	    <thead>
+	      <tr>
+	        <th>Number</th>
+	        <th>Medicine</th>
+        	<th>Frequency</th>
+        	<th>Duration</th>
+        	<th>Route</th>
+	        <th colspan="2">Action</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <%@i=1%>		
+	      <% @favourite_prescriptions.each do |prescription| %>
+	        <tr>
+	          <td><%= @i %></td>
+	          <td><%= prescription.medicine_name %></td>
+	          <td><%= prescription.frequency %></td>
+	          <td><%= prescription.duration %></td>
+	          <td><%= prescription.route %></td>
+	          <td><%= link_to 'Edit',  edit_favourite_prescription_path(prescription), :class => "btn btn-success btn-sm" %></td>
+	          <td><%= link_to 'Remove', [prescription], :class => "btn btn-danger btn-sm", :confirm => 'Are you sure?', :method => :delete %></td>
+	        </tr>
+	        <%@i+=1%>
+	      <% end %>
+	  	</tbody>
+	    </table>
+	</div>
+</div>

@@ -1,0 +1,10 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+.fav_prescription_button {
+	width: 100px;
+	padding: 4px;
+	margin-top: -3px;
+}

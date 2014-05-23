@@ -1,5 +1,7 @@
 Emr::Application.routes.draw do
 
+  get "favourite_prescriptions/index_"
+
   #TODO set up indices for all the tables  
 
   # The priority is based upon order of creation:
@@ -57,6 +59,8 @@ Emr::Application.routes.draw do
   resources :departments
   resources :hospitals
   resources :enquiries
+
+  resources :favourite_prescriptions
 
 
 
