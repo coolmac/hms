@@ -26,7 +26,7 @@ function show_sub_category(super_category) {
 		$.get(url, function(data, status, xhr) {
 			$("#sub_category_div").append("<div class='"+super_category+"_sb_div' style='margin-left:10px;'></br><p><b>"+super_category.toUpperCase()+"</b></p></div>")
 			for(i=0;i<data.length;i++){
-				$("."+super_category+"_sb_div").append("&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' name='"+super_category+"_sub[]' value='"+data[i]+"' checked/>"+data[i])
+				$("."+super_category+"_sb_div").append("&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' id='"+super_category+i+"' name='"+super_category+"_sub[]' value='"+data[i]+"' checked/>"+"<label for='"+super_category+i+"'>"+data[i]+"</label>")
 			}
 
 		});

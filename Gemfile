@@ -72,7 +72,8 @@ gem 'unicorn'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
-
+# newrelic monitoring for our apps on heroku
+gem 'newrelic_rpm'
 
 group :development do
 	# gem 'mysql2'
