@@ -27,6 +27,7 @@ class PrescriptionsController < DetailsController
   # GET visits/1/prescriptions/new.json
   def new
     @visit = Visit.find(params[:visit_id])
+    @favourite_prescriptions = FavouritePrescription.where(:user_id=>current_user).map{ |fp| [fp.name, fp.id] }
     @prescription = @visit.prescriptions.build
 
     respond_to do |format|
@@ -45,15 +46,30 @@ class PrescriptionsController < DetailsController
   # POST visits/1/prescriptions.json
   def create
     @visit = Visit.find(params[:visit_id])
-    @prescription = @visit.prescriptions.build(params[:prescription])
+    if !params[:favourite_prescription].blank?
+      @favourite_prescription = FavouritePrescription.find(params[:favourite_prescription])
+      @favourite_prescription.prescription_medicines.each do |medicine|
+        @prescription = @visit.prescriptions.new
+        @prescription.medicine = medicine.medicine
+        @prescription.frequency = medicine.frequency
+        @prescription.duration = medicine.duration
+        @prescription.route = medicine.route
+        @prescription.save
+      end
+      respond_to do |format|
+          format.html { redirect_to visit_prescriptions_url }
+      end
+    else
+      @prescription = @visit.prescriptions.build(params[:prescription])
 
-    respond_to do |format|
-      if @prescription.save
-        format.html { redirect_to visit_prescriptions_url }
-        format.json { render :json => @prescription, :status => :created, :location => [@prescription.visit, @prescription] }
-      else
-        format.html { render :action => "new" }
-        format.json { render :json => @prescription.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @prescription.save
+          format.html { redirect_to visit_prescriptions_url }
+          format.json { render :json => @prescription, :status => :created, :location => [@prescription.visit, @prescription] }
+        else
+          format.html { render :action => "new" }
+          format.json { render :json => @prescription.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end

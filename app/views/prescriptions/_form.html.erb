@@ -12,6 +12,18 @@
       </ul>
     </div>
   <% end %>
+          <% if @favourite_prescriptions%>
+            <section>
+              <h3>Prescription</h3>
+              <h3><%= select_tag "favourite_prescription", options_for_select(@favourite_prescriptions), :prompt=> "Select" %></h3>
+            </section>
+
+            <section>
+              <h3>OR</h3>
+            </section>
+          <%end%>
+
+          
 
           <section>
             <h3><%= f.label :medicine %></h3>
