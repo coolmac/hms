@@ -1,0 +1,69 @@
+<div class="smart-form client-form animated fadeInDown" style="padding:20px">
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+      		<div class="well no-padding">
+      			<header>Favourite Prescription</header>
+				<%= form_for(@favourite_prescription) do |f| %>
+				  <% if @favourite_prescription.errors.any? %>
+				    <div id="error_explanation">
+				      <h2><%= pluralize(@favourite_prescription.errors.count, "error") %> prohibited this prescription from being saved:</h2>
+
+				      <ul>
+				      <% @favourite_prescription.errors.full_messages.each do |msg| %>
+				        <li><%= msg %></li>
+				      <% end %>
+				      </ul>
+				    </div>
+				  <% end %>
+				  <fieldset>
+			   		  <section>
+			            <h3><label> Prescription Name </label></h3>
+			  			<%= f.text_field :name, :calss => "fav_prescription_text", :style=>"padding:4px;" %>
+			          </section>
+
+			          <footer>
+						  <input class="btn btn-primary fav_prescription_button" name="commit" type="submit" value="Submit">
+			          </footer>
+			      </fieldset>
+				          
+				<% end %>
+			</div>
+	</div>
+	</br>
+	</br>
+
+	<div>
+	<table id="resultTable" class="table table-striped table-bordered table-hover">
+		<tr>
+			<td><h1>Medicines <%= link_to "Add New Medicine", new_favourite_prescription_prescription_medicine_path(@favourite_prescription), :class => "btn btn-success fav_prescription_button" %></h1></td>
+		</tr>
+	</table>
+  	
+  	<table id="resultTable" class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Medicine</th>
+    	<th>Frequency</th>
+    	<th>Duration</th>
+    	<th>Route</th>
+        <th colspan="2">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@i=1%>		
+      <% @favourite_prescription.prescription_medicines.each do |medicine| %>
+        <tr>
+          <td><%= @i %></td>
+          <td><%= medicine.medicine %></td>
+          <td><%= medicine.frequency %></td>
+          <td><%= medicine.duration %></td>
+          <td><%= medicine.route %></td>
+          <td><%= link_to 'Edit',  edit_favourite_prescription_prescription_medicine_path(@favourite_prescription.id, medicine), :class => "btn btn-success btn-sm" %></td>   
+	      <td><%= link_to 'Remove',  favourite_prescription_prescription_medicine_path(@favourite_prescription.id,medicine) , :class => "btn btn-danger btn-sm", :confirm => 'Are you sure?', :method => :delete %></td>
+        </tr>
+        <%@i+=1%>
+      <% end %>
+  	</tbody>
+    </table>
+</div>
+</div>
