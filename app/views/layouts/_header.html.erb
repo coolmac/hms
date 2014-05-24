@@ -108,6 +108,12 @@
             <li>
               <a href="/enquiries/new">Contact Us</a>
             </li>
+            <%@favourite_prescriptions = FavouritePrescription.new%>
+            <% if can? :create, @favourite_prescriptions%>
+              <li>
+                <%= link_to 'Prescriptions', favourite_prescriptions_path%>
+              </li>
+            <%end%>
             <li class="divider"></li>
             <li>
               <a href="javascript:void(0);">Feedback</a>

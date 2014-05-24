@@ -1,0 +1,2 @@
+module FavouritePrescriptionsHelper
+end
