@@ -4,7 +4,7 @@
   <tr>
   <% @common_questions.each do |q| %>
         <td class="half_td">
-          <table>
+          <table class="inner_question_table">
             <tr style="height:30px;">
               <td>
                 <b><%= q.title%></b>&nbsp;:&nbsp;&nbsp;</b>
@@ -30,7 +30,7 @@
   <tr>
   <% @questions.each do |q| %>
         <td class="half_td">
-          <table>
+          <table  class="inner_question_table">
             <tr style="height:30px;">
               <td>
                 <b><%= q.title%></b>&nbsp;:&nbsp;&nbsp;</b>

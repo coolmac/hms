@@ -99,6 +99,12 @@ body {
 	float:left;
 	width:50%;
 }
+.inner_question_table {
+	width:100%;
+}
+table.inner_question_table tr td {
+	width:50%;
+}
 @media print {
 	#over-the-top {
 		display:none !important;
