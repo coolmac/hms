@@ -55,7 +55,9 @@ body {
 }
 .btn-xl {
 	line-height:3 !important;
-	height:85px !important;
+	height:65px !important;
+	width:200px !important;
+	font-size:15px !important;
 }
 
 .smart-form footer .btn {
