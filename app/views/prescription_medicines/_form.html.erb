@@ -1,8 +1,8 @@
 <div class="smart-form client-form animated fadeInDown" style="padding:20px">
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
       		<div class="well no-padding">
-      			<header>Prescription Medicines</header>
 				<%= form_for([@prescription_medicine.favourite_prescription, @prescription_medicine]) do |f| %>
+      			<header>Medicine for <%=@prescription_medicine.favourite_prescription.name%></header>
 				  <% if @prescription_medicine.errors.any? %>
 				    <div id="error_explanation">
 				      <h2><%= pluralize(@prescription_medicine.errors.count, "error") %> prohibited this prescription from being saved:</h2>
