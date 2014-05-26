@@ -1,5 +1,5 @@
 <div class="smart-form client-form animated fadeInDown" style="padding:20px">
-	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       		<div class="well no-padding">
       			<header>Favourite Prescription</header>
 				<%= form_for(@favourite_prescription) do |f| %>
@@ -14,16 +14,6 @@
 				      </ul>
 				    </div>
 				  <% end %>
-				  <fieldset>
-			   		  <section>
-			            <h3><label> Prescription Name </label></h3>
-			  			<%= f.text_field :name, :calss => "fav_prescription_text", :style=>"padding:4px;" %>
-			          </section>
-
-			          <footer>
-						  <input class="btn btn-primary fav_prescription_button" name="commit" type="submit" value="Submit">
-			          </footer>
-			      </fieldset>
 				          
 				<% end %>
 			</div>
@@ -41,11 +31,24 @@
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <%@i=1%>		
+	      <%@i=1%>
+	      <%= form_for(@favourite_prescription) do |f| %>
+		      <tr>
+		      	<td>
+		      		New
+		      	</td>
+		      	<td>
+		      		<%= f.text_field :name, :calss => "fav_prescription_text", :style=>"padding:4px;" %>
+		      	</td>
+		      	<td colspan="2">
+		      		<input class="btn btn-primary fav_prescription_button" name="commit" type="submit" value="Submit">
+		      	</td>
+		      </tr>
+		  <%end%>		
 	      <% @favourite_prescriptions.each do |prescription| %>
 	        <tr>
 	          <td><%= @i %></td>
-	          <td><%= prescription.name %></td>
+	          <td><%= editable_field prescription, :name %></td>
 	          <td><%= link_to 'Edit',  edit_favourite_prescription_path(prescription), :class => "btn btn-success btn-sm" %></td>
 	          <td><%= link_to 'Remove', [prescription], :class => "btn btn-danger btn-sm", :confirm => 'Are you sure?', :method => :delete %></td>
 	        </tr>

@@ -34,6 +34,7 @@ class FavouritePrescriptionsController < ApplicationController
   	@user = User.find(current_user)
   	@favourite_prescriptions = @user.favourite_prescriptions
   	@favourite_prescription = @favourite_prescriptions.find(params[:id])
+    @prescription_medicine = @favourite_prescription.prescription_medicines.build
   end
 
   def update
@@ -42,8 +43,16 @@ class FavouritePrescriptionsController < ApplicationController
 
     respond_to do |format|
       if @favourite_prescription.update_attributes(params[:favourite_prescription])
-        format.html { redirect_to favourite_prescriptions_url, notice: 'Prescription updated successfully' }
-        format.json { head :ok }
+        format.html {
+          if request.xhr?
+            # *** repond with the new value ***
+            render :text => params[:favourite_prescription].values.first
+          else
+            redirect_to favourite_prescriptions_url, notice: 'Prescription updated successfully'
+          end
+          }
+          # format.html { redirect_to favourite_prescriptions_url, notice: 'Prescription updated successfully' }
+          # format.json { head :ok }
       else
         format.html { render :action => "edit" }
         format.json { render :json => @favourite_prescription.errors, :status => :unprocessable_entity }

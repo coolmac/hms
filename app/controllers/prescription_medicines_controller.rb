@@ -41,14 +41,26 @@ class PrescriptionMedicinesController < ApplicationController
   end
 
   def update
-  	@favourite_prescription = FavouritePrescription.find(params[:favourite_prescription_id])
-    @prescription_medicine = @favourite_prescription.prescription_medicines.find(params[:id])
+    if params[:favourite_prescription_id]
+  	   @favourite_prescription = FavouritePrescription.find(params[:favourite_prescription_id])
+       @prescription_medicine = @favourite_prescription.prescription_medicines.find(params[:id])
+    else
+      @prescription_medicine = PrescriptionMedicine.find(params[:id])
+    end
 
     respond_to do |format|
       if @prescription_medicine.update_attributes(params[:prescription_medicine])
+        format.html {
+          if request.xhr?
+            # *** repond with the new value ***
+            render :text => params[:prescription_medicine].values.first
+          else
+            redirect_to(edit_favourite_prescription_path(@favourite_prescription), :notice => "Medicine updated successfully")
+          end
+        }
         #format.html { redirect_to([@admit_day.admission, @admit_day], :notice => 'Admit day was successfully updated.') }
-        format.html { redirect_to(edit_favourite_prescription_path(@favourite_prescription), :notice => "Medicine updated successfully")}
-        format.json { head :ok }
+        # format.html { redirect_to(edit_favourite_prescription_path(@favourite_prescription), :notice => "Medicine updated successfully")}
+        # format.json { head :ok }
       else
         format.html { render :action => "edit" }
         format.json { render :json => @admit_day.errors, :status => :unprocessable_entity }

@@ -47,6 +47,7 @@ Emr::Application.routes.draw do
   end
 
   resources :admissions
+  resources :prescription_medicines
   # match 'admissions/index', to: 'admissions#index', :as => :admissions
 
   #TODO check this out for has_one relation

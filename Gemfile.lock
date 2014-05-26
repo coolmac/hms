@@ -74,6 +74,7 @@ GEM
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
+    jeditable-rails (0.1.1)
     journey (1.0.4)
     jqplot-rails (0.3)
       railties
@@ -194,6 +195,7 @@ DEPENDENCIES
   fuzzily
   google_drive
   jbuilder (~> 1.2)
+  jeditable-rails
   jqplot-rails
   jquery-rails
   nested_scaffold

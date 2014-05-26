@@ -105,6 +105,9 @@ body {
 table.inner_question_table tr td {
 	width:50%;
 }
+.medicine_input {
+	width:80% !important;
+}
 @media print {
 	#over-the-top {
 		display:none !important;
