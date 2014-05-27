@@ -1,5 +1,6 @@
-<div class="col-lg-3"></div>
-<article class="col-xs-12 col-sm-12 col-md-12 col-lg-6 animated fadeInDown">
+<div id="over" ><br/>
+<div class="col-lg-1"></div>
+<article class="col-xs-12 col-sm-12 col-md-12 col-lg-10 animated fadeInDown">
   <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3" data-widget-editbutton="false">
   <header>
     <span class="widget-icon"> <i class="fa fa-list-alt"></i> </span>
@@ -7,44 +8,45 @@
   </header>
 
 <div class="row">
-  <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6">
+  <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6 row_button">
     <%= link_to 'Registration Details', edit_patient_path(@current_patient), :class => "btn btn-primary btn-xl"%>
   </div>
 
-  <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6">
+  <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6 row_button">
     <%= link_to 'Investigation', show_investigations_path, :class => "btn btn-primary btn-xl"%>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6">
+  <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6 row_button">
     <%= link_to 'History', show_history_path, :class => "btn btn-primary btn-xl" %>
   </div>
 
-  <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6">
+  <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6 row_button">
     <%= link_to 'Admit', new_admission_path(), :class => "btn btn-primary btn-xl"%>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6">
+  <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6 row_button">
     <%= link_to 'Examination', show_examinations_path, :class => "btn btn-primary btn-xl"%>
   </div>
 
-  <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6">
+  <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6 row_button">
     <%= link_to 'Out Patient Follow-Up', follow_ups_path(), :class => "btn btn-primary btn-xl"%>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6">
+  <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6 row_button">
     <%= link_to 'Medication', visit_prescriptions_path(@current_visit), :class => "btn btn-primary btn-xl"%>
   </div>
 
-  <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6">
-    <%= link_to 'Discharge Summary', root_path(), :class => "btn btn-primary btn-xl"%>
+  <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6 row_button">
+    <%= link_to 'Discharge Summary', '/discharge_summary', :class => "btn btn-primary btn-xl"%>
   </div>
 </div>
 
 </div>
 </article>
+</div>

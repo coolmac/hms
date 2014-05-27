@@ -192,3 +192,29 @@ table.inner_question_table tr td {
 	}
 }
 
+
+/*Extra styling*/
+.row_button {
+	text-align: center;
+}
+
+.client-form header {
+	background-color:#4C4F53 !important;
+	color:#fff !important;
+}
+
+.resultTable tr{
+	height:50px;
+}
+.resultTable tr td h2{
+	margin:0px !important;
+}
+.resultTable tr td {
+	background-color: #4C4F53 !important;
+	color:#fff !important;
+}
+.resultTable_div {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
