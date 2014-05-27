@@ -25,18 +25,13 @@
 	  	<table id="resultTable" class="table table-striped table-bordered table-hover">
 	    <thead>
 	      <tr>
-	        <th>Number</th>
 	        <th>Name</th>
 	        <th colspan="2">Action</th>
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <%@i=1%>
 	      <%= form_for(@favourite_prescription) do |f| %>
 		      <tr>
-		      	<td>
-		      		New
-		      	</td>
 		      	<td>
 		      		<%= f.text_field :name, :calss => "fav_prescription_text", :style=>"padding:4px;" %>
 		      	</td>
@@ -47,14 +42,30 @@
 		  <%end%>		
 	      <% @favourite_prescriptions.each do |prescription| %>
 	        <tr>
-	          <td><%= @i %></td>
-	          <td><%= editable_field prescription, :name %></td>
-	          <td><%= link_to 'Edit',  edit_favourite_prescription_path(prescription), :class => "btn btn-success btn-sm" %></td>
+	          <td><div class="edit" name="name" id="<%=prescription.id%>"><%= prescription.name %></div></td>
+	          <td><a class="btn btn-success btn-sm" onclick="window.location.href='<%=edit_favourite_prescription_path(prescription)%>'">View List</a></td>
 	          <td><%= link_to 'Remove', [prescription], :class => "btn btn-danger btn-sm", :confirm => 'Are you sure?', :method => :delete %></td>
 	        </tr>
-	        <%@i+=1%>
 	      <% end %>
 	  	</tbody>
 	    </table>
 	</div>
 </div>
+
+<script>
+jQuery(document).ready(function($) {
+
+ $(".edit").each( function(i) {
+	prescription_id = $(this).attr('id')
+    $(this).editable("/favourite_prescriptions/"+prescription_id, {
+  		 method	   : 'PUT',
+  		 cssclass  : 'edittable_form_prescription',
+  		 style     : 'width:200px;',
+         name 	   : 'favourite_prescription['+$(this).attr('name')+']',
+         cancel    : 'Cancel',
+         submit    : 'OK',
+         tooltip   : 'Double-click to edit...'
+    })
+ });
+});
+</script>

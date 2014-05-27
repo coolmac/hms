@@ -41,12 +41,8 @@ class PrescriptionMedicinesController < ApplicationController
   end
 
   def update
-    if params[:favourite_prescription_id]
-  	   @favourite_prescription = FavouritePrescription.find(params[:favourite_prescription_id])
-       @prescription_medicine = @favourite_prescription.prescription_medicines.find(params[:id])
-    else
-      @prescription_medicine = PrescriptionMedicine.find(params[:id])
-    end
+    @favourite_prescription = FavouritePrescription.find(params[:favourite_prescription_id])
+    @prescription_medicine = @favourite_prescription.prescription_medicines.find(params[:id])
 
     respond_to do |format|
       if @prescription_medicine.update_attributes(params[:prescription_medicine])

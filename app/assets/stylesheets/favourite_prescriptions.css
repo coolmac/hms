@@ -9,14 +9,7 @@
 	margin-top: -3px;
 }
 
-.editable form,
-.editable input {
-    /*margin: inherit;
-    padding: inherit;
-    font: inherit;
-    color: inherit;
-    background: inherit;*/
-    border: inherit;
-    width:80% !important;
-    padding:2px !important;
+.edittable_form_prescription input{
+    width : 250px !important;
+    padding: 4px !important;
 }

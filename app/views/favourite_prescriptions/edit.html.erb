@@ -18,14 +18,14 @@
     	<th>Frequency</th>
     	<th>Duration</th>
     	<th>Route</th>
-        <th colspan="2">Action</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
     	<%= form_for([@prescription_medicine.favourite_prescription, @prescription_medicine]) do |f| %>
 	    	<tr>
 	    		<td>
-	    			<%= f.text_field :medicine, :calss => "fav_prescription_text medicine_input", :style=>"padding:4px;" %>
+	    			<%= f.text_field :medicine, :calss => "medicine_input", :style=>"padding:4px;" %>
 	    		</td>
 	    		<td>
 	    			<%= f.text_field :frequency, :list=>"list2", :style=>"padding:4px;", :class=>" medicine_input"  %>
@@ -68,18 +68,17 @@
 				                <option value="per-rectal">per rectal</option>
 				              </datalist>
 	    		</td>
-	    		<td colspan="2">
-	    			<input class="btn btn-primary fav_prescription_button" name="commit" type="submit" value="Submit">
+	    		<td>
+	    			<input class="btn btn-primary btn-sm" name="commit" type="submit" value="&nbsp;Submit&nbsp;">
 	    		</td>
 	    	</tr>
 	    <%end%>	
 	    <% @favourite_prescription.prescription_medicines[0..-2].each do |medicine| %>
 	        <tr>
-	          <td><%= editable_field medicine, :medicine %></td>
-	          <td><%= editable_field medicine, :frequency %></td>
-	          <td><%= editable_field medicine, :duration %></td>
-	          <td><%= editable_field medicine, :route %></td>
-	          <td><%= link_to 'Edit',  edit_favourite_prescription_prescription_medicine_path(@favourite_prescription.id, medicine), :class => "btn btn-success btn-sm" %></td>   
+	          <td><div class="edit" name="medicine" id="<%=medicine.id %>"><%=medicine.medicine %></div></td>
+	          <td><div class="edit" name="frequency" id="<%=medicine.id %>"><%=medicine.frequency %></div></td>
+	          <td><div class="edit" name="duration" id="<%=medicine.id %>"><%=medicine.duration %></div></td>
+	          <td><div class="edit" name="route" id="<%=medicine.id %>"><%=medicine.route %></div></td>  
 		      <td><%= link_to 'Remove',  favourite_prescription_prescription_medicine_path(@favourite_prescription.id,medicine) , :class => "btn btn-danger btn-sm", :confirm => 'Are you sure?', :method => :delete %></td>
 	        </tr>
 	    <% end %>
@@ -87,3 +86,23 @@
     </table>
 </div>
 </div>
+
+<script>
+jQuery(document).ready(function($) {
+
+ $(".edit").each( function(i) {
+	fav_id = <%=@prescription_medicine.favourite_prescription.id%>
+	medc_id = $(this).attr('id')
+    $(this).editable("/favourite_prescriptions/"+fav_id+"/prescription_medicines/"+medc_id, {
+  		 method	   : 'PUT',
+  		 cssclass  : 'edittable_form_medicine',
+  		 style     : 'width:200px;',
+  		 id        : 'prescription_medicine[id]',
+         name 	   : 'prescription_medicine['+$(this).attr('name')+']',
+         cancel    : 'Cancel',
+         submit    : 'OK',
+         tooltip   : 'Double-click to edit...'
+    })
+ });
+});
+</script>

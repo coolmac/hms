@@ -21,7 +21,7 @@ class FavouritePrescriptionsController < ApplicationController
     respond_to do |format|
       if @favourite_prescription.save
         #format.html { redirect_to favourite_prescriptions_url }
-        format.html { redirect_to new_favourite_prescription_prescription_medicine_path(@favourite_prescription)}
+        format.html { redirect_to edit_favourite_prescription_path(@favourite_prescription)}
         format.json { render :json => @favourite_prescription, :status => :created, :location => [@favourite_prescription] }
       else
         format.html { render :action => "index" }
