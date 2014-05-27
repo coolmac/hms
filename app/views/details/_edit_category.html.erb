@@ -1,25 +1,6 @@
 <div id="login" class=" animated fadeInDown">
   <div id="content" class="smart-form client-form">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 div_left">
-      <div class="well no-padding">
-        <header>
-          <center><p ><b class="category_name"><%=@super_category.capitalize%> : <%=@full_category%></b></p></center></br></br>
-        </header>
-          <fieldset>
-            <%= render 'view' %>
-          <footer>
-          </footer>
-            <br />
-            <br />
-            <br />
-          </fieldset>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="login" class=" animated fadeInDown">
-  <div id="content" class="smart-form client-form">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 div_right">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="well no-padding">
           <%= form_tag edit_category_path(:category => @category, :super_category => @super_category), remote: true do %>
         <header>

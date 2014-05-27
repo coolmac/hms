@@ -97,7 +97,7 @@ body {
 }
 .half_td {
 	float:left;
-	width:50%;
+	width:33.33%;
 }
 .inner_question_table {
 	width:100%;
@@ -179,6 +179,10 @@ table.inner_question_table tr td {
 		text-decoration: none;
 		color: #ffffff !important;
 		background-color: #3276b1 !important;
+	}
+	.half_td {
+		float:left;
+		width:50%;
 	}
 }
 /*Questions on mobile*/
