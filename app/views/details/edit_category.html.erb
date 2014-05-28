@@ -1,0 +1,5 @@
+ <%= form_tag edit_category_path(:category => @category, :super_category => @super_category), remote: true do %>
+ 	<%= submit_tag "Save Details", :name => 'save', :class => "btn btn-primary accordion_button" %>
+ 	<%= render 'form' %>
+ 	<%= submit_tag "Save Details", :name => 'save', :class => "btn btn-primary accordion_button" %>
+ <%end%>

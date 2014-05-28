@@ -227,3 +227,14 @@ table.inner_question_table tr td {
 	padding-right: 20px;
 }
 
+/* accordion */
+.accordion_divs section{
+	width:90%;
+	margin:auto;
+}
+
+.accordion_button {
+	paddin:3px !important;
+	margin:10px !important;
+	margin-left:50px !important; 
+}

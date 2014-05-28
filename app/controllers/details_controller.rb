@@ -11,12 +11,14 @@ class DetailsController < ApplicationController
 
   def render_investigations_main_page
     params[:super_category] = 'investigation'
+    @super_category = params[:super_category]
     get_visit_question_details()
+    @categories = Visit.get_categories(params[:super_category])
     if params[:pdf]
       #TODO pdf to be generated
     else
       respond_to do |format|
-        format.html {render 'details/show_investigations'}
+        format.html {render 'details/show_history'}
       end
     end
   end
@@ -38,7 +40,9 @@ class DetailsController < ApplicationController
 
   def render_history_main_page
     params[:super_category] = 'history'
+    @super_category = params[:super_category]
     get_visit_question_details()
+    @categories = Visit.get_categories(params[:super_category])
     if params[:pdf]
       dir = File.dirname("#{Rails.root}/pdfs/History/#{@current_patient.first_name}/x")
       FileUtils.mkdir_p(dir) unless File.directory?(dir)
@@ -142,6 +146,8 @@ class DetailsController < ApplicationController
   def edit_category
     #TODO what if present category/super_category is unknown
     present_super_category = params[:super_category]
+    @super_category = params[:super_category]
+    @categories = Visit.get_categories(present_super_category)
     present_category = params[:category]
     if params[:save] != nil
       update_details()
@@ -165,10 +171,15 @@ class DetailsController < ApplicationController
     end
     
     edit_details()
-
     #TODO also create format.html for this 
-    respond_to do |format|
-      format.js { render :layout => false }
+    if params[:accordion]
+      respond_to do |format|
+        format.html { render :layout => false }
+      end
+    else
+      respond_to do |format|
+        format.js { render :layout => false }
+      end
     end
 
   end

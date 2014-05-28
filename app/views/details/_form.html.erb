@@ -54,7 +54,7 @@
 <% @common_descriptive_questions.each do |dq| %>
   <section>
       <h3><%= label_tag dq.title%></h3>
-        <%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}"), :rows=>"3", :class=>"col-lg-12 col-md-12 col-sm-12 col-xs-12 dashed-input1", :wrap=>"soft" %>
+        <%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}"), :rows=>"3", :class=>"col-lg-12 col-md-12 col-sm-12 col-xs-12", :wrap=>"soft", :style=>"border:none;" %>
       <br>
       <br>
       <br>
@@ -65,7 +65,7 @@
 <% @descriptive_questions.each do |dq| %>
   <section>
       <h3><%= label_tag dq.title%></h3>
-        <%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}"), :rows=>"3", :class=>"col-lg-12 col-md-12 col-sm-12 col-xs-12 dashed-input1", :wrap=>"soft" %>
+        <%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}"), :rows=>"3", :class=>"col-lg-12 col-md-12 col-sm-12 col-xs-12", :wrap=>"soft", :style=>"border:none;" %>
       <br>
       <br>
       <br>
