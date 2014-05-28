@@ -43,16 +43,8 @@ class FavouritePrescriptionsController < ApplicationController
 
     respond_to do |format|
       if @favourite_prescription.update_attributes(params[:favourite_prescription])
-        format.html {
-          if request.xhr?
-            # *** repond with the new value ***
-            render :text => params[:favourite_prescription].values.first
-          else
-            redirect_to favourite_prescriptions_url, notice: 'Prescription updated successfully'
-          end
-          }
-          # format.html { redirect_to favourite_prescriptions_url, notice: 'Prescription updated successfully' }
-          # format.json { head :ok }
+        format.html { redirect_to favourite_prescriptions_url, notice: 'Prescription updated successfully'}
+        format.json { respond_with_bip(@favourite_prescription) }
       else
         format.html { render :action => "edit" }
         format.json { render :json => @favourite_prescription.errors, :status => :unprocessable_entity }

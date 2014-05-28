@@ -192,6 +192,15 @@ table.inner_question_table tr td {
 	}
 }
 
+/*best_in_place*/
+.form_in_place input[type="submit"], .form_in_place input[type="button"] {
+	width:50px !important;
+	padding: 2px;
+}
+.form_in_place input {
+	margin-left: 2px !important;
+}
+
 
 /*Extra styling*/
 .row_button {

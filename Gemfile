@@ -95,7 +95,6 @@ gem 'jqplot-rails'
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 
-#Edittable table row- http://jsfiddle.net/Sk8erPeter/qjrJX/
-gem 'jeditable-rails'
-
+# Inplace editing
+gem 'best_in_place'
 

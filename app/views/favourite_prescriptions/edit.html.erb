@@ -75,10 +75,10 @@
 	    <%end%>	
 	    <% @favourite_prescription.prescription_medicines[0..-2].each do |medicine| %>
 	        <tr>
-	          <td><div class="edit" name="medicine" id="<%=medicine.id %>"><%=medicine.medicine %></div></td>
-	          <td><div class="edit" name="frequency" id="<%=medicine.id %>"><%=medicine.frequency %></div></td>
-	          <td><div class="edit" name="duration" id="<%=medicine.id %>"><%=medicine.duration %></div></td>
-	          <td><div class="edit" name="route" id="<%=medicine.id %>"><%=medicine.route %></div></td>  
+	          <td><%= best_in_place medicine, :medicine, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm' %></td>
+	          <td><%= best_in_place medicine, :frequency, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm' %></td>
+	          <td><%= best_in_place medicine, :duration, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm' %></td>
+	          <td><%= best_in_place medicine, :route, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm' %></td>  
 		      <td><%= link_to 'Remove',  favourite_prescription_prescription_medicine_path(@favourite_prescription.id,medicine) , :class => "btn btn-danger btn-sm", :confirm => 'Are you sure?', :method => :delete %></td>
 	        </tr>
 	    <% end %>
@@ -86,23 +86,3 @@
     </table>
 </div>
 </div>
-
-<script>
-jQuery(document).ready(function($) {
-
- $(".edit").each( function(i) {
-	fav_id = <%=@prescription_medicine.favourite_prescription.id%>
-	medc_id = $(this).attr('id')
-    $(this).editable("/favourite_prescriptions/"+fav_id+"/prescription_medicines/"+medc_id, {
-  		 method	   : 'PUT',
-  		 cssclass  : 'edittable_form_medicine',
-  		 style     : 'width:200px;',
-  		 id        : 'prescription_medicine[id]',
-         name 	   : 'prescription_medicine['+$(this).attr('name')+']',
-         cancel    : 'Cancel',
-         submit    : 'OK',
-         tooltip   : 'Double-click to edit...'
-    })
- });
-});
-</script>
