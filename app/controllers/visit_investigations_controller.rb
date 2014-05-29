@@ -19,8 +19,8 @@ class VisitInvestigationsController < ApplicationController
     else 
       @visit_investigation = VisitInvestigation.find(params[:id])
       respond_to do |format|
-        if @visit_investigation.update_attributes(params[:visit_question])
-          format.html {redirect_to(edit_favourite_prescription_path(@favourite_prescription), :notice => "Medicine updated successfully")}
+        if @visit_investigation.update_attributes(params[:visit_investigation])
+          # format.html {redirect_to(edit_favourite_prescription_path(@favourite_prescription), :notice => "Medicine updated successfully")}
           format.json { respond_with_bip(@visit_investigation) }
         end
       end
