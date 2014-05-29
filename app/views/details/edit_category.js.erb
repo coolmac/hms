@@ -1,6 +1,6 @@
 <% if params[:exit] != nil %>
   $("#page_content").html('<%= escape_javascript(render "show") %>')
 <% else %>
-  $("#page_content").html('<%= escape_javascript(render partial: "edit_category") %>')
+  $("#page_content").html('<%= escape_javascript(render "edit_category") %>')
 <% end %>
 

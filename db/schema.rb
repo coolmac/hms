@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140523090921) do
+ActiveRecord::Schema.define(:version => 20140524071225) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line1"
@@ -105,12 +105,9 @@ ActiveRecord::Schema.define(:version => 20140523090921) do
 
   create_table "favourite_prescriptions", :force => true do |t|
     t.integer  "user_id"
-    t.string   "medicine_name"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.string   "frequency"
-    t.string   "duration"
-    t.string   "route"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "favourite_prescriptions", ["user_id"], :name => "index_favourite_prescriptions_on_user_id"
@@ -182,6 +179,18 @@ ActiveRecord::Schema.define(:version => 20140523090921) do
     t.string   "uhid"
     t.date     "registration_time"
   end
+
+  create_table "prescription_medicines", :force => true do |t|
+    t.integer  "favourite_prescription_id"
+    t.string   "medicine"
+    t.string   "frequency"
+    t.string   "duration"
+    t.string   "route"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "prescription_medicines", ["favourite_prescription_id"], :name => "index_prescription_medicines_on_favourite_prescription_id"
 
   create_table "prescriptions", :force => true do |t|
     t.integer  "visit_id"

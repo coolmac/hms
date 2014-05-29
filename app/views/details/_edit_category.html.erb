@@ -1,51 +1,49 @@
-<div id="login" class=" animated fadeInDown">
-  <div id="content" class="smart-form client-form">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 div_left">
-      <div class="well no-padding">
+<div id="content" class="smart-form client-form">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+    <div class="well no-padding">
         <header>
-          <center><p ><b class="category_name"><%=@super_category.capitalize%> : <%=@full_category%></b></p></center></br></br>
+            <b><%=@super_category%>
+              <%if @super_category=='history'%>
+                <button type="button" id="history_pdf_button" class= "btn btn-primary" onclick="javascript:window.location.href='/details/show_history?&pdf=true'">Generate PDF</button>
+              <%end%>    
+            </b>
         </header>
-          <fieldset>
-            <%= render 'view' %>
-          <footer>
-          </footer>
-            <br />
-            <br />
-            <br />
-          </fieldset>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="login" class=" animated fadeInDown">
-  <div id="content" class="smart-form client-form">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 div_right">
-      <div class="well no-padding">
-          <%= form_tag edit_category_path(:category => @category, :super_category => @super_category), remote: true do %>
-        <header>
-        <center><p ><b class="category_name"><%=@super_category.capitalize%> : <%=@full_category%></b></p></center></br>
-    <center><%= submit_tag "Save and Return", :name => 'exit', :class => "btn btn-info" %>
-    <%= submit_tag "Save and Previous", :name => 'prev', :class => "btn btn-warning" %>
-    <%= submit_tag "Save and Next", :name => 'next', :class => "btn btn-success" %>
-    <%= submit_tag "Save Details", :name => 'save', :class => "btn btn-primary" %></center>
+        <div id="accordion" style="display:table;">
+          <%@categories.each do |index,value|%>
+            <h3 id="<%=index%>" style="background:rgb(235, 235, 235)"><%=value%></h3>
+            <div id="<%=index%>_div" class="accordion_divs" style="display:table;width:100%;background:white;padding:0px">
+                   
+            </div>
+          <%end%>
+        </div>
 
-        </header>
-          <fieldset>
-            <%= render 'form' %>
-            <footer>
-                <%= submit_tag "Save Details", :name => 'save', :class => "btn btn-primary" %>
-                <%= submit_tag "Save and Next", :name => 'next', :class => "btn btn-success" %>
-                <%= submit_tag "Save and Previous", :name => 'prev', :class => "btn btn-warning" %>
-                <%= submit_tag "Save and Return", :name => 'exit', :class => "btn btn-info" %>
-            </footer>
-            <br />
-            <br />
-          </fieldset>
-          <% end %>
-      </div>
     </div>
   </div>
 </div>
 
 
+<script>
+$(function() {
+  $( "#accordion" ).accordion({
+    collapsible: true,
+    active: false
+  });
+});
 
+$('h3').click(function(){
+  if($(this).hasClass('ui-state-active')) {
+    url = '/details/edit_category?category='+$(this).attr("id")+'&super_category=<%=@super_category%>&accordion=true'
+    $("#"+$(this).attr("id")+"_div").load(url +"#"+$(this).attr("id")+"_div", function() {
+
+
+    });
+  }
+  else {
+    url = '/details/edit_category?category='+$(this).attr("id")+'&super_category=<%=@super_category%>&accordion=true'
+    $("#"+$(this).attr("id")+"_div").load(url +"#"+$(this).attr("id")+"_div", function() {
+
+
+    });
+  }
+});
+</script>

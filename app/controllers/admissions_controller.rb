@@ -6,6 +6,9 @@ class AdmissionsController < DetailsController
     @admission = Admission.find_by_visit_id(visit_id)
     if !@admission
       @admission = Admission.new(:visit_id => visit_id)
+      respond_to do |format|
+        format.html { render 'admissions/new'}
+      end    
     end
     #   respond_to do |format|
     #     format.html { render 'admissions/edit'}

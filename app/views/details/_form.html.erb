@@ -1,94 +1,127 @@
-<section>
-<div class="row pad">
-  <table class="question_table">
-  <tr>
-  <% @common_questions.each do |q| %>
-        <td class="half_td">
-          <table>
-            <tr style="height:30px;">
-              <td>
-                <b><%= q.title%></b>&nbsp;:&nbsp;&nbsp;</b>
-              </td>
-              <td>
-                <%= hidden_field_tag "#{APP_CONFIG['question_prefix']}#{q.id}", ""%>
-                <%= check_box_tag "#{APP_CONFIG['question_prefix']}#{q.id}", '1',(get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") == 1 ? true : false), :class => "#{APP_CONFIG['question_prefix']}#{q.id}", :onclick=>"SetSel(this)"%>yes&nbsp;&nbsp;
-                <%= check_box_tag "#{APP_CONFIG['question_prefix']}#{q.id}", '2',(get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") == 2 ? true : false), :class => "#{APP_CONFIG['question_prefix']}#{q.id}", :onclick=>"SetSel(this)" %>No
-                <%#= select_tag "#{APP_CONFIG['question_prefix']}#{q.id}", options_from_collection_for_select(@answers, "id", "title", get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") ), include_blank: true, :style=>"", :rows=>"4", :cols=>"40"%>&nbsp;&nbsp;&nbsp;&nbsp; 
+ <table class="table ">
+        <tr>
+        <% @common_questions.each do |question| %>
+            <td style="float:left;">
+              <table>
+                <tr>
+                  <td valign="top">
+                    <b><%=question.title%>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</b>
+                  </td>
+                  <td>
+                    <%@answer = @sc_common_visit_questions.find_by_question_id(question.id)%>
+                     <%if @answer.nil? %>
+                      <%@answer = VisitQuestion.new%>
+                      <span class='best_in_place' id='best_in_place_answer_id' data-url='/visit_questions/new?&qn_id=<%=question.id%>' data-object='visit_question' data-attribute='answer_id' data-type='select' data-collection='[["","select"], [1, "Yes"], [2, "No"]]'>select</span>
+                     <%else%>
+                        <%= best_in_place @answer, :answer_id, :type => :select, :collection => [["","select"], [1, "Yes"], [2, "No"]]%>
+                     <%end%>
+                  </td>
+                </tr>
+              </table>
             </td>
-            </tr>
-          </table>
-        </td>
-  <% end %>
-  </tr>
-  </table>
-</div>
-</section>
-
-<section>
-<div class="row pad">
-  <table class="question_table">
-  <tr>
-  <% @questions.each do |q| %>
-        <td class="half_td">
-          <table>
-            <tr style="height:30px;">
-              <td>
-                <b><%= q.title%></b>&nbsp;:&nbsp;&nbsp;</b>
-              </td>
-              <td>
-                <%= hidden_field_tag "#{APP_CONFIG['question_prefix']}#{q.id}", ""%>
-                <%= check_box_tag "#{APP_CONFIG['question_prefix']}#{q.id}", '1',(get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") == 1 ? true : false), :class => "#{APP_CONFIG['question_prefix']}#{q.id}", :onclick=>"SetSel(this)"%>yes&nbsp;&nbsp;
-                <%= check_box_tag "#{APP_CONFIG['question_prefix']}#{q.id}", '2',(get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") == 2 ? true : false), :class => "#{APP_CONFIG['question_prefix']}#{q.id}", :onclick=>"SetSel(this)" %>No
-                <%#= select_tag "#{APP_CONFIG['question_prefix']}#{q.id}", options_from_collection_for_select(@answers, "id", "title", get_selected_answer_id("#{APP_CONFIG['question_prefix']}#{q.id}") ), include_blank: true, :style=>"", :rows=>"4", :cols=>"40"%>
-              </td>
-            </tr>
-          </table>
-        </td>
-  <% end %>
-  </tr>
-  </table>
-</div>
-</section>
-
-
-<% @common_descriptive_questions.each do |dq| %>
-  <section>
-      <h3><%= label_tag dq.title%></h3>
-        <%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}"), :rows=>"3", :class=>"col-lg-12 col-md-12 col-sm-12 col-xs-12 dashed-input1", :wrap=>"soft" %>
-      <br>
-      <br>
-      <br>
-      <br>
-  </section>
-<% end %>
-
-<% @descriptive_questions.each do |dq| %>
-  <section>
-      <h3><%= label_tag dq.title%></h3>
-        <%= text_area_tag "#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['descriptive_question_prefix']}#{dq.id}"), :rows=>"3", :class=>"col-lg-12 col-md-12 col-sm-12 col-xs-12 dashed-input1", :wrap=>"soft" %>
-      <br>
-      <br>
-      <br>
-      <br>
-  </section>
-<% end %>
-
-<%if !@investigations.blank? %>
-<section>
-  <table class="table table-bordered table-hover">
-    <th>Field</th>
-    <th>Value</th>
-    <th>Units</th>
-    <th>Normal Range</th>
-    <% @investigations.each do |dq| %>
+        <%end%>
+        </tr>
+        <tr>
+        <% @questions.each do |question| %>
+            <td style="float:left;">
+              <table>
+                <tr>
+                  <td valign="top">
+                    <b><%=question.title%>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</b>
+                  </td>
+                  <td>
+                    <%@answer = @sc_visit_questions.find_by_question_id(question.id)%>
+                     <%if @answer.nil? %>
+                      <%@answer = VisitQuestion.new%>
+                      <span class='best_in_place' id='best_in_place_answer_id' data-url='/visit_questions/new?&qn_id=<%=question.id%>' data-object='visit_question' data-attribute='answer_id' data-type='select' data-collection='[["","select"], [1, "Yes"], [2, "No"]]'>select</span>
+                     <%else%>
+                        <%= best_in_place @answer, :answer_id, :type => :select, :collection => [["","select"], [1, "Yes"], [2, "No"]]%>
+                     <%end%>
+                  </td>
+                </tr>
+              </table>
+            </td>
+        <%end%>
+        </tr>
+        <% @common_descriptive_questions.each do |question| %>
+            <tr>
+            <td style="float:left;">
+              <table>
+                <tr>
+                  <td valign="top">
+                    <b><%=question.title%>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</b>
+                  </td>
+                  <td>
+                    <%@answer = @sc_common_visit_descriptive_questions.find_by_descriptive_question_id(question.id)%>
+                     <%if @answer.nil? %>
+                      <%@answer = VisitDescriptiveQuestion.new%>
+                      <span class='best_in_place' id='best_in_place_answer' data-url='/visit_descriptive_questions/new?&qn_id=<%=question.id%>' data-object='visit_descriptive_question' data-attribute='answer' data-type='textarea' data-nil = "Click me to add content!" data-ok-button='Save' data-cancel-button='Cancel'>click me to add content!</span>
+                    <%else%>
+                      <%if @answer.answer.blank? %>
+                        <span class='best_in_place' id='best_in_place_answer' data-url='/visit_descriptive_questions/<%=@answer.id%>?&qn_id=<%=question.id%>' data-object='visit_descriptive_question' data-attribute='answer' data-type='textarea' data-nil = "Click me to add content!" data-ok-button='Save' data-cancel-button='Cancel'>click me to add content!</span>
+                      <%else%>
+                        <%=best_in_place @answer, :answer, :type => :textarea, :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm', :nil => 'Edit', :path=>'/visit_descriptive_questions/'+@answer.id.to_s+'?&qn_id='+question.id.to_s %>
+                      <%end%> 
+                    <%end%>
+                  </td>
+                </tr>
+              </table>
+            </td>
+        </tr>
+        <%end%>
+        <% @descriptive_questions.each do |question| %>
+          <tr>
+            <td>
+            <table>
+                <tr>
+                  <td valign="top">
+                    <b><%=question.title%>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</b>
+                  </td>
+                  <td>
+                    <%@answer = @sc_visit_descriptive_questions.find_by_descriptive_question_id(question.id)%>
+                    <%if @answer.nil? %>
+                      <%@answer = VisitDescriptiveQuestion.new%>
+                      <span class='best_in_place' id='best_in_place_answer' data-url='/visit_descriptive_questions/new?&qn_id=<%=question.id%>' data-object='visit_descriptive_question' data-attribute='answer' data-type='textarea' data-nil = "Click me to add content!" data-ok-button='Save' data-cancel-button='Cancel'>click me to add content!</span>
+                    <%else%>
+                      <%if @answer.answer.blank? %>
+                        <span class='best_in_place' id='best_in_place_answer' data-url='/visit_descriptive_questions/<%=@answer.id%>?&qn_id=<%=question.id%>' data-object='visit_descriptive_question' data-attribute='answer' data-type='textarea' data-nil = "Click me to add content!" data-ok-button='Save' data-cancel-button='Cancel'>click me to add content!</span>
+                      <%else%>
+                        <%=best_in_place @answer, :answer, :type => :textarea, :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm', :nil => 'Edit', :path=>'/visit_descriptive_questions/'+@answer.id.to_s+'?&qn_id='+question.id.to_s %>
+                      <%end%> 
+                    <%end%>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        <%end%>
+</table>
+<%if !@investigations.blank?%>
+  <table class="table">
     <tr>
-      <td> <%= label_tag dq.title%> </td>
-      <td> <%= text_field_tag "#{APP_CONFIG['investigation_prefix']}#{dq.id}", get_selected_answer_id("#{APP_CONFIG['investigation_prefix']}#{dq.id}") %> </td>
-      <td> <%= label_tag dq.units %> </td>
-      <td> <%= label_tag "(#{dq.normal_min} - #{dq.normal_max})" %> </td>
+    <th> Question </th>
+    <th> Category </th>
+    <th> Report </th>
+    <th> Unit </th>
+    <th> Normal </th>
     </tr>
-    <% end %>
+  <% @investigations.each do |inv| %>
+    <tr>
+      <% #TODO Don't make another SQL query, fetch it from existing activerecord object %>
+      <td> <%= inv.title %> </td>
+      <td> <%= inv.category %> </td>
+      <td>
+        <%@report = @sc_investigations.find_by_investigation_id(inv.id)%>
+        <% if @report.nil?%>
+          <%@report = VisitInvestigation.new%>
+          <span class='best_in_place' id='best_in_place_report' data-url='/visit_investigations/new?&qn_id=<%=inv.id%>' data-object='visit_investigation' data-attribute='report' data-type='input'>Edit!</span>
+        <%else%>
+          <%=best_in_place @report, :report, :type => :input, :path=>'/visit_investigations/'+@report.id.to_s+'?&qn_id='+inv.id.to_s, :nil => "Edit!"%>
+        <%end%>
+      </td>
+      <td> <%= inv.units %> </td>
+      <td> <%= inv.normal_min.to_s+ " - " +inv.normal_max.to_s%> </td>
+    </tr>
+  <% end %>
   </table>
-</section>
 <%end%>
-

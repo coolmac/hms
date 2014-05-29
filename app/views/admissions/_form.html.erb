@@ -1,6 +1,6 @@
 <div id="content" class="animated fadeInDown" overflow="scroll">
 
-<%= form_for(@admission, :html => { style: "margin-left:20px;",  class: "smart-form client-form", role:"form" }) do |f| %>
+<%= form_for(@admission, :html => { class: "smart-form client-form", role:"form" }) do |f| %>
   <% if @admission.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@admission.errors.count, "error") %> prohibited this admission from being saved:</h2>
@@ -12,7 +12,8 @@
       </ul>
     </div>
   <% end %>
-  <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+  <div class="col-lg-1"></div>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10">
     <div class="well no-padding">
       <header>Admission</header>
       <fieldset>

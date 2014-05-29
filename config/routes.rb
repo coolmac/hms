@@ -1,7 +1,5 @@
 Emr::Application.routes.draw do
 
-  get "favourite_prescriptions/index_"
-
   #TODO set up indices for all the tables  
 
   # The priority is based upon order of creation:
@@ -44,7 +42,15 @@ Emr::Application.routes.draw do
     resources :admit_days
   end
 
+  resources :favourite_prescriptions do
+    resources :prescription_medicines
+  end
+
   resources :admissions
+  resources :prescription_medicines
+  resources :visit_descriptive_questions
+  resources :visit_questions
+  resources :visit_investigations
   # match 'admissions/index', to: 'admissions#index', :as => :admissions
 
   #TODO check this out for has_one relation
@@ -59,8 +65,6 @@ Emr::Application.routes.draw do
   resources :departments
   resources :hospitals
   resources :enquiries
-
-  resources :favourite_prescriptions
 
 
 

@@ -20,7 +20,8 @@ class FavouritePrescriptionsController < ApplicationController
 
     respond_to do |format|
       if @favourite_prescription.save
-        format.html { redirect_to favourite_prescriptions_url }
+        #format.html { redirect_to favourite_prescriptions_url }
+        format.html { redirect_to edit_favourite_prescription_path(@favourite_prescription)}
         format.json { render :json => @favourite_prescription, :status => :created, :location => [@favourite_prescription] }
       else
         format.html { render :action => "index" }
@@ -33,7 +34,7 @@ class FavouritePrescriptionsController < ApplicationController
   	@user = User.find(current_user)
   	@favourite_prescriptions = @user.favourite_prescriptions
   	@favourite_prescription = @favourite_prescriptions.find(params[:id])
-    render 'index'
+    @prescription_medicine = @favourite_prescription.prescription_medicines.build
   end
 
   def update
@@ -42,8 +43,8 @@ class FavouritePrescriptionsController < ApplicationController
 
     respond_to do |format|
       if @favourite_prescription.update_attributes(params[:favourite_prescription])
-        format.html { redirect_to favourite_prescriptions_url, notice: 'Prescription updated successfully' }
-        format.json { head :ok }
+        format.html { redirect_to favourite_prescriptions_url, notice: 'Prescription updated successfully'}
+        format.json { respond_with_bip(@favourite_prescription) }
       else
         format.html { render :action => "edit" }
         format.json { render :json => @favourite_prescription.errors, :status => :unprocessable_entity }

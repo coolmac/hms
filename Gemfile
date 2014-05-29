@@ -95,4 +95,6 @@ gem 'jqplot-rails'
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 
+# Inplace editing
+gem 'best_in_place'
 

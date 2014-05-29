@@ -55,7 +55,9 @@ body {
 }
 .btn-xl {
 	line-height:3 !important;
-	height:85px !important;
+	height:65px !important;
+	width:200px !important;
+	font-size:15px !important;
 }
 
 .smart-form footer .btn {
@@ -95,7 +97,16 @@ body {
 }
 .half_td {
 	float:left;
+	width:33.33%;
+}
+.inner_question_table {
+	width:100%;
+}
+table.inner_question_table tr td {
 	width:50%;
+}
+.medicine_input {
+	width:80% !important;
 }
 @media print {
 	#over-the-top {
@@ -169,6 +180,10 @@ body {
 		color: #ffffff !important;
 		background-color: #3276b1 !important;
 	}
+	.half_td {
+		float:left;
+		width:50%;
+	}
 }
 /*Questions on mobile*/
 @media only screen and (max-width : 500px) {
@@ -177,3 +192,49 @@ body {
 	}
 }
 
+/*best_in_place*/
+.form_in_place input[type="submit"], .form_in_place input[type="button"] {
+	width:50px !important;
+	padding: 2px;
+}
+.form_in_place input {
+	margin-left: 2px !important;
+}
+
+
+/*Extra styling*/
+.row_button {
+	text-align: center;
+}
+
+.client-form header {
+	background-color:#4C4F53 !important;
+	color:#fff !important;
+}
+
+.resultTable tr{
+	height:50px;
+}
+.resultTable tr td h2{
+	margin:0px !important;
+}
+.resultTable tr td {
+	background-color: #4C4F53 !important;
+	color:#fff !important;
+}
+.resultTable_div {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+/* accordion */
+.accordion_divs section{
+	width:90%;
+	margin:auto;
+}
+
+.accordion_button {
+	paddin:3px !important;
+	margin:10px !important;
+	margin-left:50px !important; 
+}

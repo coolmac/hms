@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  favourite_prescription: 
+  medicine: MyString
+  frequency: MyString
+  duration: MyString
+  route: MyString
+
+two:
+  favourite_prescription: 
+  medicine: MyString
+  frequency: MyString
+  duration: MyString
+  route: MyString

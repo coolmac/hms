@@ -20,18 +20,20 @@
         <tr>
         <% @sc_visit_questions.each do |question| %>
           <% if question.category == index%>
-            <td style="width:50%;float:left;">
-              <table>
-                <tr>
-                  <td valign="top">
-                    <b><%=question.title%>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</b>
-                  </td>
-                  <td>
-                    <%=Answer.find(question.answer_id).title%>
-                  </td>
-                </tr>
-              </table>
-            </td>
+            <% if !question.answer_id.nil?%>
+              <td style="width:50%;float:left;">
+                <table>
+                  <tr>
+                    <td valign="top">
+                      <b><%=question.title%>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</b>
+                    </td>
+                    <td>
+                      <%=Answer.find(question.answer_id).title %>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            <%end%>
           <%end%>
         <%end%>
         </tr>

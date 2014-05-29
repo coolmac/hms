@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require bootstrap
 //= require jquery-ui
+//= require best_in_place
 //= require_tree .
 
 /* Header for Mobile and tablet */
@@ -31,3 +32,8 @@ function close_menu() {
 	document.getElementById("menu-icon-close").style.display="none";
 	document.getElementById("navbar-right").style.display="none";
 } 
+
+$(document).ready(function() {
+  /* Activating Best In Place */
+  jQuery(".best_in_place").best_in_place();
+});
