@@ -16,6 +16,7 @@ defaults: &DEFAULTS
   deployment_date: '2014-05-05'
   common_category_tag: '-common'
   NAD_text: 'No Abnormality Detected'
+  sync_models: ['Question', 'Answer', 'DescriptiveQuestion', 'Investigation']
 development:
   <<: *DEFAULTS
 test:
