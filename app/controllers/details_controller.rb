@@ -62,7 +62,9 @@ class DetailsController < ApplicationController
 
   def render_examinations_main_page
     params[:super_category] = 'examination'
+    @super_category = params[:super_category]
     get_visit_question_details()
+    @categories = Visit.get_categories(params[:super_category])
     if params[:pdf]
       dir = File.dirname("#{Rails.root}/pdfs/Examination/#{@current_patient.first_name}/x")
       FileUtils.mkdir_p(dir) unless File.directory?(dir)
@@ -75,7 +77,7 @@ class DetailsController < ApplicationController
       send_file(pdf_filename, :filename => "Examination.pdf", :disposition => 'inline', :type => "application/pdf")
     else
       respond_to do |format|
-        format.html {render 'details/show_examinations'}
+        format.html {render 'details/show_history'}
       end
     end
   end
@@ -149,34 +151,38 @@ class DetailsController < ApplicationController
     @super_category = params[:super_category]
     @categories = Visit.get_categories(present_super_category)
     present_category = params[:category]
-    if params[:save] != nil
-      update_details()
-    elsif params[:exit] != nil
-      update_details()
-      #TODO need to render parent page for super category
-    elsif params[:next] != nil
-      update_details()
-      @next_category_info = Visit.get_next_category(present_super_category, present_category)
-      if @next_category_info != nil
-        params[:category] = @next_category_info[0]
-      end
-    elsif params[:prev] != nil
-      update_details()
-      @previous_category_info = Visit.get_previous_category(present_super_category, present_category)
-      if @previous_category_info != nil
-        params[:category] = @previous_category_info[0]
-      end
-    else
-      # it's not a form submission
-    end
-    
-    edit_details()
-    #TODO also create format.html for this 
+    @category = present_category
     if params[:accordion]
+      get_history_details()
+      get_investigation_details()
       respond_to do |format|
         format.html { render :layout => false }
       end
     else
+      if params[:save] != nil
+        update_details()
+      elsif params[:exit] != nil
+        update_details()
+        #TODO need to render parent page for super category
+      elsif params[:next] != nil
+        update_details()
+        @next_category_info = Visit.get_next_category(present_super_category, present_category)
+        if @next_category_info != nil
+          params[:category] = @next_category_info[0]
+        end
+      elsif params[:prev] != nil
+        update_details()
+        @previous_category_info = Visit.get_previous_category(present_super_category, present_category)
+        if @previous_category_info != nil
+          params[:category] = @previous_category_info[0]
+        end
+      else
+        # it's not a form submission
+      end
+      
+      edit_details()
+      #TODO also create format.html for this 
+      
       respond_to do |format|
         format.js { render :layout => false }
       end
@@ -389,19 +395,26 @@ class DetailsController < ApplicationController
     super_category = params[:super_category]
     @questions = Question.where(:super_category => super_category, :category => @category)
     @descriptive_questions = DescriptiveQuestion.where(:super_category => super_category, :category => @category)
+    @common_questions = Question.where(:category => "#{@category}#{APP_CONFIG['common_category_tag']}", :super_category => @super_category)
+    @common_descriptive_questions = DescriptiveQuestion.where(:category => "#{@category}#{APP_CONFIG['common_category_tag']}", :super_category => @super_category)
 
+    @common_question_ids = @common_questions.collect{|hq| hq.id}
+    @common_descriptive_question_ids = @common_descriptive_questions.collect{|hdq| hdq.id}
     @question_ids = @questions.collect{|hq| hq.id}
     @descriptive_question_ids = @descriptive_questions.collect{|hdq| hdq.id}
 
     @sc_visit_questions = VisitQuestion.where(:visit_id => visit_id, :question_id => @question_ids)
     @sc_visit_descriptive_questions = VisitDescriptiveQuestion.where(:visit_id => visit_id, :descriptive_question_id => @descriptive_question_ids)
+
+    @sc_common_visit_questions = VisitQuestion.where(:visit_id => visit_id, :question_id => @common_question_ids)
+    @sc_common_visit_descriptive_questions = VisitDescriptiveQuestion.where(:visit_id => visit_id, :descriptive_question_id => @common_descriptive_question_ids)
   end
 
   def get_investigation_details
     visit_id = @current_visit.id
     @investigations = Investigation.where(:category => @category)
     @investigation_ids = @investigations.collect{|inv| inv.id}
-    @sc_investigations = VisitInvestigation.where(:investigation_id => @investigation_ids)
+    @sc_investigations = VisitInvestigation.where(:investigation_id => @investigation_ids, :visit_id => visit_id)
   end
 
   def discharge_summary
