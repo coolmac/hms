@@ -250,3 +250,8 @@ table.inner_question_table tr td {
 	margin:10px !important;
 	margin-left:50px !important; 
 }
+
+#accordion h3 .fa {
+	float:right;
+	font-size:25px;
+}

@@ -10,7 +10,7 @@
         </header>
         <div id="accordion" style="display:table;">
           <%@categories.each do |index,value|%>
-            <h3 id="<%=index%>" style="background:rgb(235, 235, 235)"><%=value%></h3>
+            <h3 id="<%=index%>" style="background:rgb(235, 235, 235)"><%=value%><i class="fa fa-plus-square"></i><i class="fa fa-minus-circle"></i></h3>
             <div id="<%=index%>_div" class="accordion_divs" style="display:table;width:100%;background:white;padding:0px">
                    
             </div>
@@ -21,29 +21,18 @@
   </div>
 </div>
 
-
 <script>
-$(function() {
-  $( "#accordion" ).accordion({
-    collapsible: true,
-    active: false
-  });
-});
-
 $('h3').click(function(){
-  if($(this).hasClass('ui-state-active')) {
-    url = '/details/edit_category?category='+$(this).attr("id")+'&super_category=<%=@super_category%>&accordion=true'
-    $("#"+$(this).attr("id")+"_div").load(url +"#"+$(this).attr("id")+"_div", function() {
-
-
-    });
-  }
-  else {
-    url = '/details/edit_category?category='+$(this).attr("id")+'&super_category=<%=@super_category%>&accordion=true'
-    $("#"+$(this).attr("id")+"_div").load(url +"#"+$(this).attr("id")+"_div", function() {
-
-
-    });
-  }
+    if($(this).hasClass('ui-state-active')) {
+      $(this).find(".fa-plus-square").css("display","block");
+      $(this).find(".fa-minus-circle").css("display","none");
+    }
+    else {
+      $(this).find(".fa-plus-square").css("display","none");
+      $(this).find(".fa-minus-circle").css("display","block");
+      url = '/details/edit_category?category='+$(this).attr("id")+'&super_category=<%=@super_category%>&accordion=true'
+      $("#"+$(this).attr("id")+"_div").load(url +"#"+$(this).attr("id")+"_div", function() {
+      });
+    }
 });
 </script>
