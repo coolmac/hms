@@ -27,13 +27,7 @@
 
           <section>
             <h3><%= f.label :medicine %></h3>
-            <h3><%= f.text_field :medicine, :list=>"list1" %></h3>
-              <datalist id="list1">
-                <option value="Paracetamol">Paracetamol</option>
-                <option value="Metachlopramide">Metachlopramide</option>
-                <option value="Levocetrizine">Levocetrizine</option>
-                <option value="Domeperidone">Domeperidone</option>
-              </datalist>
+            <h3><%= f.text_field :medicine, class: 'medicine_autocomplete', 'data-autocompleteUrl' => '/autocomplete_medicine_name'%></h3>
           </section>
 
           <br />
@@ -94,6 +88,25 @@
           
 <% end %>
 
+<script>
+$( document ).ready(function() {
+  $('.medicine_autocomplete').autocomplete({
+    minLength: 1,
+    source: function(request, response) {
+      $.ajax({
+        url: $('.medicine_autocomplete').data('autocompleteurl'),
+        dataType: "json",
+        data: {
+          name: request.term
+        },
+        success: function(data) {
+          response(data);
+        }
+      });
+    }
+  });
+});
+</script>
 
 <!--
 <%= form_for([@prescription.visit, @prescription]) do |f| %>

@@ -200,6 +200,18 @@ table.inner_question_table tr td {
 .form_in_place input {
 	margin-left: 2px !important;
 }
+.best_in_place input[type="submit"], .best_in_place input[type="button"] {
+	width:50px !important;
+	margin-left: 2px !important;
+	color: #ffffff;
+	border: 1px solid !important;
+	background-color: #3276b1;
+	border-color: #2c699d;
+}
+.best_in_place textarea {
+	min-height: 30px !important;
+	height: 0px !important;
+}
 
 
 /*Extra styling*/

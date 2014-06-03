@@ -27,6 +27,7 @@ Emr::Application.routes.draw do
   get '/draw_chart' => 'users#draw_charts'
   match '/discharge_summary' => 'details#discharge_summary'
   match '/sub_category' => 'details#sub_category'
+  get 'autocomplete_medicine_name' => 'medicines#autocomplete_medicine_name'
 
   #get "enquiries/index"
 

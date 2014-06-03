@@ -7,12 +7,14 @@
     <th> Answer </th>
     </tr>
   <% @sc_visit_questions.each do |eaq| %>
+  <% if !eaq.answer_id.nil?%>
     <tr>
     	<% #TODO Don't make another SQL query, fetch it from existing activerecord object %>
     	<td> <%= @questions.find_by_id(eaq.question_id).title %> </td>
     	<td> <%= @questions.find_by_id(eaq.question_id).category %> </td>
     	<td> <%= Answer.find(eaq.answer_id).title %> </td>
     </tr>
+  <% end %>
   <% end %>
   </table>
 <%end%>
