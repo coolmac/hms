@@ -236,7 +236,7 @@ def update_from_google_spreadsheet
           end
         end
 
-      end # end of row loop
+      end # end of rows loop
     end
   end
 

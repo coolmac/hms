@@ -81,8 +81,8 @@ group :development do
 	gem 'pry-remote'
 	gem 'pry-stack_explorer'
 	gem 'pry-debugger'
-	# Use debugger
-	# gem 'debugger', group: [:development, :test]
+	gem 'annotate'
+	gem 'rails-erd'
 end
 
 # As adviced on heroku
