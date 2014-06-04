@@ -35,7 +35,7 @@
                       <%@answer = VisitQuestion.new%>
                       <span class='best_in_place' id='best_in_place_answer_id' data-url='/visit_questions/new?&qn_id=<%=question.id%>' data-object='visit_question' data-attribute='answer_id' data-type='select' data-collection='[["","select"], [1, "Yes"], [2, "No"]]'>select</span>
                      <%else%>
-                        <%= best_in_place @answer, :answer_id, :type => :select, :collection => [["","select"], [1, "Yes"], [2, "No"]]%>
+                        <%= best_in_place @answer, :answer_id, :type => :select, :collection => [["","select"], [1, "Yes"], [2, "No"]], :path => '/visit_questions/'+@answer.id.to_s+'?&qn_id='+question.id.to_s%>
                      <%end%>
                   </td>
                 </tr>
@@ -60,7 +60,7 @@
                       <%if @answer.answer.blank? %>
                         <span class='best_in_place' id='best_in_place_answer' data-url='/visit_descriptive_questions/<%=@answer.id%>?&qn_id=<%=question.id%>' data-object='visit_descriptive_question' data-attribute='answer' data-type='textarea' data-nil = "Click me to add content!" data-ok-button='Save' data-cancel-button='Cancel'>click me to add content!</span>
                       <%else%>
-                        <%=best_in_place @answer, :answer, :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm', :nil => 'Edit',:html_attrs => { :style => 'width:500px; height:500px;' }, :path=>'/visit_descriptive_questions/'+@answer.id.to_s+'?&qn_id='+question.id.to_s, :type => :textarea %>
+                        <%=best_in_place @answer, :answer, :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm', :nil => 'Click me to add content!',:html_attrs => { :style => 'width:500px; height:500px;' }, :path=>'/visit_descriptive_questions/'+@answer.id.to_s+'?&qn_id='+question.id.to_s, :type => :textarea %>
                       <%end%> 
                     <%end%>
                   </td>
