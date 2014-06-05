@@ -1,6 +1,34 @@
- <table class="table ">
+<%if @investigations%>
+  <table class="table">
+    <tr>
+    <th> Question </th>
+    <th> Report </th>
+    <th> Unit </th>
+    <th> Normal </th>
+    </tr>
+  <% @investigations1.each do |inv| %>
+    <tr>
+      <% #TODO Don't make another SQL query, fetch it from existing activerecord object %>
+      <td> <%= inv.title %> </td>
+      <td>
+        <%@report = @sc_investigations.find_by_investigation_id(inv.id)%>
+        <% if @report.nil?%>
+          <%@report = VisitInvestigation.new%>
+          <span class='best_in_place' id='best_in_place_report' data-url='/visit_investigations/new?&qn_id=<%=inv.id%>' data-object='visit_investigation' data-attribute='report' data-type='input'>Edit!</span>
+        <%else%>
+          <%=best_in_place @report, :report, :type => :input, :path=>'/visit_investigations/'+@report.id.to_s+'?&qn_id='+inv.id.to_s, :nil => "Edit!"%>
+        <%end%>
+      </td>
+      <td> <%= inv.units %> </td>
+      <td> <%= inv.normal_min.to_s+ " - " +inv.normal_max.to_s%> </td>
+    </tr>
+  <% end %>
+  </table>
+
+<%else%>
+  <table class="table ">
         <tr>
-        <% @common_questions.each do |question| %>
+        <% @common_questions1.each do |question| %>
             <td style="float:left;">
               <table>
                 <tr>
@@ -22,7 +50,7 @@
         <%end%>
         </tr>
         <tr>
-        <% @questions.each do |question| %>
+        <% @questions1.each do |question| %>
             <td style="float:left;">
               <table>
                 <tr>
@@ -43,7 +71,7 @@
             </td>
         <%end%>
         </tr>
-        <% @common_descriptive_questions.each do |question| %>
+        <% @common_descriptive_questions1.each do |question| %>
             <tr>
             <td style="float:left;">
               <table>
@@ -69,7 +97,7 @@
             </td>
         </tr>
         <%end%>
-        <% @descriptive_questions.each do |question| %>
+        <% @descriptive_questions1.each do |question| %>
           <tr>
             <td>
             <table>
@@ -95,33 +123,5 @@
             </td>
           </tr>
         <%end%>
-</table>
-<%if !@investigations.blank?%>
-  <table class="table">
-    <tr>
-    <th> Question </th>
-    <th> Category </th>
-    <th> Report </th>
-    <th> Unit </th>
-    <th> Normal </th>
-    </tr>
-  <% @investigations.each do |inv| %>
-    <tr>
-      <% #TODO Don't make another SQL query, fetch it from existing activerecord object %>
-      <td> <%= inv.title %> </td>
-      <td> <%= inv.category %> </td>
-      <td>
-        <%@report = @sc_investigations.find_by_investigation_id(inv.id)%>
-        <% if @report.nil?%>
-          <%@report = VisitInvestigation.new%>
-          <span class='best_in_place' id='best_in_place_report' data-url='/visit_investigations/new?&qn_id=<%=inv.id%>' data-object='visit_investigation' data-attribute='report' data-type='input'>Edit!</span>
-        <%else%>
-          <%=best_in_place @report, :report, :type => :input, :path=>'/visit_investigations/'+@report.id.to_s+'?&qn_id='+inv.id.to_s, :nil => "Edit!"%>
-        <%end%>
-      </td>
-      <td> <%= inv.units %> </td>
-      <td> <%= inv.normal_min.to_s+ " - " +inv.normal_max.to_s%> </td>
-    </tr>
-  <% end %>
   </table>
 <%end%>

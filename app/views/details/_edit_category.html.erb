@@ -15,8 +15,13 @@
         <div id="accordion" style="display:table;">
           <%@categories.each do |index,value|%>
             <h3 id="<%=index%>" class="accordion_h3" style="background:rgb(235, 235, 235)"><%=value%><i class="fa fa-plus-square"></i><i class="fa fa-minus-circle"></i></h3>
-            <div id="<%=index%>_div" class="accordion_divs" style="display:table;width:100%;background:white;padding:0px">
-                   
+            <div style="background:#fff;"> 
+              <%@common_questions1 = @common_questions.where(:category => "#{index}#{APP_CONFIG['common_category_tag']}") if @common_questions%>
+              <%@questions1 = @questions.where(:category => index) if @questions%>
+              <%@common_descriptive_questions1 = @common_descriptive_questions.where(:category => "#{index}#{APP_CONFIG['common_category_tag']}") if @common_descriptive_questions%>
+              <%@descriptive_questions1 = @descriptive_questions.where(:category => index) if @descriptive_questions%>
+              <%@investigations1 = @investigations.where(:category => index) if @investigations%>
+              <%= render 'form' %> 
             </div>
           <%end%>
         </div>
@@ -34,9 +39,6 @@ $('.accordion_h3').click(function(){
     else {
       $(this).find(".fa-plus-square").css("display","none");
       $(this).find(".fa-minus-circle").css("display","block");
-      url = '/details/edit_category?category='+$(this).attr("id")+'&super_category=<%=@super_category%>&accordion=true'
-      $("#"+$(this).attr("id")+"_div").load(url +"#"+$(this).attr("id")+"_div", function() {
-      });
     }
 });
 </script>

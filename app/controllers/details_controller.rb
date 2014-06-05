@@ -27,6 +27,8 @@ class DetailsController < ApplicationController
       pdf_filename = File.join(Rails.root, "pdfs/Investigation/#{@current_patient.first_name}/#{@current_visit.created_at}")
       send_file(pdf_filename, :filename => "Investigation.pdf", :disposition => 'inline', :type => "application/pdf")
     else
+      @category = @categories
+      get_investigation_details()
       respond_to do |format|
         format.html {render 'details/show_history'}
       end
@@ -64,6 +66,8 @@ class DetailsController < ApplicationController
       pdf_filename = File.join(Rails.root, "pdfs/History/#{@current_patient.first_name}/#{@current_visit.created_at}")
       send_file(pdf_filename, :filename => "History.pdf", :disposition => 'inline', :type => "application/pdf")
     else
+      @category = @categories
+      get_history_details()
       respond_to do |format|
         format.html {render 'details/show_history'}
       end
@@ -86,6 +90,8 @@ class DetailsController < ApplicationController
       pdf_filename = File.join(Rails.root, "pdfs/Examination/#{@current_patient.first_name}/#{@current_visit.created_at}")
       send_file(pdf_filename, :filename => "Examination.pdf", :disposition => 'inline', :type => "application/pdf")
     else
+      @category = @categories
+      get_history_details()
       respond_to do |format|
         format.html {render 'details/show_history'}
       end
@@ -280,7 +286,6 @@ class DetailsController < ApplicationController
     existing_answered_question_ids = VisitQuestion.where(:visit_id => visit_id).collect{|vq| vq.question_id}
     existing_descriptive_question_ids = VisitDescriptiveQuestion.where(:visit_id => visit_id).collect{|vdq| vdq.descriptive_question_id}
     existing_investigations = VisitInvestigation.where(:visit_id => visit_id).collect{|v| v.investigation_id}
-    #binding.pry
     params.each do |key, value|
       
       if key.start_with?APP_CONFIG["question_prefix"]
@@ -405,8 +410,9 @@ class DetailsController < ApplicationController
     super_category = params[:super_category]
     @questions = Question.where(:super_category => super_category, :category => @category)
     @descriptive_questions = DescriptiveQuestion.where(:super_category => super_category, :category => @category)
-    @common_questions = Question.where(:category => "#{@category}#{APP_CONFIG['common_category_tag']}", :super_category => @super_category)
-    @common_descriptive_questions = DescriptiveQuestion.where(:category => "#{@category}#{APP_CONFIG['common_category_tag']}", :super_category => @super_category)
+    @common_categories = @category.collect{|index,value| "#{index}#{APP_CONFIG['common_category_tag']}"}
+    @common_questions = Question.where(:category => @common_categories, :super_category => @super_category)
+    @common_descriptive_questions = DescriptiveQuestion.where(:category => @common_categories, :super_category => @super_category)
 
     @common_question_ids = @common_questions.collect{|hq| hq.id}
     @common_descriptive_question_ids = @common_descriptive_questions.collect{|hdq| hdq.id}
@@ -430,7 +436,6 @@ class DetailsController < ApplicationController
   def discharge_summary
     @history = ""
     @investigation = ""
-    #binding.pry
     if params[:history_cb]
       params[:super_category] = params[:history_cb]
       @history = params[:history_cb]
@@ -481,7 +486,6 @@ class DetailsController < ApplicationController
     elsif params[:dates]
       @admission_info = Admission.find_by_visit_id(@current_visit.id)
       @days = @admission_info.admit_days
-      #binding.pry
       respond_to do |format|
           format.json {render json: @days}
       end
