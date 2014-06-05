@@ -2,7 +2,6 @@ class VisitDescriptiveQuestionsController < ApplicationController
   before_filter :set_patient, :set_visit
 
   def update
-    binding.pry
     # if params[:id]=='new' 
       @visit_descriptive_question = VisitDescriptiveQuestion.find_by_visit_id_and_descriptive_question_id(@current_visit.id,params[:qn_id])
       if @visit_descriptive_question.blank?

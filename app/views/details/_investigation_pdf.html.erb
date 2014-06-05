@@ -1,0 +1,76 @@
+
+<div id="content" class="smart-form client-form">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-top:10px">
+    <div class="well no-padding">
+        <header>
+            <b><%=@super_category.capitalize%></b>
+        </header>
+    </div>
+  </div>
+</div>
+<% @categories.each do |index,value| %>
+    </br>
+    <%@investigations = @investogation_reports.where(:category => index)%>
+    <% if !@investigations.blank?%>
+      <div class="">
+        <table class="table " style="width:97.5%;margin:auto;">
+          <tr class="success">
+            <td>
+              <b style="font-size:15px" id="history_category_title"><%= value%></b>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table class="table">
+                <tr>
+                <th> Question </th>
+                <th> Report </th>
+                <th> Unit </th>
+                <th> Normal </th>
+                </tr>
+                <% @investigations.each do |inv| %>
+                <tr>
+                  <td> <%= inv.title %> </td>
+                  <td> <%= inv.report %> </td>
+                  <td> <%= inv.units %> </td>
+                  <td> <%= inv.normal_min.to_s+ " - " +inv.normal_max.to_s%> </td>
+                </tr>
+                <% end %>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    <%end%>
+<%end%>
+
+
+
+
+<style>
+  #over-the-top {
+    display:none !important;
+  }
+  #history_pdf_button {
+    display:none;
+  }
+  #summary_form {
+    display:none;
+  }
+  /* To avoid page break inside table row for wkhtmltopdf */
+  table, tr, td, th, tbody, thead, tfoot {
+    page-break-inside: avoid !important;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+

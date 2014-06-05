@@ -2,15 +2,19 @@
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
     <div class="well no-padding">
         <header>
-            <b><%=@super_category%>
+            <b><%=@super_category.capitalize%>
               <%if @super_category=='history'%>
                 <button type="button" id="history_pdf_button" class= "btn btn-primary" onclick="javascript:window.location.href='/details/show_history?&pdf=true'">Generate PDF</button>
+              <%elsif @super_category=='examination'%>
+                <button type="button" id="history_pdf_button" class= "btn btn-primary" onclick="javascript:window.location.href='/details/show_examinations?&pdf=true'">Generate PDF</button>
+              <%elsif @super_category=='investigation'%>
+                <button type="button" id="history_pdf_button" class= "btn btn-primary" onclick="javascript:window.location.href='/details/show_investigations?&pdf=true'">Generate PDF</button>
               <%end%>    
             </b>
         </header>
         <div id="accordion" style="display:table;">
           <%@categories.each do |index,value|%>
-            <h3 id="<%=index%>" style="background:rgb(235, 235, 235)"><%=value%><i class="fa fa-plus-square"></i><i class="fa fa-minus-circle"></i></h3>
+            <h3 id="<%=index%>" class="accordion_h3" style="background:rgb(235, 235, 235)"><%=value%><i class="fa fa-plus-square"></i><i class="fa fa-minus-circle"></i></h3>
             <div id="<%=index%>_div" class="accordion_divs" style="display:table;width:100%;background:white;padding:0px">
                    
             </div>
@@ -22,7 +26,7 @@
 </div>
 
 <script>
-$('h3').click(function(){
+$('.accordion_h3').click(function(){
     if($(this).hasClass('ui-state-active')) {
       $(this).find(".fa-plus-square").css("display","block");
       $(this).find(".fa-minus-circle").css("display","none");
