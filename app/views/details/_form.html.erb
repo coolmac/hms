@@ -6,7 +6,7 @@
     <th> Unit </th>
     <th> Normal </th>
     </tr>
-  <% @investigations1.each do |inv| %>
+  <% @filterd_investigations.each do |inv| %>
     <tr>
       <% #TODO Don't make another SQL query, fetch it from existing activerecord object %>
       <td> <%= inv.title %> </td>
@@ -28,7 +28,7 @@
 <%else%>
   <table class="table ">
         <tr>
-        <% @common_questions1.each do |question| %>
+        <% @filterd_common_questions.each do |question| %>
             <td style="float:left;">
               <table>
                 <tr>
@@ -50,7 +50,7 @@
         <%end%>
         </tr>
         <tr>
-        <% @questions1.each do |question| %>
+        <% @filterd_questions.each do |question| %>
             <td style="float:left;">
               <table>
                 <tr>
@@ -71,7 +71,7 @@
             </td>
         <%end%>
         </tr>
-        <% @common_descriptive_questions1.each do |question| %>
+        <% @filterd_common_descriptive_questions.each do |question| %>
             <tr>
             <td style="float:left;">
               <table>
@@ -97,7 +97,7 @@
             </td>
         </tr>
         <%end%>
-        <% @descriptive_questions1.each do |question| %>
+        <% @filterd_descriptive_questions.each do |question| %>
           <tr>
             <td>
             <table>

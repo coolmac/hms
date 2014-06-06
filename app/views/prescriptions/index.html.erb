@@ -1,58 +1,92 @@
-<div class="table-responsive animated fadeInDown"  style="padding:20px">
+<div class="smart-form client-form animated fadeInDown" style="padding:20px">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="well no-padding">
+            <header>
+              Prescriptions
+            </header>
+      </div>
+  </div>
+  </br>
+  </br>
 
-  <table id="resultTable" class="table table-striped table-bordered table-hover">
-    <thead>
-      <tr>
-        <th>Medicine</th>
-        <th>Frequency</th>
-        <th>Duration</th>
-        <th>Route</th>
-        <th colspan="2">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @prescriptions.each do |prescription| %>
-        <tr>
-          <td><%= prescription.medicine %></td>
-          <td><%= prescription.frequency %></td>
-          <td><%= prescription.duration %></td>
-          <td><%= prescription.route %></td>
-          <td><%= link_to 'Edit', edit_visit_prescription_path(prescription.visit, prescription), :class => "btn btn-success btn-sm" %></td>
-          <td><%= link_to 'Remove', [prescription.visit, prescription], :class => "btn btn-danger btn-sm", :confirm => 'Are you sure?', :method => :delete %></td>
-        </tr>
-      <% end %>
+  <div>
+    <%= form_for([@prescription.visit, @prescription]) do |f| %>
+    <table id="resultTable" class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th colspan='5'>Add medicines from prescription set &nbsp;&nbsp;<%= select_tag "favourite_prescription", options_for_select(@favourite_prescriptions), :prompt=> "Select" %> &nbsp;&nbsp;
+              <input class="btn btn-primary" name="commit" type="submit" value="&nbsp;Submit&nbsp;"></th>
+          </tr>
+          <tr>
+            <th>Medicine</th>
+            <th>Frequency</th>
+            <th>Duration</th>
+            <th>Route</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>
+                <%= f.text_field :medicine, :calss => "medicine_input", :style=>"padding:4px;" %>
+              </td>
+              <td>
+                <%= f.text_field :frequency, :list=>"list2", :style=>"padding:4px;", :class=>" medicine_input"  %>
+                          <datalist id="list2">
+                            <option value="OD">OD</option>
+                            <option value="OM">OM</option>
+                            <option value="HS">HS</option>
+                            <option value="BD">BD</option>
+                            <option value="TDS">TDS</option>
+                            <option value="QID">QID</option>
+                          </datalist>
+              </td>
+              <td>
+                <%= f.text_field :duration, :list=>"list3", :style=>"padding:4px;", :class=>" medicine_input"  %>
+                          <datalist id="list3">
+                            <option value="1day">1day</option>
+                            <option value="2days">2days</option>
+                            <option value="3days">3days</option>
+                            <option value="4to6days">4-6days</option>
+                            <option value="1week">1week</option>
+                            <option value="2weeks">2weeks</option>
+                            <option value="3weeks">3weeks</option>
+                            <option value="1month">1month</option>
+                            <option value="2months">2months</option>
+                            <option value="3months">3months</option>
+                            <option value="6months">6months</option>
+                            <option value="1year">1year</option>
+                          </datalist>
+              </td>
+              <td>
+                <%= f.text_field :route, :list=>"list4", :style=>"padding:4px;", :class=>" medicine_input"  %>
+                          <datalist id="list4">
+                            <option value="im">im</option>
+                            <option value="iv">iv</option>
+                            <option value="po">po</option>
+                            <option value="pr">pr</option>
+                            <option value="intramuscular">intramuscular</option>
+                            <option value="intravenous">intravenous</option>
+                            <option value="per-oral">per oral</option>
+                            <option value="per-rectal">per rectal</option>
+                          </datalist>
+              </td>
+              <td>
+                <input class="btn btn-primary btn-sm" name="commit" type="submit" value="&nbsp;Submit&nbsp;">
+              </td>
+            </tr>
+          <%end%>
+          <% @prescriptions[0..-2].each do |medicine| %>
+              <tr>
+                <%@path = "/visits/"+medicine.visit.id.to_s+"/prescriptions/"+medicine.id.to_s%>
+                <td><%= best_in_place medicine, :medicine, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm', :path => @path %></td>
+                <td><%= best_in_place medicine, :frequency, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm', :path => @path %></td>
+                <td><%= best_in_place medicine, :duration, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm', :path => @path %></td>
+                <td><%= best_in_place medicine, :route, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm', :path => @path %></td>  
+              <td><%= link_to 'Remove', [medicine.visit, medicine], :class => "btn btn-danger btn-sm", :confirm => 'Are you sure?', :method => :delete %></td>
+              </tr>
+          <% end %>
+        </tbody>
     </table>
-    <br />
-
-    <%= link_to 'Add New Prescription', new_visit_prescription_path(params[:visit_id]), :class => "btn btn-primary btn-lg" %>
+  </div>
 </div>
-
-
-
-<!--
-<table class="bordered">
-  <tr>
-    <th>Medicine</th>
-    <th>Frequency</th>
-    <th>Duration</th>
-    <th>Route</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @prescriptions.each do |prescription| %>
-  <tr>
-    <td><%= prescription.medicine %></td>
-    <td><%= prescription.frequency %></td>
-    <td><%= prescription.duration %></td>
-    <td><%= prescription.route %></td>
-    <td><%= link_to 'Edit', edit_visit_prescription_path(prescription.visit, prescription), :class => "btn btn-success btn-sm" %></td>
-    <td><%= link_to 'Destroy', [prescription.visit, prescription], :class => "btn btn-danger btn-sm", :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'Add New Prescription', new_visit_prescription_path(params[:visit_id]), :class => "btn btn-primary btn-lg" %>
- -->

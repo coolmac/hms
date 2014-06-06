@@ -4,7 +4,8 @@ class PrescriptionsController < DetailsController
   def index
     @visit = Visit.find(params[:visit_id])
     @prescriptions = @visit.prescriptions
-
+    @prescription = @visit.prescriptions.build
+    @favourite_prescriptions = FavouritePrescription.where(:user_id=>current_user).map{ |fp| [fp.name, fp.id] }
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @prescriptions }
@@ -83,7 +84,7 @@ class PrescriptionsController < DetailsController
     respond_to do |format|
       if @prescription.update_attributes(params[:prescription])
         format.html { redirect_to visit_prescriptions_url }
-        format.json { head :ok }
+        format.json { respond_with_bip(@prescription) }
       else
         format.html { render :action => "edit" }
         format.json { render :json => @prescription.errors, :status => :unprocessable_entity }

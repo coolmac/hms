@@ -16,11 +16,11 @@
           <%@categories.each do |index,value|%>
             <h3 id="<%=index%>" class="accordion_h3" style="background:rgb(235, 235, 235)"><%=value%><i class="fa fa-plus-square"></i><i class="fa fa-minus-circle"></i></h3>
             <div style="background:#fff;"> 
-              <%@common_questions1 = @common_questions.where(:category => "#{index}#{APP_CONFIG['common_category_tag']}") if @common_questions%>
-              <%@questions1 = @questions.where(:category => index) if @questions%>
-              <%@common_descriptive_questions1 = @common_descriptive_questions.where(:category => "#{index}#{APP_CONFIG['common_category_tag']}") if @common_descriptive_questions%>
-              <%@descriptive_questions1 = @descriptive_questions.where(:category => index) if @descriptive_questions%>
-              <%@investigations1 = @investigations.where(:category => index) if @investigations%>
+              <%@filterd_common_questions = @common_questions.where(:category => "#{index}#{APP_CONFIG['common_category_tag']}") if @common_questions%>
+              <%@filterd_questions = @questions.where(:category => index) if @questions%>
+              <%@filterd_common_descriptive_questions = @common_descriptive_questions.where(:category => "#{index}#{APP_CONFIG['common_category_tag']}") if @common_descriptive_questions%>
+              <%@filterd_descriptive_questions = @descriptive_questions.where(:category => index) if @descriptive_questions%>
+              <%@filterd_investigations = @investigations.where(:category => index) if @investigations%>
               <%= render 'form' %> 
             </div>
           <%end%>
