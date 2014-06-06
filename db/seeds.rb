@@ -205,38 +205,40 @@ def update_from_google_spreadsheet
   ActiveRecord::Base.transaction do
     all_worksheets.worksheets.each do |ws|
       table_name = ws.title
-      puts "TAble name is #{table_name}"
-      table_columns = {}
-      params = {}
-      for row in 1..ws.num_rows
-        params = {}
-        for col in 1..ws.num_cols
-          puts "row:#{row},col:#{col} - #{ws[row, col]}"       
-          if row == 1 
-            table_columns[col] = ws[row,col].to_sym
-          else
-            params[table_columns[col]] = ws[row,col]
-          end
-        end   # end of col loop 
+      if table_name != 'Question'
+          puts "TAble name is #{table_name}"
+          table_columns = {}
+          params = {}
+          for row in 1..ws.num_rows
+            params = {}
+            for col in 1..ws.num_cols
+              puts "row:#{row},col:#{col} - #{ws[row, col]}"       
+              if row == 1 
+                table_columns[col] = ws[row,col].to_sym
+              else
+                params[table_columns[col]] = ws[row,col]
+              end
+            end   # end of col loop 
 
-        if row > 1
-          puts "Params are - #{params}"
-          puts "table columns hash is #{table_columns}"
-          primary_id = params[:id].to_i
-          if primary_id > 0
-            model_object = Object::const_get(table_name).find_by_id primary_id
-            if model_object
-              model_object.update_attributes(params)
-            else
-              Object::const_get(table_name).create(params)
+            if row > 1
+              puts "Params are - #{params}"
+              puts "table columns hash is #{table_columns}"
+              primary_id = params[:id].to_i
+              if primary_id > 0
+                model_object = Object::const_get(table_name).find_by_id primary_id
+                if model_object
+                  model_object.update_attributes(params)
+                else
+                  Object::const_get(table_name).create(params)
+                end
+              else
+                puts "ERROR - id column has non integer value: #{primary_id}"
+                #raise exception
+              end
             end
-          else
-            puts "ERROR - id column has non integer value: #{primary_id}"
-            #raise exception
-          end
-        end
 
-      end # end of rows loop
+          end # end of rows loop
+      end
     end
   end
 

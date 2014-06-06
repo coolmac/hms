@@ -17,9 +17,14 @@
   		  <br />
           </section>
         </fieldset>
-
+        
+    <blockquote class="blockquote-reverse">
+      <p><%=@rquote.quote%></p>
+      <footer><%=@rquote.author%></cite></footer>
+    </blockquote>
     </div>
   </div>
+
   <% if can? :draw_chart, @user %>
   <div class="col-xs-12  col-sm-12 col-md-10 col-lg-10">
     <div class="well no-padding">

@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @patient = Patient.new
+    @rquote = Quote.random
     
     respond_to do |format|
       format.html # index.html.erb
