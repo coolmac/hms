@@ -17,7 +17,9 @@
 *= require jquery-ui
 *= require_tree .
 */
-
+body {
+	background-color: rgba(245, 243, 243, 0.61) !important;
+}
 #header {
 	overflow: auto !important;
 }

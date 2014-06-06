@@ -72,3 +72,55 @@
 #chart_button:hover {
 	background: #296191;
 } 
+
+
+/*Home Page*/
+
+.home_divs {
+    /*border: 1px solid #000;*/
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 0px !important;
+}
+
+.home_divs h3 {
+    background:linear-gradient(to right, #3a3633 93%, #2a2725 100%);
+    padding: 10px;
+    color: white;
+    margin:0px !important;
+}
+
+.quote_div {
+    height:150px;
+}
+
+.profile_div {
+    height: 250px;
+    margin-top:30px; 
+}
+
+.links_div {
+    height:250px;
+    margin-top: 30px;
+}
+
+.chart_div {
+    height:300px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.home_page_btn {
+    background: linear-gradient(to right, #3a3633 93%, #2a2725 100%) !important;
+}
+
+.home_divs a {
+    text-decoration: none;
+    color:black;
+}
+
+.home_divs a:hover {
+    background-color: :#fff !important;
+    background: :#fff !important;
+    color:#fff;
+}

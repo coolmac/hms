@@ -1,37 +1,53 @@
-<div id="content" class="smart-form client-form animated fadeInDown">
-  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-    <div class="well no-padding">
-      <header>
-        <h1>Welcome <%=@user.name%></h1>
-      </header>
-        <fieldset>
-          <section>
-            <br>
-  		  <% if can? :create, @patient %>
-  		  <%= link_to 'New Patient', new_patient_path, :class => "btn btn-primary btn-lg" %>
-  		  <% end %>
-  		  <%= link_to 'Existing Patient', search_patient_path, :class => "btn btn-info btn-lg" %>
-  		  <br />
-  		  <br />
-  		  <br />
-  		  <br />
-          </section>
-        </fieldset>
-        
-    <blockquote class="blockquote-reverse">
-      <p><%=@rquote.quote%></p>
-      <footer><%=@rquote.author%></cite></footer>
-    </blockquote>
-    </div>
-  </div>
 
+<div class="home_divs col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 quote_div  animated fadeInDown">
+  <h3>Quote Of The Day</h3>
+  <br/>
+  <div class="cbp-qtcontent">
+      <blockquote>
+        <p><i>" <%=@rquote.quote%> "</i></p>
+        <footer><%=@rquote.author%></footer>
+      </blockquote>
+  </div>
+</div>
+<div class="home_divs col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-1 col-lg-offset-1 profile_div  animated fadeInDown" >
+  <h3><%=@user.name%></h3>
+  <address style="padding:10px;">
+  <i class="fa fa-home"></i>&nbsp; <%=@user.address_line1%> <%=@user.address_line2%> <%=@user.address_line3%><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.city%><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.district%><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.state%><br>
+  <abbr title="Phone"><i class="fa fa-phone"></i>&nbsp;</abbr> <%=@user.mobile%><br/>
+  <abbr title="E-mail"><i class="fa fa-envelope-o"></i>&nbsp;</abbr> <%=@user.email%>
+</address><br/>
+<center><p>
+  <i class="fa fa-file-o"></i> <a onclick="javascript:window.location.href='/users/<%=current_user.id%>/edit'" style="cursor:pointer;">Profile</a> &nbsp;&nbsp;&nbsp; 
+  <i class="fa fa-pencil-square-o"></i> <a onclick="javascript:window.location.href='/favourite_prescriptions'" style="cursor:pointer;">Prescription Set</a> &nbsp;&nbsp;&nbsp; 
+  <i class="fa fa-cog"></i> <a href="/users/edit">Change password</a></p></center>
+</div>
+
+<div class="home_divs col-xs-12 col-sm-12 col-md-3 col-lg-3 col-md-offset-1 col-lg-offset-1 links_div  animated fadeInDown">
+  <h3>Patient</h3>
+    <div class="form-group" style="margin-top:20px">  
+      <%= form_tag("/patients/generic_search", method: "get") do %>
+      <div class="input-group">
+        <input type="radio" name="radio-inline" checked="checked" value="first_name" style="display:none;">
+        <input type="text" class="form-control" name='search_input' placeholder="Patient Name">
+        <span class="input-group-btn">
+         <%= submit_tag "Go", class: "btn btn-primary home_page_btn"%>
+        </span>
+      </div>
+      <% end %>
+    </div>
+    <% if can? :create, @patient %>
+    <center><%= link_to 'New Patient', new_patient_path, :class => "btn btn-primary btn-lg home_page_btn", :style=>"margin-top:15px;width:80%;color:white"%></center>
+    <% end %>
+</div>
+
+<div class="home_divs col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 chart_div  animated fadeInDown">
+  <h3>Analytics</h3>
   <% if can? :draw_chart, @user %>
-  <div class="col-xs-12  col-sm-12 col-md-10 col-lg-10">
-    <div class="well no-padding">
-      <header>
-        <h1>Charts</h1>
-      </header>
         <fieldset>
+          <br/>
           <section>
             <label class="chart_select_label"><%= select_tag "chart_type", options_for_select([ "Bar", "Line" ], "Bar")%></label>&nbsp;&nbsp;
             <label class="chart_select_label"><%= select_tag "chart_tag", options_for_select([ "p24h", "v24h","Both" ], "Both")%></label>&nbsp;&nbsp;
@@ -40,12 +56,10 @@
             </div>
           </section>
         </fieldset>
-
-    </div>
-
-  </div>
   <%end%>
 </div>
 
 
+
+  
 
