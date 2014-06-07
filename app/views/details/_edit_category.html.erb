@@ -2,7 +2,7 @@
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
     <div class="well no-padding">
         <header>
-            <b><%=@super_category.capitalize%>
+            <b><i class="fa fa-list-alt"></i>&nbsp;<%=@super_category.capitalize%>
               <%if @super_category=='history'%>
                 <button type="button" id="history_pdf_button" class= "btn btn-primary" onclick="javascript:window.location.href='/details/show_history?&pdf=true'">Generate PDF</button>
               <%elsif @super_category=='examination'%>

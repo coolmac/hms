@@ -257,3 +257,10 @@ table.inner_question_table tr td {
 	float:right;
 	font-size:25px;
 }
+
+/*discharge summary*/
+.summary_content_h3 {
+	padding: 10px !important;
+	background: #C3DDB9;
+	color: black;
+}

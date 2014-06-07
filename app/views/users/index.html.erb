@@ -1,6 +1,6 @@
 
 <div class="home_divs col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 quote_div  animated fadeInDown">
-  <h3>Quote Of The Day</h3>
+  <h3><i class="fa fa-quote-left"></i>&nbsp;Quote Of The Day</h3>
   <br/>
   <div class="cbp-qtcontent">
       <blockquote>
@@ -10,7 +10,7 @@
   </div>
 </div>
 <div class="home_divs col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-1 col-lg-offset-1 profile_div  animated fadeInDown" >
-  <h3><%=@user.name%></h3>
+  <h3><i class="fa fa-user"></i>&nbsp;<%=@user.name%></h3>
   <address style="padding:10px;">
   <i class="fa fa-home"></i>&nbsp; <%=@user.address_line1%> <%=@user.address_line2%> <%=@user.address_line3%><br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.city%><br>
@@ -26,7 +26,7 @@
 </div>
 
 <div class="home_divs col-xs-12 col-sm-12 col-md-3 col-lg-3 col-md-offset-1 col-lg-offset-1 links_div  animated fadeInDown">
-  <h3>Patient</h3>
+  <h3><i class="fa fa-users"></i>&nbsp;Patients</h3>
     <div class="form-group" style="margin-top:20px">  
       <%= form_tag("/patients/generic_search", method: "get") do %>
       <div class="input-group">
@@ -44,7 +44,7 @@
 </div>
 
 <div class="home_divs col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 chart_div  animated fadeInDown">
-  <h3>Analytics</h3>
+  <h3><i class="fa fa-bar-chart-o"></i>&nbsp;Analytics</h3>
   <% if can? :draw_chart, @user %>
         <fieldset>
           <br/>

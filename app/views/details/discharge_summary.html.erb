@@ -1,7 +1,7 @@
 <div id="summary_div" class="summary_div">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 smart-form client-form">
     	<div class="well no-padding">
-      		<header>Discharge Summary</header>
+      		<header><i class="fa fa-list-alt"></i>&nbsp;Discharge Summary</header>
 			<div id="summary_form"></br>
 				<%= form_tag("/discharge_summary", id: "summary_form", method: "get") do %>
 					<table class="table table-responsive">
@@ -37,7 +37,7 @@
 		<%if @history == "history"%>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 smart-form client-form">
     			<div class="well no-padding">
-      				<header>History</header>
+      				<h3 class="summary_content_h3">History</h3>
 					<%= render "discharge_history"%>
 				</div>
 			</div>	
@@ -46,7 +46,7 @@
 		<%if @investigation == "investigation"%>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 smart-form client-form">
     			<div class="well no-padding">
-      				<header>Investigation</header>
+      				<h3 class="summary_content_h3">Investigation</h3>
 					<%= render "discharge_investigation"%>
 				</div>
 			</div>	
@@ -55,7 +55,7 @@
 		<%if @prescription == "prescription"%>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 smart-form client-form">
     			<div class="well no-padding">
-      				<header>Prescription</header>
+      				<h3 class="summary_content_h3">Prescription</h3>
 					<%= render "discharge_prescription"%>
 				</div>
 			</div>	
@@ -64,7 +64,7 @@
 		<%if @follow_up == "follow_up"%>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 smart-form client-form">
     			<div class="well no-padding">
-      				<header>Follow Up</header>
+      				<h3 class="summary_content_h3">Follow Up</h3>
 					<%= render "discharge_follow_up"%>
 				</div>
 			</div>	
@@ -73,7 +73,7 @@
 		<%if @admission == "admission"%>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 smart-form client-form">
     			<div class="well no-padding">
-      				<header>Admission</header>
+      				<h3 class="summary_content_h3">Admission</h3>
 					<%= render "discharge_admission"%>
 				</div>
 			</div>	
