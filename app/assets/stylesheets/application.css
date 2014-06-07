@@ -269,3 +269,8 @@ table.inner_question_table tr td {
 .fa-trash-o {
 	font-size: 20px;
 }
+
+/*Marquee*/
+marquee {
+	padding:15px;
+}

@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   def index
     @patient = Patient.new
     @rquote = Quote.random
+    @updates = Update.all
     
     respond_to do |format|
       format.html # index.html.erb

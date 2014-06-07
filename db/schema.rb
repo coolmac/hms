@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140606073151) do
+ActiveRecord::Schema.define(:version => 20140607124228) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line1"
@@ -247,6 +247,13 @@ ActiveRecord::Schema.define(:version => 20140606073151) do
 
   add_index "trigrams", ["owner_id", "owner_type", "fuzzy_field", "trigram", "score"], :name => "index_for_match"
   add_index "trigrams", ["owner_id", "owner_type"], :name => "index_by_owner"
+
+  create_table "updates", :force => true do |t|
+    t.string   "heading"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "user_patients", :force => true do |t|
     t.integer "user_id"

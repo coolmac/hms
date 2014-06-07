@@ -4,28 +4,12 @@
   <br/>
   <div class="cbp-qtcontent">
       <center><blockquote>
-        <p><i>" <%=@rquote.quote%> "</i></p>
+        <p><i><h6>" <%=@rquote.quote%> "</h6></i></p>
         <footer><%=@rquote.author%></footer>
       </blockquote></center>
   </div>
 </div>
-<div class="home_divs col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-1 col-lg-offset-1 profile_div  animated fadeInDown" >
-  <h3><i class="fa fa-user"></i>&nbsp;<%=@user.name%></h3>
-  <address style="padding:10px;">
-  <i class="fa fa-home"></i>&nbsp; <%=@user.address_line1%> <%=@user.address_line2%> <%=@user.address_line3%><br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.city%><br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.district%><br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.state%><br>
-  <abbr title="Phone"><i class="fa fa-phone"></i>&nbsp;</abbr> <%=@user.mobile%><br/>
-  <abbr title="E-mail"><i class="fa fa-envelope-o"></i>&nbsp;</abbr> <%=@user.email%>
-</address><br/>
-<center><p>
-  <i class="fa fa-file-o"></i> <a onclick="javascript:window.location.href='/users/<%=current_user.id%>/edit'" style="cursor:pointer;">Profile</a> &nbsp;&nbsp;&nbsp; 
-  <i class="fa fa-pencil-square-o"></i> <a onclick="javascript:window.location.href='/favourite_prescriptions'" style="cursor:pointer;">Prescription Set</a> &nbsp;&nbsp;&nbsp; 
-  <i class="fa fa-cog"></i> <a href="/users/edit">Change password</a></p></center>
-</div>
-
-<div class="home_divs col-xs-12 col-sm-12 col-md-3 col-lg-3 col-md-offset-1 col-lg-offset-1 links_div  animated fadeInDown">
+<div class="home_divs col-xs-12 col-sm-12 col-md-5 col-lg-5 col-md-offset-1 col-lg-offset-1 profile_div  animated fadeInDown" >
   <h3><i class="fa fa-users"></i>&nbsp;Patients</h3>
     <div class="form-group" style="margin-top:20px">  
       <%= form_tag("/patients/generic_search", method: "get") do %>
@@ -35,12 +19,35 @@
         <span class="input-group-btn">
          <%= submit_tag "Go", class: "btn btn-primary home_page_btn"%>
         </span>
+      </input>
       </div>
       <% end %>
     </div>
     <% if can? :create, @patient %>
     <center><%= link_to 'New Patient', new_patient_path, :class => "btn btn-primary btn-lg home_page_btn", :style=>"margin-top:15px;width:80%;color:white"%></center>
     <% end %>
+</div>
+
+<div class="home_divs col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-1 col-lg-offset-1 links_div  animated fadeInDown">
+    <h3><i class="fa fa-file-text"></i>&nbsp;News/Updates </h3>
+    <marquee behavior="scroll" direction="up" scrollamount="3" scrolldelay="1" onmouseover="this.stop();" onmouseout="this.start();">
+      <%@updates.each do |update|%>
+        <p><h6><i class="fa fa-chevron-right"></i>&nbsp;<%=update.heading%></h6></p><br/>
+      <%end%>
+    </marquee>
+
+    <!-- <address style="padding:10px;">
+    <i class="fa fa-home"></i>&nbsp; <%=@user.address_line1%> <%=@user.address_line2%> <%=@user.address_line3%><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.city%><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.district%><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=@user.state%><br>
+    <abbr title="Phone"><i class="fa fa-phone"></i>&nbsp;</abbr> <%=@user.mobile%><br/>
+    <abbr title="E-mail"><i class="fa fa-envelope-o"></i>&nbsp;</abbr> <%=@user.email%>
+  </address><br/>
+<center><p>
+  <i class="fa fa-file-o"></i> <a onclick="javascript:window.location.href='/users/<%=current_user.id%>/edit'" style="cursor:pointer;">Profile</a> &nbsp;&nbsp;&nbsp; 
+  <i class="fa fa-pencil-square-o"></i> <a onclick="javascript:window.location.href='/favourite_prescriptions'" style="cursor:pointer;">Prescription Set</a> &nbsp;&nbsp;&nbsp; 
+  <i class="fa fa-cog"></i> <a href="/users/edit">Change password</a></p></center> -->
 </div>
 
 <div class="home_divs col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 chart_div  animated fadeInDown">
