@@ -83,12 +83,12 @@
                     <%@answer = @sc_common_visit_descriptive_questions.find_by_descriptive_question_id(question.id)%>
                      <%if @answer.nil? %>
                       <%@answer = VisitDescriptiveQuestion.new%>
-                      <span class='best_in_place' id='best_in_place_answer' data-url='/visit_descriptive_questions/new?&qn_id=<%=question.id%>' data-object='visit_descriptive_question' data-attribute='answer' data-type='textarea' data-nil = "Click me to add content!" data-ok-button='Save' data-cancel-button='Cancel'>click me to add content!</span>
+                      <span class='best_in_place' id='best_in_place_answer' data-url='/visit_descriptive_questions/new?&qn_id=<%=question.id%>' data-object='visit_descriptive_question' data-attribute='answer' data-type='textarea' data-nil = "Click me to add content!" data-cancel-button='Cancel'>click me to add content!</span>
                     <%else%>
                       <%if @answer.answer.blank? %>
-                        <span class='best_in_place' id='best_in_place_answer' data-url='/visit_descriptive_questions/<%=@answer.id%>?&qn_id=<%=question.id%>' data-object='visit_descriptive_question' data-attribute='answer' data-type='textarea' data-nil = "Click me to add content!" data-ok-button='Save' data-cancel-button='Cancel'>click me to add content!</span>
+                        <span class='best_in_place' id='best_in_place_answer' data-url='/visit_descriptive_questions/<%=@answer.id%>?&qn_id=<%=question.id%>' data-object='visit_descriptive_question' data-attribute='answer' data-type='textarea' data-nil = "Click me to add content!" data-cancel-button='Cancel'>click me to add content!</span>
                       <%else%>
-                        <%=best_in_place @answer, :answer, :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm', :nil => 'Click me to add content!',:html_attrs => { :style => 'width:500px; height:500px;' }, :path=>'/visit_descriptive_questions/'+@answer.id.to_s+'?&qn_id='+question.id.to_s, :type => :textarea %>
+                        <%=best_in_place @answer, :answer, :cancel_button => 'Cancel', :nil => 'Click me to add content!',:html_attrs => { :style => 'width:500px; height:500px;' }, :path=>'/visit_descriptive_questions/'+@answer.id.to_s+'?&qn_id='+question.id.to_s, :type => :textarea %>
                       <%end%> 
                     <%end%>
                   </td>
@@ -109,12 +109,12 @@
                     <%@answer = @sc_visit_descriptive_questions.find_by_descriptive_question_id(question.id)%>
                     <%if @answer.nil? %>
                       <%@answer = VisitDescriptiveQuestion.new%>
-                      <span class='best_in_place' id='best_in_place_answer' data-url='/visit_descriptive_questions/new?&qn_id=<%=question.id%>' data-object='visit_descriptive_question' data-attribute='answer' data-type='textarea' data-nil = "Click me to add content!" data-ok-button='Save' data-cancel-button='Cancel'>click me to add content!</span>
+                      <span class='best_in_place' id='best_in_place_answer' data-url='/visit_descriptive_questions/new?&qn_id=<%=question.id%>' data-object='visit_descriptive_question' data-attribute='answer' data-type='textarea' data-nil = "Click me to add content!" data-cancel-button='Cancel'>click me to add content!</span>
                     <%else%>
                       <%if @answer.answer.blank? %>
-                        <span class='best_in_place' id='best_in_place_answer' data-url='/visit_descriptive_questions/<%=@answer.id%>?&qn_id=<%=question.id%>' data-object='visit_descriptive_question' data-attribute='answer' data-type='textarea' data-nil = "Click me to add content!" data-ok-button='Save' data-cancel-button='Cancel'>click me to add content!</span>
+                        <span class='best_in_place' id='best_in_place_answer' data-url='/visit_descriptive_questions/<%=@answer.id%>?&qn_id=<%=question.id%>' data-object='visit_descriptive_question' data-attribute='answer' data-type='textarea' data-nil = "Click me to add content!" data-cancel-button='Cancel'>click me to add content!</span>
                       <%else%>
-                        <%=best_in_place @answer, :answer, :type => :textarea, :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm', :nil => 'Edit', :path=>'/visit_descriptive_questions/'+@answer.id.to_s+'?&qn_id='+question.id.to_s %>
+                        <%=best_in_place @answer, :answer, :type => :textarea, :cancel_button => 'Cancel', :nil => "Click me to add content!", :path=>'/visit_descriptive_questions/'+@answer.id.to_s+'?&qn_id='+question.id.to_s %>
                       <%end%> 
                     <%end%>
                   </td>
