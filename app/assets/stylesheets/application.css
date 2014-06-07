@@ -264,3 +264,8 @@ table.inner_question_table tr td {
 	background: #C3DDB9;
 	color: black;
 }
+
+/*font-awesome*/
+.fa-trash-o {
+	font-size: 20px;
+}

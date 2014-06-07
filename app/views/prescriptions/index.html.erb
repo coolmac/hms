@@ -28,7 +28,7 @@
         <tbody>
             <tr>
               <td>
-                <%= f.text_field :medicine, :calss => "medicine_input", :style=>"padding:4px;" %>
+                <%= f.text_field :medicine, :calss => "medicine_input", :style=>"padding:4px;width:80%;" %>
               </td>
               <td>
                 <%= f.text_field :frequency, :list=>"list2", :style=>"padding:4px;", :class=>" medicine_input"  %>
@@ -83,7 +83,11 @@
                 <td><%= best_in_place medicine, :frequency, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm', :path => @path %></td>
                 <td><%= best_in_place medicine, :duration, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm', :path => @path %></td>
                 <td><%= best_in_place medicine, :route, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm', :path => @path %></td>  
-              <td><%= link_to 'Remove', [medicine.visit, medicine], :class => "btn btn-danger btn-sm", :confirm => 'Are you sure?', :method => :delete %></td>
+              <td>
+                <%= link_to [medicine.visit, medicine], :class => "", :confirm => 'Are you sure?', :method => :delete do%>
+                  <i class="fa fa-trash-o fa-4" style="color:red"></i>
+                <%end%>
+              </td>
               </tr>
           <% end %>
         </tbody>
