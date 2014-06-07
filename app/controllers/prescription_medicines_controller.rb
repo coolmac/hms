@@ -33,7 +33,7 @@ class PrescriptionMedicinesController < ApplicationController
 
     respond_to do |format|
       if @prescription_medicine.save
-        format.html { redirect_to(edit_favourite_prescription_path(@favourite_prescription), :notice => "Medicine created successfully") }
+        format.html { redirect_to(favourite_prescriptions_path, :notice => "Medicine created successfully") }
       else
         format.html { render :action => "new" }
       end
@@ -65,7 +65,7 @@ class PrescriptionMedicinesController < ApplicationController
     @prescription_medicine.destroy
 
     respond_to do |format|
-      format.html { redirect_to(edit_favourite_prescription_path(@favourite_prescription), :notice => "Medicine deleted successfully") }
+      format.html { redirect_to(favourite_prescriptions_path, :notice => "Medicine deleted successfully") }
       format.json { head :ok }
     end
   end

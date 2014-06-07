@@ -24,30 +24,148 @@
 	<div>
 	  	<table id="resultTable" class="table table-striped table-bordered table-hover">
 	    <thead>
-	      <tr>
-	        <th>Name</th>
-	        <th colspan="2">Action</th>
-	      </tr>
 	    </thead>
 	    <tbody>
 	      <%= form_for(@favourite_prescription) do |f| %>
 		      <tr>
 		      	<td>
-		      		<%= f.text_field :name, :calss => "fav_prescription_text", :style=>"padding:4px;" %>
-		      	</td>
-		      	<td colspan="2">
+		      		<%= f.text_field :name, :calss => "fav_prescription_text", :style=>"padding:4px;", :placeholder => "New prescription set"  %>&nbsp;&nbsp;
 		      		<input class="btn btn-primary btn-sm" name="commit" type="submit" value="Submit">
 		      	</td>
 		      </tr>
-		  <%end%>		
-	      <% @favourite_prescriptions.each do |prescription| %>
-	        <tr>
-	          <td><%= best_in_place prescription, :name, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm' %></td>
-	          <td><a class="btn btn-success btn-sm" onclick="window.location.href='<%=edit_favourite_prescription_path(prescription)%>'">View List</a></td>
-	          <td><%= link_to 'Remove', [prescription], :class => "btn btn-danger btn-sm", :confirm => 'Are you sure?', :method => :delete %></td>
-	        </tr>
-	      <% end %>
-	  	</tbody>
-	    </table>
+		  <%end%>
+		  <tbody>
+		  </table>
+
+          <div id="accordion_fp" style="display:table;">	
+	      	<% @favourite_prescriptions.each do |prescription| %>
+	        	<h3>
+	        		<%= best_in_place prescription, :name, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm' %>
+	        		&nbsp;&nbsp;&nbsp;
+	        		<%= link_to [prescription], :class => "", :confirm => 'Are you sure?', :method => :delete do%>
+	        			<i class="fa fa-trash-o fa-4" style="color:red"></i>
+	        		<%end%>
+	        		<i class="fa fa-bars" style="float:right;"></i>
+	        	</h3>
+	        	<div style="background:#fff;">
+	        	  <table id="resultTable" class="table table-striped table-bordered table-hover">
+				    <thead>
+				      <tr>
+				        <th>Medicine</th>
+				    	<th>Frequency</th>
+				    	<th>Duration</th>
+				    	<th>Route</th>
+				        <th>Action</th>
+				      </tr>
+				      <%@prescription_medicine = prescription.prescription_medicines.build%>
+				      <%= form_for([@prescription_medicine.favourite_prescription, @prescription_medicine]) do |f| %>
+				    	<tr>
+				    		<td>
+				    			<%= f.text_field :medicine, :calss => "medicine_input", :style=>"padding:4px;width:80%;" %>
+				    		</td>
+				    		<td>
+				    			<%= f.text_field :frequency, :list=>"list2", :style=>"padding:4px;", :class=>" medicine_input"  %>
+							              <datalist id="list2">
+							                <option value="OD">OD</option>
+							                <option value="OM">OM</option>
+							                <option value="HS">HS</option>
+							                <option value="BD">BD</option>
+							                <option value="TDS">TDS</option>
+							                <option value="QID">QID</option>
+							              </datalist>
+				    		</td>
+				    		<td>
+				    			<%= f.text_field :duration, :list=>"list3", :style=>"padding:4px;", :class=>" medicine_input"  %>
+							              <datalist id="list3">
+							                <option value="1day">1day</option>
+							                <option value="2days">2days</option>
+							                <option value="3days">3days</option>
+							                <option value="4to6days">4-6days</option>
+							                <option value="1week">1week</option>
+							                <option value="2weeks">2weeks</option>
+							                <option value="3weeks">3weeks</option>
+							                <option value="1month">1month</option>
+							                <option value="2months">2months</option>
+							                <option value="3months">3months</option>
+							                <option value="6months">6months</option>
+							                <option value="1year">1year</option>
+							              </datalist>
+				    		</td>
+				    		<td>
+				    			<%= f.text_field :route, :list=>"list4", :style=>"padding:4px;", :class=>" medicine_input"  %>
+							              <datalist id="list4">
+							                <option value="im">im</option>
+							                <option value="iv">iv</option>
+							                <option value="po">po</option>
+							                <option value="pr">pr</option>
+							                <option value="intramuscular">intramuscular</option>
+							                <option value="intravenous">intravenous</option>
+							                <option value="per-oral">per oral</option>
+							                <option value="per-rectal">per rectal</option>
+							              </datalist>
+				    		</td>
+				    		<td>
+				    			<input class="btn btn-primary btn-sm" name="commit" type="submit" value="&nbsp;Submit&nbsp;">
+				    		</td>
+				    	</tr>
+				      <%end%>	
+				    </thead>
+				    <tbody>
+	        		<% prescription.prescription_medicines[0..-2].each do |medicine|%>
+	        			<tr>
+				          <td><%= best_in_place medicine, :medicine, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm' %></td>
+				          <td><%= best_in_place medicine, :frequency, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm' %></td>
+				          <td><%= best_in_place medicine, :duration, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm' %></td>
+				          <td><%= best_in_place medicine, :route, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm' %></td>  
+					      <td>
+					      	<%= link_to favourite_prescription_prescription_medicine_path(prescription.id,medicine) , :class => "", :confirm => 'Are you sure?', :method => :delete do%>
+					      		<i class="fa fa-trash-o fa-4" style="color:red"></i>
+					      	<%end%>
+					      </td>
+				        </tr>
+	        		<%end%>
+	        	    </tbody>
+	        	  </table>
+	        	</div>
+
+	          
+	      	<% end %>
+	      </div>
 	</div>
 </div>
+
+<script>
+$(function() {
+  $( "#accordion_fp" ).accordion({
+    collapsible: true,
+    heightStyle: "content",
+    active: false,
+    beforeActivate: function(event, ui) {
+     // The accordion believes a panel is being opened
+    if (ui.newHeader[0]) {
+        var currHeader  = ui.newHeader;
+        var currContent = currHeader.next('.ui-accordion-content');
+     // The accordion believes a panel is being closed
+    } else {
+        var currHeader  = ui.oldHeader;
+        var currContent = currHeader.next('.ui-accordion-content');
+    }
+     // Since we've changed the default behavior, this detects the actual status
+    var isPanelSelected = currHeader.attr('aria-selected') == 'true';
+    
+     // Toggle the panel's header
+    currHeader.toggleClass('ui-corner-all',isPanelSelected).toggleClass('accordion-header-active ui-state-active ui-corner-top',!isPanelSelected).attr('aria-selected',((!isPanelSelected).toString()));
+    
+    // Toggle the panel's icon
+    currHeader.children('.ui-icon').toggleClass('ui-icon-triangle-1-e',isPanelSelected).toggleClass('ui-icon-triangle-1-s',!isPanelSelected);
+    
+     // Toggle the panel's content
+    currContent.toggleClass('accordion-content-active',!isPanelSelected)    
+    if (isPanelSelected) { currContent.slideUp(); }  else { currContent.slideDown(); }
+
+    return false; // Cancels the default action
+}
+  });
+});
+
+</script>
