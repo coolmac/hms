@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140607124228) do
+ActiveRecord::Schema.define(:version => 20140608160047) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line1"
@@ -217,6 +217,7 @@ ActiveRecord::Schema.define(:version => 20140607124228) do
     t.string   "super_category"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "enabled"
   end
 
   create_table "quotes", :force => true do |t|

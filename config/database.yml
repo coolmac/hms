@@ -9,10 +9,10 @@ development:
   reconnect: false
   database: emr_development
   pool: 5
-  username: postgres
-  password: alexkj25
-  # username: akhil
-  # password:
+  # username: postgres
+  # password: alexkj25
+  username: akhil
+  password:
   # socket: /tmp/mysql.sock
   host: 127.0.0.1
 
