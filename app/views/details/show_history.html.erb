@@ -1,6 +1,6 @@
 <%=render 'edit_category'%>
 
-<script>
+<%= javascript_tag do %>
 $(function() {
   $(".fa-minus-circle").css("display","none");
   $( "#accordion" ).accordion({
@@ -35,4 +35,6 @@ $(function() {
   });
 });
 
-</script>
+$(".accordion_<%=@sub_category%>").trigger('click');
+
+<%end%>

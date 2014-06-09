@@ -72,23 +72,23 @@
 		<% #TODO make these links disabled with title saying 'You need select patient/visit for this' %>
 		  <div id="history" class="panel-collapse collapse">
 		  	<div class="panel-body" style="padding:0px">
-			  	<%= link_to edit_category_path(:super_category => 'history', :category => 'chief_complaint'), :remote => true do %>
+			  	<%= link_to "/details/show_history?sub_category=chief_complaint" do %>
 			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> Chief Complaint
 			  	<%end%>
 
-			  	<%= link_to edit_category_path(:super_category => 'history', :category => 'pms_history'), :remote => true do %>
+			  	<%= link_to "/details/show_history?sub_category=pms_history" do %>
 			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> Past Medical Surgical
 			  	<%end%>
-			  	<%= link_to edit_category_path(:super_category => 'history', :category => 'fms_history'), :remote => true do %>
+			  	<%= link_to "/details/show_history?sub_category=fms_history" do %>
 			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> Family Medical Surgical
 			  	<%end%>
-			  	<%= link_to edit_category_path(:super_category => 'history', :category => 'ps_history'), :remote => true do %>
+			  	<%= link_to "/details/show_history?sub_category=ps_history" do %>
 			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> Personal/Social
 			  	<%end%>
-			  	<%= link_to edit_category_path(:super_category => 'history', :category => 'other_systems_history'), :remote => true do %>
+			  	<%= link_to "/details/show_history?sub_category=other_systems_history" do %>
 			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> Other Systems
 			  	<%end%>
-			  	<%= link_to edit_category_path(:super_category => 'history', :category => 'treatment_history'), :remote => true do %><i class="fa fa-fw fa-arrow-circle-o-right"></i> Treatment History
+			  	<%= link_to "/details/show_history?sub_category=treatment_history" do %><i class="fa fa-fw fa-arrow-circle-o-right"></i> Treatment History
 			  	<%end%>
 		    </div>
 	      </div>
@@ -105,10 +105,10 @@
 		<%end%>
 		  <div id="examinations" class="panel-collapse collapse">
 		  	<div class="panel-body" style="padding:0px">
-		  		<%= link_to edit_category_path(:super_category => 'examination', :category => 'gpe'), :remote => true do %>
+		  		<%= link_to "/details/show_examinations?sub_category=gpe" do %>
 			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> General Physical Examination
 			  	<%end%>
-			  	<%= link_to edit_category_path(:super_category => 'examination', :category => 'vitals'), :remote => true do %>
+			  	<%= link_to "/details/show_examinations?sub_category=vitals" do %>
 			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> Vitals Examination
 			  	<%end%>
 		    </div>
@@ -126,19 +126,19 @@
 		<%end%>
 		  <div id="investigations" class="panel-collapse collapse">
 		  	<div class="panel-body" style="padding:0px">
-		  		<%= link_to edit_category_path(:super_category => 'investigation', :category => 'hemogram'), :remote => true do %>
+		  		<%= link_to "/details/show_investigations?sub_category=hemogram" do %>
 			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> Hemogram
 			  	<%end%>
-			  	<%= link_to edit_category_path(:super_category => 'investigation', :category => 'lft'), :remote => true do %>
+			  	<%= link_to "/details/show_investigations?sub_category=lft" do %>
 			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> LFT
 			  	<%end%>
-			  	<%= link_to edit_category_path(:super_category => 'investigation', :category => 'rft'), :remote => true do %>
+			  	<%= link_to "/details/show_investigations?sub_category=rft" do %>
 			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> RFT
 			  	<%end%>
-			  	<%= link_to edit_category_path(:super_category => 'investigation', :category => 'glucose'), :remote => true do %>
+			  	<%= link_to "/details/show_investigations?sub_category=glucose" do %>
 			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> Glucose
 			  	<%end%>
-			  	<%= link_to edit_category_path(:super_category => 'investigation', :category => 'lipid_profile'), :remote => true do %>
+			  	<%= link_to "/details/show_investigations?sub_category=lipid_profile" do %>
 			  		<i class="fa fa-fw fa-arrow-circle-o-right"></i> Lipid Profile
 			  	<%end%>
 		    </div>

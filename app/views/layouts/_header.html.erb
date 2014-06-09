@@ -44,25 +44,25 @@
                 <li class="dropdown-header">
                   History
                 </li>
-                <li>   <%= link_to 'Chief Complaint', edit_category_path(:super_category => 'history', :category => 'chief_complaint'), :remote => true %>
+                <li>   <%= link_to 'Chief Complaint', "/details/show_history?sub_category=chief_complaint" %>
                 </li>
-                <li>   <%= link_to 'Past Medical Surgical', edit_category_path(:super_category => 'history', :category => 'pms_history'), :remote => true %>
+                <li>   <%= link_to 'Past Medical Surgical',  "/details/show_history?sub_category=pms_history"%>
                 </li>
-                <li>   <%= link_to 'Family Medical Surgical', edit_category_path(:super_category => 'history', :category => 'fms_history'), :remote => true %>
+                <li>   <%= link_to 'Family Medical Surgical',  "/details/show_history?sub_category=fms_history"%>
                 </li>
-                <li>   <%= link_to 'Personal/Social', edit_category_path(:super_category => 'history', :category => 'ps_history'), :remote => true %>
+                <li>   <%= link_to 'Personal/Social',  "/details/show_history?sub_category=ps_history" %>
                 </li>
-                <li>   <%= link_to 'Treatment History', edit_category_path(:super_category => 'history', :category => 'treatment_history'), :remote => true %>
+                <li>   <%= link_to 'Other Systems',  "/details/show_history?sub_category=other_systems_history" %>
                 </li>
-                <li>   <%= link_to 'Other Systems History', edit_category_path(:super_category => 'history', :category => 'other_systems_history'), :remote => true %>
+                <li>   <%= link_to 'Treatment History',  "/details/show_history?sub_category=treatment_history" %>
                 </li>
                 <br>
                 <li class="dropdown-header">
                   Examinations
                 </li>
-                <li>   <%= link_to 'General Physical Examination', edit_category_path(:super_category => 'examination', :category => 'gpe'), :remote => true %>
+                <li>   <%= link_to 'General Physical Examination', "/details/show_examinations?sub_category=gpe" %>
                 </li>
-                <li>   <%= link_to 'Vitals Examination', edit_category_path(:super_category => 'examination', :category => 'vitals'), :remote => true %>
+                <li>   <%= link_to 'Vitals Examination', "/details/show_examinations?sub_category=vitals" %>
                 </li>
               </ul>
             </li>
@@ -71,21 +71,22 @@
                 <li class="dropdown-header">
                   Investigations
                 </li>
-                <li>   <%= link_to 'Hemogram', edit_category_path(:super_category => 'investigation', :category => 'hemogram'), :remote => true %>
+                <li>   <%= link_to 'Hemogram', "/details/show_investigations?sub_category=hemogram" %>
                 </li>
-                <li>   <%= link_to 'LFT', edit_category_path(:super_category => 'investigation', :category => 'lft'), :remote => true %>
+                <li>   <%= link_to 'LFT', "/details/show_investigations?sub_category=lft" %>
                 </li>
-                <li>   <%= link_to 'RFT', edit_category_path(:super_category => 'investigation', :category => 'rft'), :remote => true %>
+                <li>   <%= link_to 'RFT', "/details/show_investigations?sub_category=rft" %>
                 </li>
-                <li>   <%= link_to 'Glucose', edit_category_path(:super_category => 'investigation', :category => 'glucose'), :remote => true %>
+                <li>   <%= link_to 'Glucose', "/details/show_investigations?sub_category=glucose" %>
                 </li>
-                <li>   <%= link_to 'Lipid Profile', edit_category_path(:super_category => 'investigation', :category => 'lipid_profile'), :remote => true %>
+                <li>   <%= link_to 'Lipid Profile', "/details/show_investigations?sub_category=lipid_profile" %>
                 </li>
                 <br>
                 <li class="dropdown-header">
                   Admissions
                 </li>
                 <li> <%= link_to 'Main Page', admissions_path %></li>
+                <li> <%= link_to 'Discharge Summary', '/discharge_summary' %></li>
               </ul>
             </li>
           </ul>

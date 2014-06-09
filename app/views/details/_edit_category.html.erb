@@ -14,7 +14,7 @@
         </header>
         <div id="accordion" style="display:table;">
           <%@categories.each do |index,value|%>
-            <h3 id="<%=index%>" class="accordion_h3" style="background:rgb(235, 235, 235)"><%=value%><i class="fa fa-plus-square"></i><i class="fa fa-minus-circle"></i></h3>
+            <h3 id="<%=index%>" class="accordion_h3 accordion_<%=index%>" style="background:rgb(235, 235, 235)"><%=value%><i class="fa fa-plus-square"></i><i class="fa fa-minus-circle"></i></h3>
             <div style="background:#fff;"> 
               <%@filterd_common_questions = @common_questions.where(:category => "#{index}#{APP_CONFIG['common_category_tag']}") if @common_questions%>
               <%@filterd_questions = @questions.where(:category => index) if @questions%>

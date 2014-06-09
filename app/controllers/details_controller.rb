@@ -38,6 +38,9 @@ class DetailsController < ApplicationController
 
   # flow can come from show_history page or Directly
   def show_investigations
+    if params[:sub_category]
+      @sub_category = params[:sub_category]
+    end
     if params[:save] != nil
       update_details()
       render_examinations_main_page()
@@ -101,6 +104,9 @@ class DetailsController < ApplicationController
 
   # flow can come from show_history page or Directly
   def show_examinations
+    if params[:sub_category]
+      @sub_category = params[:sub_category]
+    end
     if params[:save] != nil
       update_details()
       render_history_main_page()
@@ -114,6 +120,9 @@ class DetailsController < ApplicationController
   end
 
   def show_history
+    if params[:sub_category]
+      @sub_category = params[:sub_category]
+    end
     render_history_main_page()
   end
 
