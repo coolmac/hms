@@ -16,7 +16,7 @@ class DetailsController < ApplicationController
     @categories = Visit.get_categories(params[:super_category])
     if params[:pdf]
       @investogation_reports = Investigation.select("investigations.*,visit_investigations.report").joins(",visit_investigations")
-                                      .where("visit_investigations.visit_id= ? and investigations.id=visit_investigations.investigation_id",@current_visit.id)
+                                      .where("visit_investigations.visit_id= ? and investigations.id=visit_investigations.investigation_id and investigations.enabled = 1",@current_visit.id)
       dir = File.dirname("#{Rails.root}/pdfs/Investigation/#{@current_patient.first_name}/x")
       FileUtils.mkdir_p(dir) unless File.directory?(dir)
       pdf = WickedPdf.new.pdf_from_string(render_to_string('details/_investigation_pdf.html.erb'))
@@ -125,17 +125,17 @@ class DetailsController < ApplicationController
     visit_id = @current_visit.id
     @super_category = params[:super_category]
     @categories = Visit.get_categories(@super_category)
-    @questions = Question.where(:super_category => @super_category)
-    @descriptive_questions = DescriptiveQuestion.where(:super_category => @super_category)
+    @questions = Question.where(:super_category => @super_category, :enabled => "1")
+    @descriptive_questions = DescriptiveQuestion.where(:super_category => @super_category, :enabled => "1")
     #@investigations = Investigation.all
     @question_ids = @questions.collect{|hq| hq.id}.join(', ')
     @descriptive_question_ids = @descriptive_questions.collect{|hdq| hdq.id}
     #@investigation_ids = @investigations.collect{|q| q.id}.join(', ')
 
     #TODO Doesn't seem optimized - Need to check up difference between joins (two tables) and IN (one table) statement
-    @sc_visit_questions = VisitQuestion.select("visit_questions.*,questions.title,questions.category").joins(",questions").where(:visit_id => visit_id).where("questions.id=visit_questions.question_id")
+    @sc_visit_questions = VisitQuestion.select("visit_questions.*,questions.title,questions.category").joins(",questions").where(:visit_id => visit_id).where("questions.id=visit_questions.question_id and questions.enabled = 1")
     @sc_visit_descriptive_questions = VisitDescriptiveQuestion.select("visit_descriptive_questions.*,descriptive_questions.title,descriptive_questions.category").joins(",descriptive_questions").where(:visit_id => visit_id)
-                                      .where("descriptive_questions.id=visit_descriptive_questions.descriptive_question_id")
+                                      .where("descriptive_questions.id=visit_descriptive_questions.descriptive_question_id and descriptive_questions.enabled = 1")
     # @sc_visit_questions = VisitQuestion.where(:visit_id => visit_id, :question_id => @question_ids)
     # @sc_visit_descriptive_questions = VisitDescriptiveQuestion.where(:visit_id => visit_id, :descriptive_question_id => @descriptive_question_ids)
 
@@ -214,7 +214,7 @@ class DetailsController < ApplicationController
     @answers = Answer.all
     @answers_hash = {}
 
-    @questions = Question.where(:category => @category, :super_category => @super_category)
+    @questions = Question.where(:category => @category, :super_category => @super_category, :enabled => "1")
     if @questions.size > 0
       csv_question_ids = @questions.collect{|q| q.id}.join(', ')
       @visit_questions = VisitQuestion.where("question_id in (#{csv_question_ids}) and visit_id = #{visit_id}")
@@ -225,7 +225,7 @@ class DetailsController < ApplicationController
       end
     end
 
-    @descriptive_questions = DescriptiveQuestion.where(:category => @category, :super_category => @super_category)
+    @descriptive_questions = DescriptiveQuestion.where(:category => @category, :super_category => @super_category, :enabled => "1")
     if @descriptive_questions.size > 0
       csv_descriptive_question_ids = @descriptive_questions.collect{|dq| dq.id}.join(', ')
       @visit_descriptive_questions = VisitDescriptiveQuestion.where("descriptive_question_id in (#{csv_descriptive_question_ids}) and visit_id = #{visit_id}")
@@ -237,7 +237,7 @@ class DetailsController < ApplicationController
     end
 
     # common questions and common descriptive questions
-    @common_questions = Question.where(:category => "#{@category}#{APP_CONFIG['common_category_tag']}", :super_category => @super_category)
+    @common_questions = Question.where(:category => "#{@category}#{APP_CONFIG['common_category_tag']}", :super_category => @super_category, :enabled => "1")
     if @questions.size > 0
       csv_question_ids = @questions.collect{|q| q.id}.join(', ')
       @visit_questions = VisitQuestion.where("question_id in (#{csv_question_ids}) and visit_id = #{visit_id}")
@@ -248,7 +248,7 @@ class DetailsController < ApplicationController
       end
     end
 
-    @common_descriptive_questions = DescriptiveQuestion.where(:category => "#{@category}#{APP_CONFIG['common_category_tag']}", :super_category => @super_category)
+    @common_descriptive_questions = DescriptiveQuestion.where(:category => "#{@category}#{APP_CONFIG['common_category_tag']}", :super_category => @super_category, :enabled => "1")
     if @descriptive_questions.size > 0
       csv_descriptive_question_ids = @descriptive_questions.collect{|dq| dq.id}.join(', ')
       @visit_descriptive_questions = VisitDescriptiveQuestion.where("descriptive_question_id in (#{csv_descriptive_question_ids}) and visit_id = #{visit_id}")
@@ -261,7 +261,7 @@ class DetailsController < ApplicationController
 
 
     #TODO check if investigation needs to be evaluated
-    @investigations = Investigation.where(:category => @category)
+    @investigations = Investigation.where(:category => @category, :enabled => "1")
     if @investigations.size > 0
       csv_investigation_ids = @investigations.collect{|q| q.id}.join(', ')
       @visit_investigations = VisitInvestigation.where("investigation_id in (#{csv_investigation_ids}) and visit_id = #{visit_id}")
@@ -362,7 +362,7 @@ class DetailsController < ApplicationController
     @category = params[:category]
     visit_id = user_session[:current_visit_id]
     @reports_hash = {}
-    @investigations = Investigation.where(:category => @category)
+    @investigations = Investigation.where(:category => @category, :enabled => '1')
     if @investigations.size > 0
       csv_investigation_ids = @investigations.collect{|q| q.id}.join(', ')
       @visit_investigations = VisitInvestigation.where("investigation_id in (#{csv_investigation_ids}) and visit_id = #{visit_id}")
@@ -408,11 +408,11 @@ class DetailsController < ApplicationController
   def get_history_details
     visit_id = @current_visit.id
     super_category = params[:super_category]
-    @questions = Question.where(:super_category => super_category, :category => @category)
-    @descriptive_questions = DescriptiveQuestion.where(:super_category => super_category, :category => @category)
+    @questions = Question.where(:super_category => super_category, :category => @category, :enabled => "1")
+    @descriptive_questions = DescriptiveQuestion.where(:super_category => super_category, :category => @category, :enabled => "1")
     @common_categories = @category.collect{|index,value| "#{index}#{APP_CONFIG['common_category_tag']}"}
-    @common_questions = Question.where(:category => @common_categories, :super_category => @super_category)
-    @common_descriptive_questions = DescriptiveQuestion.where(:category => @common_categories, :super_category => @super_category)
+    @common_questions = Question.where(:category => @common_categories, :super_category => @super_category, :enabled => "1")
+    @common_descriptive_questions = DescriptiveQuestion.where(:category => @common_categories, :super_category => @super_category, :enabled => "1")
 
     @common_question_ids = @common_questions.collect{|hq| hq.id}
     @common_descriptive_question_ids = @common_descriptive_questions.collect{|hdq| hdq.id}
@@ -428,7 +428,7 @@ class DetailsController < ApplicationController
 
   def get_investigation_details
     visit_id = @current_visit.id
-    @investigations = Investigation.where(:category => @category)
+    @investigations = Investigation.where(:category => @category, :enabled => "1")
     @investigation_ids = @investigations.collect{|inv| inv.id}
     @sc_investigations = VisitInvestigation.where(:investigation_id => @investigation_ids, :visit_id => visit_id)
   end
