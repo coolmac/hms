@@ -37,3 +37,11 @@ $(document).ready(function() {
   /* Activating Best In Place */
   jQuery(".best_in_place").best_in_place();
 });
+
+/* Marquee start and stop*/
+function marquee_stop() {
+  document.getElementById('updates_marquee').stop();
+}
+function marquee_start() {
+  document.getElementById('updates_marquee').start();
+}
