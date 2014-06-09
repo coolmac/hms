@@ -1,5 +1,5 @@
 <%if @investigations%>
-  <table class="table">
+  <table class="table investigation_accordion_table">
     <tr>
     <th> Question </th>
     <th> Report </th>
@@ -26,7 +26,7 @@
   </table>
 
 <%else%>
-  <table class="table ">
+  <table class="table history_accordion_table">
         <tr>
         <% @filterd_common_questions.each do |question| %>
             <td style="float:left;">
@@ -51,20 +51,21 @@
         </tr>
         <tr>
         <% @filterd_questions.each do |question| %>
-            <td style="float:left;">
-              <table>
+            <td class="history_accordion_table_td">
+              <table class="history_accordion_table_table">
                 <tr>
-                  <td valign="top">
-                    <b><%=question.title%>&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</b>
+                  <td style="width:50%">
+                    <b><%=question.title%></b>
                   </td>
-                  <td>
+                  <td style="width:50%">
+                    :
                     <%@answer = @sc_visit_questions.find_by_question_id(question.id)%>
-                     <%if @answer.nil? %>
+                    <%if @answer.nil? %>
                       <%@answer = VisitQuestion.new%>
                       <span class='best_in_place' id='best_in_place_answer_id' data-url='/visit_questions/new?&qn_id=<%=question.id%>' data-object='visit_question' data-attribute='answer_id' data-type='select' data-collection='[["","select"], [1, "Yes"], [2, "No"]]'>select</span>
-                     <%else%>
-                        <%= best_in_place @answer, :answer_id, :type => :select, :collection => [["","select"], [1, "Yes"], [2, "No"]], :path => '/visit_questions/'+@answer.id.to_s+'?&qn_id='+question.id.to_s%>
-                     <%end%>
+                    <%else%>
+                      <%= best_in_place @answer, :answer_id, :type => :select, :collection => [["","select"], [1, "Yes"], [2, "No"]], :path => '/visit_questions/'+@answer.id.to_s+'?&qn_id='+question.id.to_s%>
+                    <%end%>
                   </td>
                 </tr>
               </table>
@@ -73,7 +74,7 @@
         </tr>
         <% @filterd_common_descriptive_questions.each do |question| %>
             <tr>
-            <td style="float:left;">
+            <td class="history_accordion_table_td_full" style="float:left;">
               <table>
                 <tr>
                   <td valign="top">
@@ -99,7 +100,7 @@
         <%end%>
         <% @filterd_descriptive_questions.each do |question| %>
           <tr>
-            <td>
+            <td class="history_accordion_table_td_full" >
             <table>
                 <tr>
                   <td valign="top">
