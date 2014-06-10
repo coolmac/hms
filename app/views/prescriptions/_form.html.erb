@@ -88,25 +88,7 @@
           
 <% end %>
 
-<script>
-$( document ).ready(function() {
-  $('.medicine_autocomplete').autocomplete({
-    minLength: 1,
-    source: function(request, response) {
-      $.ajax({
-        url: $('.medicine_autocomplete').data('autocompleteurl'),
-        dataType: "json",
-        data: {
-          name: request.term
-        },
-        success: function(data) {
-          response(data);
-        }
-      });
-    }
-  });
-});
-</script>
+
 
 <!--
 <%= form_for([@prescription.visit, @prescription]) do |f| %>

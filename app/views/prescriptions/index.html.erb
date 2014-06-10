@@ -28,7 +28,7 @@
         <tbody>
             <tr>
               <td>
-                <%= f.text_field :medicine, :calss => "medicine_input", :style=>"padding:4px;width:80%;" %>
+                <%= f.text_field :medicine, class: 'medicine_autocomplete', 'data-autocompleteUrl' => '/autocomplete_medicine_name', :style=>"padding:4px;width:80%;" %>
               </td>
               <td>
                 <%= f.text_field :frequency, :list=>"list2", :style=>"padding:4px;", :class=>" medicine_input"  %>
@@ -94,3 +94,23 @@
     </table>
   </div>
 </div>
+
+<script>
+$( document ).ready(function() {
+  $('.medicine_autocomplete').autocomplete({
+    minLength: 1,
+    source: function(request, response) {
+      $.ajax({
+        url: $('.medicine_autocomplete').data('autocompleteurl'),
+        dataType: "json",
+        data: {
+          name: request.term
+        },
+        success: function(data) {
+          response(data);
+        }
+      });
+    }
+  });
+});
+</script>
