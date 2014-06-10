@@ -7,5 +7,8 @@ class CreateVisitQuestions < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :visit_questions, :visit_id
+    add_index :visit_questions, [:visit_id, :question_id]
   end
 end

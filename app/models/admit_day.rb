@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: admit_days
+#
+#  id               :integer          not null, primary key
+#  admission_id     :integer
+#  admit_date       :datetime
+#  doctor_notes     :text
+#  nurse_notes      :text
+#  care_giver_notes :text
+#  treatment        :text
+#  serial_number    :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
 class AdmitDay < ActiveRecord::Base
   belongs_to :admission
   attr_accessible :admit_date, :care_giver_notes, :doctor_notes, :nurse_notes, :serial_number, :treatment, :admission_id

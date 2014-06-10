@@ -8,5 +8,7 @@ class CreateCharts < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :charts, :tag
   end
 end

@@ -6,5 +6,6 @@ class CreateHospitals < ActiveRecord::Migration
 
       t.timestamps
     end
+
   end
 end

@@ -8,5 +8,8 @@ class CreateFollowUps < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :follow_ups, :visit_id
+
   end
 end

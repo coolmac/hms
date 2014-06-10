@@ -3,14 +3,13 @@ class CreateVisits < ActiveRecord::Migration
     create_table :visits do |t|
       t.integer :patient_id
       t.text :description
-      t.text :chief_complaint
-      t.text :pms_history
-      t.text :fm_history
-      t.text :ps_history
-      t.text :treatment_history
-      t.text :other_systems
-
+      t.date :visit_time
+      t.string :name
+      
       t.timestamps
     end
+
+    add_index :visits, :patient_id
+
   end
 end

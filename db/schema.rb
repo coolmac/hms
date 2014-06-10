@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140609100502) do
+ActiveRecord::Schema.define(:version => 20140607124228) do
 
   create_table "addresses", :force => true do |t|
     t.string   "address_line1"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(:version => 20140609100502) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  add_index "addresses", ["patient_id"], :name => "index_addresses_on_patient_id"
 
   create_table "admissions", :force => true do |t|
     t.integer  "visit_id"
@@ -77,6 +79,8 @@ ActiveRecord::Schema.define(:version => 20140609100502) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "charts", ["tag"], :name => "index_charts_on_tag"
+
   create_table "departments", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -88,10 +92,13 @@ ActiveRecord::Schema.define(:version => 20140609100502) do
     t.string   "sub_category"
     t.string   "category"
     t.string   "super_category"
+    t.integer  "enabled"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.integer  "enabled"
   end
+
+  add_index "descriptive_questions", ["super_category", "category", "enabled"], :name => "index_descriptive_question_on_three_cols"
+  add_index "descriptive_questions", ["super_category", "enabled"], :name => "index_descriptive_questions_on_super_category_and_enabled"
 
   create_table "enquiries", :force => true do |t|
     t.string   "contact_type"
@@ -106,9 +113,9 @@ ActiveRecord::Schema.define(:version => 20140609100502) do
 
   create_table "favourite_prescriptions", :force => true do |t|
     t.integer  "user_id"
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "CreateFavouritePrescriptions"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   add_index "favourite_prescriptions", ["user_id"], :name => "index_favourite_prescriptions_on_user_id"
@@ -121,6 +128,8 @@ ActiveRecord::Schema.define(:version => 20140609100502) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
+
+  add_index "follow_ups", ["visit_id"], :name => "index_follow_ups_on_visit_id"
 
   create_table "hospital_department_users", :force => true do |t|
     t.integer "hospital_department_id"
@@ -146,10 +155,13 @@ ActiveRecord::Schema.define(:version => 20140609100502) do
     t.string   "normal_max"
     t.string   "sub_category"
     t.string   "category"
+    t.integer  "enabled"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
-    t.integer  "enabled"
   end
+
+  add_index "investigations", ["category", "enabled"], :name => "index_investigations_on_category_and_enabled"
+  add_index "investigations", ["category", "sub_category", "enabled"], :name => "index_investigations_on_category_and_sub_category_and_enabled"
 
   create_table "medicines", :force => true do |t|
     t.string   "name"
@@ -165,7 +177,6 @@ ActiveRecord::Schema.define(:version => 20140609100502) do
     t.string   "father_name"
     t.integer  "age"
     t.string   "gender"
-    t.datetime "date_of_registration"
     t.string   "middle_name"
     t.date     "date_of_birth"
     t.string   "reference_mobile"
@@ -182,11 +193,17 @@ ActiveRecord::Schema.define(:version => 20140609100502) do
     t.string   "insurance_policy_number"
     t.string   "religion"
     t.string   "email"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
     t.string   "uhid"
     t.date     "registration_time"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
+
+  add_index "patients", ["email"], :name => "index_patients_on_email"
+  add_index "patients", ["first_name"], :name => "index_patients_on_first_name"
+  add_index "patients", ["last_name"], :name => "index_patients_on_last_name"
+  add_index "patients", ["mobile"], :name => "index_patients_on_mobile"
+  add_index "patients", ["uhid"], :name => "index_patients_on_uhid"
 
   create_table "prescription_medicines", :force => true do |t|
     t.integer  "favourite_prescription_id"
@@ -217,10 +234,13 @@ ActiveRecord::Schema.define(:version => 20140609100502) do
     t.string   "sub_category"
     t.string   "category"
     t.string   "super_category"
+    t.integer  "enabled"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.integer  "enabled"
   end
+
+  add_index "questions", ["super_category", "category", "enabled"], :name => "index_question_on_three_cols"
+  add_index "questions", ["super_category", "enabled"], :name => "index_questions_on_super_category_and_enabled"
 
   create_table "quotes", :force => true do |t|
     t.date     "date"
@@ -229,6 +249,8 @@ ActiveRecord::Schema.define(:version => 20140609100502) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "quotes", ["date"], :name => "index_quotes_on_date"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -267,22 +289,6 @@ ActiveRecord::Schema.define(:version => 20140609100502) do
     t.string   "name"
     t.string   "logo"
     t.string   "role"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0,  :null => false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
     t.integer  "age"
     t.string   "gender"
     t.date     "date_of_birth"
@@ -299,6 +305,18 @@ ActiveRecord::Schema.define(:version => 20140609100502) do
     t.string   "graduation"
     t.string   "post_graduation"
     t.text     "about_me"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0,  :null => false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
@@ -309,6 +327,8 @@ ActiveRecord::Schema.define(:version => 20140609100502) do
     t.integer "description_id"
   end
 
+  add_index "visit_descriptions", ["visit_id"], :name => "index_visit_descriptions_on_visit_id"
+
   create_table "visit_descriptive_questions", :force => true do |t|
     t.integer  "visit_id"
     t.integer  "descriptive_question_id"
@@ -316,6 +336,9 @@ ActiveRecord::Schema.define(:version => 20140609100502) do
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
   end
+
+  add_index "visit_descriptive_questions", ["visit_id", "descriptive_question_id"], :name => "index_vdq_on_visit_id_and_question_id"
+  add_index "visit_descriptive_questions", ["visit_id"], :name => "index_visit_descriptive_questions_on_visit_id"
 
   create_table "visit_investigations", :force => true do |t|
     t.integer  "visit_id"
@@ -325,6 +348,9 @@ ActiveRecord::Schema.define(:version => 20140609100502) do
     t.datetime "updated_at",       :null => false
   end
 
+  add_index "visit_investigations", ["visit_id", "investigation_id"], :name => "index_visit_investigations_on_visit_id_and_investigation_id"
+  add_index "visit_investigations", ["visit_id"], :name => "index_visit_investigations_on_visit_id"
+
   create_table "visit_questions", :force => true do |t|
     t.integer  "visit_id"
     t.integer  "question_id"
@@ -333,22 +359,18 @@ ActiveRecord::Schema.define(:version => 20140609100502) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "visit_questions", ["visit_id", "question_id"], :name => "index_visit_questions_on_visit_id_and_question_id"
+  add_index "visit_questions", ["visit_id"], :name => "index_visit_questions_on_visit_id"
+
   create_table "visits", :force => true do |t|
     t.integer  "patient_id"
     t.text     "description"
-    t.text     "chief_complaint"
-    t.text     "pms_history"
-    t.text     "fms_history"
-    t.text     "ps_history"
-    t.text     "treatment_history"
-    t.text     "other_systems"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-    t.text     "gpe"
-    t.text     "vitals"
-    t.text     "general_examination"
     t.date     "visit_time"
     t.string   "name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
+
+  add_index "visits", ["patient_id"], :name => "index_visits_on_patient_id"
 
 end

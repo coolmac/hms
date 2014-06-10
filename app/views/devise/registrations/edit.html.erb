@@ -28,10 +28,6 @@
                   </div>
                 </section>
 
-                  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-                  <% end %>
-
                 <section>
                   <div class="form-group">
                     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />

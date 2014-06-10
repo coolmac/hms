@@ -7,8 +7,13 @@ class CreateInvestigations < ActiveRecord::Migration
       t.string :normal_max
       t.string :sub_category
       t.string :category
+      t.integer :enabled
 
       t.timestamps
     end
+
+    add_index :investigations, [:category, :enabled]
+    add_index :investigations, [:category, :sub_category, :enabled]
+
   end
 end

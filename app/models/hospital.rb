@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: hospitals
+#
+#  id            :integer          not null, primary key
+#  name          :string(255)
+#  university_id :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 class Hospital < ActiveRecord::Base
   attr_accessible :name, :university_id
   validates :name, :presence => true

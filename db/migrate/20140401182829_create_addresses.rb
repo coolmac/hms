@@ -14,6 +14,9 @@ class CreateAddresses < ActiveRecord::Migration
       
       t.timestamps
     end
+
+    add_index :addresses, :patient_id
+
   end
 
 end

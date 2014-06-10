@@ -5,5 +5,8 @@ class CreateVisitDescriptions < ActiveRecord::Migration
       t.integer :description_id
 
     end
+
+    add_index :visit_descriptions, :visit_id
+
   end
 end

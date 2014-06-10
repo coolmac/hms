@@ -4,8 +4,10 @@
   <br/>
   <div class="cbp-qtcontent">
       <center><blockquote>
-        <p><i><h6>" <%=@rquote.quote%> "</h6></i></p>
-        <footer><%=@rquote.author%></footer>
+        <% if @rquote %>
+          <p><i><h6>" <%=@rquote.quote%> "</h6></i></p>
+          <footer><%=@rquote.author%></footer>
+        <% end %>
       </blockquote></center>
   </div>
 </div>

@@ -7,5 +7,7 @@ class CreateQuotes < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :quotes, :date
   end
 end

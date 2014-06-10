@@ -5,8 +5,13 @@ class CreateDescriptiveQuestions < ActiveRecord::Migration
       t.string :sub_category
       t.string :category
       t.string :super_category
+      t.integer :enabled
 
       t.timestamps
     end
+
+    add_index :descriptive_questions, [:super_category, :enabled]
+    add_index :descriptive_questions, [:super_category, :category, :enabled], :name => "index_descriptive_question_on_three_cols"
+
   end
 end

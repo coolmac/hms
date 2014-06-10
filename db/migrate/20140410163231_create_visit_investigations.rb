@@ -7,5 +7,9 @@ class CreateVisitInvestigations < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :visit_investigations, :visit_id
+    add_index :visit_investigations, [:visit_id, :investigation_id]
+
   end
 end

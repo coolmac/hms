@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: hospital_departments
+#
+#  id            :integer          not null, primary key
+#  hospital_id   :integer
+#  department_id :integer
+#
+
 class HospitalDepartment < ActiveRecord::Base
   attr_accessible :department_id, :hospital_id
   validates :department_id, :presence => true
