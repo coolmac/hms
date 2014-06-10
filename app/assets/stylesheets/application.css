@@ -214,6 +214,17 @@ table.inner_question_table tr td {
 	min-height: 30px !important;
 	height: 0px !important;
 }
+/*textarea cancel button*/
+.bip_vdq_td input[type="button"] {
+	width: 25px !important;
+	background: rgba(252, 0, 0, 0.55) !important;
+	border-radius: 5px !important;
+	font-weight: bold;
+	font-size: 16px;
+	padding: 2px;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	/*color:red;*/
+}
 
 
 /*Extra styling*/
