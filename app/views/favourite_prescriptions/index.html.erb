@@ -42,7 +42,7 @@
 	        	<h3>
 	        		<%= best_in_place prescription, :name, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm' %>
 	        		&nbsp;&nbsp;&nbsp;
-	        		<%= link_to [prescription], :class => "", :confirm => 'Are you sure?', :method => :delete do%>
+	        		<%= link_to [prescription], :class => "", :confirm => 'Are you sure?', :method => :delete, :title => "Delete" do%>
 	        			<i class="fa fa-trash-o fa-4" style="color:red"></i>
 	        		<%end%>
 	        		<i class="fa fa-bars" style="float:right;"></i>
@@ -118,7 +118,7 @@
 				          <td><%= best_in_place medicine, :duration, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm' %></td>
 				          <td><%= best_in_place medicine, :route, :type => :input, :nil => "Click me to add content!", :ok_button => 'Save', :cancel_button => 'Cancel', :ok_button_class => 'btn btn-primary btn-sm', :cancel_button_class => 'btn btn-primary btn-sm' %></td>  
 					      <td>
-					      	<%= link_to favourite_prescription_prescription_medicine_path(prescription.id,medicine) , :class => "", :confirm => 'Are you sure?', :method => :delete do%>
+					      	<%= link_to favourite_prescription_prescription_medicine_path(prescription.id,medicine) , :class => "", :confirm => 'Are you sure?', :method => :delete, :title => "Delete" do%>
 					      		<i class="fa fa-trash-o fa-4" style="color:red"></i>
 					      	<%end%>
 					      </td>
