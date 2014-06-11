@@ -12,22 +12,39 @@
   </div>
 </div>
 <div class="home_divs col-xs-12 col-sm-12 col-md-5 col-lg-5 col-md-offset-1 col-lg-offset-1 profile_div  animated fadeInDown" >
-  <h3><i class="fa fa-users"></i>&nbsp;Patients</h3>
+  <h3><i class="fa fa-users"></i>&nbsp;Patients&nbsp;
+    <% if can? :create, @patient %>
+      <%= link_to 'New Patient', new_patient_path, :class => "btn home_page_np_btn", :style=>"color:#fff;border:1px solid;float:right;margin-top:-5px;" %>
+    <%end%>
+  </h3>
+    <br/>
     <div class="form-group" style="margin-top:20px">  
-      <%= form_tag("/patients/generic_search", method: "get") do %>
+      <%= form_tag("/patients/generic_search", method: "get", class: "smart-form") do %>
+      <div class="inline-group">
+        <label class="radio">
+          <input type="radio" name="radio-inline" value="uhid">
+          <i></i>UHID</label>
+        <label class="radio">
+          <input type="radio" name="radio-inline" checked="checked" value="first_name">
+          <i></i>First Name</label>
+        <label class="radio">
+          <input type="radio" name="radio-inline" value="last_name">
+          <i></i>Last Name</label>
+        <label class="radio">
+          <input type="radio" name="radio-inline" value="mobile">
+          <i></i>Mobile Number</label>
+      </div>
+      <br />
       <div class="input-group">
-        <input type="radio" name="radio-inline" checked="checked" value="first_name" style="display:none;">
+        <!-- <input type="radio" name="radio-inline" checked="checked" value="first_name" style="display:none;"> -->
         <input type="text" class="form-control" name='search_input' placeholder="Patient Name">
         <span class="input-group-btn">
-         <%= submit_tag "Go", class: "btn btn-primary home_page_btn"%>
+          <%= submit_tag "Go", class: "btn home_page_btn"%>
         </span>
       </input>
       </div>
       <% end %>
     </div>
-    <% if can? :create, @patient %>
-    <center><%= link_to 'New Patient', new_patient_path, :class => "btn btn-primary btn-lg home_page_btn", :style=>"margin-top:15px;width:80%;color:white"%></center>
-    <% end %>
 </div>
 
 <div class="home_divs col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-1 col-lg-offset-1 links_div  animated fadeInDown">
