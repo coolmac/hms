@@ -2,7 +2,7 @@ class CreateFavouritePrescriptions < ActiveRecord::Migration
   def change
     create_table :favourite_prescriptions do |t|
       t.references :user
-      t.string name
+      t.string :name
       
       t.timestamps
     end

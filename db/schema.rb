@@ -113,9 +113,9 @@ ActiveRecord::Schema.define(:version => 20140607124228) do
 
   create_table "favourite_prescriptions", :force => true do |t|
     t.integer  "user_id"
-    t.string   "CreateFavouritePrescriptions"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "favourite_prescriptions", ["user_id"], :name => "index_favourite_prescriptions_on_user_id"
